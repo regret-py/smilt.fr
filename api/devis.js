@@ -1,6 +1,9 @@
 // Formulaire de devis → e-mail via Resend (fonction serverless Vercel)
 // Le site appelle /api/devis (CONFIG.quoteApi dans assets/js/site.js). Sans configuration, la fonction
 // renvoie { sent: false } et le navigateur ouvre la messagerie du visiteur avec la demande pré-remplie.
+// Formules Essentiel et Vitrine : le devis PDF est refait ici, avec le même numéro et la même date que celui
+// téléchargé par le visiteur, et joint à l'e-mail. Les prix viennent toujours du catalogue (assets/js/devis-pdf.js),
+// jamais du navigateur.
 //
 // Variables obligatoires :  RESEND_API_KEY  (https://resend.com, le domaine smilt.fr doit y être vérifié)
 //                           DEVIS_TO        (adresse qui reçoit les demandes, ex. smilt.fr@proton.me)
@@ -9,6 +12,8 @@
 //
 // Les e-mails partent toujours vers DEVIS_TO (jamais vers une adresse saisie par le visiteur) :
 // la fonction ne peut pas servir de relais à spam. L'adresse du visiteur sert seulement de "répondre à".
+
+import { AUTO_PLANS, NUMBER_RE, makeQuote, quotePdf, quoteFileName, formatMoney, todayISO } from "../assets/js/devis-pdf.js";
 
 const HITS = new Map();
 const WINDOW_MS = 10 * 60 * 1000;
@@ -60,6 +65,32 @@ function text(v, max) {
 const MAILRE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[a-z]{2,}$/i;
 const PLANS = ["Essentiel", "Vitrine", "Sur-mesure", "Je ne sais pas encore"];
 
+// Date du devis : celle du navigateur si elle est à un jour près de la nôtre (fuseaux horaires), sinon la nôtre.
+function quoteDate(v) {
+  const today = todayISO();
+  if (typeof v !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return today;
+  const gap = Math.abs(Date.parse(v + "T00:00:00Z") - Date.parse(today + "T00:00:00Z"));
+  return gap <= 86400000 ? v : today;
+}
+
+// Devis PDF en pièce jointe (base64), ou null pour les demandes sans prix fixe (Sur-mesure…).
+function attachment(d, body) {
+  if (!AUTO_PLANS.includes(d.plan)) return null;
+  try {
+    const date = quoteDate(body.date);
+    // le numéro doit correspondre à la date, sinon on en crée un nouveau
+    const number = typeof body.number === "string" && NUMBER_RE.test(body.number) && body.number.slice(2, 10) === date.replace(/-/g, "")
+      ? body.number : undefined;
+    const q = makeQuote({
+      plan: d.plan, entretien: d.entretien, number, date,
+      client: { business: d.business, name: d.name, address: d.address, email: d.email, phone: d.phone },
+    });
+    return { number: q.number, total: formatMoney(q.totals.ttc).replace(/\u00a0/g, " "), filename: quoteFileName(q), content: Buffer.from(quotePdf(q)).toString("base64") };
+  } catch {
+    return null; // l'e-mail part quand même, sans pièce jointe
+  }
+}
+
 export default async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -86,16 +117,24 @@ export default async function handler(req, res) {
     business: line(body.business, 120),
     email: line(body.email, 120),
     phone: line(body.phone, 30),
+    address: line(body.address, 160),
     plan: PLANS.includes(body.plan) ? body.plan : "Je ne sais pas encore",
+    entretien: body.entretien === true,
     message: text(body.message, 2000),
   };
   if (!d.name || !d.business || !MAILRE.test(d.email)) return res.status(400).json({ error: "invalid" });
 
   const key = process.env.RESEND_API_KEY, to = process.env.DEVIS_TO;
   if (!key || !to) return res.status(200).json({ sent: false }); // le client ouvre la messagerie à la place
+  const pdf = attachment(d, body);
+  // Sans devis automatique : lien vers l'outil interne, pré-rempli avec la demande (dans le #, jamais envoyé à un serveur).
+  const toolLink = pdf ? "" : (originOf(req.headers.origin || "") || "https://smilt.fr") + "/outils/devis.html#" + new URLSearchParams({
+    commerce: d.business, nom: d.name, adresse: d.address, email: d.email, tel: d.phone, formule: d.plan,
+    entretien: d.entretien ? "1" : "0", message: d.message.slice(0, 800),
+  }).toString();
 
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 10000);
+  const timer = setTimeout(() => ctrl.abort(), 12000);
   try {
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -105,18 +144,22 @@ export default async function handler(req, res) {
         from: process.env.DEVIS_FROM || "smilt. <devis@smilt.fr>",
         to: [to],
         reply_to: d.email,
-        subject: `Demande de devis · ${d.business}`,
+        subject: `Demande de devis · ${d.business}` + (pdf ? ` · ${pdf.number}` : ""),
         text: [
           `Nom : ${d.name}`,
           `Commerce : ${d.business}`,
+          `Adresse : ${d.address || "-"}`,
           `E-mail : ${d.email}`,
           `Téléphone : ${d.phone || "-"}`,
           `Formule : ${d.plan}`,
+          `Option Entretien : ${d.entretien ? "oui" : "non"}`,
+          pdf ? `Devis : n° ${pdf.number}, ${pdf.total} (PDF en pièce jointe, déjà téléchargé par le client)` : `Devis à préparer : ${toolLink}`,
           "",
           d.message || "(pas de message)",
           "",
           "Envoyé depuis le formulaire de smilt.fr",
         ].join("\n"),
+        ...(pdf ? { attachments: [{ filename: pdf.filename, content: pdf.content }] } : {}),
       }),
     });
     return res.status(200).json({ sent: r.ok });

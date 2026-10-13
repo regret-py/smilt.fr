@@ -384,9 +384,10 @@
       <div class="quote-side">
         <p class="eyebrow">Devis gratuit</p>
         <h2 id="quote-title" class="h2">Parlons de votre <em>commerce.</em></h2>
-        <p class="lead">Quelques lignes suffisent. On vous recontacte pour en parler, et vous recevez un prix fixe. Sans engagement.</p>
+        <p class="lead">Quelques lignes suffisent. Pour les formules Essentiel et Vitrine, votre devis PDF est prêt tout de suite. Pour le reste, on vous recontacte avec un prix fixe.</p>
         <ul class="smiles quote-points">
           <li>Gratuit et sans engagement</li>
+          <li>Essentiel ou Vitrine&nbsp;: devis PDF immédiat</li>
           <li>Un prix fixe, écrit avant de commencer</li>
           <li>Votre site en ligne en deux semaines</li>
         </ul>
@@ -412,7 +413,11 @@
             <input id="f-tel" name="telephone" type="tel" autocomplete="tel" maxlength="30" inputmode="tel">
           </div>
         </div>
-        <fieldset class="field plans-pick">
+        <div class="field">
+          <label for="f-addr">Adresse du commerce <span class="opt">(facultatif, figure sur le devis)</span></label>
+          <input id="f-addr" name="adresse" type="text" autocomplete="street-address" maxlength="160" placeholder="Ex. 12 rue du Marché, 75011 Paris">
+        </div>
+        <fieldset class="field plans-pick" aria-describedby="plan-hint">
           <legend>Formule qui vous tente</legend>
           <div class="pick">
             <label><input type="radio" name="formule" value="Essentiel"><span>Essentiel</span></label>
@@ -420,7 +425,9 @@
             <label><input type="radio" name="formule" value="Sur-mesure"><span>Sur-mesure</span></label>
             <label><input type="radio" name="formule" value="Je ne sais pas encore" checked><span>Je ne sais pas</span></label>
           </div>
+          <p class="field-hint" id="plan-hint">Essentiel ou Vitrine&nbsp;: votre devis PDF est créé dès l'envoi. Sur-mesure&nbsp;: on vous prépare un devis personnalisé.</p>
         </fieldset>
+        <label class="check"><input type="checkbox" name="entretien" value="oui" id="f-care"><span>Ajouter l'option Entretien <span class="opt">(19&nbsp;€ / mois, sans engagement)</span></span></label>
         <div class="field">
           <label for="f-msg">Votre projet, en quelques mots</label>
           <textarea id="f-msg" name="message" rows="4" maxlength="2000" placeholder="Ce que vous vendez, ce que vous attendez de votre site, si vous en avez déjà un…"></textarea>
@@ -430,8 +437,9 @@
           <input id="f-site" name="site" type="text" tabindex="-1" autocomplete="off">
         </div>
         <p class="form-legal">Vos informations servent uniquement à répondre à votre demande. Détails dans nos <a href="mentions-legales.html#donnees">mentions légales</a>.</p>
-        <button class="btn btn-coral btn-lg arr" type="submit" id="quoteSend">Envoyer ma demande</button>
+        <button class="btn btn-coral btn-lg arr" type="submit" id="quoteSend">Recevoir mon devis</button>
         <p class="form-status" id="quoteStatus" role="status" aria-live="polite"></p>
+        <p class="form-file" id="quoteFile" hidden></p>
       </form>
     </div>
   </section>

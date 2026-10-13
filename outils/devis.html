@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; manifest-src 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>Outil de devis · smilt.</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAF7F2">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/SpaceGrotesk-Latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/outils/outil.css">
+<script src="/assets/js/site.js" defer></script>
+<script type="module" src="/outils/devis-outil.js"></script>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="smilt-logo" viewBox="42 -855 2135 951"><path d="M276 14Q179 14 117 -28Q55 -70 42 -148L158 -178Q165 -143 182 -123Q198 -103 222 -94Q247 -86 276 -86Q320 -86 341 -102Q362 -117 362 -140Q362 -163 342 -176Q322 -188 278 -196L250 -201Q198 -211 155 -228Q112 -246 86 -277Q60 -308 60 -357Q60 -431 114 -470Q168 -510 256 -510Q339 -510 394 -473Q449 -436 466 -376L349 -340Q341 -378 316 -394Q292 -410 256 -410Q220 -410 201 -398Q182 -385 182 -363Q182 -339 202 -328Q222 -316 256 -310L284 -305Q340 -295 386 -278Q431 -262 458 -232Q484 -201 484 -149Q484 -71 428 -28Q371 14 276 14ZM524 0V-496H648V-442H666Q679 -467 709 -486Q739 -504 788 -504Q841 -504 873 -484Q905 -463 922 -430H940Q957 -462 988 -483Q1019 -504 1076 -504Q1122 -504 1160 -484Q1197 -465 1220 -426Q1242 -386 1242 -326V0H1116V-317Q1116 -358 1095 -378Q1074 -399 1036 -399Q993 -399 970 -372Q946 -344 946 -293V0H820V-317Q820 -358 799 -378Q778 -399 740 -399Q697 -399 674 -372Q650 -344 650 -293V0ZM1308 0V-496H1434V0ZM1504 0V-700H1630V0ZM1890 0Q1841 0 1810 -30Q1780 -61 1780 -112V-392H1656V-496H1780V-650H1906V-496H2042V-392H1906V-134Q1906 -104 1934 -104H2030V0ZM1371 -624m-72 0a72 72 0 1 0 144 0a72 72 0 1 0 -144 0Z"/><path d="M1230 -825Q1371 -625 1512 -825" fill="none" stroke="#FF6A4A" stroke-width="60" stroke-linecap="round"/><path d="M2117 36m-60 0a60 60 0 1 0 120 0a60 60 0 1 0 -120 0Z" fill="#FF6A4A"/></symbol>
+</svg>
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="smilt., accueil"><svg class="logo" width="81" height="36" viewBox="0 0 2135 951" aria-hidden="true"><use href="#smilt-logo"/></svg></a>
+    <p class="eyebrow">Outil interne · devis</p>
+  </div>
+</header>
+
+<main id="main" class="wrap tool">
+  <div class="tool-head">
+    <h1 class="h2">Nouveau <em>devis.</em></h1>
+    <p class="lead">Remplissez, vérifiez le total, téléchargez le PDF. Le brouillon reste enregistré sur cet appareil. Les mentions de l'entreprise (SIRET, adresse…) se règlent dans <code>assets/js/devis-pdf.js</code>.</p>
+  </div>
+
+  <div class="tool-request" id="request" hidden>
+    <p class="eyebrow">Demande reçue</p>
+    <p id="requestText"></p>
+  </div>
+
+  <form class="tool-grid" id="tool" novalidate>
+    <div class="tool-main">
+
+      <fieldset class="tool-card">
+        <legend>Client</legend>
+        <div class="field-row">
+          <div class="field"><label for="t-business">Commerce</label><input id="t-business" name="business" maxlength="120" autocomplete="off"></div>
+          <div class="field"><label for="t-name">Nom du contact</label><input id="t-name" name="name" maxlength="80" autocomplete="off"></div>
+        </div>
+        <div class="field"><label for="t-address">Adresse <span class="opt">(une ligne par ligne d'adresse)</span></label><textarea id="t-address" name="address" rows="2" maxlength="400"></textarea></div>
+        <div class="field-row">
+          <div class="field"><label for="t-email">E-mail</label><input id="t-email" name="email" type="email" maxlength="120" autocomplete="off"></div>
+          <div class="field"><label for="t-phone">Téléphone</label><input id="t-phone" name="phone" type="tel" maxlength="30" autocomplete="off"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="tool-card">
+        <legend>Devis</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="t-number">Numéro</label>
+            <div class="inline"><input id="t-number" name="number" maxlength="20" spellcheck="false"><button class="btn btn-ghost btn-sm" type="button" id="newNumber">Nouveau</button></div>
+          </div>
+          <div class="field"><label for="t-date">Date</label><input id="t-date" name="date" type="date"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="t-validity">Validité (jours)</label><input id="t-validity" name="validityDays" type="number" min="1" max="365" step="1" inputmode="numeric"></div>
+          <div class="field"><label for="t-deposit">Acompte à la signature (%)</label><input id="t-deposit" name="depositPct" type="number" min="0" max="100" step="1" inputmode="numeric"></div>
+        </div>
+        <div class="field"><label for="t-subject">Objet <span class="opt">(vide : « Création du site internet de … »)</span></label><input id="t-subject" name="subject" maxlength="200"></div>
+      </fieldset>
+
+      <fieldset class="tool-card">
+        <legend>Prestations</legend>
+        <div id="lines" class="lines"></div>
+        <div class="tool-actions">
+          <button class="btn btn-ghost btn-sm" type="button" data-add="">+ Ligne vide</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-add="Essentiel">+ Essentiel</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-add="Vitrine">+ Vitrine</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="tool-card">
+        <legend>Option et remarques</legend>
+        <label class="check"><input type="checkbox" id="t-care" name="entretien"><span>Option Entretien, non comprise dans le total</span></label>
+        <div class="field narrow"><label for="t-monthly">Prix par mois (€)</label><input id="t-monthly" name="monthly" type="number" min="0" step="0.01" inputmode="decimal"></div>
+        <div class="field"><label for="t-notes">Remarques <span class="opt">(imprimées sur le devis)</span></label><textarea id="t-notes" name="notes" rows="3" maxlength="2000"></textarea></div>
+      </fieldset>
+    </div>
+
+    <aside class="tool-side" aria-label="Récapitulatif">
+      <div class="tool-card tool-sum">
+        <p class="eyebrow">Récapitulatif</p>
+        <dl id="sum"></dl>
+        <button class="btn btn-coral arr" type="submit" id="download">Télécharger le PDF</button>
+        <button class="btn btn-ghost" type="button" id="preview">Ouvrir dans un onglet</button>
+        <p class="form-status" id="toolStatus" role="status" aria-live="polite"></p>
+        <button class="linklike tool-reset" type="button" id="reset">Tout effacer</button>
+      </div>
+    </aside>
+  </form>
+
+  <template id="lineTpl">
+    <div class="line">
+      <div class="field-row">
+        <div class="field"><label>Désignation</label><input data-k="title" maxlength="140"></div>
+        <div class="field"><label>Sous-titre <span class="opt">(facultatif)</span></label><input data-k="subtitle" maxlength="160"></div>
+      </div>
+      <div class="field"><label>Détails <span class="opt">(une puce par ligne)</span></label><textarea data-k="items" rows="3" maxlength="3000"></textarea></div>
+      <div class="line-foot">
+        <div class="field"><label>Quantité</label><input data-k="qty" type="number" min="0" step="0.5" inputmode="decimal"></div>
+        <div class="field"><label>Prix unitaire (€)</label><input data-k="unit" type="number" min="0" step="0.01" inputmode="decimal"></div>
+        <p class="line-total" data-total></p>
+        <button class="btn btn-ghost btn-sm line-del" type="button" data-del>Retirer</button>
+      </div>
+    </div>
+  </template>
+</main>
+</body>
+</html>

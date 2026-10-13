@@ -12,6 +12,9 @@ mentions-legales.html   mentions légales, données personnelles, cookies (à co
 404.html                page introuvable
 assets/css/site.css     toute la mise en forme (variables de couleur en haut du fichier)
 assets/js/site.js       menu, animations, formulaire de devis, John (un seul fichier, commenté par section)
+assets/js/devis-pdf.js  devis PDF : coordonnées de l'entreprise, offres, conditions, calcul et fabrication du PDF
+assets/js/devis-assets.js  polices et logo pour le PDF (généré par outils/build-pdf-assets.py)
+outils/devis.html       outil interne : devis sur mesure (non référencé, voir « Devis PDF »)
 assets/fonts/           Space Grotesk (variable) et Space Mono, auto-hébergées, licence SIL OFL 1.1
 assets/img/             og.png (aperçu réseaux sociaux, 1200×630), logos SVG (fond clair / fond sombre)
 api/chat.js             John avec l'IA : proxy vers Groq (Vercel uniquement)
@@ -27,9 +30,10 @@ robots.txt, sitemap.xml, CNAME, .nojekyll, vercel.json, package.json
   Le site vouvoie le visiteur.
 - **Prix et offres**. Ils apparaissent à plusieurs endroits, à garder alignés :
   1. `index.html` : hero (490€), section « Offres », FAQ « Combien coûte vraiment un site ? », balises `description` et JSON-LD ;
-  2. `assets/js/site.js` : réponses écrites de John (tableau `KB`) ;
-  3. `api/chat.js` : les faits que connaît John en mode IA (constante `SYSTEM`) ;
-  4. `assets/img/og.png` : l'image de partage mentionne « À partir de 490 € ».
+  2. `assets/js/devis-pdf.js` : `CATALOG` (contenu et prix des devis PDF), `ENTRETIEN`, `TERMS` (validité, acompte, délai) ;
+  3. `assets/js/site.js` : réponses écrites de John (tableau `KB`) ;
+  4. `api/chat.js` : les faits que connaît John en mode IA (constante `SYSTEM`) ;
+  5. `assets/img/og.png` : l'image de partage mentionne « À partir de 490 € ».
 - **E-mail de contact** (`smilt.fr@proton.me`) : `CONFIG.email` en haut de `assets/js/site.js`, les liens `mailto:` et le JSON-LD de
   `index.html`, `mentions-legales.html` et `api/chat.js`. Une recherche de `smilt.fr@proton.me` les trouve tous.
 - **Exemples** : les trois téléphones de la section « Exemples » sont dessinés en HTML/CSS (classes `d-bread`, `d-hair`, `d-wine`).
@@ -57,6 +61,30 @@ Sur Vercel avec Resend configuré, la demande arrive directement par e-mail (`ap
 « répondre à ». Sinon, le navigateur du visiteur ouvre sa messagerie avec la demande déjà rédigée. Sans JavaScript, le formulaire
 fonctionne aussi (envoi via la messagerie). Un champ piège invisible écarte les robots, et le nombre d'envois par visiteur est limité.
 
+## Devis PDF
+
+**Automatiques (formules Essentiel et Vitrine).** Quand le visiteur envoie le formulaire, son navigateur fabrique le devis PDF
+(`assets/js/devis-pdf.js`, chargé seulement à ce moment-là) et le télécharge : numéro unique `D-AAAAMMJJ-XXXX`, date, validité,
+coordonnées des deux parties, détail de la formule, option Entretien si cochée, total, acompte et solde, conditions,
+case « Bon pour accord ». Sur Vercel, `api/devis.js` refait **le même PDF** (même numéro, même date) et le joint à l'e-mail reçu
+par l'agence ; les prix viennent toujours du catalogue côté serveur, jamais de ce qu'envoie le navigateur. Sur GitHub Pages,
+le visiteur garde son PDF et sa messagerie s'ouvre pour prévenir l'agence. Rien n'est envoyé à un service tiers pour créer le PDF.
+
+**Sur mesure : `https://smilt.fr/outils/devis.html`.** Lignes libres (avec préréglages Essentiel et Vitrine), quantité, prix,
+option Entretien, acompte, validité, remarques ; le PDF sort au même format. Le brouillon est gardé dans le navigateur de
+l'appareil. Pour une demande Sur-mesure, l'e-mail reçu contient un lien qui ouvre l'outil avec la fiche du client déjà remplie.
+La page n'est ni liée ni indexée (`noindex`, `robots.txt`), mais elle reste publique : elle ne contient aucun secret.
+
+**À régler une fois** dans `assets/js/devis-pdf.js` :
+- `COMPANY` : nom ou raison sociale (suivi de « EI » pour une entreprise individuelle), statut, adresse, SIRET, TVA, IBAN.
+  Tant que ces champs sont entre crochets, ils apparaissent tels quels sur les devis.
+- `COMPANY.vatRate` : `0` en franchise de TVA (mention « TVA non applicable, art. 293 B du CGI »), `20` sinon
+  (le devis affiche alors HT, TVA et TTC).
+- `CATALOG`, `ENTRETIEN`, `TERMS` : contenu des formules, prix, validité (30 jours), acompte (30 %), délai, retours.
+
+Polices et logo du PDF : `assets/js/devis-assets.js`, généré par `python3 outils/build-pdf-assets.py`
+(à relancer seulement si les polices ou le logo changent ; nécessite `pip install fonttools brotli`).
+
 ## Mise en ligne
 
 ### Vercel (recommandé : John avec l'IA + formulaire par e-mail)
@@ -83,9 +111,10 @@ l'hébergeur dans `mentions-legales.html` (l'adresse de GitHub est en commentair
 
 - [ ] Compléter `mentions-legales.html` : les passages surlignés (nom ou raison sociale, forme juridique, SIRET, adresse, TVA,
       directeur ou directrice de la publication). Ces mentions sont obligatoires.
+- [ ] Compléter `COMPANY` dans `assets/js/devis-pdf.js` (mêmes informations, pour les devis PDF) et choisir le régime de TVA.
 - [ ] Vérifier que l'adresse `smilt.fr@proton.me` existe et reçoit bien les e-mails.
-- [ ] Valider les offres affichées : Vitrine à 890 €, Entretien à 19 €/mois, acompte puis solde, deux séries de retours,
-      appel ou café de 30 minutes. Seuls « 490 € », « 2 semaines », « prix fixe », « sans jargon » et « devis gratuit »
+- [ ] Valider les offres affichées : Vitrine à 890 €, Entretien à 19 €/mois, acompte de 30 % puis solde, devis valable 30 jours,
+      deux séries de retours, appel ou café de 30 minutes. Seuls « 490 € », « 2 semaines », « prix fixe », « sans jargon » et « devis gratuit »
       viennent des visuels de la marque ; le reste est une proposition à ajuster.
 - [ ] Tester John et le formulaire une fois en ligne.
 

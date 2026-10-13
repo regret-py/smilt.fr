@@ -522,6 +522,25 @@ main:focus { outline: none; }
 .pick input:checked + span { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .pick input:focus-visible + span { outline: 3px solid var(--coral); outline-offset: 2px; }
 .pick label:hover span { border-color: var(--ink); }
+.field-hint { margin-top: 2px; font-size: 13.5px; color: var(--ink-2); }
+.check { position: relative; display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-weight: 600; font-size: 15px; line-height: 1.4; }
+.check input { position: absolute; opacity: 0; width: 22px; height: 22px; margin: 0; cursor: pointer; }
+.check > span::before {
+  content: ""; float: left; width: 22px; height: 22px; margin: -1px 12px 0 0; border-radius: 7px;
+  border: 1.5px solid var(--line); background: #fff center / 14px no-repeat;
+  transition: background-color .15s, border-color .15s;
+}
+.check:hover > span::before { border-color: var(--ink); }
+.check input:checked + span::before {
+  border-color: var(--ink);
+  background-color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF6A4A' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+}
+.check input:focus-visible + span::before { outline: 3px solid var(--coral); outline-offset: 2px; }
+.check .opt { font-weight: 400; }
+.form-file { margin-top: -6px; }
+.form-file[hidden] { display: none; }
+.form-file a { gap: 8px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-legal { font-size: 13.5px; color: var(--ink-2); }
 .form-legal a { color: var(--ink); }

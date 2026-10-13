@@ -14,8 +14,11 @@
     email: 'smilt.fr@proton.me',
     john: true,             // false retire John du site
     chatApi: '/api/chat',   // proxy Groq (Vercel, voir api/chat.js). Sans serveur, John utilise ses réponses écrites.
-    quoteApi: '/api/devis'  // envoi du devis par e-mail (Vercel + Resend, voir api/devis.js). Sinon : l'e-mail s'ouvre pré-rempli.
+    quoteApi: '/api/devis', // envoi du devis par e-mail (Vercel + Resend, voir api/devis.js). Sinon : l'e-mail s'ouvre pré-rempli.
+    autoQuotes: ['Essentiel', 'Vitrine'] // formules dont le devis PDF est créé tout seul (= AUTO_PLANS de assets/js/devis-pdf.js)
   };
+  // Adresse de ce script, pour charger devis-pdf.js à côté de lui (document.currentScript n'existe que maintenant).
+  var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || new URL('assets/js/site.js', location.href).href;
 
   var root = document.documentElement;
   root.classList.add('js');
@@ -98,33 +101,79 @@
   });
 
   /* ===================== 5. formulaire de devis ===================== */
+  // Essentiel et Vitrine : le devis PDF est fabriqué ici, dans le navigateur (assets/js/devis-pdf.js, chargé à la demande),
+  // puis téléchargé. La demande part ensuite à l'agence : par api/devis.js (avec le même PDF en pièce jointe),
+  // ou, sans serveur, par la messagerie du visiteur.
   (function () {
     var form = $('quoteForm');
     if (!form) return;
-    var status = $('quoteStatus'), send = $('quoteSend');
+    var status = $('quoteStatus'), send = $('quoteSend'), file = $('quoteFile');
     var apiDown = isFile || !CONFIG.quoteApi;
     var MAILRE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[a-z]{2,}$/i;
+    var lastUrl = null;
 
     function val(name) { var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
     function say(msg, kind) { status.textContent = msg; status.className = 'form-status' + (kind ? ' ' + kind : ''); }
+
+    // Fabrique le devis PDF. Résout { number, date, name, url, total } ou null si impossible (navigateur trop ancien…).
+    function makePdf(d) {
+      if (CONFIG.autoQuotes.indexOf(d.plan) === -1 || !window.Blob || !window.URL || !URL.createObjectURL) return Promise.resolve(null);
+      return import(new URL('devis-pdf.js', SCRIPT_SRC).href).then(function (m) {
+        var q = m.makeQuote({
+          plan: d.plan, entretien: d.entretien,
+          client: { business: d.business, name: d.name, address: d.address, email: d.email, phone: d.phone }
+        });
+        var blob = new Blob([m.quotePdf(q)], { type: 'application/pdf' });
+        return { number: q.number, date: q.date, name: m.quoteFileName(q), url: URL.createObjectURL(blob), total: m.formatMoney(q.totals.ttc) };
+      }).catch(function () { return null; });
+    }
+    // Télécharge le PDF et laisse un lien pour le récupérer à nouveau.
+    function offer(pdf) {
+      if (lastUrl) URL.revokeObjectURL(lastUrl);
+      lastUrl = pdf.url;
+      file.textContent = '';
+      var a = document.createElement('a');
+      a.className = 'btn btn-ghost btn-sm';
+      a.href = pdf.url; a.download = pdf.name;
+      a.textContent = narrow('Télécharger le devis n° ' + pdf.number + ' (PDF)');
+      file.appendChild(a);
+      file.hidden = false;
+      a.click();
+    }
 
     function mailtoHref(d) {
       var body = [
         'Nom : ' + d.name,
         'Commerce : ' + d.business,
+        'Adresse : ' + (d.address || '-'),
         'E-mail : ' + d.email,
         'Téléphone : ' + (d.phone || '-'),
         'Formule : ' + d.plan,
+        'Option Entretien : ' + (d.entretien ? 'oui' : 'non'),
+        d.number ? 'Devis : n° ' + d.number + ' (PDF téléchargé, à joindre si vous le souhaitez)' : '',
         '',
         d.message || ''
-      ].join('\n').slice(0, 1600);
+      ].join('\n').slice(0, 1400);
+      // Sans devis automatique : lien vers l'outil interne de l'agence, pré-rempli avec la demande.
+      if (!d.number) body += '\n\n---\nPour smilt. : ' + location.origin + '/outils/devis.html#' + new URLSearchParams({
+        commerce: d.business, nom: d.name, adresse: d.address, email: d.email, tel: d.phone, formule: d.plan, entretien: d.entretien ? '1' : '0'
+      }).toString();
       return 'mailto:' + CONFIG.email +
-        '?subject=' + encodeURIComponent('Demande de devis · ' + d.business) +
+        '?subject=' + encodeURIComponent('Demande de devis · ' + d.business + (d.number ? ' · ' + d.number : '')) +
         '&body=' + encodeURIComponent(body);
     }
-    function fallback(d) {
-      window.location.href = mailtoHref(d);
-      say(narrow('Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez-nous à ' + CONFIG.email + '.'), 'ok');
+    function fallback(d, pdf) {
+      // laisse le téléchargement démarrer avant d'ouvrir la messagerie
+      setTimeout(function () { window.location.href = mailtoHref(d); }, pdf ? 700 : 0);
+      say(narrow(pdf
+        ? 'Votre devis n° ' + pdf.number + ' (' + pdf.total + ') est téléchargé. Votre messagerie s’ouvre pour nous prévenir : il ne reste qu’à envoyer le message. Rien ne s’ouvre ? Écrivez-nous à ' + CONFIG.email + '.'
+        : 'Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez-nous à ' + CONFIG.email + '.'), 'ok');
+    }
+    function done(d, pdf) {
+      form.reset();
+      say(narrow(pdf
+        ? 'C’est fait ! Votre devis n° ' + pdf.number + ' (' + pdf.total + ') est téléchargé, et une copie nous est parvenue. Pour l’accepter, renvoyez-le signé avec la mention « Bon pour accord ». On vous recontacte très vite.'
+        : 'Merci ! Votre demande est bien partie. On vous prépare un devis personnalisé et on vous recontacte très vite.'), 'ok');
     }
 
     // Retire l'erreur dès que le champ est corrigé.
@@ -132,9 +181,12 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (send.disabled) return;
+      var care = form.elements.entretien;
       var d = {
-        name: val('nom'), business: val('commerce'), email: val('email'), phone: val('telephone'),
+        name: val('nom'), business: val('commerce'), email: val('email'), phone: val('telephone'), address: val('adresse'),
         plan: (form.querySelector('input[name="formule"]:checked') || {}).value || 'Je ne sais pas encore',
+        entretien: !!(care && care.checked),
         message: val('message'), website: val('site')
       };
       var bad = [];
@@ -150,19 +202,20 @@
       }
       if (d.website) { say('Merci, votre demande est bien partie.', 'ok'); form.reset(); return; } // robot : on ne fait rien
 
-      if (apiDown) { fallback(d); return; }
-      send.disabled = true; say('Envoi en cours…');
-      postJSON(CONFIG.quoteApi, d, 12000).then(function (res) {
-        send.disabled = false;
-        if (res.status === 404 || res.status === 405 || res.status === 501) { apiDown = true; fallback(d); return; } // hébergement statique
-        if (res.status === 429) { say(narrow('Trop de demandes en peu de temps. Réessayez dans quelques minutes, ou écrivez-nous à ' + CONFIG.email + '.'), 'err'); return; }
-        if (res.data && res.data.sent) {
-          form.reset();
-          say(narrow('Merci ! Votre demande est bien partie. On vous recontacte très vite.'), 'ok');
-          return;
-        }
-        fallback(d);
-      }, function () { send.disabled = false; fallback(d); });
+      send.disabled = true;
+      say(CONFIG.autoQuotes.indexOf(d.plan) !== -1 ? 'Préparation de votre devis…' : 'Envoi en cours…');
+      makePdf(d).then(function (pdf) {
+        if (pdf) { d.number = pdf.number; d.date = pdf.date; offer(pdf); }
+        if (apiDown) { send.disabled = false; fallback(d, pdf); return; }
+        if (pdf) say('Envoi en cours…');
+        return postJSON(CONFIG.quoteApi, d, 15000).then(function (res) {
+          send.disabled = false;
+          if (res.status === 404 || res.status === 405 || res.status === 501) { apiDown = true; fallback(d, pdf); return; } // hébergement statique
+          if (res.status === 429) { say(narrow('Trop de demandes en peu de temps. Réessayez dans quelques minutes, ou écrivez-nous à ' + CONFIG.email + '.'), 'err'); return; }
+          if (res.data && res.data.sent) { done(d, pdf); return; }
+          fallback(d, pdf);
+        }, function () { send.disabled = false; fallback(d, pdf); });
+      });
     });
   })();
 
@@ -227,7 +280,9 @@
       { id: 'ai', w: 3, k: ['john', 'ia', 'ai', 'robot', 'bot', 'assistant', 'humain', 'humaine', 'automatique', 'chatgpt', 'gpt', 'intelligence artificielle'],
         a: 'Je suis John, l’assistant automatique de smilt. Mes réponses sont produites automatiquement et peuvent être incomplètes : pour une réponse précise, l’équipe vous répond via le ' + FORM + ' ou à ' + MAIL + '. Et si vous cherchez ma tête, regardez le « i » du logo.' },
       { w: 2, k: ['devis', 'estimation', 'chiffrage', 'chiffrer', 'commencer', 'demarrer', 'lancer', 'interesse', 'interessee', 'partant', 'partante'],
-        a: 'Avec plaisir ! Le devis est gratuit et sans engagement : remplissez le ' + FORM + ' en bas de page (deux minutes), ou écrivez à ' + MAIL + '. Vous recevrez un prix fixe.' },
+        a: 'Avec plaisir ! Le devis est gratuit et sans engagement : remplissez le ' + FORM + ' en bas de page. Pour les formules Essentiel et Vitrine, votre devis PDF est créé tout de suite ; pour le Sur-mesure, on vous envoie un devis personnalisé.' },
+      { w: 3, k: ['pdf', 'telecharger', 'telechargement', 'signer', 'signature', 'accord', 'accepter', 'valider', 'validite', 'acompte'],
+        a: 'Pour Essentiel et Vitrine, le formulaire crée votre devis PDF dès l’envoi : prix fixe, détail des prestations et conditions. Il est valable 30 jours. Pour l’accepter, renvoyez-le daté et signé avec la mention « Bon pour accord » ; un acompte de 30 % lance le projet.' },
       { k: ['contact', 'contacter', 'joindre', 'email', 'mail', 'telephone', 'tel', 'appeler', 'numero', 'ecrire', 'parler', 'rappeler', 'rencontrer', 'rendez vous', 'rdv'],
         a: 'Le plus simple : le ' + FORM + ', en bas de page. Vous pouvez aussi écrire à ' + MAIL + '. On vous recontacte pour en parler, gratuitement et sans engagement.' },
       { k: ['smilt', 'agence', 'equipe', 'presentation', 'propos', 'histoire', 'fondateur', 'fondateurs', 'qui etes vous', 'vous etes qui', 'qui est derriere'],

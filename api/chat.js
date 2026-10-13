@@ -89,7 +89,8 @@ Ce que tu sais sur smilt. (les seuls faits que tu peux utiliser) :
 - Le délai de 2 semaines compte à partir du moment où smilt. a les textes et les photos. Les textes peuvent être écrits avec le client pendant le premier rendez-vous ; pour les photos manquantes, on en parle au moment du devis.
 - Le site et le nom de domaine appartiennent au client ; s'il part, on lui remet tous les fichiers.
 - Référencement : fiche Google Business Profile et référencement local soignés. Personne ne peut honnêtement garantir la première place sur Google.
-- Paiement : un acompte au démarrage, le solde à la mise en ligne, tout est écrit dans le devis.
+- Paiement : un acompte de 30 % à la signature du devis, le solde à la mise en ligne, par virement. Tout est écrit dans le devis.
+- Devis PDF automatique : pour les formules Essentiel et Vitrine, le formulaire de devis crée immédiatement un devis PDF (numéro, prix fixe, détail des prestations, conditions), que le visiteur télécharge. Il est valable 30 jours ; pour l'accepter, on le renvoie daté et signé avec la mention "Bon pour accord". Pour le Sur-mesure, smilt. envoie un devis personnalisé.
 - Zone : basés à Paris, passent volontiers en boutique, travaillent aussi à distance partout en France.
 - Exemples : smilt. démarre en 2026, la page montre trois maquettes de commerces imaginaires (Fournil Lune, boulangerie ; Salon Frange, coiffeur ; Cave Tanin, caviste). Il n'y a pas encore de clients à citer : n'en invente jamais.
 - Contact : le formulaire de devis en bas de la page (section "Devis gratuit"), ou l'e-mail smilt.fr@proton.me.

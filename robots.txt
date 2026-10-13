@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /outils/
 
 Sitemap: https://smilt.fr/sitemap.xml

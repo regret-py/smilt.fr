@@ -56,6 +56,7 @@ def subset_font(font):
     s.populate(unicodes=UNICODES)
     s.subset(font)
     font.flavor = None
+    font.recalcTimestamp = False      # sortie identique d'une exécution à l'autre
     buf = io.BytesIO()
     font.save(buf)
     return buf.getvalue()
@@ -67,6 +68,10 @@ def describe(font_bytes, ps_name, fixed_pitch=False):
     k = 1000.0 / upm
     cmap = f.getBestCmap()
     hmtx = f['hmtx']
+    missing = [CHARS[c] for c in CODES if CHARS[c] and ord(CHARS[c]) not in cmap and CHARS[c] != '\u00ad']
+    if missing:
+        # encode() dans devis-pdf.js remplace ces caractères par la lettre la plus proche (table CP1252) : à tenir à jour.
+        print(ps_name, ': pas de glyphe pour', ' '.join(missing))
     space = round(hmtx[cmap[0x20]][0] * k)
     widths = []
     for code in CODES:

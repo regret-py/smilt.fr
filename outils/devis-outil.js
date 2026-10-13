@@ -15,7 +15,8 @@ let lineSeq = 0, lastUrl = null;
 function store(v) { try { if (v == null) localStorage.removeItem(KEY); else localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* stockage indisponible */ } }
 function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
 function say(msg, kind) { statusEl.textContent = msg; statusEl.className = 'form-status' + (kind ? ' ' + kind : ''); }
-function num(v) { const n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? 0 : n; }
+// Accepte « 149,50 », « 149.50 » et « 1 490,00 » (espaces ignorés).
+function num(v) { const n = parseFloat(String(v).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.')); return isNaN(n) ? 0 : n; }
 
 /* --- lignes de prestations --- */
 function addLine(data) {
@@ -52,6 +53,7 @@ function readForm() {
     client: { business: f.business.value, name: f.name.value, address: f.address.value, email: f.email.value, phone: f.phone.value },
     number: f.number.value.trim().toUpperCase(), date: f.date.value,
     validityDays: f.validityDays.value, depositPct: f.depositPct.value, subject: f.subject.value,
+    deliveryDays: f.deliveryDays.value, revisions: f.revisions.value,
     lines: readLines(),
     entretien: f.entretien.checked ? { monthly: num(f.monthly.value) } : false,
     notes: f.notes.value
@@ -65,6 +67,8 @@ function fillForm(s) {
   f.number.value = s.number || ''; f.date.value = s.date || todayISO();
   f.validityDays.value = s.validityDays || TERMS.validityDays; f.depositPct.value = s.depositPct != null && s.depositPct !== '' ? s.depositPct : TERMS.depositPct;
   f.subject.value = s.subject || '';
+  f.deliveryDays.value = s.deliveryDays || TERMS.deliveryDays;
+  f.revisions.value = s.revisions != null && s.revisions !== '' ? s.revisions : TERMS.revisions;
   linesBox.textContent = '';
   (s.lines || []).forEach(addLine);
   f.entretien.checked = !!s.entretien;
@@ -73,7 +77,8 @@ function fillForm(s) {
 }
 function blank() {
   const date = todayISO();
-  return { number: generateNumber(date), date, validityDays: TERMS.validityDays, depositPct: TERMS.depositPct, lines: [], entretien: false };
+  return { number: generateNumber(date), date, validityDays: TERMS.validityDays, depositPct: TERMS.depositPct,
+    deliveryDays: TERMS.deliveryDays, revisions: TERMS.revisions, lines: [], entretien: false };
 }
 
 /* --- récapitulatif --- */
@@ -95,11 +100,12 @@ function refresh() {
   });
   sum.textContent = '';
   let q = null;
-  try { q = quote(); } catch (e) { /* pas encore de ligne */ }
+  try { q = quote(); } catch (e) { if (linesBox.children.length) say(e.message, 'err'); }
+  if (q && statusEl.classList.contains('err')) say('');
   const n = form.elements.number;
   n.setAttribute('aria-invalid', NUMBER_RE.test(n.value.trim().toUpperCase()) ? 'false' : 'true');
-  if (!q) { row('Total', '—'); $('download').disabled = $('preview').disabled = true; store(readForm()); return; }
-  $('download').disabled = $('preview').disabled = false;
+  if (!q) { row('Total', '—'); $('download').disabled = true; store(readForm()); return; }
+  $('download').disabled = false;
   if (q.vatRate > 0) { row('Total HT', formatMoney(q.totals.ht)); row('TVA ' + q.vatRate + ' %', formatMoney(q.totals.vat)); }
   row(q.vatRate > 0 ? 'Total TTC' : 'Net à payer', formatMoney(q.totals.ttc), true);
   if (q.depositPct > 0 && q.depositPct < 100) { row('Acompte ' + q.depositPct + ' %', formatMoney(q.deposit)); row('Solde', formatMoney(q.balance)); }
@@ -125,13 +131,6 @@ form.addEventListener('submit', (e) => {
     a.href = url; a.download = quoteFileName(q);
     document.body.appendChild(a); a.click(); a.remove();
     say('Devis ' + q.number + ' téléchargé (' + formatMoney(q.totals.ttc) + ').', 'ok');
-  } catch (err) { say(err.message || 'Impossible de créer le PDF.', 'err'); }
-});
-$('preview').addEventListener('click', () => {
-  try {
-    const { q, url } = build();
-    const w = window.open(url, '_blank', 'noopener');
-    say(w === null ? 'Ouverture bloquée par le navigateur : utilisez « Télécharger le PDF ».' : 'Devis ' + q.number + ' ouvert dans un nouvel onglet.', w === null ? 'err' : 'ok');
   } catch (err) { say(err.message || 'Impossible de créer le PDF.', 'err'); }
 });
 
@@ -168,6 +167,17 @@ function fromHash() {
   history.replaceState(null, '', location.pathname);           // les données ne restent pas dans l'adresse
   return s;
 }
-fillForm(fromHash() || load() || blank());
+// Un lien pré-rempli ne remplace pas un brouillon en cours sans demander.
+function hasWork(s) { return !!s && (!!(s.client && (s.client.business || s.client.name)) || (s.lines || []).some((l) => l.title || num(l.unit))); }
+const linked = fromHash(), saved = load();
+let start = saved || blank();
+if (linked) {
+  if (!hasWork(saved)) start = linked;
+  else if (window.confirm('Remplacer le brouillon en cours (' + ((saved.client && saved.client.business) || saved.number || 'sans nom') + ') par la demande reçue ?')) {
+    try { localStorage.setItem(KEY + ':precedent', JSON.stringify(saved)); } catch (e) { /* stockage indisponible */ }
+    start = linked;
+  }
+}
+fillForm(start);
 if (!linesBox.children.length) addLine(null);
 refresh();

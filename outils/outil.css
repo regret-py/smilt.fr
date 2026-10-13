@@ -1,5 +1,5 @@
 /* smilt. · outil interne de devis (complète assets/css/site.css) */
-.tool { padding: clamp(32px, 6vw, 64px) 0 96px; }
+.tool { padding-top: clamp(32px, 6vw, 64px); padding-bottom: 96px; }
 .tool-head { display: grid; gap: 14px; max-width: 760px; margin-bottom: 32px; }
 .tool-head code { font: 400 .9em var(--mono); background: var(--cream-2); padding: 1px 6px; border-radius: 6px; }
 .tool-request { margin-bottom: 24px; padding: 18px 20px; border-radius: var(--r-sm); background: var(--coral-tint); max-width: 760px; }

@@ -69,8 +69,9 @@ const PLANS = ["Essentiel", "Vitrine", "Sur-mesure", "Je ne sais pas encore"];
 function quoteDate(v) {
   const today = todayISO();
   if (typeof v !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return today;
-  const gap = Math.abs(Date.parse(v + "T00:00:00Z") - Date.parse(today + "T00:00:00Z"));
-  return gap <= 86400000 ? v : today;
+  const t = Date.parse(v + "T00:00:00Z");
+  if (isNaN(t) || new Date(t).toISOString().slice(0, 10) !== v) return today; // date impossible (31 septembre…)
+  return Math.abs(t - Date.parse(today + "T00:00:00Z")) <= 86400000 ? v : today;
 }
 
 // Devis PDF en pièce jointe (base64), ou null pour les demandes sans prix fixe (Sur-mesure…).
@@ -85,7 +86,11 @@ function attachment(d, body) {
       plan: d.plan, entretien: d.entretien, number, date,
       client: { business: d.business, name: d.name, address: d.address, email: d.email, phone: d.phone },
     });
-    return { number: q.number, total: formatMoney(q.totals.ttc).replace(/\u00a0/g, " "), filename: quoteFileName(q), content: Buffer.from(quotePdf(q)).toString("base64") };
+    return {
+      number: q.number, date: q.date, total: formatMoney(q.totals.ttc).replace(/\u00a0/g, " "),
+      clientHasIt: typeof body.number === "string" && body.number !== "",   // le navigateur a fabriqué (et téléchargé) un PDF
+      filename: quoteFileName(q), content: Buffer.from(quotePdf(q)).toString("base64"),
+    };
   } catch {
     return null; // l'e-mail part quand même, sans pièce jointe
   }
@@ -153,7 +158,8 @@ export default async function handler(req, res) {
           `Téléphone : ${d.phone || "-"}`,
           `Formule : ${d.plan}`,
           `Option Entretien : ${d.entretien ? "oui" : "non"}`,
-          pdf ? `Devis : n° ${pdf.number}, ${pdf.total} (PDF en pièce jointe, déjà téléchargé par le client)` : `Devis à préparer : ${toolLink}`,
+          pdf ? `Devis : n° ${pdf.number}, ${pdf.total} (PDF en pièce jointe, ` + (pdf.clientHasIt ? "déjà téléchargé par le client)" : "PAS reçu par le client : à lui envoyer)")
+            : `Devis à préparer : ${toolLink}`,
           "",
           d.message || "(pas de message)",
           "",
@@ -162,7 +168,8 @@ export default async function handler(req, res) {
         ...(pdf ? { attachments: [{ filename: pdf.filename, content: pdf.content }] } : {}),
       }),
     });
-    return res.status(200).json({ sent: r.ok });
+    // Le navigateur compare ce numéro au sien : s'il diffère, il retélécharge la version reçue par l'agence.
+    return res.status(200).json(r.ok && pdf ? { sent: true, number: pdf.number, date: pdf.date } : { sent: r.ok });
   } catch {
     return res.status(200).json({ sent: false });
   } finally {

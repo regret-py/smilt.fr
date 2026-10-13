@@ -14,6 +14,7 @@ assets/css/site.css     toute la mise en forme (variables de couleur en haut du 
 assets/js/site.js       menu, animations, formulaire de devis, John (un seul fichier, commenté par section)
 assets/js/devis-pdf.js  devis PDF : coordonnées de l'entreprise, offres, conditions, calcul et fabrication du PDF
 assets/js/devis-assets.js  polices et logo pour le PDF (généré par outils/build-pdf-assets.py)
+assets/js/devis-load.js charge le moteur de devis pour site.js (qui reste lisible par les navigateurs anciens)
 outils/devis.html       outil interne : devis sur mesure (non référencé, voir « Devis PDF »)
 assets/fonts/           Space Grotesk (variable) et Space Mono, auto-hébergées, licence SIL OFL 1.1
 assets/img/             og.png (aperçu réseaux sociaux, 1200×630), logos SVG (fond clair / fond sombre)
@@ -70,10 +71,21 @@ case « Bon pour accord ». Sur Vercel, `api/devis.js` refait **le même PDF** (
 par l'agence ; les prix viennent toujours du catalogue côté serveur, jamais de ce qu'envoie le navigateur. Sur GitHub Pages,
 le visiteur garde son PDF et sa messagerie s'ouvre pour prévenir l'agence. Rien n'est envoyé à un service tiers pour créer le PDF.
 
-**Sur mesure : `https://smilt.fr/outils/devis.html`.** Lignes libres (avec préréglages Essentiel et Vitrine), quantité, prix,
-option Entretien, acompte, validité, remarques ; le PDF sort au même format. Le brouillon est gardé dans le navigateur de
+**Sur mesure : `https://smilt.fr/outils/devis.html`.** Lignes libres (avec préréglages Essentiel et Vitrine), quantité, prix
+(un prix négatif fait une ligne de remise), option Entretien, acompte, validité, délai, nombre de retours, remarques ; le PDF sort
+au même format. Le brouillon est gardé dans le navigateur de
 l'appareil. Pour une demande Sur-mesure, l'e-mail reçu contient un lien qui ouvre l'outil avec la fiche du client déjà remplie.
-La page n'est ni liée ni indexée (`noindex`, `robots.txt`), mais elle reste publique : elle ne contient aucun secret.
+Si un brouillon est en cours, l'outil demande avant de le remplacer (l'ancien est gardé sous la clé `smilt-devis-brouillon:precedent`).
+La page n'est liée nulle part et demande à ne pas être indexée (`noindex`, et en-tête `X-Robots-Tag` sur Vercel), mais elle reste
+publique : elle ne contient aucun secret.
+
+**Ce que le devis prévoit.** Validité, délai, retours, ce qui n'est pas compris, **cession écrite des droits d'auteur** après
+paiement intégral (une simple phrase « le site appartient au client » ne transfère aucun droit : art. L131-3 du Code de la propriété
+intellectuelle), nom de domaine au nom du client, pénalités de retard entre professionnels, et **droit de rétractation** de 14 jours
+avec le formulaire type. Ce droit s'applique au client consommateur, et au petit professionnel (5 salariés au plus) qui signe hors de
+vos locaux, par exemple dans sa boutique (art. L221-3 du Code de la consommation) : dans ce cas, aucun paiement ne peut être
+demandé avant 7 jours (art. L221-10). La page signée porte toujours les conditions et un rappel du numéro et du montant.
+Ces clauses sont un point de départ sérieux, pas une consultation juridique : faites-les relire si vous avez un doute.
 
 **À régler une fois** dans `assets/js/devis-pdf.js` :
 - `COMPANY` : nom ou raison sociale (suivi de « EI » pour une entreprise individuelle), statut, adresse, SIRET, TVA, IBAN.
@@ -81,6 +93,8 @@ La page n'est ni liée ni indexée (`noindex`, `robots.txt`), mais elle reste pu
 - `COMPANY.vatRate` : `0` en franchise de TVA (mention « TVA non applicable, art. 293 B du CGI »), `20` sinon
   (le devis affiche alors HT, TVA et TTC).
 - `CATALOG`, `ENTRETIEN`, `TERMS` : contenu des formules, prix, validité (30 jours), acompte (30 %), délai, retours.
+- `TERMS.withdrawal` : `true` par défaut (clause et formulaire de rétractation). À ne passer à `false` que si vous ne signez
+  qu'à distance et uniquement avec des professionnels.
 
 Polices et logo du PDF : `assets/js/devis-assets.js`, généré par `python3 outils/build-pdf-assets.py`
 (à relancer seulement si les polices ou le logo changent ; nécessite `pip install fonttools brotli`).

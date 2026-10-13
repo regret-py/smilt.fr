@@ -17,8 +17,9 @@
     quoteApi: '/api/devis', // envoi du devis par e-mail (Vercel + Resend, voir api/devis.js). Sinon : l'e-mail s'ouvre pré-rempli.
     autoQuotes: ['Essentiel', 'Vitrine'] // formules dont le devis PDF est créé tout seul (= AUTO_PLANS de assets/js/devis-pdf.js)
   };
-  // Adresse de ce script, pour charger devis-pdf.js à côté de lui (document.currentScript n'existe que maintenant).
-  var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || new URL('assets/js/site.js', location.href).href;
+  // Adresse de ce script, pour charger devis-load.js à côté de lui (document.currentScript n'existe que maintenant).
+  var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'assets/js/site.js';
+  var LOADER_SRC = SCRIPT_SRC.replace(/site\.js([?#].*)?$/, 'devis-load.js');
 
   var root = document.documentElement;
   root.classList.add('js');
@@ -101,9 +102,9 @@
   });
 
   /* ===================== 5. formulaire de devis ===================== */
-  // Essentiel et Vitrine : le devis PDF est fabriqué ici, dans le navigateur (assets/js/devis-pdf.js, chargé à la demande),
-  // puis téléchargé. La demande part ensuite à l'agence : par api/devis.js (avec le même PDF en pièce jointe),
-  // ou, sans serveur, par la messagerie du visiteur.
+  // Essentiel et Vitrine : le devis PDF est fabriqué ici, dans le navigateur (assets/js/devis-pdf.js, chargé à la demande
+  // par devis-load.js), puis téléchargé. La demande part ensuite à l'agence : par api/devis.js (avec le même PDF en pièce
+  // jointe), ou, sans serveur, par la messagerie du visiteur.
   (function () {
     var form = $('quoteForm');
     if (!form) return;
@@ -114,24 +115,62 @@
 
     function val(name) { var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
     function say(msg, kind) { status.textContent = msg; status.className = 'form-status' + (kind ? ' ' + kind : ''); }
+    function isAuto(plan) { return CONFIG.autoQuotes.indexOf(plan) !== -1; }
+    function query(o) {
+      return Object.keys(o).map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(o[k] || ''); }).join('&');
+    }
+    // Promesse qui abandonne au bout de ms (réseau bloqué, module qui ne répond pas).
+    function within(p, ms) {
+      return new Promise(function (resolve, reject) {
+        var t = setTimeout(function () { reject(new Error('timeout')); }, ms);
+        p.then(function (v) { clearTimeout(t); resolve(v); }, function (e) { clearTimeout(t); reject(e); });
+      });
+    }
 
-    // Fabrique le devis PDF. Résout { number, date, name, url, total } ou null si impossible (navigateur trop ancien…).
-    function makePdf(d) {
-      if (CONFIG.autoQuotes.indexOf(d.plan) === -1 || !window.Blob || !window.URL || !URL.createObjectURL) return Promise.resolve(null);
-      return import(new URL('devis-pdf.js', SCRIPT_SRC).href).then(function (m) {
-        var q = m.makeQuote({
-          plan: d.plan, entretien: d.entretien,
-          client: { business: d.business, name: d.name, address: d.address, email: d.email, phone: d.phone }
-        });
-        var blob = new Blob([m.quotePdf(q)], { type: 'application/pdf' });
-        return { number: q.number, date: q.date, name: m.quoteFileName(q), url: URL.createObjectURL(blob), total: m.formatMoney(q.totals.ttc) };
+    // Charge le moteur de devis (module ES) sans import() : les navigateurs qui ne savent pas le faire gardent le reste du site.
+    function loadDevis() {
+      if (window.smiltDevis) return Promise.resolve(window.smiltDevis);
+      if (!('noModule' in document.createElement('script'))) return Promise.reject(new Error('no-module'));
+      return within(new Promise(function (resolve, reject) {
+        function ready() { document.removeEventListener('smilt-devis', ready); if (window.smiltDevis) resolve(window.smiltDevis); else reject(new Error('load')); }
+        document.addEventListener('smilt-devis', ready);
+        var s = document.createElement('script');
+        s.type = 'module'; s.src = LOADER_SRC;
+        s.onerror = function () { document.removeEventListener('smilt-devis', ready); reject(new Error('load')); };
+        document.head.appendChild(s);
+      }), 10000);
+    }
+    // Heure du serveur (en-tête Date) : l'horloge de l'appareil du visiteur peut être fausse. À défaut, celle de l'appareil.
+    function serverNow() {
+      if (isFile || !window.fetch) return Promise.resolve(null);
+      return within(fetch(LOADER_SRC + '?t=' + Date.now(), { method: 'HEAD', cache: 'no-store' }), 4000).then(function (r) {
+        var t = Date.parse(r.headers.get('Date') || '');
+        return isNaN(t) ? null : t;
       }).catch(function () { return null; });
+    }
+    function build(m, d, number, date) {
+      var q = m.makeQuote({
+        plan: d.plan, entretien: d.entretien, number: number, date: date,
+        client: { business: d.business, name: d.name, address: d.address, email: d.email, phone: d.phone }
+      });
+      var blob = new Blob([m.quotePdf(q)], { type: 'application/pdf' });
+      return { m: m, number: q.number, date: q.date, name: m.quoteFileName(q), url: URL.createObjectURL(blob), total: m.formatMoney(q.totals.ttc) };
+    }
+    // Fabrique le devis PDF. Résout { number, date, name, url, total } ou null si impossible (navigateur ancien, réseau…).
+    function makePdf(d) {
+      if (!isAuto(d.plan) || !window.Blob || !window.URL || !URL.createObjectURL) return Promise.resolve(null);
+      return Promise.all([loadDevis(), serverNow()]).then(function (r) {
+        return build(r[0], d, undefined, r[1] ? r[0].todayISO(r[1]) : undefined);
+      }).catch(function () { return null; });
+    }
+    function clearFile() {
+      file.hidden = true; file.textContent = '';
+      if (lastUrl) { URL.revokeObjectURL(lastUrl); lastUrl = null; }
     }
     // Télécharge le PDF et laisse un lien pour le récupérer à nouveau.
     function offer(pdf) {
-      if (lastUrl) URL.revokeObjectURL(lastUrl);
+      clearFile();
       lastUrl = pdf.url;
-      file.textContent = '';
       var a = document.createElement('a');
       a.className = 'btn btn-ghost btn-sm';
       a.href = pdf.url; a.download = pdf.name;
@@ -154,25 +193,31 @@
         '',
         d.message || ''
       ].join('\n').slice(0, 1400);
-      // Sans devis automatique : lien vers l'outil interne de l'agence, pré-rempli avec la demande.
-      if (!d.number) body += '\n\n---\nPour smilt. : ' + location.origin + '/outils/devis.html#' + new URLSearchParams({
+      // Sans devis téléchargé : lien vers l'outil interne de l'agence, pré-rempli avec la demande.
+      if (!d.number) body += '\n\n---\nPour smilt. : ' + location.protocol + '//' + location.host + '/outils/devis.html#' + query({
         commerce: d.business, nom: d.name, adresse: d.address, email: d.email, tel: d.phone, formule: d.plan, entretien: d.entretien ? '1' : '0'
-      }).toString();
+      });
       return 'mailto:' + CONFIG.email +
         '?subject=' + encodeURIComponent('Demande de devis · ' + d.business + (d.number ? ' · ' + d.number : '')) +
         '&body=' + encodeURIComponent(body);
     }
     function fallback(d, pdf) {
-      // laisse le téléchargement démarrer avant d'ouvrir la messagerie
-      setTimeout(function () { window.location.href = mailtoHref(d); }, pdf ? 700 : 0);
-      say(narrow(pdf
-        ? 'Votre devis n° ' + pdf.number + ' (' + pdf.total + ') est téléchargé. Votre messagerie s’ouvre pour nous prévenir : il ne reste qu’à envoyer le message. Rien ne s’ouvre ? Écrivez-nous à ' + CONFIG.email + '.'
+      // laisse le téléchargement démarrer avant d'ouvrir la messagerie ; le bouton reste bloqué le temps qu'elle s'ouvre
+      send.disabled = true;
+      setTimeout(function () {
+        window.location.href = mailtoHref(d);
+        setTimeout(function () { send.disabled = false; }, 1500);
+      }, pdf ? 700 : 0);
+      var tail = ' Votre messagerie s’ouvre pour nous prévenir : il ne reste qu’à envoyer le message. Rien ne s’ouvre ? Écrivez-nous à ' + CONFIG.email + '.';
+      say(narrow(pdf ? 'Votre devis n° ' + pdf.number + ' (' + pdf.total + ') est téléchargé.' + tail
+        : isAuto(d.plan) ? 'Votre devis n’a pas pu être créé sur cet appareil : on vous l’enverra par e-mail.' + tail
         : 'Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Rien ne s’ouvre ? Écrivez-nous à ' + CONFIG.email + '.'), 'ok');
     }
     function done(d, pdf) {
       form.reset();
       say(narrow(pdf
         ? 'C’est fait ! Votre devis n° ' + pdf.number + ' (' + pdf.total + ') est téléchargé, et une copie nous est parvenue. Pour l’accepter, renvoyez-le signé avec la mention « Bon pour accord ». On vous recontacte très vite.'
+        : isAuto(d.plan) ? 'Merci ! Votre demande est bien partie. Votre devis n’a pas pu être créé sur cet appareil : on vous l’envoie par e-mail très vite.'
         : 'Merci ! Votre demande est bien partie. On vous prépare un devis personnalisé et on vous recontacte très vite.'), 'ok');
     }
 
@@ -203,16 +248,28 @@
       if (d.website) { say('Merci, votre demande est bien partie.', 'ok'); form.reset(); return; } // robot : on ne fait rien
 
       send.disabled = true;
-      say(CONFIG.autoQuotes.indexOf(d.plan) !== -1 ? 'Préparation de votre devis…' : 'Envoi en cours…');
+      clearFile();
+      say(isAuto(d.plan) ? 'Préparation de votre devis…' : 'Envoi en cours…');
       makePdf(d).then(function (pdf) {
         if (pdf) { d.number = pdf.number; d.date = pdf.date; offer(pdf); }
-        if (apiDown) { send.disabled = false; fallback(d, pdf); return; }
+        if (apiDown) { fallback(d, pdf); return; }
         if (pdf) say('Envoi en cours…');
         return postJSON(CONFIG.quoteApi, d, 15000).then(function (res) {
           send.disabled = false;
           if (res.status === 404 || res.status === 405 || res.status === 501) { apiDown = true; fallback(d, pdf); return; } // hébergement statique
-          if (res.status === 429) { say(narrow('Trop de demandes en peu de temps. Réessayez dans quelques minutes, ou écrivez-nous à ' + CONFIG.email + '.'), 'err'); return; }
-          if (res.data && res.data.sent) { done(d, pdf); return; }
+          if (res.status === 429) {
+            if (pdf) { fallback(d, pdf); return; } // le devis est déjà téléchargé : on garde ce numéro
+            say(narrow('Trop de demandes en peu de temps. Réessayez dans quelques minutes, ou écrivez-nous à ' + CONFIG.email + '.'), 'err');
+            return;
+          }
+          if (res.data && res.data.sent) {
+            // Le serveur a dû changer de numéro (date de l'appareil trop éloignée) : on retélécharge sa version, celle que l'agence a reçue.
+            if (pdf && res.data.number && res.data.number !== pdf.number) {
+              try { pdf = build(pdf.m, d, res.data.number, res.data.date); offer(pdf); } catch (err) { /* on garde le premier */ }
+            }
+            done(d, pdf);
+            return;
+          }
           fallback(d, pdf);
         }, function () { send.disabled = false; fallback(d, pdf); });
       });
@@ -260,7 +317,7 @@
       { w: 2, k: ['google', 'seo', 'referencement', 'referencer', 'trouve', 'trouver', 'visible', 'visibilite', 'recherche', 'classement', 'premiere page', 'premiere place'],
         a: 'On soigne votre fiche Google Business Profile et le référencement local de votre site, pour que les gens du quartier vous trouvent. Personne ne peut honnêtement garantir la première place sur Google ; on met tout en place pour vous en rapprocher.' },
       { w: 2, k: ['proprietaire', 'appartient', 'propriete', 'fichiers', 'quitter', 'recuperer', 'otage'],
-        a: 'Votre site vous appartient. Le nom de domaine est à votre nom et, si un jour vous voulez partir, on vous remet tous les fichiers.' },
+        a: 'Votre site est à vous : après paiement, le devis vous cède par écrit les droits d’auteur sur ses créations, le nom de domaine est à votre nom et, si un jour vous voulez partir, on vous remet tous les fichiers.' },
       { w: 2, k: ['ecommerce', 'e commerce', 'click', 'collect', 'commande', 'commandes', 'panier', 'vendre en ligne', 'vente en ligne', 'paiement en ligne', 'boutique en ligne'],
         a: 'C’est possible avec la formule Sur-mesure : click & collect, commandes ou petite boutique en ligne. Le prix dépend de votre projet ; le devis est gratuit, via le ' + FORM + '.' },
       { w: 2, k: ['reservation', 'reservations', 'reserver', 'planity', 'thefork', 'creneau', 'creneaux', 'agenda', 'booking'],
@@ -279,9 +336,11 @@
         a: 'On choisit la technique pour vous, pas l’inverse : des sites légers et rapides, faciles à héberger, et qui vous appartiennent. Vous n’avez pas à vous en soucier, c’est notre métier.' },
       { id: 'ai', w: 3, k: ['john', 'ia', 'ai', 'robot', 'bot', 'assistant', 'humain', 'humaine', 'automatique', 'chatgpt', 'gpt', 'intelligence artificielle'],
         a: 'Je suis John, l’assistant automatique de smilt. Mes réponses sont produites automatiquement et peuvent être incomplètes : pour une réponse précise, l’équipe vous répond via le ' + FORM + ' ou à ' + MAIL + '. Et si vous cherchez ma tête, regardez le « i » du logo.' },
-      { w: 2, k: ['devis', 'estimation', 'chiffrage', 'chiffrer', 'commencer', 'demarrer', 'lancer', 'interesse', 'interessee', 'partant', 'partante'],
+      { w: 2, k: ['devis', 'estimation', 'chiffrage', 'chiffrer', 'commencer', 'demarrer', 'lancer', 'interesse', 'interessee', 'partant', 'partante', 'faire mon site', 'creer mon site', 'faire un site', 'creer un site'],
         a: 'Avec plaisir ! Le devis est gratuit et sans engagement : remplissez le ' + FORM + ' en bas de page. Pour les formules Essentiel et Vitrine, votre devis PDF est créé tout de suite ; pour le Sur-mesure, on vous envoie un devis personnalisé.' },
-      { w: 3, k: ['pdf', 'telecharger', 'telechargement', 'signer', 'signature', 'accord', 'accepter', 'valider', 'validite', 'acompte'],
+      { w: 4, k: ['retractation', 'retracter', 'retracte', 'annuler', 'annulation', 'changer d avis'],
+        a: 'Oui, quand la loi le prévoit : si vous êtes un particulier, ou un commerce de 5 salariés au plus qui signe le devis hors de nos locaux (dans votre boutique, par exemple), vous avez 14 jours pour vous rétracter, sans motif. Le formulaire de rétractation est joint au devis.' },
+      { w: 3, k: ['pdf', 'signer', 'signature', 'bon pour accord', 'accepter le devis', 'valider le devis', 'validite', 'valable', 'devis valable', 'devis est valable'],
         a: 'Pour Essentiel et Vitrine, le formulaire crée votre devis PDF dès l’envoi : prix fixe, détail des prestations et conditions. Il est valable 30 jours. Pour l’accepter, renvoyez-le daté et signé avec la mention « Bon pour accord » ; un acompte de 30 % lance le projet.' },
       { k: ['contact', 'contacter', 'joindre', 'email', 'mail', 'telephone', 'tel', 'appeler', 'numero', 'ecrire', 'parler', 'rappeler', 'rencontrer', 'rendez vous', 'rdv'],
         a: 'Le plus simple : le ' + FORM + ', en bas de page. Vous pouvez aussi écrire à ' + MAIL + '. On vous recontacte pour en parler, gratuitement et sans engagement.' },

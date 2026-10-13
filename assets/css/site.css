@@ -527,7 +527,7 @@ main:focus { outline: none; }
 .check input { position: absolute; opacity: 0; width: 22px; height: 22px; margin: 0; cursor: pointer; }
 .check > span::before {
   content: ""; float: left; width: 22px; height: 22px; margin: -1px 12px 0 0; border-radius: 7px;
-  border: 1.5px solid var(--line); background: #fff center / 14px no-repeat;
+  border: 1.5px solid var(--ink-2); background: #fff center / 14px no-repeat;
   transition: background-color .15s, border-color .15s;
 }
 .check:hover > span::before { border-color: var(--ink); }
@@ -540,7 +540,7 @@ main:focus { outline: none; }
 .check .opt { font-weight: 400; }
 .form-file { margin-top: -6px; }
 .form-file[hidden] { display: none; }
-.form-file a { gap: 8px; }
+.form-file a { gap: 8px; white-space: normal; text-align: center; line-height: 1.3; padding-top: 8px; padding-bottom: 8px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-legal { font-size: 13.5px; color: var(--ink-2); }
 .form-legal a { color: var(--ink); }

@@ -30,8 +30,8 @@ robots.txt, sitemap.xml, CNAME, .nojekyll, vercel.json, package.json
   2. `assets/js/site.js` : réponses écrites de John (tableau `KB`) ;
   3. `api/chat.js` : les faits que connaît John en mode IA (constante `SYSTEM`) ;
   4. `assets/img/og.png` : l'image de partage mentionne « À partir de 490 € ».
-- **E-mail de contact** (`bonjour@smilt.fr`) : `CONFIG.email` en haut de `assets/js/site.js`, les liens `mailto:` et le JSON-LD de
-  `index.html`, `mentions-legales.html` et `api/chat.js`. Une recherche de `bonjour@smilt.fr` les trouve tous.
+- **E-mail de contact** (`smilt.fr@proton.me`) : `CONFIG.email` en haut de `assets/js/site.js`, les liens `mailto:` et le JSON-LD de
+  `index.html`, `mentions-legales.html` et `api/chat.js`. Une recherche de `smilt.fr@proton.me` les trouve tous.
 - **Exemples** : les trois téléphones de la section « Exemples » sont dessinés en HTML/CSS (classes `d-bread`, `d-hair`, `d-wine`).
   Ce sont des commerces fictifs, et c'est écrit sur la page. Quand vous aurez de vrais clients, remplacez-les par des captures
   de leurs sites (avec leur accord).
@@ -68,7 +68,7 @@ fonctionne aussi (envoi via la messagerie). Un champ piège invisible écarte le
    - `ALLOWED_ORIGIN` = `https://smilt.fr,https://www.smilt.fr` ;
    - `GROQ_MODEL` (facultatif, défaut `llama-3.3-70b-versatile`) ;
    - `RESEND_API_KEY` : sur https://resend.com, après avoir vérifié le domaine `smilt.fr` ;
-   - `DEVIS_TO` : l'adresse qui reçoit les demandes (ex. `bonjour@smilt.fr`) ;
+   - `DEVIS_TO` : l'adresse qui reçoit les demandes (ex. `smilt.fr@proton.me`) ;
    - `DEVIS_FROM` (facultatif, défaut `smilt. <devis@smilt.fr>`).
 4. Redéployer pour que les variables soient prises en compte.
 
@@ -83,7 +83,7 @@ l'hébergeur dans `mentions-legales.html` (l'adresse de GitHub est en commentair
 
 - [ ] Compléter `mentions-legales.html` : les passages surlignés (nom ou raison sociale, forme juridique, SIRET, adresse, TVA,
       directeur ou directrice de la publication). Ces mentions sont obligatoires.
-- [ ] Vérifier que l'adresse `bonjour@smilt.fr` existe et reçoit bien les e-mails.
+- [ ] Vérifier que l'adresse `smilt.fr@proton.me` existe et reçoit bien les e-mails.
 - [ ] Valider les offres affichées : Vitrine à 890 €, Entretien à 19 €/mois, acompte puis solde, deux séries de retours,
       appel ou café de 30 minutes. Seuls « 490 € », « 2 semaines », « prix fixe », « sans jargon » et « devis gratuit »
       viennent des visuels de la marque ; le reste est une proposition à ajuster.

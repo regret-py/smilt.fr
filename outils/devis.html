@@ -72,7 +72,7 @@
           <div class="field"><label for="t-delivery">Délai de mise en ligne (jours)</label><input id="t-delivery" name="deliveryDays" type="number" min="1" max="365" step="1" inputmode="numeric"></div>
           <div class="field"><label for="t-revisions">Séries de retours comprises</label><input id="t-revisions" name="revisions" type="number" min="0" max="20" step="1" inputmode="numeric"></div>
         </div>
-        <div class="field"><label for="t-subject">Objet <span class="opt">(vide : « Création du site internet de … »)</span></label><input id="t-subject" name="subject" maxlength="200"></div>
+        <div class="field"><label for="t-subject">Objet <span class="opt">(vide&nbsp;: «&nbsp;Création du site internet de…&nbsp;»)</span></label><input id="t-subject" name="subject" maxlength="200"></div>
       </fieldset>
 
       <fieldset class="tool-card">
@@ -100,6 +100,10 @@
         <button class="btn btn-coral arr" type="submit" id="download">Télécharger le PDF</button>
         <p class="form-status" id="toolStatus" role="status" aria-live="polite"></p>
         <button class="linklike tool-reset" type="button" id="reset">Tout effacer</button>
+        <div class="field tool-backups" id="backups" hidden>
+          <label for="t-backup">Brouillons précédents</label>
+          <div class="inline"><select id="t-backup"></select><button class="btn btn-ghost btn-sm" type="button" id="restore">Restaurer</button></div>
+        </div>
       </div>
     </aside>
   </form>
@@ -113,7 +117,7 @@
       <div class="field"><label>Détails <span class="opt">(une puce par ligne)</span></label><textarea data-k="items" rows="3" maxlength="3000"></textarea></div>
       <div class="line-foot">
         <div class="field"><label>Quantité</label><input data-k="qty" type="text" inputmode="decimal" autocomplete="off"></div>
-        <div class="field"><label>Prix unitaire (€) <span class="opt">(négatif : remise)</span></label><input data-k="unit" type="text" inputmode="decimal" autocomplete="off"></div>
+        <div class="field"><label>Prix unitaire (€) <span class="opt">(négatif&nbsp;: remise)</span></label><input data-k="unit" type="text" inputmode="decimal" autocomplete="off"></div>
         <p class="line-total" data-total></p>
         <button class="btn btn-ghost btn-sm line-del" type="button" data-del>Retirer</button>
       </div>

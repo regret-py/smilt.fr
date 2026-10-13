@@ -31,7 +31,7 @@ export const COMPANY = {
 export const CATALOG = {
   Essentiel: {
     title: 'Site Essentiel',
-    subtitle: 'Site vitrine d’une page, livré en deux semaines',
+    subtitle: 'Site vitrine d’une page',
     price: 490,
     items: [
       'Une page : accueil, services, horaires, accès, contact',
@@ -39,13 +39,12 @@ export const CATALOG = {
       'Plan Google Maps, boutons « Appeler » et « Itinéraire »',
       'Formulaire de contact',
       'Fiche Google Business Profile remise à neuf',
-      'Mentions légales et page RGPD',
-      'Deux séries de retours comprises'
+      'Mentions légales et page RGPD'
     ]
   },
   Vitrine: {
     title: 'Site Vitrine',
-    subtitle: 'Site vitrine jusqu’à 5 pages, livré en deux semaines',
+    subtitle: 'Site vitrine jusqu’à 5 pages',
     price: 890,
     items: [
       'Tout le contenu de la formule Essentiel',
@@ -53,8 +52,7 @@ export const CATALOG = {
       'Carte, menu ou tarifs modifiables par vos soins',
       'Galerie photos de votre boutique',
       'Référencement local renforcé',
-      'Lien vers votre outil de réservation (Planity, TheFork…)',
-      'Deux séries de retours comprises'
+      'Lien vers votre outil de réservation (Planity, TheFork…)'
     ]
   }
 };
@@ -80,6 +78,8 @@ export const TERMS = {
 };
 
 /* ===================== 3. outils (dates, montants) ===================== */
+const NB = '\u00a0';
+function days(n) { return n + NB + (n > 1 ? 'jours' : 'jour'); }
 const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
 const NBSP = ' ';
 
@@ -127,9 +127,14 @@ export function quoteFileName(q) { return 'devis-smilt-' + q.number + '.pdf'; }
 /* ===================== 4. calcul du devis ===================== */
 // Une ligne, sans caractère de contrôle. Les champs multilignes (adresse, remarques) passent par lines().
 function clean(v, max) { return typeof v === 'string' ? v.replace(/[\u0000-\u001f\u007f-\u009f]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max) : ''; }
-function lines(v, max, maxLines) {
-  const arr = Array.isArray(v) ? v : typeof v === 'string' ? v.split(/\r?\n/) : [];
-  return arr.map(function (l) { return clean(l, max); }).filter(Boolean).slice(0, maxLines);
+// Rien n'est coupé en silence : au-delà de maxLines, merge réunit les lignes en trop sur la dernière (adresse),
+// sinon une erreur explique la limite (l'outil interne l'affiche).
+function lines(v, max, maxLines, what, merge) {
+  const arr = (Array.isArray(v) ? v : typeof v === 'string' ? v.split(/\r?\n/) : [])
+    .map(function (l) { return clean(l, max); }).filter(Boolean);
+  if (arr.length <= maxLines) return arr;
+  if (merge) return arr.slice(0, maxLines - 1).concat([arr.slice(maxLines - 1).join(', ')]);
+  throw new Error(what + ' : ' + maxLines + ' lignes au maximum.');
 }
 
 /**
@@ -144,7 +149,7 @@ export function makeQuote(input) {
   const client = {
     business: clean(c.business, 120),
     name: clean(c.name, 80),
-    address: lines(c.address, 160, 4),
+    address: lines(c.address, 400, 4, 'Adresse', true),
     email: clean(c.email, 120),
     phone: clean(c.phone, 30)
   };
@@ -156,11 +161,11 @@ export function makeQuote(input) {
       return {
         title: clean(l.title, 140) || 'Prestation',
         subtitle: clean(l.subtitle, 160),
-        items: lines(l.items, 1000, 30),
-        qty: Math.max(0, Math.min(9999, Number(l.qty) || 0)),
+        items: lines(l.items, 3000, 30, 'Détails de « ' + (clean(l.title, 40) || 'Prestation') + ' »'),
+        qty: Math.max(-9999, Math.min(9999, Number(l.qty) || 0)),     // quantité négative possible : remise
         unit: Math.max(-1e9, Math.min(1e9, cents(l.unit) || 0))   // négatif possible : ligne de remise
       };
-    }).filter(function (r) { return r.qty > 0; });
+    }).filter(function (r) { return r.qty !== 0; });
   } else {
     const p = CATALOG[input.plan];
     if (!p) throw new Error('Formule inconnue : ' + input.plan);
@@ -198,7 +203,7 @@ export function makeQuote(input) {
     depositPct: depositPct, deposit: deposit, balance: ttc - deposit,
     deliveryDays: clampInt(input.deliveryDays, 1, 365, TERMS.deliveryDays),
     revisions: clampInt(input.revisions, 0, 20, TERMS.revisions),
-    notes: lines(input.notes, 2000, 40)
+    notes: lines(input.notes, 2000, 40, 'Remarques')
   };
 }
 function clampInt(v, min, max, dflt) {
@@ -216,8 +221,11 @@ const CP1252 = {
   0x0160: 0x53, 0x0161: 0x73, 0x017D: 0x5A, 0x017E: 0x7A, 0x0178: 0x59, 0x0192: 0x66, 0x2030: 0x25, 0x2020: 0x2B, 0x2021: 0x2B,
   // équivalents proches pour les caractères absents du codage
   0x202F: 0xA0, 0x2009: 0xA0, 0x2007: 0xA0, 0x2011: 0x2D, 0x2010: 0x2D, 0x2212: 0x2D, 0x2032: 0x27, 0x2033: 0x22,
-  0x0141: 0x4C, 0x0142: 0x6C, 0x0110: 0x44, 0x0111: 0x64
+  0x0141: 0x4C, 0x0142: 0x6C, 0x0110: 0x44, 0x0111: 0x64, 0x0131: 0x69, 0x0126: 0x48, 0x0127: 0x68, 0x014A: 0x4E, 0x014B: 0x6E,
+  0x013F: 0x4C, 0x0140: 0x6C, 0x0166: 0x54, 0x0167: 0x74, 0x2028: 0x20, 0x2029: 0x20
 };
+// Caractères invisibles de mise en forme (espace sans chasse, marques de direction, BOM…) : supprimés.
+function invisible(u) { return (u >= 0x200B && u <= 0x200F) || (u >= 0x202A && u <= 0x202E) || (u >= 0x2060 && u <= 0x2064) || u === 0xFEFF || u === 0xAD; }
 // Typographie française : espace insécable dans les guillemets et avant : ; ? ! (évite « » » seul en début de ligne).
 function typo(str) {
   return String(str).replace(/« /g, '«\u00a0').replace(/ »/g, '\u00a0»').replace(/ ([:;?!])/g, '\u00a0$1');
@@ -226,15 +234,14 @@ function encode(str) {
   let out = '';
   for (const ch of typo(str).normalize('NFC')) {          // NFC : « e + accent combinant » redevient « é »
     const u = ch.codePointAt(0);
-    if (u === 0xAD) continue;                                 // trait d'union conditionnel : invisible
+    if (invisible(u)) continue;
     if ((u >= 0x20 && u <= 0x7E) || (u >= 0xA0 && u <= 0xFF)) out += String.fromCharCode(u);
     else if (CP1252[u]) out += String.fromCharCode(CP1252[u]);
     else if (u === 0x09 || u === 0x0A || u === 0x0D) out += ' ';
     else {
-      // lettre accentuée hors du codage (ą, ř, ă, ư…) : on garde la lettre de base plutôt qu'un « ? »
-      const base = ch.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const b = base.codePointAt(0);
-      out += base.length === 1 && ((b >= 0x20 && b <= 0x7E) || (b >= 0xA0 && b <= 0xFF)) ? base : '?';
+      // lettre accentuée hors du codage (ą, ř, ă, ư…), ligature (ﬁ), chiffre pleine chasse… : forme de base plutôt qu'un « ? »
+      const base = ch.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+      out += base && /^[\x20-\x7e\xa0-\xff]+$/.test(base) ? base : '?';
     }
   }
   return out;
@@ -452,6 +459,7 @@ export function quotePdf(q, opts) {
   const pay = q.depositPct > 0 && q.depositPct < 100
     ? ['Acompte de ' + q.depositPct + ' % à la signature : ' + formatMoney(q.deposit), 'Solde à la mise en ligne : ' + formatMoney(q.balance)]
     : [q.depositPct >= 100 ? 'Paiement intégral à la signature : ' + formatMoney(q.totals.ttc) : 'Paiement à la mise en ligne : ' + formatMoney(q.totals.ttc)];
+  if (TERMS.withdrawal && q.depositPct > 0) pay.splice(1, 0, 'Devis signé hors de nos locaux : paiement au plus tôt 7' + NB + 'jours après la signature.');
   pay.push('Par virement bancaire' + (COMPANY.iban ? ' (IBAN ' + COMPANY.iban + ')' : '') + '.');
   pay.forEach(function (p) { wrap(p, 'regular', 9, payW).forEach(function (l) { py += 13; cv.text(l, M, py, { size: 9, encoded: true }); }); });
   y = Math.max(y, py) + 18;
@@ -487,17 +495,17 @@ export function quotePdf(q, opts) {
     ? 'aucune série de modifications n’est comprise ; toute modification fait l’objet d’un devis complémentaire.'
     : (q.revisions === 1 ? '1 série de modifications comprise' : q.revisions + ' séries de modifications comprises') + ' ; au-delà, un devis complémentaire est proposé.';
   const conditions = [
-    ['Validité', 'ce devis est valable ' + q.validityDays + ' jours, jusqu’au ' + formatDate(q.validUntil) + '.'],
-    ['Délai', 'mise en ligne sous ' + q.deliveryDays + ' jours après ' + delayFrom + ', de vos textes et de vos photos.'],
+    ['Validité', 'ce devis est valable ' + days(q.validityDays) + ', jusqu’au ' + formatDate(q.validUntil) + '.'],
+    ['Délai', 'mise en ligne sous ' + days(q.deliveryDays) + ' après ' + delayFrom + ', de vos textes et de vos photos.'],
     ['Retours', revisionsText],
     ['Non compris', 'nom de domaine et hébergement, sauf avec l’option Entretien.'],
     // Une cession de droits d'auteur doit nommer les droits cédés et leur étendue (art. L131-3 du Code de la propriété intellectuelle).
     ['Droits d’auteur', 'après paiement intégral, ' + COMPANY.legalName + ' cède au client, à titre exclusif, ses droits patrimoniaux d’auteur sur les créations réalisées pour le site (reproduction, représentation, adaptation et modification), pour une diffusion sur internet et sur tout support de communication de son activité, pour le monde entier et pour la durée légale des droits. Les éléments de tiers (polices, photos, cartes, extensions) restent soumis à leur propre licence. Tous les fichiers sont remis au client sur simple demande.'],
     ['Nom de domaine', 'enregistré au nom du client, qui en reste titulaire.']
   ];
-  if (TERMS.withdrawal) conditions.push(['Rétractation', 'si vous êtes un consommateur, ou un professionnel employant 5 salariés au plus pour qui la création d’un site n’entre pas dans l’activité principale et que ce devis est signé hors de nos locaux, vous disposez de 14 jours à compter de la signature pour vous rétracter sans motif, avec le formulaire ci-dessous ou par toute déclaration claire envoyée à ' + COMPANY.email + ' (art. L221-3 et L221-18 du Code de la consommation). En cas de signature hors de nos locaux, aucun paiement n’est exigé avant 7 jours (art. L221-10). Pour que le travail commence pendant ce délai, demandez-le par écrit : en cas de rétractation, seule la part déjà réalisée serait due.']);
+  if (TERMS.withdrawal) conditions.push(['Rétractation', 'si vous êtes un consommateur (contrat conclu à distance ou hors établissement), ou si, professionnel employant 5' + NB + 'salariés au plus pour qui la création d’un site n’entre pas dans l’activité principale, vous signez ce devis hors de nos locaux, vous disposez de 14' + NB + 'jours à compter de la conclusion du contrat pour vous rétracter sans motif, au moyen du formulaire ci-dessous ou de toute autre déclaration dénuée d’ambiguïté (courrier à l’adresse ci-dessus ou e-mail à ' + COMPANY.email + ' ; art. L221-3 et L221-18 du Code de la consommation). En cas de signature hors de nos locaux, nous ne pouvons recevoir aucun paiement avant 7' + NB + 'jours (art. L221-10). Pour que le travail commence pendant le délai de rétractation, demandez-le par écrit : en cas de rétractation, seule la part déjà réalisée serait due.']);
   conditions.push(
-    ['Retard de paiement', 'entre professionnels, pénalités au taux d’intérêt de la BCE majoré de 10 points et indemnité forfaitaire de 40 € pour frais de recouvrement (art. L441-10 et D441-5 du Code de commerce). Pas d’escompte pour paiement anticipé.'],
+    ['Retard de paiement', 'entre professionnels, pénalités au taux d’intérêt de la BCE majoré de 10' + NB + 'points et indemnité forfaitaire de 40' + NB + '€ pour frais de recouvrement (art. L441-10 et D441-5 du Code de commerce). Pas d’escompte pour paiement anticipé.'],
     ['Devis', 'gratuit et sans engagement jusqu’à sa signature.']
   );
   const condBlocks = conditions.map(function (c) {
@@ -506,7 +514,7 @@ export function quotePdf(q, opts) {
     return { lead: lead, leadW: leadW, ls: wrap(c[1], 'regular', 7.9, W - 2 * M, W - 2 * M - leadW) };
   });
   // Conditions et signature restent ensemble : la page signée porte toujours les conditions (et un rappel du montant).
-  const SIG_H = 16 + 98;
+  const SIG_H = 16 + 98 + (TERMS.withdrawal ? 76 : 0);
   need(8 + condBlocks.reduce(function (h, b) { return h + b.ls.length * 10.4 + 1.5; }, 0) + SIG_H);
   label('Conditions', M, y + 6); y += 8;
   condBlocks.forEach(function (b) {
@@ -533,6 +541,15 @@ export function quotePdf(q, opts) {
   label('Date, signature et cachet du client', sigX + 12, y + 16);
   cv.text('« Bon pour accord »', sigX + 12, y + 89, { size: 7.8, color: C.ink2 });
   y = Math.max(y + 98, sy);
+  // Contrat signé hors établissement : un exemplaire signé par les deux parties est remis au client (art. L221-9).
+  if (TERMS.withdrawal) {
+    y += 12;
+    wrap('Signé hors de nos locaux : fait en deux exemplaires signés par les deux parties, dont un remis au client avec le formulaire de rétractation.', 'regular', 8.6, sigX - M - 24)
+      .forEach(function (l, i) { cv.text(l, M, y + 16 + i * 12, { size: 8.6, color: C.ink2, encoded: true }); });
+    cv.rect(sigX, y, sigW, 64, { stroke: C.line, lineWidth: 1, radius: 10 });
+    label('Pour ' + COMPANY.brand + ' : date et signature', sigX + 12, y + 16);
+    y += 64;
+  }
 
   // --- formulaire type de rétractation (annexe à l'article R221-1 du Code de la consommation) ---
   if (TERMS.withdrawal) {
@@ -566,13 +583,13 @@ export function quotePdf(q, opts) {
   // --- pied de page (sur chaque page, une fois le nombre de pages connu) ---
   const legal = [COMPANY.brand, COMPANY.legalName, COMPANY.status, 'SIRET ' + COMPANY.siret].concat(COMPANY.vatNumber ? ['TVA ' + COMPANY.vatNumber] : []).join(' · ');
   const contact = COMPANY.address.join(', ') + ' · ' + COMPANY.email + ' · ' + COMPANY.website;
+  const footLines = wrap(legal, 'regular', 6.8, W - 2 * M - 90).concat(wrap(contact, 'regular', 6.8, W - 2 * M - 90)).slice(0, 4);
   cv.pages.forEach(function (ops, i) {
     cv.ops = ops;
-    cv.line(M, H - 50, W - M);
-    cv.text(wrap(legal, 'regular', 7, W - 2 * M - 90)[0], M, H - 36, { size: 7, color: C.ink2, encoded: true });
-    cv.text(wrap(contact, 'regular', 7, W - 2 * M - 90)[0], M, H - 26, { size: 7, color: C.ink2, encoded: true });
-    cv.text('Page ' + (i + 1) + ' / ' + cv.pages.length, W - M, H - 36, { font: 'mono', size: 7, color: C.ink2, align: 'right' });
-    cv.text(q.number, W - M, H - 26, { font: 'mono', size: 7, color: C.ink2, align: 'right' });
+    cv.line(M, H - 54, W - M);
+    footLines.forEach(function (l, k) { cv.text(l, M, H - 42 + k * 8.6, { size: 6.8, color: C.ink2, encoded: true }); });
+    cv.text('Page ' + (i + 1) + ' / ' + cv.pages.length, W - M, H - 42, { font: 'mono', size: 7, color: C.ink2, align: 'right' });
+    cv.text(q.number, W - M, H - 33.4, { font: 'mono', size: 7, color: C.ink2, align: 'right' });
   });
 
   return assemble(cv.pages, {

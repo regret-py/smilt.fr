@@ -75,7 +75,8 @@ le visiteur garde son PDF et sa messagerie s'ouvre pour prévenir l'agence. Rien
 (un prix négatif fait une ligne de remise), option Entretien, acompte, validité, délai, nombre de retours, remarques ; le PDF sort
 au même format. Le brouillon est gardé dans le navigateur de
 l'appareil. Pour une demande Sur-mesure, l'e-mail reçu contient un lien qui ouvre l'outil avec la fiche du client déjà remplie.
-Si un brouillon est en cours, l'outil demande avant de le remplacer (l'ancien est gardé sous la clé `smilt-devis-brouillon:precedent`).
+Si un brouillon est en cours, l'outil demande avant de le remplacer ; les 5 derniers brouillons remplacés ou effacés restent dans
+« Brouillons précédents » et se restaurent d'un clic. Un montant illisible (« 1.490,00 ») est signalé au lieu d'être mal lu.
 La page n'est liée nulle part et demande à ne pas être indexée (`noindex`, et en-tête `X-Robots-Tag` sur Vercel), mais elle reste
 publique : elle ne contient aucun secret.
 
@@ -84,7 +85,8 @@ paiement intégral (une simple phrase « le site appartient au client » ne tran
 intellectuelle), nom de domaine au nom du client, pénalités de retard entre professionnels, et **droit de rétractation** de 14 jours
 avec le formulaire type. Ce droit s'applique au client consommateur, et au petit professionnel (5 salariés au plus) qui signe hors de
 vos locaux, par exemple dans sa boutique (art. L221-3 du Code de la consommation) : dans ce cas, aucun paiement ne peut être
-demandé avant 7 jours (art. L221-10). La page signée porte toujours les conditions et un rappel du numéro et du montant.
+reçu avant 7 jours (art. L221-10), et chacun garde un exemplaire signé par les deux parties (art. L221-9) : le devis prévoit
+une case pour votre signature. La page signée porte toujours les conditions et un rappel du numéro et du montant.
 Ces clauses sont un point de départ sérieux, pas une consultation juridique : faites-les relire si vous avez un doute.
 
 **À régler une fois** dans `assets/js/devis-pdf.js` :

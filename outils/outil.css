@@ -29,3 +29,6 @@
 .tool-sum .btn { width: 100%; }
 .tool-reset { justify-self: start; font-size: 14px; color: var(--ink-2); }
 .top-in .eyebrow { margin-left: auto; }
+.tool-backups[hidden] { display: none; }
+.tool-backups select { flex: 1; min-width: 0; padding: 10px 12px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff; font-size: 14px; }
+.line input[aria-invalid="true"], .field input[aria-invalid="true"] { border-color: var(--coral-text); box-shadow: 0 0 0 3px rgba(194, 61, 34, .15); }

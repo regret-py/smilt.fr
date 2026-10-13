@@ -12,11 +12,43 @@ const form = $('tool'), linesBox = $('lines'), tpl = $('lineTpl'), sum = $('sum'
 const KEY = 'smilt-devis-brouillon';
 let lineSeq = 0, lastUrl = null;
 
-function store(v) { try { if (v == null) localStorage.removeItem(KEY); else localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* stockage indisponible */ } }
-function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+const BACKUPS = KEY + ':precedents', MAX_BACKUPS = 5;
+function get(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
+function put(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* stockage indisponible */ } }
+function store(v) { put(KEY, v); }
+function load() { return get(KEY); }
 function say(msg, kind) { statusEl.textContent = msg; statusEl.className = 'form-status' + (kind ? ' ' + kind : ''); }
-// Accepte « 149,50 », « 149.50 » et « 1 490,00 » (espaces ignorés).
-function num(v) { const n = parseFloat(String(v).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.')); return isNaN(n) ? 0 : n; }
+// Montant : « 149,50 », « 149.50 », « 1 490,00 », « -89 ». Vide = 0. Illisible (« 1.490,00 », « 1,490.00 ») = NaN, signalé à l'écran.
+function num(v) {
+  const t = String(v == null ? '' : v).replace(/[\s\u00a0\u202f]/g, '');
+  if (t === '') return 0;
+  return /^-?\d+(?:[.,]\d+)?$/.test(t) ? parseFloat(t.replace(',', '.')) : NaN;
+}
+
+/* --- brouillons précédents : rien n'est perdu quand un lien ou « Tout effacer » remplace le devis en cours --- */
+function hasWork(s) {
+  if (!s) return false;
+  const c = s.client || {};
+  return [c.business, c.name, c.address, c.email, c.phone, s.subject, s.notes].some((v) => v && String(v).trim()) ||
+    (s.lines || []).some((l) => l.title || l.subtitle || l.items || num(l.unit));
+}
+function backups() { const b = get(BACKUPS); return Array.isArray(b) ? b : []; }
+function backup(s) {
+  if (!hasWork(s)) return;
+  put(BACKUPS, [Object.assign({}, s, { savedAt: new Date().toISOString() })].concat(backups()).slice(0, MAX_BACKUPS));
+  renderBackups();
+}
+function renderBackups() {
+  const list = backups(), sel = $('t-backup');
+  $('backups').hidden = !list.length;
+  sel.textContent = '';
+  list.forEach((b, i) => {
+    const o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = ((b.client && (b.client.business || b.client.name)) || 'Sans nom') + ' · ' + (b.number || '') + ' · ' + (b.savedAt || '').slice(0, 16).replace('T', ' ');
+    sel.appendChild(o);
+  });
+}
 
 /* --- lignes de prestations --- */
 function addLine(data) {
@@ -94,11 +126,20 @@ function row(label, value, strong) {
   sum.append(dt, dd);
 }
 function refresh() {
+  // Montants illisibles : signalés, et pas de PDF tant qu'ils ne sont pas corrigés.
+  const amounts = Array.from(form.querySelectorAll('[data-k="qty"], [data-k="unit"]')).concat([form.elements.monthly]);
+  let unreadable = 0;
+  amounts.forEach((el) => { const bad = isNaN(num(el.value)); el.setAttribute('aria-invalid', bad ? 'true' : 'false'); if (bad) unreadable++; });
   Array.from(linesBox.children).forEach((node) => {
     const qty = num(node.querySelector('[data-k="qty"]').value), unit = num(node.querySelector('[data-k="unit"]').value);
-    node.querySelector('[data-total]').textContent = formatMoney(Math.round(qty * unit * 100));
+    node.querySelector('[data-total]').textContent = isNaN(qty * unit) ? '—' : formatMoney(Math.round(qty * unit * 100));
   });
   sum.textContent = '';
+  if (unreadable) {
+    row('Total', '—'); $('download').disabled = true;
+    say('Montant illisible : écrivez par exemple 1490 ou 1 490,00 (sans point pour les milliers).', 'err');
+    store(readForm()); return;
+  }
   let q = null;
   try { q = quote(); } catch (e) { if (linesBox.children.length) say(e.message, 'err'); }
   if (q && statusEl.classList.contains('err')) say('');
@@ -143,13 +184,29 @@ form.elements.date.addEventListener('change', () => {
   if (/^\d{4}-\d{2}-\d{2}$/.test(d)) form.elements.number.value = generateNumber(d);
 });
 $('reset').addEventListener('click', () => {
-  if (!window.confirm('Effacer ce devis et repartir de zéro ?')) return;
-  store(null); fillForm(blank()); refresh(); say('');
+  if (!window.confirm('Effacer ce devis et repartir de zéro ? Il restera dans « Brouillons précédents ».')) return;
+  backup(readForm());
+  store(null); fillForm(blank()); if (!linesBox.children.length) addLine(null); refresh(); say('');
+});
+$('restore').addEventListener('click', () => {
+  const list = backups(), i = Number($('t-backup').value) || 0, chosen = list[i];
+  if (!chosen) return;
+  const current = readForm();
+  list.splice(i, 1);
+  put(BACKUPS, hasWork(current) ? [Object.assign({}, current, { savedAt: new Date().toISOString() })].concat(list).slice(0, MAX_BACKUPS) : list);
+  fillForm(chosen); if (!linesBox.children.length) addLine(null);
+  renderBackups(); refresh();
+  say('Brouillon « ' + ((chosen.client && chosen.client.business) || chosen.number || 'sans nom') + ' » restauré.', 'ok');
+});
+// Le brouillon est partagé par tous les onglets de ce navigateur : on prévient si un autre onglet le modifie.
+window.addEventListener('storage', (e) => {
+  if (e.key === KEY) say('Attention : l’outil est ouvert dans un autre onglet. Le dernier modifié remplace le brouillon de l’autre.', 'err');
 });
 form.addEventListener('input', refresh);
 form.addEventListener('change', refresh);
 
 /* --- démarrage : lien pré-rempli, sinon brouillon, sinon devis vierge --- */
+// Lit le lien sans rien changer à la page : { s: devis pré-rempli, text: demande du client } ou null.
 function fromHash() {
   if (!location.hash || location.hash.length < 2) return null;
   const p = new URLSearchParams(location.hash.slice(1));
@@ -163,21 +220,28 @@ function fromHash() {
   s.entretien = p.get('entretien') === '1' ? { monthly: ENTRETIEN.monthly } : false;
   const msg = (p.get('message') || '').slice(0, 2000);
   const parts = [p.get('formule') ? 'Formule demandée : ' + p.get('formule') + '.' : '', msg].filter(Boolean);
-  if (parts.length) { $('requestText').textContent = parts.join(' '); $('request').hidden = false; }
-  history.replaceState(null, '', location.pathname);           // les données ne restent pas dans l'adresse
-  return s;
+  return { s, text: parts.join(' ') };
 }
-// Un lien pré-rempli ne remplace pas un brouillon en cours sans demander.
-function hasWork(s) { return !!s && (!!(s.client && (s.client.business || s.client.name)) || (s.lines || []).some((l) => l.title || num(l.unit))); }
+// Ancienne sauvegarde unique (versions précédentes de l'outil) : reprise dans la liste.
+const legacy = get(KEY + ':precedent');
+if (legacy) { put(BACKUPS, [legacy].concat(backups()).slice(0, MAX_BACKUPS)); put(KEY + ':precedent', null); }
+
+// Un lien pré-rempli ne remplace pas un brouillon en cours sans demander ; l'ancien reste dans « Brouillons précédents ».
 const linked = fromHash(), saved = load();
 let start = saved || blank();
 if (linked) {
-  if (!hasWork(saved)) start = linked;
-  else if (window.confirm('Remplacer le brouillon en cours (' + ((saved.client && saved.client.business) || saved.number || 'sans nom') + ') par la demande reçue ?')) {
-    try { localStorage.setItem(KEY + ':precedent', JSON.stringify(saved)); } catch (e) { /* stockage indisponible */ }
-    start = linked;
+  const who = linked.s.client.business || linked.s.client.name;
+  const use = !hasWork(saved) || window.confirm('Remplacer le brouillon en cours (' + ((saved.client && saved.client.business) || saved.number || 'sans nom') +
+    ') par la demande de ' + who + ' ? Le brouillon restera dans « Brouillons précédents ».');
+  if (use) {
+    backup(saved);
+    start = linked.s;
+    if (linked.text) { $('requestText').textContent = linked.text; $('request').hidden = false; }
+    history.replaceState(null, '', location.pathname);         // les données ne restent pas dans l'adresse
   }
+  // refusé : l'adresse garde la demande, un rechargement la propose à nouveau
 }
 fillForm(start);
+renderBackups();
 if (!linesBox.children.length) addLine(null);
 refresh();

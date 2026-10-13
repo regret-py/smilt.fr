@@ -1,0 +1,15 @@
+{
+  "name": "smilt. · Agence web à Paris",
+  "short_name": "smilt.",
+  "description": "Sites pour commerçants parisiens. Livrés en 2 semaines, à partir de 490 €.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FAF7F2",
+  "theme_color": "#FAF7F2",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

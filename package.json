@@ -1,0 +1,9 @@
+{
+  "name": "smilt.fr",
+  "private": true,
+  "description": "Site de smilt., agence web à Paris. HTML/CSS/JS statiques + deux fonctions Vercel (api/).",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}

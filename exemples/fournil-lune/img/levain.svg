@@ -26,5 +26,4 @@
     <circle cx="111" cy="34" r="10" fill="#1B2350"/>
     <path d="M124 32H146M124 40H140M124 48H144" stroke="#F8E6B4" stroke-width="2.5" stroke-linecap="round"/>
   </g>
-  <path d="M120 54V20" stroke="#B88442" stroke-width="0"/>
 </svg>

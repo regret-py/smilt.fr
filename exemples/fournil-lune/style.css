@@ -371,13 +371,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* ---------- Douceurs (onglets) ---------- */
 .douceurs { background: var(--farine-2); }
 .onglets-liste {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; width: fit-content; max-width: 100%; margin: 0 auto 40px;
-  padding: 6px; border-radius: 999px; background: var(--farine-claire); border: 1px solid var(--ligne);
+  display: flex; gap: 4px; width: fit-content; max-width: 100%; margin: 0 auto 36px; overflow-x: auto; scrollbar-width: none;
+  padding: 5px; border-radius: 999px; background: var(--farine-claire); border: 1px solid var(--ligne);
 }
+.onglets-liste::-webkit-scrollbar { display: none; }
 .onglets-liste button {
-  min-height: 44px; padding: 10px 20px; border: 0; border-radius: 999px; background: transparent; cursor: pointer;
-  font-weight: 650; font-size: .95rem; color: var(--encre);
+  flex: none; min-height: 44px; padding: 10px 14px; border: 0; border-radius: 999px; background: transparent; cursor: pointer;
+  font-weight: 650; font-size: .9rem; color: var(--encre);
 }
+@media (min-width: 560px) { .onglets-liste { gap: 6px; padding: 6px; margin-bottom: 40px; } .onglets-liste button { padding: 10px 20px; font-size: .95rem; } }
 .onglets-liste button:hover { background: var(--farine-2); }
 .onglets-liste button[aria-selected="true"] { background: var(--nuit); color: var(--farine-claire); }
 .panneau { display: grid; gap: 28px; align-items: center; }
@@ -477,7 +479,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .fournil-visuels figcaption { margin-top: 10px; font: italic 400 .98rem/1.35 var(--serif); color: var(--encre-douce); }
 .fig-moulin { grid-column: 4 / -1; grid-row: 1; align-self: start; }
 .fig-moulin img { width: 100%; border-radius: 24px; box-shadow: 0 24px 50px -28px rgba(43, 27, 15, .5); }
-.fig-moulin figcaption { text-align: right; }
+.fig-moulin figcaption { text-align: right; padding-left: 40%; }
 .fig-levain { grid-column: 1 / 7; grid-row: 1; margin-top: 52% !important; position: relative; z-index: 1; padding: 16px 16px 12px; border-radius: 24px; background: var(--farine-claire); border: 1px solid var(--ligne); box-shadow: 0 24px 50px -28px rgba(43, 27, 15, .5); }
 .fig-levain img { width: 78%; margin-inline: auto; }
 @media (min-width: 960px) {

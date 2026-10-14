@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Galerie des looks · Salon Frange, coiffeur et barbier Paris 18e</title>
+<meta name="description" content="Carrés, pixies, boucles, balayages, dégradés et barbes : la galerie des coupes et des couleurs réalisées au salon Frange, à filtrer par style.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#B3C1A5">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="index.html"><img src="img/favicon.svg" width="40" height="40" alt=""><span class="logo-t"><span>Salon</span><b>Frange</b></span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul><li><a href="index.html">Accueil</a></li><li><a href="prestations.html">Prestations &amp; tarifs</a></li><li><a href="equipe.html">L’équipe</a></li><li><a href="galerie.html" aria-current="page">Galerie</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+    </nav>
+    <p class="status" data-open-status>Mar–ven 10&nbsp;h–19&nbsp;h · sam. 9&nbsp;h–18&nbsp;h</p>
+    <a class="btn btn-ink btn-sm hd-book" href="contact.html#reserver" data-demo="Démo&nbsp;: sur le vrai site, ce bouton ouvre l’agenda en ligne du salon&nbsp;: vous choisissez la prestation, la personne et l’heure, puis vous recevez un SMS de confirmation.">Réserver</a>
+    <details class="menu">
+      <summary><span class="burger" aria-hidden="true"></span>Menu</summary>
+      <div class="menu-panel">
+        <nav aria-label="Menu du site">
+          <ul><li><a href="index.html">Accueil</a></li><li><a href="prestations.html">Prestations &amp; tarifs</a></li><li><a href="equipe.html">L’équipe</a></li><li><a href="galerie.html" aria-current="page">Galerie</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+        </nav>
+        <p class="status" data-open-status>Mar–ven 10&nbsp;h–19&nbsp;h · sam. 9&nbsp;h–18&nbsp;h</p>
+      </div>
+    </details>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+
+<section class="page-hero" aria-labelledby="h-page">
+  <div class="wrap page-hero-in">
+    <nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="index.html">Accueil</a></li><li aria-current="page">Galerie</li></ol></nav>
+    <div class="page-hero-grid">
+      <div class="page-hero-in">
+        <p class="kicker">Carnet de tendances, automne 2026</p>
+        <h1 class="display" id="h-page">La galerie <em>des looks</em>.</h1>
+      </div>
+      <p class="lead">Les coupes et les couleurs qu’on nous demande le plus cette saison, dessinées à main levée. Montrez-nous celle qui vous plaît&nbsp;: on l’adaptera à vos cheveux, pas l’inverse.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-label="Looks de la saison">
+  <div class="wrap">
+    <div class="filters" data-filters hidden role="group" aria-label="Filtrer les looks par style">
+      <button type="button" data-filter="tout" aria-pressed="true">Tout<span>12</span></button>
+      <button type="button" data-filter="courts" aria-pressed="false">Courts<span>3</span></button>
+      <button type="button" data-filter="longs" aria-pressed="false">Mi-longs &amp; longs<span>4</span></button>
+      <button type="button" data-filter="boucles" aria-pressed="false">Bouclés<span>2</span></button>
+      <button type="button" data-filter="couleur" aria-pressed="false">Couleur<span>2</span></button>
+      <button type="button" data-filter="barbe" aria-pressed="false">Barbe<span>2</span></button>
+      <button type="button" data-filter="enfants" aria-pressed="false">Enfants<span>1</span></button>
+    </div>
+    <p class="count" data-count aria-live="polite">12 looks, du plus court au plus coloré.</p>
+
+    <ul class="looks">
+      <li class="look" data-look="longs">
+        <figure>
+          <div class="look-img"><img src="img/look-carre.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Le carré net</h2><p>Par Inès · coupe &amp; brushing mi-longs, 58&nbsp;€</p><ul class="tags"><li class="tag">Mi-longs</li><li class="tag">Frange droite</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="courts">
+        <figure>
+          <div class="look-img"><img src="img/look-pixie.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Pixie plume</h2><p>Par Inès · coupe &amp; brushing courts, 52&nbsp;€</p><ul class="tags"><li class="tag">Courts</li><li class="tag">Effilé</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="longs">
+        <figure>
+          <div class="look-img"><img src="img/look-ondules.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Longueurs ondulées</h2><p>Par Inès · coupe &amp; brushing longs, 64&nbsp;€</p><ul class="tags"><li class="tag">Longs</li><li class="tag">Dégradé léger</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="boucles">
+        <figure>
+          <div class="look-img"><img src="img/look-boucles.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Boucles définies</h2><p>Par Inès · coupe à sec sur boucles, 72&nbsp;€</p><ul class="tags"><li class="tag">Bouclés</li><li class="tag">Coupe à sec</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="courts">
+        <figure>
+          <div class="look-img"><img src="img/look-degrade.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Dégradé à blanc</h2><p>Par Malik · dégradé et finitions au rasoir, 36&nbsp;€</p><ul class="tags"><li class="tag">Courts</li><li class="tag">Tondeuse</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="barbe">
+        <figure>
+          <div class="look-img"><img src="img/look-barbe.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Barbe sculptée</h2><p>Par Malik · taille, contours et serviette chaude, 26&nbsp;€</p><ul class="tags"><li class="tag">Barbe</li><li class="tag">Rasoir</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="couleur longs">
+        <figure>
+          <div class="look-img"><img src="img/look-balayage.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Balayage lumière</h2><p>Par Jo · balayage à main levée, dès 95&nbsp;€</p><ul class="tags"><li class="tag">Couleur</li><li class="tag">Longs</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="longs">
+        <figure>
+          <div class="look-img"><img src="img/look-rideau.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Frange rideau</h2><p>Par Inès · 58&nbsp;€, retouches de frange offertes</p><ul class="tags"><li class="tag">Mi-longs</li><li class="tag">Frange</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="boucles courts">
+        <figure>
+          <div class="look-img"><img src="img/look-afro.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Afro sculpté</h2><p>Par Malik · coupe sur cheveux bouclés, 42&nbsp;€</p><ul class="tags"><li class="tag">Bouclés</li><li class="tag">Volume</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="barbe">
+        <figure>
+          <div class="look-img"><img src="img/look-rasage.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Rasage à l’ancienne</h2><p>Par Malik · coupe-chou et serviettes chaudes, 32&nbsp;€</p><ul class="tags"><li class="tag">Barbe</li><li class="tag">Moustache</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="couleur">
+        <figure>
+          <div class="look-img"><img src="img/look-patine.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>Patine froide</h2><p>Par Jo · patine ou gloss, 28&nbsp;€</p><ul class="tags"><li class="tag">Couleur</li><li class="tag">Brillance</li></ul></figcaption>
+        </figure>
+      </li>
+      <li class="look" data-look="enfants">
+        <figure>
+          <div class="look-img"><img src="img/look-enfant.svg" width="300" height="360" alt="" loading="lazy"></div>
+          <figcaption><h2>La petite frange</h2><p>Par Malik ou Inès · de 6 à 12&nbsp;ans, 22&nbsp;€</p><ul class="tags"><li class="tag">Enfants</li><li class="tag">Frange</li></ul></figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="samedi sec" aria-labelledby="h-photo">
+  <div class="wrap samedi-grid">
+    <div class="samedi-txt">
+      <p class="kicker">Une idée en tête&#8239;?</p>
+      <h2 class="h2" id="h-photo">Apportez votre photo, <em>on en parle</em>.</h2>
+      <p>Une capture d’écran, une page de magazine, un souvenir de vacances&nbsp;: tout nous aide. On regarde ensemble ce qui marchera avec la nature de vos cheveux, leur épaisseur et le temps que vous voulez passer à les coiffer le matin.</p>
+      <a class="btn btn-ink" href="contact.html#reserver" data-demo="Démo&nbsp;: sur le vrai site, ce bouton ouvre l’agenda en ligne du salon&nbsp;: vous choisissez la prestation, la personne et l’heure, puis vous recevez un SMS de confirmation.">Réserver un créneau <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <img class="samedi-art" src="img/ciseaux.svg" width="160" height="160" alt="">
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <p class="ft-big" aria-hidden="true">Frange<em>.</em></p>
+    <div class="ft-grid">
+      <div>
+        <h2>Le salon</h2>
+        <address>Salon Frange<br>8 passage du Croquis<br>75018 Paris</address>
+        <p>Coiffeur mixte et barbier depuis 2019.</p>
+      </div>
+      <div>
+        <h2>Horaires</h2>
+        <ul>
+          <li>Mardi – vendredi&nbsp;: 10&nbsp;h – 19&nbsp;h</li>
+          <li>Samedi&nbsp;: 9&nbsp;h – 18&nbsp;h, sans rendez-vous</li>
+          <li>Dimanche et lundi&nbsp;: fermé</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Nous joindre</h2>
+        <ul>
+          <li><a href="tel:+33199004127" data-demo="Démo&nbsp;: sur le vrai site, ce lien lance l’appel vers le salon depuis votre téléphone.">01&nbsp;99&nbsp;00&nbsp;41&nbsp;27</a></li>
+          <li><a href="mailto:bonjour@salon-frange.example" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre votre messagerie avec l’adresse du salon déjà remplie.">bonjour@salon-frange.example</a></li>
+          <li><a href="galerie.html" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre le compte Instagram du salon, avec les coupes de la semaine.">Instagram&nbsp;: @salon.frange</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul><li><a href="index.html">Accueil</a></li><li><a href="prestations.html">Prestations &amp; tarifs</a></li><li><a href="equipe.html">L’équipe</a></li><li><a href="galerie.html" aria-current="page">Galerie</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 Salon Frange · Paris 18<sup>e</sup></p>
+      <ul>
+        <li><a href="contact.html" data-demo="Démo&nbsp;: sur le vrai site, ce lien mène aux mentions légales du salon (éditeur, hébergeur, données personnelles).">Mentions légales</a></li>
+        <li>Site réalisé par <a href="/">smilt.</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<a class="fab" href="contact.html#reserver" data-demo="Démo&nbsp;: sur le vrai site, ce bouton ouvre l’agenda en ligne du salon&nbsp;: vous choisissez la prestation, la personne et l’heure, puis vous recevez un SMS de confirmation."><span class="fab-ico"><img src="img/ciseaux.svg" width="22" height="22" alt=""></span>Réserver</a>
+</body>
+</html>

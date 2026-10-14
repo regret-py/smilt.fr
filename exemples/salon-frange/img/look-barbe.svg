@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
   <!-- Barbe sculptée -->
-  <path d="M58 40v80c0 110 40 196 92 200 52-4 92-90 92-200V40" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
+  <path d="M58 -10v130c0 110 40 196 92 200 52-4 92-90 92-200V-10" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
   <path d="M62 120c2 104 38 176 88 180 50-4 86-76 88-180-10 30-24 46-40 52-8 38-26 56-48 56s-40-18-48-56c-16-6-30-22-40-52z" fill="#171915"/>
   <path d="M104 178c16-14 30-18 46-10 16-8 30-4 46 10-16 6-32 6-46 0-14 6-30 6-46 0z" fill="#171915"/>
   <path d="M128 204c14 8 30 8 44 0" fill="none" stroke="#F3F1EA" stroke-width="4" stroke-linecap="round"/>

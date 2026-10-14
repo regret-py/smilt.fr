@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
   <!-- Frange rideau -->
-  <path d="M150 50c70 0 104 52 104 120v160H46V170c0-68 34-120 104-120z" fill="#171915"/>
+  <path d="M150 50c70 0 104 52 104 120v200H46V170c0-68 34-120 104-120z" fill="#171915"/>
   <path d="M132 240v70h36v-70" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
   <path d="M150 120c34 0 56 26 56 62 0 46-26 78-56 80-30-2-56-34-56-80 0-36 22-62 56-62z" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
   <path d="M150 92c-30 4-58 34-62 96-2 22 2 40 10 52-2-58 14-110 52-140z" fill="#171915"/>

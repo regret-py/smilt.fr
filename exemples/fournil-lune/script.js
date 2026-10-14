@@ -1,6 +1,6 @@
 /*
  * Fournil Lune · petites interactions (ES5, sans dépendance).
- * La page reste lisible sans JavaScript : ce script ajoute l'état « ouvert / fermé » calculé à l'heure de Paris,
+ * La page reste lisible sans JavaScript : ce script ajoute l’état « ouvert / fermé » calculé à l’heure de Paris,
  * la prochaine fournée, le menu mobile, les onglets des douceurs et l'aide au formulaire de commande.
  */
 (function () {
@@ -41,7 +41,7 @@
       if (CODES.hasOwnProperty(o.weekday)) {
         return { jour: CODES[o.weekday], minutes: (parseInt(o.hour, 10) % 24) * 60 + parseInt(o.minute, 10) };
       }
-    } catch (e) { /* navigateur ancien : heure locale */ }
+    } catch (e) { /* navigateur ancien : heure locale */ }
     return { jour: d.getDay(), minutes: d.getHours() * 60 + d.getMinutes() };
   }
 
@@ -67,7 +67,7 @@
   }
 
   function fournee(n) {
-    if (!HORAIRES[n.jour]) { return { index: -1, texte: 'Pas de fournée le lundi : le fournil se repose.' }; }
+    if (!HORAIRES[n.jour]) { return { index: -1, texte: 'Pas de fournée le lundi\u00a0: le fournil se repose.' }; }
     var liste = n.jour === 0 ? FOURNEES_DIMANCHE : FOURNEES_SEMAINE;
     for (var i = 0; i < liste.length; i++) {
       var f = liste[i].m;
@@ -214,7 +214,7 @@
       tablist.appendChild(bouton);
     }
     blocOnglets.insertBefore(tablist, blocOnglets.firstChild);
-    // Le dimanche, on ouvre directement l'onglet du dimanche.
+    // Le dimanche, on ouvre directement l’onglet du dimanche.
     choisir(maintenantParis().jour === 0 ? panneaux.length - 1 : 0, false);
   }
 

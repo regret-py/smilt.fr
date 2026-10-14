@@ -1,0 +1,190 @@
+/* Fournil Lune · l'ancien site (2009), reconstitué pour la comparaison avant / après.
+   Volontairement daté : dégradés criards, Comic Sans, boutons en relief, petits caractères. */
+
+@font-face {
+  font-family: "Comic Neue";
+  src: url("fonts/comic-neue-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #FFE07A url("img/avant-fond.svg") repeat;
+  background-size: 48px 48px;
+  color: #000000;
+  font: 13px/1.4 "Times New Roman", Times, serif;
+}
+
+.evitement {
+  position: absolute; left: 8px; top: -100px; z-index: 2000; padding: 6px 10px;
+  background: #000080; color: #FFFF00; font: bold 13px Verdana, Arial, sans-serif;
+}
+.evitement:focus { top: 8px; }
+:focus-visible { outline: 2px dotted #000000; outline-offset: 2px; }
+
+a { color: #0000CC; }
+a:visited { color: #551A8B; }
+a:hover { color: #FF0000; }
+img { max-width: 100%; height: auto; }
+.pixel { image-rendering: pixelated; }
+
+.page {
+  width: 780px; max-width: calc(100% - 12px); margin: 14px auto 10px;
+  background: #FFFFF0; border: 5px ridge #CC6600;
+  box-shadow: 6px 6px 0 rgba(102, 51, 0, .35);
+}
+
+/* Bandeau */
+.bandeau {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 16px;
+  background: linear-gradient(#D42600, #7A0000);
+  border-bottom: 4px double #FFCC00;
+}
+.bandeau-titre { text-align: center; flex: 1; }
+.bandeau h1 {
+  margin: 0; color: #FFFF66; letter-spacing: 1px;
+  font: 700 34px/1.1 "Comic Sans MS", "Comic Neue", "Chalkboard SE", cursive;
+  text-shadow: 3px 3px 0 #000000, -1px -1px 0 #660000;
+}
+.slogan { margin: 4px 0 0; color: #FFFFFF; font: italic 15px "Times New Roman", Times, serif; }
+
+/* Texte défilant (façon <marquee>) */
+.defile { overflow: hidden; background: #000080; color: #FFFF00; border-block: 1px solid #6666FF; }
+.defile p { margin: 0; padding: 3px 0; white-space: nowrap; font: bold 12px Verdana, Arial, sans-serif; }
+.defile span { display: inline-block; padding-left: 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .defile span { padding-left: 100%; animation: defile 26s linear -11s infinite; }
+}
+@keyframes defile { to { transform: translateX(-100%); } }
+
+/* Colonnes */
+.colonnes { display: flex; align-items: stretch; }
+.menu {
+  width: 178px; flex: none; padding: 10px 9px 14px;
+  background: linear-gradient(#FFD27A, #FF9A2E);
+  border-right: 4px double #CC6600;
+}
+.menu-titre {
+  margin: 0 0 8px; text-align: center; color: #990000; text-decoration: underline;
+  font: 700 17px "Comic Sans MS", "Comic Neue", cursive;
+}
+.menu ul { margin: 0; padding: 0; list-style: none; }
+.menu li { margin: 0 0 6px; }
+.menu li a {
+  display: block; padding: 4px 8px; text-decoration: none;
+  background: linear-gradient(#FFFFDD, #FFCC00); border: 3px outset #FFD24D;
+  color: #000080; font: 700 14px "Comic Sans MS", "Comic Neue", cursive;
+}
+.menu li a:visited { color: #000080; }
+.menu li a:hover { background: #FFFF99; border-style: inset; color: #CC0000; }
+.encart {
+  margin: 14px 0 0; padding: 7px; background: #FFFFFF; border: 2px dashed #CC0000;
+  font: 11px/1.35 Verdana, Arial, sans-serif; text-align: center; color: #333333;
+}
+.sondage fieldset { margin: 0 0 6px; padding: 0; border: 0; text-align: left; }
+.sondage legend { margin-bottom: 4px; padding: 0; font-weight: bold; color: #990000; }
+.sondage label { display: block; }
+.sondage button, .boutons-anciens button {
+  padding: 2px 10px; background: #E0E0E0; border: 2px outset #FFFFFF; color: #000000;
+  font: 11px Verdana, Arial, sans-serif; cursor: pointer;
+}
+.sondage button:active, .boutons-anciens button:active { border-style: inset; }
+
+.contenu { flex: 1; min-width: 0; padding: 10px 18px 18px; }
+.bienvenue {
+  margin: 4px 0 6px; text-align: center; color: #CC0000; text-decoration: underline;
+  font: 700 23px/1.2 "Comic Sans MS", "Comic Neue", cursive;
+}
+.centre { text-align: center; margin: 0 0 6px; }
+.centre img { display: inline-block; }
+.contenu h3 {
+  margin: 18px 0 8px; padding: 2px 8px; color: #FFFFFF;
+  background: linear-gradient(to right, #006600, #2E8B00 60%, #7FC400);
+  border: 2px outset #66CC33;
+  font: 700 17px "Comic Sans MS", "Comic Neue", cursive;
+  text-shadow: 1px 1px 0 #003300;
+}
+hr { height: 4px; margin: 14px 0; border: 0; background: linear-gradient(to right, #FF0000, #FF9900, #FFFF00, #33CC33, #3366FF, #9933CC); }
+
+.nouveau {
+  display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 6px 10px;
+  background: #FFFF99; border: 3px dotted #FF0000;
+}
+.nouveau p { margin: 0; color: #990000; }
+.nouveau img { flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .clignote { animation: clignote 1.2s steps(1) infinite; }
+}
+@keyframes clignote { 50% { color: #0000CC; } }
+
+.produits { width: 100%; border: 2px solid #996633; border-spacing: 2px; font-size: 13px; }
+.produits caption { padding: 2px; font: italic 11px Verdana, Arial, sans-serif; color: #444444; caption-side: bottom; text-align: right; }
+.produits th { padding: 3px 6px; background: #993300; color: #FFFFFF; font: bold 13px Arial, sans-serif; text-align: left; }
+.produits td { padding: 3px 6px; background: #FFFFCC; }
+.produits tbody tr:nth-child(even) td { background: #FFE8B0; }
+.produits td + td { width: 90px; text-align: right; font-weight: bold; color: #990000; }
+
+.travaux { display: flex; align-items: center; gap: 12px; padding: 8px; background: #FFFFFF; border: 1px solid #999999; }
+.travaux p { margin: 0; flex: 1; }
+.rouge { color: #CC0000; font-weight: bold; }
+.petit { font: 10px Verdana, Arial, sans-serif; color: #555555; }
+.plan-ancien { display: flex; align-items: flex-start; gap: 12px; }
+.plan-ancien img { border: 2px solid #000000; }
+.plan-ancien p { margin: 0; }
+.enveloppe { display: inline-block; vertical-align: middle; margin-right: 4px; }
+
+.formulaire-ancien { margin-top: 8px; padding: 8px; background: #EEEEFF; border: 2px groove #9999CC; }
+.champ-ancien { margin: 0 0 6px; }
+.champ-ancien label { display: inline-block; width: 110px; vertical-align: top; font: bold 12px Arial, sans-serif; }
+.champ-ancien input, .champ-ancien textarea {
+  max-width: 100%; padding: 2px; border: 2px inset #BBBBBB; background: #FFFFFF; font: 13px "Times New Roman", Times, serif;
+}
+.boutons-anciens { margin: 0; padding-left: 114px; }
+
+.pied-ancien {
+  padding: 8px 10px 10px; background: #FFCC66; border-top: 4px ridge #CC6600; text-align: center;
+  font: 11px/1.5 Verdana, Arial, sans-serif; color: #222222;
+}
+.pied-ancien p { margin: 0 0 3px; }
+.compteur-ligne { font-weight: bold; }
+.compteur { display: inline-flex; gap: 1px; vertical-align: middle; }
+.compteur span {
+  display: inline-block; min-width: 13px; padding: 1px 2px; background: #000000; color: #33FF33; border: 1px solid #666666;
+  font: bold 14px "Courier New", Courier, monospace;
+}
+.ie { color: #444444; font-size: 10px; }
+
+.retour {
+  width: 780px; max-width: calc(100% - 12px); margin: 0 auto 20px; padding: 10px 14px;
+  background: #1B2350; color: #F5ECDD; border-radius: 10px;
+  font: 500 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; text-align: center;
+}
+.retour a { color: #F0C96A; font-weight: 700; }
+
+/* Petits écrans : la page de 2009 n'était pas faite pour ça, on l'empile simplement. */
+@media (max-width: 640px) {
+  .bandeau { padding: 8px; gap: 6px; }
+  .bandeau img:first-child { width: 44px; }
+  .bandeau img:last-child { width: 70px; }
+  .bandeau h1 { font-size: 22px; }
+  .slogan { font-size: 12px; }
+  .colonnes { flex-direction: column; }
+  .menu { width: auto; border-right: 0; border-bottom: 4px double #CC6600; }
+  .menu ul { display: flex; flex-wrap: wrap; gap: 4px; }
+  .menu li { margin: 0; }
+  .menu li a { padding: 3px 6px; font-size: 13px; }
+  .sondage, .menu .encart { display: none; }
+  .contenu { padding: 10px; }
+  .travaux, .plan-ancien { flex-direction: column; align-items: flex-start; }
+  .champ-ancien label { display: block; width: auto; }
+  .champ-ancien input, .champ-ancien textarea { width: 100%; }
+  .boutons-anciens { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

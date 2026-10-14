@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+  <defs><clipPath id="cadre"><rect width="320" height="240" rx="18"/></clipPath></defs>
+  <g clip-path="url(#cadre)">
+    <rect width="320" height="240" fill="#F2DFB8"/>
+    <circle cx="250" cy="64" r="24" fill="#F0C96A"/>
+    <path d="M0 132C50 108 100 110 150 122S260 112 320 104V240H0Z" fill="#D7BC82"/>
+    <path d="M0 150C60 136 120 140 180 148S280 140 320 136V240H0Z" fill="#C9A564"/>
+    <!-- moulin -->
+    <path d="M96 168V108L134 80L172 108V168Z" fill="#F8EBCF"/>
+    <path d="M88 112L134 74 180 112 172 116 134 86 96 116Z" fill="#7E3D15"/>
+    <rect x="124" y="132" width="20" height="36" rx="10" fill="#5E2A0E"/>
+    <rect x="104" y="114" width="14" height="16" rx="2" fill="#2B3672"/>
+    <rect x="150" y="114" width="14" height="16" rx="2" fill="#2B3672"/>
+    <rect x="148" y="66" width="10" height="20" fill="#9A4E1E"/>
+    <!-- roue -->
+    <g transform="translate(190 160)">
+      <circle r="30" fill="none" stroke="#5E2A0E" stroke-width="6"/>
+      <circle r="6" fill="#5E2A0E"/>
+      <path d="M0-30V30M-30 0H30M-21-21L21 21M-21 21L21-21" stroke="#5E2A0E" stroke-width="3.5"/>
+    </g>
+    <!-- rivière -->
+    <path d="M0 184C60 176 120 184 180 180S280 172 320 176V204C260 200 200 210 140 206S40 200 0 204Z" fill="#2B3672"/>
+    <path d="M30 192H66M120 194H160M220 186H262M80 200H104" stroke="#8E9AC0" stroke-width="3" stroke-linecap="round"/>
+    <!-- blé -->
+    <path d="M0 210C80 204 160 214 320 206V240H0Z" fill="#E2B36B"/>
+    <g fill="#B9813F">
+      <g transform="translate(26 222)"><path d="M0 18V-14" stroke="#B9813F" stroke-width="2"/><ellipse cx="-4" cy="-10" rx="3" ry="6" transform="rotate(-20 -4 -10)"/><ellipse cx="4" cy="-14" rx="3" ry="6" transform="rotate(20 4 -14)"/><ellipse cx="-4" cy="-20" rx="3" ry="6" transform="rotate(-20 -4 -20)"/><ellipse cx="4" cy="-24" rx="3" ry="6" transform="rotate(20 4 -24)"/><ellipse cx="0" cy="-30" rx="3" ry="6"/></g>
+      <g transform="translate(46 228)"><path d="M0 18V-14" stroke="#B9813F" stroke-width="2"/><ellipse cx="-4" cy="-10" rx="3" ry="6" transform="rotate(-20 -4 -10)"/><ellipse cx="4" cy="-14" rx="3" ry="6" transform="rotate(20 4 -14)"/><ellipse cx="-4" cy="-20" rx="3" ry="6" transform="rotate(-20 -4 -20)"/><ellipse cx="4" cy="-24" rx="3" ry="6" transform="rotate(20 4 -24)"/><ellipse cx="0" cy="-30" rx="3" ry="6"/></g>
+      <g transform="translate(276 224)"><path d="M0 18V-14" stroke="#B9813F" stroke-width="2"/><ellipse cx="-4" cy="-10" rx="3" ry="6" transform="rotate(-20 -4 -10)"/><ellipse cx="4" cy="-14" rx="3" ry="6" transform="rotate(20 4 -14)"/><ellipse cx="-4" cy="-20" rx="3" ry="6" transform="rotate(-20 -4 -20)"/><ellipse cx="4" cy="-24" rx="3" ry="6" transform="rotate(20 4 -24)"/><ellipse cx="0" cy="-30" rx="3" ry="6"/></g>
+      <g transform="translate(296 230)"><path d="M0 18V-14" stroke="#B9813F" stroke-width="2"/><ellipse cx="-4" cy="-10" rx="3" ry="6" transform="rotate(-20 -4 -10)"/><ellipse cx="4" cy="-14" rx="3" ry="6" transform="rotate(20 4 -14)"/><ellipse cx="-4" cy="-20" rx="3" ry="6" transform="rotate(-20 -4 -20)"/><ellipse cx="4" cy="-24" rx="3" ry="6" transform="rotate(20 4 -24)"/><ellipse cx="0" cy="-30" rx="3" ry="6"/></g>
+    </g>
+    <!-- arbres -->
+    <circle cx="40" cy="132" r="18" fill="#8C9A5B"/><rect x="38" y="146" width="4" height="14" fill="#5E4A2A"/>
+    <circle cx="66" cy="140" r="12" fill="#A3AE6E"/><rect x="64" y="150" width="4" height="10" fill="#5E4A2A"/>
+  </g>
+</svg>

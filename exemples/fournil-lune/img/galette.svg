@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="240" height="180">
+  <ellipse cx="120" cy="158" rx="104" ry="9" fill="#2A1206" opacity=".14"/>
+  <!-- couronne en papier -->
+  <path d="M70 70L78 26 100 52 120 18 140 52 162 26 170 70Z" fill="#F0C96A"/>
+  <path d="M70 70L78 26 100 52 120 18 140 52 162 26 170 70Z" fill="none" stroke="#C99A3A" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="78" cy="26" r="5" fill="#2B3672"/><circle cx="120" cy="18" r="5" fill="#2B3672"/><circle cx="162" cy="26" r="5" fill="#2B3672"/>
+  <!-- galette -->
+  <ellipse cx="120" cy="124" rx="104" ry="34" fill="#9C5320"/>
+  <ellipse cx="120" cy="116" rx="104" ry="34" fill="#D9934D"/>
+  <ellipse cx="120" cy="114" rx="88" ry="27" fill="#C47634"/>
+  <defs><clipPath id="dessus"><ellipse cx="120" cy="114" rx="88" ry="27"/></clipPath></defs>
+  <g clip-path="url(#dessus)" fill="none" stroke="#E8B76A" stroke-width="2.5" stroke-linecap="round">
+    <path d="M40 104C80 120 120 150 150 160M60 92C100 110 150 140 190 150M90 84C130 100 170 124 210 132M130 82C160 92 190 108 214 114"/>
+    <path d="M200 104C160 120 120 150 90 160M180 92C140 110 90 140 50 150M150 84C110 100 70 124 30 132M110 82C80 92 50 108 26 114"/>
+  </g>
+  <path d="M28 120C40 132 76 140 120 140S200 132 212 120" fill="none" stroke="#B9692D" stroke-width="2"/>
+</svg>

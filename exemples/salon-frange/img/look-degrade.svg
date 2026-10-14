@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
+  <!-- Dégradé à blanc -->
+  <path d="M150 54c64 0 104 46 104 112 0 64-24 118-42 140H88C70 284 46 230 46 166c0-66 40-112 104-112z" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
+  <clipPath id="t"><path d="M150 54c64 0 104 46 104 112 0 64-24 118-42 140H88C70 284 46 230 46 166c0-66 40-112 104-112z"/></clipPath>
+  <g clip-path="url(#t)" fill="#171915"><rect x="40" y="40" width="220" height="156"/><rect x="40" y="196" width="220" height="10"/><rect x="40" y="213" width="220" height="7.2"/><rect x="40" y="227.1" width="220" height="5.2"/><rect x="40" y="239" width="220" height="3.7"/><rect x="40" y="249.4" width="220" height="2.7"/><rect x="40" y="258.6" width="220" height="1.9"/><rect x="40" y="266.9" width="220" height="1.5"/><rect x="40" y="274.7" width="220" height="1.5"/><rect x="40" y="282.5" width="220" height="1.5"/><rect x="40" y="290.2" width="220" height="1.5"/><rect x="40" y="297.8" width="220" height="1.5"/></g>
+  <path d="M150 54c64 0 104 46 104 112 0 64-24 118-42 140H88C70 284 46 230 46 166c0-66 40-112 104-112z" fill="none" stroke="#171915" stroke-width="4"/>
+  <path d="M118 306v40M182 306v40" stroke="#171915" stroke-width="4"/>
+  <g fill="none" stroke="#B3C1A5" stroke-width="3" stroke-linecap="round"><path d="M110 80c22-12 58-12 80 0"/><path d="M90 120c34-20 86-20 120 0"/></g>
+
+</svg>

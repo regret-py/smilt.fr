@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <ellipse cx="160" cy="176" rx="146" ry="9" fill="#2A1206" opacity=".14"/>
+  <!-- pain au chocolat -->
+  <g transform="translate(190 90)">
+    <rect x="0" y="22" width="120" height="62" rx="16" fill="#B9692D"/>
+    <path d="M0 58C0 40 8 22 30 20H96C114 22 120 36 120 50" fill="#D9934D"/>
+    <path d="M12 40C40 32 84 32 110 40M8 56C40 48 86 48 116 56M8 70C40 64 86 64 116 70" fill="none" stroke="#9C5320" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M18 30C40 26 70 26 92 28" fill="none" stroke="#F3D39A" stroke-width="3.5" stroke-linecap="round"/>
+    <rect x="-6" y="44" width="14" height="10" rx="3" fill="#3B1E10"/>
+    <rect x="-6" y="62" width="14" height="10" rx="3" fill="#3B1E10"/>
+    <rect x="112" y="44" width="14" height="10" rx="3" fill="#3B1E10"/>
+    <rect x="112" y="62" width="14" height="10" rx="3" fill="#3B1E10"/>
+  </g>
+  <!-- croissant -->
+  <g transform="translate(100 140)">
+    <ellipse cx="-74" cy="22" rx="11" ry="7" transform="rotate(-62 -74 22)" fill="#9C5320"/>
+    <ellipse cx="74" cy="22" rx="11" ry="7" transform="rotate(62 74 22)" fill="#9C5320"/>
+    <ellipse cx="-58" cy="6" rx="18" ry="13" transform="rotate(-48 -58 6)" fill="#B9692D"/>
+    <ellipse cx="58" cy="6" rx="18" ry="13" transform="rotate(48 58 6)" fill="#B9692D"/>
+    <ellipse cx="-34" cy="-10" rx="25" ry="20" transform="rotate(-28 -34 -10)" fill="#CC8240"/>
+    <ellipse cx="34" cy="-10" rx="25" ry="20" transform="rotate(28 34 -10)" fill="#CC8240"/>
+    <ellipse cx="0" cy="-18" rx="29" ry="26" fill="#D9934D"/>
+    <g fill="none" stroke="#F3D39A" stroke-width="3.5" stroke-linecap="round">
+      <path d="M-15-34C-6-40 6-40 15-34"/><path d="M-48-22C-42-28-34-31-26-30"/><path d="M26-30C34-31 42-28 48-22"/><path d="M-70-4C-68-9-64-12-58-13"/><path d="M58-13C64-12 68-9 70-4"/>
+    </g>
+    <g fill="none" stroke="#8A4419" stroke-width="2" opacity=".55">
+      <path d="M-24 6C-22-10-24-26-30-36"/><path d="M24 6C22-10 24-26 30-36"/><path d="M-46 22C-46 10-50 0-56-8"/><path d="M46 22C46 10 50 0 56-8"/>
+    </g>
+  </g>
+</svg>

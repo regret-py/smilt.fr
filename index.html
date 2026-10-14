@@ -48,8 +48,9 @@
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="#offres">Offres</a></li>
-        <li><a href="#methode">Méthode</a></li>
         <li><a href="#exemples">Exemples</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="/conseils/">Conseils</a></li>
         <li><a href="#faq">Questions</a></li>
       </ul>
       <a class="btn btn-ink btn-sm arr" href="#devis">Devis gratuit</a>
@@ -128,7 +129,7 @@
       <div class="who-txt reveal">
         <p class="lead">On fait des sites pour les commerces de quartier, ceux où l'on connaît le prénom du patron. Deux semaines, prix fixe, sans jargon.</p>
         <ul class="tags">
-          <li>Boulangeries</li><li>Salons de coiffure</li><li>Cavistes</li><li>Fleuristes</li><li>Restaurants &amp; cafés</li><li>Fromagers</li><li>Librairies</li><li>Instituts de beauté</li><li>Barbiers</li><li>Épiceries fines</li><li>Artisans</li>
+          <li><a href="/sites-pour/boulangerie/">Boulangeries</a></li><li><a href="/sites-pour/coiffeur/">Salons de coiffure</a></li><li><a href="/sites-pour/caviste/">Cavistes</a></li><li><a href="/sites-pour/fleuriste/">Fleuristes</a></li><li><a href="/sites-pour/restaurant/">Restaurants &amp; cafés</a></li><li><a href="/sites-pour/fromager/">Fromagers</a></li><li><a href="/sites-pour/librairie/">Librairies</a></li><li>Instituts de beauté</li><li>Barbiers</li><li>Épiceries fines</li><li>Artisans</li>
         </ul>
       </div>
     </div>
@@ -208,6 +209,64 @@
     </div>
   </section>
 
+  <!-- ============ Quelle formule ? (questionnaire, demande le JavaScript) ============ -->
+  <section class="sec quiz" id="formule" aria-labelledby="quiz-title">
+    <div class="wrap quiz-in">
+      <div class="sec-head">
+        <p class="eyebrow">Quelle formule&#8239;?</p>
+        <h2 id="quiz-title" class="h2">Trois questions, <em>une réponse.</em></h2>
+        <p class="lead">Pas sûr de ce qu'il vous faut&#8239;? Répondez, on vous dit quelle formule choisir et combien elle coûte.</p>
+      </div>
+      <form class="quiz-form" id="quiz" novalidate>
+        <fieldset class="q">
+          <legend><span class="q-n" aria-hidden="true">1</span>Vos clients doivent-ils pouvoir commander, payer ou réserver directement sur votre site&#8239;?</legend>
+          <div class="pick">
+            <label><input type="radio" name="q1" value="oui"><span>Oui</span></label>
+            <label><input type="radio" name="q1" value="non"><span>Non, ils passent en boutique ou appellent</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q">
+          <legend><span class="q-n" aria-hidden="true">2</span>Combien de choses voulez-vous présenter&#8239;?</legend>
+          <div class="pick">
+            <label><input type="radio" name="q2" value="une"><span>L'essentiel tient sur une page</span></label>
+            <label><input type="radio" name="q2" value="plusieurs"><span>Plusieurs pages&nbsp;: carte, tarifs, équipe, galerie…</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q">
+          <legend><span class="q-n" aria-hidden="true">3</span>Qui fera les petites mises à jour (horaires, prix, fermetures)&#8239;?</legend>
+          <div class="pick">
+            <label><input type="radio" name="q3" value="nous"><span>Vous, sur simple message</span></label>
+            <label><input type="radio" name="q3" value="moi"><span>Moi, je préfère le faire</span></label>
+          </div>
+        </fieldset>
+        <div class="quiz-result" id="quizResult">
+          <p class="eyebrow">Notre conseil</p>
+          <p class="quiz-plan" id="quizPlan" role="status" aria-live="polite">Répondez aux deux premières questions.</p>
+          <p class="quiz-why" id="quizWhy"></p>
+          <a class="btn btn-coral arr" href="#devis" id="quizGo" hidden>Demander ce devis</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ Engagements ============ -->
+  <section class="sec pledges" id="engagements" aria-labelledby="pledges-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Nos engagements</p>
+        <h2 id="pledges-title" class="h2">Écrits noir sur blanc, <em>dans chaque devis.</em></h2>
+      </div>
+      <ul class="pledges-grid">
+        <li class="reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7" /><circle cx="18" cy="16" r="3"/></svg><h3>Un prix fixe</h3><p>Écrit dans le devis avant de commencer. Il ne bouge plus, même si le projet nous prend plus de temps.</p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg><h3>En ligne en deux semaines</h3><p>Dès que vos textes et vos photos sont là. Vous voyez une première version dès le troisième jour.</p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="9" rx="2"/></svg><h3>Votre site est à vous</h3><p>Droits d'auteur cédés par écrit, nom de domaine à votre nom, fichiers remis sur simple demande.</p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 6h14v9H9l-4 4z"/></svg><h3>Zéro jargon</h3><p>On vous parle en français. Et si un mot vous échappe, notre <a href="/lexique/">lexique sans jargon</a> est là.</p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M13 3 6 14h5l-1 7 7-11h-5z"/></svg><h3>Léger et respectueux</h3><p>Des pages qui s'affichent vite, sans cookie publicitaire ni traceur ajouté dans votre dos.</p></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M5 9h14M12 9v12M8 21l4-7 4 7"/></svg><h3>Lisible par tous</h3><p>Contrastes, tailles de texte, navigation au clavier&nbsp;: on applique les bonnes pratiques d'accessibilité.</p></li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ============ Méthode ============ -->
   <section class="sec method" id="methode" aria-labelledby="method-title">
     <div class="wrap">
@@ -241,85 +300,151 @@
     </div>
   </section>
 
-  <!-- ============ Exemples ============ -->
+  <!-- ============ Exemples : vrais sites de démonstration (dossier /exemples/) ============ -->
   <section class="sec demos" id="exemples" aria-labelledby="demos-title">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Voir nos sites</p>
-        <h2 id="demos-title" class="h2">À quoi pourrait ressembler <em>le vôtre.</em></h2>
-        <p class="lead">smilt. ouvre ses portes en 2026. Plutôt que d'aligner des logos, voici trois maquettes pour des commerces imaginaires, telles qu'on les livrerait.</p>
+        <h2 id="demos-title" class="h2">Sept sites qu'on aurait pu faire. <em>Visitez-les.</em></h2>
+        <p class="lead">smilt. ouvre ses portes en 2026. Plutôt que d'aligner des logos, on a construit sept sites complets pour des commerces imaginaires du quartier&nbsp;: cliquez, naviguez, tout fonctionne comme sur un vrai site.</p>
       </div>
-      <div class="demo-grid">
-
-        <figure class="demo reveal">
-          <div class="phone" aria-hidden="true">
-            <div class="scr d-bread">
-              <div class="d-bar"><b>Fournil Lune</b><span>☰</span></div>
-              <div class="d-hero">
-                <p class="d-k">Boulangerie · Paris 11e</p>
-                <p class="d-t">Du levain, trois fournées par jour.</p>
-                <p class="d-open"><i></i>Ouvert · ferme à 20&nbsp;h</p>
-              </div>
-              <div class="d-btns"><span>Itinéraire</span><span>Appeler</span></div>
-              <div class="d-list">
-                <p class="d-h">Aujourd'hui au comptoir</p>
-                <p><span>Baguette tradition</span><b>1,30&nbsp;€</b></p>
-                <p><span>Pain de campagne</span><b>4,80&nbsp;€</b></p>
-                <p><span>Croissant pur beurre</span><b>1,40&nbsp;€</b></p>
-                <p><span>Flan vanille (part)</span><b>3,50&nbsp;€</b></p>
-              </div>
-              <div class="d-map"><span>12 rue Imaginaire, 75011</span></div>
-            </div>
+      <ul class="showcase">
+        <li class="show show-feat reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/fournil-lune/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/fournil-lune-desktop.webp" type="image/webp"><img src="/assets/img/exemples/fournil-lune-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/fournil-lune-mobile.webp" type="image/webp"><img src="/assets/img/exemples/fournil-lune-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Boulangerie · Paris 11e</span><span>Formule Essentiel</span></p>
+            <h3><a href="/exemples/fournil-lune/">Fournil Lune</a></h3>
+            <p>Horaires en direct, pains du jour et commandes de gâteaux, sur une seule page.</p>
+            <a class="show-go arr" href="/exemples/fournil-lune/" aria-label="Visiter le site de démonstration Fournil Lune">Visiter le site</a>
           </div>
-          <figcaption><span class="demo-tag">Démo</span><b>Fournil Lune</b><span>Boulangerie, Paris 11e · Formule Essentiel</span></figcaption>
-        </figure>
-
-        <figure class="demo reveal">
-          <div class="phone" aria-hidden="true">
-            <div class="scr d-hair">
-              <div class="d-bar"><b>SALON FRANGE</b><span>☰</span></div>
-              <div class="d-hero">
-                <p class="d-k">Coiffeur · Paris 18e</p>
-                <p class="d-t">Coupe, couleur &amp; barbe. Sans rendez-vous le samedi.</p>
-              </div>
-              <div class="d-cta">Réserver un créneau</div>
-              <div class="d-list">
-                <p class="d-h">Tarifs</p>
-                <p><span>Coupe femme</span><b>42&nbsp;€</b></p>
-                <p><span>Coupe homme</span><b>25&nbsp;€</b></p>
-                <p><span>Couleur</span><b>dès 55&nbsp;€</b></p>
-                <p><span>Barbe</span><b>15&nbsp;€</b></p>
-              </div>
-              <div class="d-gal"><i></i><i></i><i></i></div>
-            </div>
+        </li>
+        <li class="show reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/salon-frange/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/salon-frange-desktop.webp" type="image/webp"><img src="/assets/img/exemples/salon-frange-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/salon-frange-mobile.webp" type="image/webp"><img src="/assets/img/exemples/salon-frange-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Coiffeur et barbier · Paris 18e</span><span>Formule Vitrine</span></p>
+            <h3><a href="/exemples/salon-frange/">Salon Frange</a></h3>
+            <p>Tarifs clairs, équipe, galerie de coupes et bouton de réservation.</p>
+            <a class="show-go arr" href="/exemples/salon-frange/" aria-label="Visiter le site de démonstration Salon Frange">Visiter le site</a>
           </div>
-          <figcaption><span class="demo-tag">Démo</span><b>Salon Frange</b><span>Coiffeur, Paris 18e · Formule Vitrine</span></figcaption>
-        </figure>
-
-        <figure class="demo reveal">
-          <div class="phone" aria-hidden="true">
-            <div class="scr d-wine">
-              <div class="d-bar"><b>Cave Tanin</b><span>☰</span></div>
-              <div class="d-hero">
-                <p class="d-k">Caviste · Paris 20e</p>
-                <p class="d-t">Vins nature, conseils sans chichis.</p>
-              </div>
-              <div class="d-event"><b>Dégustation</b><span>Jeudi · 19&nbsp;h · 6 vins</span></div>
-              <div class="d-list">
-                <p class="d-h">Sélection de la semaine</p>
-                <p><span>Rouge du Beaujolais</span><b>14&nbsp;€</b></p>
-                <p><span>Blanc de Loire</span><b>17&nbsp;€</b></p>
-                <p><span>Pétillant naturel</span><b>19&nbsp;€</b></p>
-              </div>
-              <div class="d-hours"><p><span>Mardi – samedi</span><b>11&nbsp;h – 21&nbsp;h</b></p><p><span>Dimanche</span><b>10&nbsp;h – 13&nbsp;h</b></p></div>
-              <div class="d-cta">Commander en click &amp; collect</div>
-            </div>
+        </li>
+        <li class="show reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/cave-tanin/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/cave-tanin-desktop.webp" type="image/webp"><img src="/assets/img/exemples/cave-tanin-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/cave-tanin-mobile.webp" type="image/webp"><img src="/assets/img/exemples/cave-tanin-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Caviste · Paris 20e</span><span>Formule Sur-mesure</span></p>
+            <h3><a href="/exemples/cave-tanin/">Cave Tanin</a></h3>
+            <p>Catalogue filtrable, panier et retrait en boutique (click & collect).</p>
+            <a class="show-go arr" href="/exemples/cave-tanin/" aria-label="Visiter le site de démonstration Cave Tanin">Visiter le site</a>
           </div>
-          <figcaption><span class="demo-tag">Démo</span><b>Cave Tanin</b><span>Caviste, Paris 20e · Formule Sur-mesure</span></figcaption>
-        </figure>
+        </li>
+        <li class="show reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/bouillon-marelle/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/bouillon-marelle-desktop.webp" type="image/webp"><img src="/assets/img/exemples/bouillon-marelle-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/bouillon-marelle-mobile.webp" type="image/webp"><img src="/assets/img/exemples/bouillon-marelle-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Restaurant · Paris 10e</span><span>Formule Vitrine</span></p>
+            <h3><a href="/exemples/bouillon-marelle/">Bouillon Marelle</a></h3>
+            <p>La carte avec allergènes, les groupes et toutes les infos pratiques.</p>
+            <a class="show-go arr" href="/exemples/bouillon-marelle/" aria-label="Visiter le site de démonstration Bouillon Marelle">Visiter le site</a>
+          </div>
+        </li>
+        <li class="show reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/atelier-pistil/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/atelier-pistil-desktop.webp" type="image/webp"><img src="/assets/img/exemples/atelier-pistil-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/atelier-pistil-mobile.webp" type="image/webp"><img src="/assets/img/exemples/atelier-pistil-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Fleuriste · Paris 9e</span><span>Formule Essentiel</span></p>
+            <h3><a href="/exemples/atelier-pistil/">Atelier Pistil</a></h3>
+            <p>Bouquets du moment et commande de bouquet en quelques clics.</p>
+            <a class="show-go arr" href="/exemples/atelier-pistil/" aria-label="Visiter le site de démonstration Atelier Pistil">Visiter le site</a>
+          </div>
+        </li>
+        <li class="show reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/fromagerie-caille/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/fromagerie-caille-desktop.webp" type="image/webp"><img src="/assets/img/exemples/fromagerie-caille-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/fromagerie-caille-mobile.webp" type="image/webp"><img src="/assets/img/exemples/fromagerie-caille-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Fromager · Paris 15e</span><span>Formule Vitrine</span></p>
+            <h3><a href="/exemples/fromagerie-caille/">Fromagerie Caillé</a></h3>
+            <p>Sélection filtrable, plateaux sur commande et ateliers dégustation.</p>
+            <a class="show-go arr" href="/exemples/fromagerie-caille/" aria-label="Visiter le site de démonstration Fromagerie Caillé">Visiter le site</a>
+          </div>
+        </li>
+        <li class="show reveal">
+          <figure class="shot">
+            <a class="shot-win" href="/exemples/librairie-rature/" tabindex="-1" aria-hidden="true"><picture><source srcset="/assets/img/exemples/librairie-rature-desktop.webp" type="image/webp"><img src="/assets/img/exemples/librairie-rature-desktop.jpg" alt="" width="1200" height="750" loading="lazy" decoding="async"></picture></a>
+            <span class="shot-phone"><picture><source srcset="/assets/img/exemples/librairie-rature-mobile.webp" type="image/webp"><img src="/assets/img/exemples/librairie-rature-mobile.jpg" alt="" width="390" height="844" loading="lazy" decoding="async"></picture></span>
+          </figure>
+          <div class="show-txt">
+            <p class="show-meta"><span class="demo-tag">Démo</span><span>Librairie · Paris 5e</span><span>Formule Vitrine</span></p>
+            <h3><a href="/exemples/librairie-rature/">Librairie Rature</a></h3>
+            <p>Coups de cœur, agenda des rencontres et réservation de livres.</p>
+            <a class="show-go arr" href="/exemples/librairie-rature/" aria-label="Visiter le site de démonstration Librairie Rature">Visiter le site</a>
+          </div>
+        </li>
+      </ul>
+      <p class="demos-note">Commerces, adresses, produits et prix fictifs, créés pour l'exemple. <a href="/exemples/">Tous les exemples en détail</a></p>
 
+      <div class="ba reveal" id="avant-apres">
+        <div class="ba-text">
+          <p class="eyebrow">Avant / après</p>
+          <h3>Le Fournil Lune, <em>avant et après smilt.</em></h3>
+          <p>À gauche, le site que la boulangerie aurait pu garder depuis 2009. À droite, celui qu'on lui livre en deux semaines. Faites glisser pour comparer.</p>
+          <p><a class="btn btn-ghost btn-sm arr" href="/exemples/fournil-lune/">Visiter le nouveau site</a></p>
+        </div>
+        <div class="ba-box">
+          <figure class="ba-view" id="baView">
+            <picture><source srcset="/assets/img/exemples/fournil-lune-avant.webp" type="image/webp"><img src="/assets/img/exemples/fournil-lune-avant.jpg" alt="Ancien site du Fournil Lune, au style des années 2000 (démonstration)" width="1200" height="750" loading="lazy" decoding="async"></picture>
+            <div class="ba-after"><picture><source srcset="/assets/img/exemples/fournil-lune-desktop.webp" type="image/webp"><img src="/assets/img/exemples/fournil-lune-desktop.jpg" alt="Nouveau site du Fournil Lune réalisé par smilt. (démonstration)" width="1200" height="750" loading="lazy" decoding="async"></picture></div>
+            <span class="ba-tag ba-l" aria-hidden="true">Avant</span><span class="ba-tag ba-r" aria-hidden="true">Après</span>
+            <span class="ba-line" aria-hidden="true"></span>
+          </figure>
+          <label class="ba-range" for="baRange"><span class="sr-only">Position de la comparaison avant / après</span><input type="range" id="baRange" min="0" max="100" value="50"></label>
+        </div>
       </div>
-      <p class="demos-note">Commerces, adresses et prix fictifs, créés pour l'exemple.</p>
+    </div>
+  </section>
+
+  <!-- ============ Conseils ============ -->
+  <section class="sec tips" aria-labelledby="tips-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Conseils</p>
+        <h2 id="tips-title" class="h2">Des conseils utiles, <em>même sans site.</em></h2>
+        <p class="lead">Fiche Google, Instagram, mentions légales&nbsp;: nos guides gratuits pour les commerçants, écrits sans jargon.</p>
+      </div>
+      <div class="cards cards-3" id="tipsCards">
+        <article class="card">
+          <p class="eyebrow">Google</p>
+          <h3><a href="/conseils/fiche-google-business-profile/">Fiche Google Business Profile&nbsp;: le guide pour les commerçants</a></h3>
+          <p>Créer, réclamer et soigner la fiche qui s’affiche quand on vous cherche.</p>
+          <span class="arr" aria-hidden="true">Lire</span>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Google Maps</p>
+          <h3><a href="/conseils/etre-trouve-google-maps/">Être trouvé sur Google Maps&nbsp;: 7 gestes simples</a></h3>
+          <p>Ce qui aide vraiment un commerce de quartier à apparaître sur la carte.</p>
+          <span class="arr" aria-hidden="true">Lire</span>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Réseaux sociaux</p>
+          <h3><a href="/conseils/instagram-ou-site/">Instagram suffit-il pour un commerce&#8239;?</a></h3>
+          <p>Ce que fait un compte Instagram, ce que fait un site, et pourquoi les deux se complètent.</p>
+          <span class="arr" aria-hidden="true">Lire</span>
+        </article>
+      </div>
+      <p class="tips-more"><a class="btn btn-ink arr" href="/conseils/">Tous les conseils</a><a class="btn btn-ghost" href="/lexique/">Le lexique sans jargon</a></p>
     </div>
   </section>
 
@@ -454,18 +579,50 @@
       <p class="eyebrow">Agence web · Paris · 2026</p>
     </div>
     <nav class="foot-nav" aria-label="Pied de page">
-      <ul>
-        <li><a href="#offres">Offres</a></li>
-        <li><a href="#methode">Méthode</a></li>
-        <li><a href="#exemples">Exemples</a></li>
-        <li><a href="#faq">Questions</a></li>
-        <li><a href="#devis">Devis gratuit</a></li>
-      </ul>
-      <ul>
-        <li><a href="mailto:smilt.fr@proton.me">smilt.fr@proton.me</a></li>
-        <li><button class="linklike" type="button" data-john>Demander à John</button></li>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
-      </ul>
+      <div>
+        <p class="foot-h">smilt.</p>
+        <ul>
+          <li><a href="#offres">Offres et prix</a></li>
+          <li><a href="#methode">Méthode</a></li>
+          <li><a href="#formule">Quelle formule&#8239;?</a></li>
+          <li><a href="#faq">Questions</a></li>
+          <li><a href="#devis">Devis gratuit</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Exemples</p>
+        <ul>
+          <li><a href="/exemples/fournil-lune/">Fournil Lune</a></li>
+          <li><a href="/exemples/salon-frange/">Salon Frange</a></li>
+          <li><a href="/exemples/cave-tanin/">Cave Tanin</a></li>
+          <li><a href="/exemples/bouillon-marelle/">Bouillon Marelle</a></li>
+          <li><a href="/exemples/atelier-pistil/">Atelier Pistil</a></li>
+          <li><a href="/exemples/fromagerie-caille/">Fromagerie Caillé</a></li>
+          <li><a href="/exemples/librairie-rature/">Librairie Rature</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Par métier</p>
+        <ul>
+          <li><a href="/sites-pour/boulangerie/">Boulangerie</a></li>
+          <li><a href="/sites-pour/coiffeur/">Coiffeur</a></li>
+          <li><a href="/sites-pour/caviste/">Caviste</a></li>
+          <li><a href="/sites-pour/restaurant/">Restaurant</a></li>
+          <li><a href="/sites-pour/fleuriste/">Fleuriste</a></li>
+          <li><a href="/sites-pour/fromager/">Fromager</a></li>
+          <li><a href="/sites-pour/librairie/">Librairie</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Ressources</p>
+        <ul>
+          <li><a href="/conseils/">Conseils</a></li>
+          <li><a href="/lexique/">Lexique sans jargon</a></li>
+          <li><button class="linklike" type="button" data-john>Demander à John</button></li>
+          <li><a href="mailto:smilt.fr@proton.me">smilt.fr@proton.me</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
     </nav>
   </div>
   <div class="wrap">

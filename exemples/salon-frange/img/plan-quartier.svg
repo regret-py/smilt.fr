@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+  <!-- Plan stylisé du quartier : passage du Croquis (rues fictives, pas à l'échelle) -->
+  <rect width="800" height="560" fill="#DCE3D3"/>
+  <!-- îlots : petites cours et toits -->
+  <g fill="#CFD8C4">
+    <rect x="30" y="170" width="140" height="74" rx="10"/>
+    <rect x="252" y="160" width="130" height="80" rx="10"/>
+    <rect x="420" y="150" width="120" height="86" rx="10"/>
+    <rect x="620" y="140" width="150" height="90" rx="10"/>
+    <rect x="252" y="300" width="290" height="86" rx="10"/>
+    <rect x="620" y="300" width="150" height="90" rx="10"/>
+    <rect x="252" y="456" width="290" height="80" rx="10"/>
+    <rect x="620" y="466" width="150" height="70" rx="10"/>
+  </g>
+  <!-- square des Lilas-Blancs -->
+  <path d="M24 300h150v100H24z" fill="#B3C1A5"/>
+  <path d="M24 456h150v84H24z" fill="#B3C1A5"/>
+  <g fill="#8FA083">
+    <circle cx="56" cy="330" r="14"/><circle cx="96" cy="350" r="18"/><circle cx="140" cy="326" r="13"/><circle cx="62" cy="378" r="11"/><circle cx="146" cy="378" r="15"/>
+    <circle cx="50" cy="480" r="14"/><circle cx="146" cy="478" r="14"/><circle cx="150" cy="520" r="11"/><circle cx="48" cy="522" r="10"/>
+  </g>
+  <!-- rues -->
+  <g fill="none" stroke="#F3F1EA" stroke-linecap="square">
+    <path d="M-20 116C220 92 520 74 820 52" stroke-width="56"/>
+    <path d="M214 -20L206 580" stroke-width="30"/>
+    <path d="M580 -20L586 580" stroke-width="30"/>
+    <path d="M-20 428C260 422 540 420 820 432" stroke-width="34"/>
+    <path d="M206 270H586" stroke-width="18"/>
+  </g>
+  <!-- terre-plein du boulevard -->
+  <path d="M-20 116C220 92 520 74 820 52" fill="none" stroke="#B3C1A5" stroke-width="6" stroke-dasharray="40 14"/>
+  <!-- passage du Croquis : pavés -->
+  <path d="M220 270H572" fill="none" stroke="#171915" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" opacity=".55"/>
+  <!-- passages piétons -->
+  <g fill="#B3C1A5"><rect x="194" y="140" width="5" height="26"/><rect x="203" y="140" width="5" height="26"/><rect x="212" y="140" width="5" height="26"/><rect x="221" y="140" width="5" height="26"/><rect x="568" y="116" width="5" height="26"/><rect x="577" y="116" width="5" height="26"/><rect x="586" y="116" width="5" height="26"/><rect x="595" y="116" width="5" height="26"/><rect x="568" y="446" width="5" height="26"/><rect x="577" y="446" width="5" height="26"/><rect x="586" y="446" width="5" height="26"/><rect x="595" y="446" width="5" height="26"/><rect x="226" y="413" width="26" height="5"/><rect x="226" y="422" width="26" height="5"/><rect x="226" y="431" width="26" height="5"/></g>
+  <!-- fontaine du square -->
+  <circle cx="100" cy="500" r="9" fill="#F3F1EA" stroke="#56684B" stroke-width="3"/>
+  <!-- itinéraire à pied depuis le métro -->
+  <path d="M300 104C250 108 222 112 214 130 208 150 208 230 210 262 214 270 240 270 300 270H392" fill="none" stroke="#171915" stroke-width="5" stroke-dasharray="1 12" stroke-linecap="round"/>
+  <!-- métro -->
+  <circle cx="312" cy="100" r="17" fill="#171915"/>
+  <path d="M303 109V92l9 11 9-11v17" fill="none" stroke="#F3F1EA" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- vélos en libre-service -->
+  <rect x="604" y="444" width="44" height="26" rx="13" fill="#56684B"/>
+  <g fill="none" stroke="#F3F1EA" stroke-width="2.5"><circle cx="617" cy="460" r="5"/><circle cx="635" cy="460" r="5"/><path d="M617 460l6-9h8l4 9M623 451l-2-3"/></g>
+  <!-- arrêt de bus -->
+  <rect x="120" y="440" width="34" height="24" rx="6" fill="#56684B"/>
+  <path d="M128 448h18v8h-18zM130 459v2M144 459v2" fill="none" stroke="#F3F1EA" stroke-width="2.5"/>
+  <!-- le salon -->
+  <circle cx="420" cy="270" r="34" fill="#171915" opacity=".12"/>
+  <path d="M420 270c-6-22-30-34-30-58a30 30 0 0 1 60 0c0 24-24 36-30 58z" fill="#171915"/>
+  <circle cx="420" cy="212" r="12" fill="#B3C1A5"/>
+  <!-- nord -->
+  <g transform="translate(748 66)">
+    <circle r="22" fill="#F3F1EA" stroke="#171915" stroke-width="2"/>
+    <path d="M0-15l7 18H-7z" fill="#171915"/>
+  </g>
+</svg>

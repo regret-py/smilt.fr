@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <ellipse cx="160" cy="180" rx="140" ry="9" fill="#2A1206" opacity=".14"/>
+  <!-- brioche feuilletée à partager -->
+  <path d="M60 176L48 110H272L260 176Z" fill="#7E8AA8"/>
+  <path d="M48 110H272L270 122H50Z" fill="#5F6B8C"/>
+  <g>
+    <circle cx="96" cy="94" r="34" fill="#C47634"/>
+    <circle cx="160" cy="84" r="40" fill="#D9934D"/>
+    <circle cx="224" cy="94" r="34" fill="#C47634"/>
+    <circle cx="128" cy="104" r="30" fill="#CC8240"/>
+    <circle cx="192" cy="104" r="30" fill="#CC8240"/>
+  </g>
+  <g fill="none" stroke="#F3D39A" stroke-width="3.5" stroke-linecap="round">
+    <path d="M80 76C88 68 100 66 108 70"/><path d="M142 60C152 52 168 52 178 58"/><path d="M210 76C218 68 230 68 236 72"/>
+  </g>
+  <g fill="none" stroke="#8A4419" stroke-width="2.2" stroke-linecap="round" opacity=".55">
+    <path d="M150 62C146 74 146 90 150 104M170 62C174 74 174 90 170 104"/>
+    <path d="M90 74C86 84 86 98 90 108M232 78C236 86 236 98 232 106"/>
+  </g>
+  <g fill="#FBF4E6"><circle cx="122" cy="88" r="2.2"/><circle cx="134" cy="96" r="2"/><circle cx="186" cy="92" r="2.2"/><circle cx="200" cy="100" r="2"/><circle cx="160" cy="76" r="2"/><circle cx="104" cy="102" r="2"/><circle cx="214" cy="86" r="2"/></g>
+</svg>

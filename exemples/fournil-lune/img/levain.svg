@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 260" width="240" height="260">
+  <ellipse cx="120" cy="244" rx="84" ry="9" fill="#2A1206" opacity=".16"/>
+  <!-- bocal -->
+  <path d="M52 78H188V214C188 230 176 242 160 242H80C64 242 52 230 52 214Z" fill="#DCE3EC" opacity=".55"/>
+  <!-- levain -->
+  <path d="M58 140C76 126 96 136 112 128S150 122 162 132 182 130 182 130V212C182 226 172 236 158 236H82C68 236 58 226 58 212Z" fill="#F1E1BE"/>
+  <path d="M58 140C76 126 96 136 112 128S150 122 162 132 182 130 182 130V144C170 140 160 146 148 140S120 136 108 142 76 140 58 152Z" fill="#E6CF9E"/>
+  <g fill="#FFFFFF" opacity=".75">
+    <circle cx="80" cy="170" r="5"/><circle cx="104" cy="190" r="3.5"/><circle cx="140" cy="166" r="4"/><circle cx="160" cy="200" r="6"/><circle cx="96" cy="214" r="4"/><circle cx="128" cy="218" r="3"/><circle cx="72" cy="196" r="2.5"/><circle cx="152" cy="180" r="2.5"/><circle cx="118" cy="156" r="2.5"/>
+  </g>
+  <g fill="none" stroke="#D6BC88" stroke-width="2"><circle cx="80" cy="170" r="5"/><circle cx="160" cy="200" r="6"/><circle cx="140" cy="166" r="4"/></g>
+  <!-- élastique de repère -->
+  <rect x="52" y="112" width="136" height="7" fill="#C9483A" opacity=".85"/>
+  <!-- reflets du verre -->
+  <path d="M66 92V206" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".6"/>
+  <path d="M174 96V130" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+  <path d="M52 78H188V214C188 230 176 242 160 242H80C64 242 52 230 52 214Z" fill="none" stroke="#8E9AB0" stroke-width="3"/>
+  <!-- couvercle -->
+  <rect x="44" y="54" width="152" height="26" rx="8" fill="#B88442"/>
+  <path d="M52 62H188" stroke="#D3A764" stroke-width="3" stroke-linecap="round"/>
+  <path d="M60 80V96M180 80V96" stroke="#7E8AA8" stroke-width="4" stroke-linecap="round"/>
+  <!-- étiquette Pierrot -->
+  <rect x="84" y="20" width="72" height="36" rx="6" fill="#1B2350" transform="rotate(-6 120 38)"/>
+  <g transform="rotate(-6 120 38)">
+    <circle cx="106" cy="38" r="11" fill="#F0C96A"/>
+    <circle cx="111" cy="34" r="10" fill="#1B2350"/>
+    <path d="M124 32H146M124 40H140M124 48H144" stroke="#F8E6B4" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M120 54V20" stroke="#B88442" stroke-width="0"/>
+</svg>

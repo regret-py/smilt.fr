@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 700" width="560" height="700">
+  <!-- Salon Frange · le miroir en arche et la cliente au carré frangé -->
+  <defs>
+    <clipPath id="arche"><path d="M20 700V280a260 260 0 0 1 520 0v420z"/></clipPath>
+    <clipPath id="buste"><path d="M58 700c6-58 52-98 132-112 30-5 58-7 90-7s60 2 90 7c80 14 126 54 132 112z"/></clipPath>
+  </defs>
+  <path d="M20 700V280a260 260 0 0 1 520 0v420z" fill="#B3C1A5"/>
+  <g clip-path="url(#arche)">
+    <!-- reflets du miroir -->
+    <path d="M86 236c26-74 84-128 160-150" fill="none" stroke="#F3F1EA" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+    <path d="M76 304c2-14 5-27 9-40" fill="none" stroke="#F3F1EA" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+    <!-- chevelure, arrière : carré plongeant -->
+    <path d="M280 132c98 0 150 70 152 168l4 222c0 18-10 26-28 24l-98-30h-60l-98 30c-18 2-28-6-28-24l4-222c2-98 54-168 152-168z" fill="#171915"/>
+    <!-- buste en marinière -->
+    <path d="M58 700c6-58 52-98 132-112 30-5 58-7 90-7s60 2 90 7c80 14 126 54 132 112z" fill="#F3F1EA"/>
+    <g clip-path="url(#buste)" fill="#171915">
+      <rect x="40" y="610" width="480" height="13"/>
+      <rect x="40" y="640" width="480" height="13"/>
+      <rect x="40" y="670" width="480" height="13"/>
+    </g>
+    <path d="M58 700c6-58 52-98 132-112 30-5 58-7 90-7s60 2 90 7c80 14 126 54 132 112" fill="none" stroke="#171915" stroke-width="4"/>
+    <!-- cou -->
+    <path d="M248 430h64v140c0 10-14 16-32 16s-32-6-32-16z" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
+    <path d="M222 586c18 8 38 12 58 12s40-4 58-12" fill="none" stroke="#171915" stroke-width="4" stroke-linecap="round"/>
+    <path d="M250 536c9 8 19 12 30 12s21-4 30-12" fill="none" stroke="#56684B" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="280" cy="551" r="4" fill="#56684B"/>
+    <!-- visage -->
+    <path d="M280 246c56 0 94 42 94 104 0 74-42 132-94 134-52-2-94-60-94-134 0-62 38-104 94-104z" fill="#F3F1EA"/>
+    <!-- frange coupée net -->
+    <path d="M176 230h208v84c-34 5-70 7-104 7s-70-2-104-7z" fill="#171915"/>
+    <!-- mèches (reflets) -->
+    <g fill="none" stroke="#56684B" stroke-width="3" stroke-linecap="round">
+      <path d="M280 150c-60 10-98 60-104 140"/>
+      <path d="M302 152c54 14 88 62 94 136"/>
+      <path d="M262 168c-36 18-58 58-62 116"/>
+      <path d="M148 330c-4 64-2 122 4 186"/>
+      <path d="M168 336c-3 60 0 116 6 174"/>
+      <path d="M412 330c4 64 2 122-4 186"/>
+      <path d="M392 336c3 60 0 116-6 174"/>
+    </g>
+    <!-- barrette -->
+    <rect x="300" y="196" width="46" height="11" rx="5.5" fill="#B3C1A5" transform="rotate(24 323 201)"/>
+    <!-- yeux fermés, nez, bouche -->
+    <g fill="none" stroke="#171915" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M226 354c10 10 26 10 36 0"/>
+      <path d="M298 354c10 10 26 10 36 0"/>
+      <path d="M232 362l-4 7M244 364v8M256 362l4 7"/>
+      <path d="M304 362l-4 7M316 364v8M328 362l4 7"/>
+      <path d="M284 358c5 20 12 36 6 46-4 6-11 7-17 4"/>
+    </g>
+    <path d="M258 436c8-7 15-9 22-5 7-4 14-2 22 5-8 9-15 12-22 12s-14-3-22-12z" fill="#171915"/>
+    <ellipse cx="226" cy="404" rx="18" ry="10" fill="#DCE3D3"/>
+    <ellipse cx="334" cy="404" rx="18" ry="10" fill="#DCE3D3"/>
+  </g>
+  <!-- cadre du miroir -->
+  <path d="M38 700V280a242 242 0 0 1 484 0v420" fill="none" stroke="#171915" stroke-width="2" opacity=".3"/>
+</svg>

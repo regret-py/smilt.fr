@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
+  <!-- La petite frange -->
+  <path d="M78 330c4-36 30-58 72-58s68 22 72 58z" fill="#B3C1A5" stroke="#171915" stroke-width="4"/>
+  <path d="M134 250v30h32v-30" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
+  <path d="M150 120c42 0 68 32 68 74 0 44-30 72-68 72s-68-28-68-72c0-42 26-74 68-74z" fill="#F3F1EA" stroke="#171915" stroke-width="4"/>
+  <path d="M74 196c-6-66 28-110 76-110s82 44 76 110l-10 2v-20c-22 4-44 6-66 6s-44-2-66-6v20z" fill="#171915"/>
+  <g fill="none" stroke="#B3C1A5" stroke-width="3" stroke-linecap="round"><path d="M150 96c-30 4-50 24-56 56"/><path d="M162 98c26 6 44 24 50 52"/></g>
+  <g fill="none" stroke="#171915" stroke-width="4" stroke-linecap="round"><path d="M122 208c6 6 14 6 20 0M158 208c6 6 14 6 20 0"/><path d="M136 236c8 8 20 8 28 0"/></g>
+  <ellipse cx="116" cy="226" rx="11" ry="7" fill="#DCE3D3"/><ellipse cx="184" cy="226" rx="11" ry="7" fill="#DCE3D3"/>
+
+</svg>

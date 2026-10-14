@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <!-- ciseaux de coiffure -->
+  <g fill="#171915">
+    <path d="M76 77.5L131 14.5c2-2.3 4.6-.4 3.2 2.3L84.5 84.5z"/>
+    <path d="M77.5 76.5L145.5 44c2.7-1.3 4 1.6 1.7 3.2L84 85z"/>
+  </g>
+  <g fill="none" stroke="#171915" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 81L59 117"/>
+    <path d="M80 81L43 101"/>
+    <circle cx="51" cy="131" r="15"/>
+    <circle cx="29" cy="109" r="15"/>
+    <path d="M17 119c-6 7-7 15-3 22"/>
+  </g>
+  <circle cx="80" cy="81" r="4.5" fill="#F3F1EA" stroke="#171915" stroke-width="3"/>
+</svg>

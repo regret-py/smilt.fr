@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
+  <!-- Patine froide -->
+  <path d="M26 320V190a124 124 0 0 1 248 0v130" fill="none" stroke="#171915" stroke-width="20"/><path d="M46 320V190a104 104 0 0 1 208 0v130" fill="none" stroke="#56684B" stroke-width="20"/><path d="M66 320V190a84 84 0 0 1 168 0v130" fill="none" stroke="#8FA083" stroke-width="20"/><path d="M86 320V190a64 64 0 0 1 128 0v130" fill="none" stroke="#B3C1A5" stroke-width="20"/><path d="M106 320V190a44 44 0 0 1 88 0v130" fill="none" stroke="#DCE3D3" stroke-width="20"/><path d="M126 320V190a24 24 0 0 1 48 0v130" fill="none" stroke="#F3F1EA" stroke-width="20"/>
+
+</svg>

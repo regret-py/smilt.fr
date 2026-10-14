@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
+  <!-- Rasage à l’ancienne -->
+  <path d="M150 168c-20-22-52-30-80-14-14 8-26 6-34-4 2 30 26 48 56 46 24-2 44-12 58-28 14 16 34 26 58 28 30 2 54-16 56-46-8 10-20 12-34 4-28-16-60-8-80 14z" fill="#171915"/>
+  <g fill="none" stroke="#B3C1A5" stroke-width="3" stroke-linecap="round"><path d="M70 172c20-8 40-6 58 6"/><path d="M230 172c-20-8-40-6-58 6"/></g>
+  <g transform="rotate(-18 150 284)">
+    <path d="M58 270c0-10 8-16 18-16h112v38H80c-12 0-22-10-22-22z" fill="#F3F1EA" stroke="#171915" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M64 284c8 6 16 8 26 8h98" fill="none" stroke="#B3C1A5" stroke-width="5"/>
+    <path d="M184 262l86 40c8 4 6 16-4 14l-90-26z" fill="#171915"/>
+    <circle cx="190" cy="272" r="5" fill="#F3F1EA"/>
+  </g>
+  <g fill="none" stroke="#56684B" stroke-width="4" stroke-linecap="round"><path d="M150 60v40"/><path d="M110 74l12 28"/><path d="M190 74l-12 28"/></g>
+
+</svg>

@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Fournil Lune · Boulangerie au levain naturel, Paris 11e</title>
+<meta name="description" content="Boulangerie-pâtisserie au levain naturel au 12 rue Imaginaire, Paris 11e. Trois fournées par jour, farines d’un moulin de Brie, gâteaux, galettes et bûches sur commande.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5ECDD">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/fraunces-soft-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="evitement" href="#main">Aller au contenu</a>
+
+<svg class="sprite" width="0" height="0" aria-hidden="true">
+  <symbol id="m-logo" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#1B2350"/><path d="M40 12A21 21 0 1 0 52 44 18 18 0 1 1 40 12Z" fill="#F0C96A"/><path d="M19 22L27 27M14 33L23 34M17 45L25 41M27 52L30 44" stroke="#B9692D" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="m-nouvelle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="m-croissant" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5a9.5 9.5 0 0 1 0 19a5 9.5 0 0 0 0-19Z" fill="currentColor"/></symbol>
+  <symbol id="m-quartier" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5a9.5 9.5 0 0 1 0 19Z" fill="currentColor"/></symbol>
+  <symbol id="m-gibbeuse" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5a9.5 9.5 0 0 1 0 19a5 9.5 0 0 1 0-19Z" fill="currentColor"/></symbol>
+  <symbol id="m-pleine" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.3" fill="currentColor"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4.2-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.2 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-etoile" viewBox="0 0 24 24"><path d="M12 2c.8 5.6 2.6 7.6 10 10-7.4 2.4-9.2 4.4-10 10-.8-5.6-2.6-7.6-10-10 7.4-2.4 9.2-4.4 10-10Z" fill="currentColor"/></symbol>
+</svg>
+
+<header class="tete" id="haut">
+  <div class="enveloppe tete-in">
+    <a class="logo" href="./">
+      <svg class="logo-lune" width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-logo"/></svg>
+      <span class="logo-texte"><span class="logo-nom">Fournil Lune</span><span class="logo-sous">Boulangerie au levain<span class="logo-lieu"> · Paris&nbsp;11<sup>e</sup></span></span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#comptoir">Au comptoir</a></li>
+        <li><a href="#douceurs">Douceurs</a></li>
+        <li><a href="#commandes">Commandes</a></li>
+        <li><a href="#fournil">Le fournil</a></li>
+        <li><a href="#acces">Accès</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn btn-nuit nav-cta" href="#commander">Commander un gâteau</a>
+    </nav>
+    <div class="tete-actions">
+      <p class="pastille" data-etat="court"><span class="pastille-point" aria-hidden="true"></span><span data-etat-texte>Mar.–sam. 7&nbsp;h–20&nbsp;h</span></p>
+      <a class="btn btn-nuit" href="#commander">Commander</a>
+    </div>
+    <button class="burger" type="button" aria-controls="nav" aria-expanded="false" hidden><span class="burger-barres" aria-hidden="true"></span><span class="burger-texte">Menu</span></button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="titre">
+    <div class="enveloppe hero-grille">
+      <div class="hero-texte">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#m-croissant"/></svg>Boulangerie-pâtisserie au levain</p>
+        <h1 id="titre">Du levain, <em>trois fournées</em> par&nbsp;jour.</h1>
+        <p class="chapeau">Au 12 rue Imaginaire, on pétrit la nuit et on défourne à 7&nbsp;h, 11&nbsp;h&nbsp;30 et 17&nbsp;h. Votre pain est toujours du jour, et souvent encore tiède.</p>
+        <div class="hero-boutons">
+          <a class="btn btn-nuit btn-grand" href="#comptoir">Voir le comptoir du jour<svg width="20" height="20" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+          <a class="btn btn-contour btn-grand" href="#commandes">Commander un gâteau</a>
+        </div>
+      </div>
+
+      <div class="hero-visuel">
+        <img class="hero-image" src="img/hero-nuit.svg" width="560" height="700" alt="Une miche ronde grignée en croissant, des baguettes dans un panier et un croissant sur le comptoir, devant les toits de Paris sous la lune.">
+        <div class="carte-etat" data-etat="long">
+          <p class="carte-etat-titre"><span class="pastille-point" aria-hidden="true"></span><span data-etat-titre>Ouvert 6 jours sur 7</span></p>
+          <p class="carte-etat-detail" data-etat-detail>Mardi au samedi 7&nbsp;h–20&nbsp;h, dimanche 7&nbsp;h–13&nbsp;h&nbsp;30</p>
+          <p class="carte-etat-fournee" data-fournee-texte>Fermé le lundi</p>
+        </div>
+        <svg class="tampon" viewBox="0 0 200 200" width="200" height="200" aria-hidden="true">
+          <defs><path id="tampon-cercle" d="M100 100m-72 0a72 72 0 1 1 144 0a72 72 0 1 1-144 0"/></defs>
+          <circle cx="100" cy="100" r="98" class="tampon-fond"/>
+          <circle cx="100" cy="100" r="88" class="tampon-trait"/>
+          <text class="tampon-texte"><textPath href="#tampon-cercle" textLength="448">LEVAIN NATUREL · PÉTRI LA NUIT · DEPUIS 2016 ·</textPath></text>
+          <use href="#m-logo" x="66" y="66" width="68" height="68"/>
+        </svg>
+      </div>
+      <div class="fournees">
+        <p class="fournees-titre" id="fournees-titre">Les fournées <span data-fournees-jour>du mardi au samedi</span></p>
+        <ol class="fournees-liste" aria-labelledby="fournees-titre">
+          <li data-fournee="0"><svg width="22" height="22" aria-hidden="true"><use href="#m-croissant"/></svg><span><b data-fournee-heure>7&nbsp;h</b> pour le petit-déjeuner</span></li>
+          <li data-fournee="1"><svg width="22" height="22" aria-hidden="true"><use href="#m-quartier"/></svg><span><b data-fournee-heure>11&nbsp;h&nbsp;30</b> pour le déjeuner</span></li>
+          <li data-fournee="2"><svg width="22" height="22" aria-hidden="true"><use href="#m-pleine"/></svg><span><b data-fournee-heure>17&nbsp;h</b> pour le pain du soir</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="horaires" id="horaires" aria-labelledby="horaires-titre">
+    <div class="enveloppe horaires-grille">
+      <div class="horaires-intro">
+        <p class="surtitre surtitre-clair"><svg width="18" height="18" aria-hidden="true"><use href="#m-nouvelle"/></svg>Quand passer</p>
+        <h2 id="horaires-titre">Les horaires</h2>
+        <p class="horaires-etat" data-etat="phrase">Ouvert du mardi au samedi de 7&nbsp;h à 20&nbsp;h, le dimanche jusqu’à 13&nbsp;h&nbsp;30.</p>
+        <p class="horaires-note">Fermeture annuelle trois semaines en août&nbsp;: les dates sont affichées en boutique dès le mois de juin.</p>
+      </div>
+      <table class="table-horaires">
+        <caption class="sr-only">Horaires d’ouverture de la boutique</caption>
+        <tbody>
+          <tr data-jour="1"><th scope="row">Lundi</th><td>Fermé, le fournil se repose</td></tr>
+          <tr data-jour="2"><th scope="row">Mardi</th><td>7&nbsp;h – 20&nbsp;h</td></tr>
+          <tr data-jour="3"><th scope="row">Mercredi</th><td>7&nbsp;h – 20&nbsp;h</td></tr>
+          <tr data-jour="4"><th scope="row">Jeudi</th><td>7&nbsp;h – 20&nbsp;h</td></tr>
+          <tr data-jour="5"><th scope="row">Vendredi</th><td>7&nbsp;h – 20&nbsp;h</td></tr>
+          <tr data-jour="6"><th scope="row">Samedi</th><td>7&nbsp;h – 20&nbsp;h</td></tr>
+          <tr data-jour="0"><th scope="row">Dimanche</th><td>7&nbsp;h – 13&nbsp;h&nbsp;30</td></tr>
+        </tbody>
+      </table>
+      <div class="horaires-astuce">
+        <h3>Votre pain mis de côté</h3>
+        <p>Appelez avant 16&nbsp;h&nbsp;: on vous garde votre pain jusqu’à la fermeture, sans supplément. Pratique quand on sort tard du travail.</p>
+        <a class="lien-tel" href="tel:+33199004107" data-demo="Démo&nbsp;: sur le vrai site, ce lien lance l’appel vers la boutique depuis votre téléphone."><svg width="20" height="20" aria-hidden="true"><use href="#i-tel"/></svg>01&nbsp;99&nbsp;00&nbsp;41&nbsp;07</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section comptoir" id="comptoir" aria-labelledby="comptoir-titre">
+    <div class="enveloppe">
+      <div class="section-tete">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#m-croissant"/></svg>Aujourd’hui au comptoir</p>
+        <h2 id="comptoir-titre">Les pains du jour, <em>sortis du four ce matin.</em></h2>
+        <p class="section-intro">Six pains au levain naturel, façonnés un par un. Ce qui manque le soir, c’est qu’on l’a vendu&#8239;: pas de stock, pas de surgelé, et jamais le pain de la veille.</p>
+      </div>
+
+      <ul class="pains">
+        <li class="pain">
+          <div class="pain-image"><img src="img/baguette.svg" width="240" height="180" alt=""></div>
+          <div class="pain-corps">
+            <p class="pain-moment">À chaque fournée</p>
+            <h3>Baguette tradition</h3>
+            <p>Farine de blé T65 du moulin, levain et 24&nbsp;h de pousse au froid. Une croûte qui chante, une mie crème aux alvéoles irrégulières.</p>
+            <p class="pain-prix"><span>250&nbsp;g</span><strong>1,30&nbsp;€</strong></p>
+          </div>
+        </li>
+        <li class="pain pain-signature">
+          <div class="pain-image"><img src="img/lune.svg" width="240" height="180" alt=""></div>
+          <div class="pain-corps">
+            <p class="pain-moment"><svg width="16" height="16" aria-hidden="true"><use href="#i-etoile"/></svg>Notre signature</p>
+            <h3>La Lune</h3>
+            <p>Miche ronde au levain, grignée en croissant. Mie souple, légèrement acidulée, qui se garde cinq jours dans un torchon.</p>
+            <p class="pain-prix"><span>750&nbsp;g</span><strong>6,40&nbsp;€</strong></p>
+          </div>
+        </li>
+        <li class="pain">
+          <div class="pain-image"><img src="img/campagne.svg" width="240" height="180" alt=""></div>
+          <div class="pain-corps">
+            <p class="pain-moment">7&nbsp;h et 17&nbsp;h</p>
+            <h3>Campagne au levain</h3>
+            <p>Blé et une pointe de seigle, 36&nbsp;h de fermentation. Vendu entier ou à la coupe, au poids, comme vous voulez.</p>
+            <p class="pain-prix"><span>800&nbsp;g · ou 7,20&nbsp;€ le kilo</span><strong>5,80&nbsp;€</strong></p>
+          </div>
+        </li>
+        <li class="pain">
+          <div class="pain-image"><img src="img/seigle.svg" width="240" height="180" alt=""></div>
+          <div class="pain-corps">
+            <p class="pain-moment">7&nbsp;h</p>
+            <h3>Seigle</h3>
+            <p>100&nbsp;% seigle, cuit en moule. Dense, profond, un peu sucré&#8239;: parfait avec du beurre salé, des huîtres ou un fromage de chèvre.</p>
+            <p class="pain-prix"><span>500&nbsp;g</span><strong>4,90&nbsp;€</strong></p>
+          </div>
+        </li>
+        <li class="pain">
+          <div class="pain-image"><img src="img/epeautre.svg" width="240" height="180" alt=""></div>
+          <div class="pain-corps">
+            <p class="pain-moment">11&nbsp;h&nbsp;30</p>
+            <h3>Petit épeautre</h3>
+            <p>Une céréale ancienne au goût de noisette, pauvre en gluten et souvent mieux digérée. Graines de lin et de tournesol.</p>
+            <p class="pain-prix"><span>500&nbsp;g</span><strong>6,90&nbsp;€</strong></p>
+          </div>
+        </li>
+        <li class="pain">
+          <div class="pain-image"><img src="img/fougasse.svg" width="240" height="180" alt=""></div>
+          <div class="pain-corps">
+            <p class="pain-moment">Le samedi seulement</p>
+            <h3>Fougasse olives &amp; romarin</h3>
+            <p>Pâte à tradition, huile d’olive, olives noires dénoyautées à la main. À partager à l’apéritif, ou pas.</p>
+            <p class="pain-prix"><span>la pièce</span><strong>3,80&nbsp;€</strong></p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="aussi">
+        <h3 class="aussi-titre">Et aussi, selon les jours</h3>
+        <ul class="carte-liste carte-liste-2col">
+          <li><span class="carte-nom">Ficelle</span><span class="carte-prix">1,10&nbsp;€</span></li>
+          <li><span class="carte-nom">Pain de mie au lait, tranché</span><span class="carte-prix">4,50&nbsp;€</span></li>
+          <li><span class="carte-nom">Complet aux graines, 400&nbsp;g</span><span class="carte-prix">4,20&nbsp;€</span></li>
+          <li><span class="carte-nom">Figues &amp; noisettes, 300&nbsp;g</span><span class="carte-prix">4,60&nbsp;€</span></li>
+          <li><span class="carte-nom">Couronne de tradition (dimanche)</span><span class="carte-prix">5,90&nbsp;€</span></li>
+          <li><span class="carte-nom">Brioche nature au beurre</span><span class="carte-prix">7,50&nbsp;€</span></li>
+        </ul>
+        <p class="aussi-note">Prix TTC en vigueur depuis le 1<sup>er</sup>&nbsp;septembre 2026. On tranche votre pain sur demande, sauf la tradition&#8239;: elle se déchire.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section douceurs" id="douceurs" aria-labelledby="douceurs-titre">
+    <div class="enveloppe">
+      <div class="section-tete section-tete-centre">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#m-quartier"/></svg>Viennoiseries &amp; pâtisseries</p>
+        <h2 id="douceurs-titre">Pur beurre, <em>tourées à la main</em> chaque nuit.</h2>
+        <p class="section-intro">Joachim, notre pâtissier, travaille un beurre de baratte et les fruits du marché d’à côté. Les viennoiseries sortent à 7&nbsp;h, les pâtisseries dès 10&nbsp;h.</p>
+      </div>
+
+      <div class="onglets" data-onglets>
+        <div class="panneau" id="panneau-viennoiseries">
+          <div class="panneau-image"><img src="img/viennoiseries.svg" width="320" height="200" alt=""></div>
+          <div class="panneau-corps">
+            <h3 class="panneau-titre">Viennoiseries</h3>
+            <ul class="carte-liste carte-liste-riche">
+              <li><span class="carte-nom">Croissant au beurre<small>Feuilletage tourné à la main, 27 couches, croustillant jusqu’au cœur.</small></span><span class="carte-prix">1,40&nbsp;€</span></li>
+              <li><span class="carte-nom">Pain au chocolat<small>Deux barres de chocolat noir à 64&nbsp;%.</small></span><span class="carte-prix">1,60&nbsp;€</span></li>
+              <li><span class="carte-nom">Croissant de lune<small>Notre croissant au levain, farine de sarrasin et miel de Brie.</small></span><span class="carte-prix">2,90&nbsp;€</span></li>
+              <li><span class="carte-nom">Croissant aux amandes<small>Sirop léger, crème d’amande maison, amandes effilées.</small></span><span class="carte-prix">2,70&nbsp;€</span></li>
+              <li><span class="carte-nom">Chausson aux pommes<small>Compote de pommes du verger, à peine sucrée.</small></span><span class="carte-prix">2,80&nbsp;€</span></li>
+              <li><span class="carte-nom">Pain aux raisins<small>Crème pâtissière vanille, raisins macérés au thé noir.</small></span><span class="carte-prix">2,40&nbsp;€</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panneau" id="panneau-patisseries">
+          <div class="panneau-image"><img src="img/patisseries.svg" width="320" height="200" alt=""></div>
+          <div class="panneau-corps">
+            <h3 class="panneau-titre">Pâtisseries</h3>
+            <ul class="carte-liste carte-liste-riche">
+              <li><span class="carte-nom">Flan vanille<small>Pâte feuilletée, crème cuite au four à sole. La part.</small></span><span class="carte-prix">3,90&nbsp;€</span></li>
+              <li><span class="carte-nom">Tarte citron meringuée<small>Citrons jaunes, meringue italienne dorée au chalumeau.</small></span><span class="carte-prix">4,80&nbsp;€</span></li>
+              <li><span class="carte-nom">Éclair café<small>Café torréfié dans le quartier, glaçage sans colorant.</small></span><span class="carte-prix">4,20&nbsp;€</span></li>
+              <li><span class="carte-nom">Paris-Brest<small>Praliné noisette maison, à 60&nbsp;% de fruits secs.</small></span><span class="carte-prix">5,40&nbsp;€</span></li>
+              <li><span class="carte-nom">Nuit noire<small>Mousse chocolat noir, cœur praliné, sablé breton.</small></span><span class="carte-prix">5,60&nbsp;€</span></li>
+              <li><span class="carte-nom">Cookie sarrasin &amp; chocolat<small>Croustillant au bord, fondant au milieu.</small></span><span class="carte-prix">2,50&nbsp;€</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panneau" id="panneau-dimanche">
+          <div class="panneau-image"><img src="img/weekend.svg" width="320" height="200" alt=""></div>
+          <div class="panneau-corps">
+            <h3 class="panneau-titre">Le dimanche</h3>
+            <ul class="carte-liste carte-liste-riche">
+              <li><span class="carte-nom">Brioche feuilletée à partager<small>Six boules à détacher, sucre perlé. Pour 6.</small></span><span class="carte-prix">14,00&nbsp;€</span></li>
+              <li><span class="carte-nom">Tarte aux fruits du moment<small>En ce moment&#8239;: figues et framboises. Pour 6.</small></span><span class="carte-prix">24,00&nbsp;€</span></li>
+              <li><span class="carte-nom">Babka chocolat-noisette<small>Pâte briochée au levain, roulée et tressée.</small></span><span class="carte-prix">12,00&nbsp;€</span></li>
+              <li><span class="carte-nom">Pain perdu brioché<small>Doré au beurre, caramel au sel de mer. La part.</small></span><span class="carte-prix">3,50&nbsp;€</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section commandes" id="commandes" aria-labelledby="commandes-titre">
+    <div class="enveloppe">
+      <div class="section-tete">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#m-gibbeuse"/></svg>Sur commande</p>
+        <h2 id="commandes-titre">Pour vos grandes tablées, <em>on s’en occupe.</em></h2>
+        <p class="section-intro">Anniversaire, baptême, Épiphanie ou réveillon&#8239;: commandez au moins 48&nbsp;h à l’avance, on prépare tout la veille au soir.</p>
+      </div>
+
+      <ul class="commandes-liste">
+        <li class="commande">
+          <div class="commande-image"><img src="img/gateau.svg" width="240" height="180" alt=""></div>
+          <p class="commande-saison">Toute l’année · 48&nbsp;h à l’avance</p>
+          <h3>Gâteaux de fête</h3>
+          <p>Nuit noire, tarte au citron, Paris-Brest géant, et fraisier de mai à juillet. Bougies et petit mot en chocolat offerts.</p>
+          <ul class="tarifs">
+            <li>4 parts <b>22&nbsp;€</b></li>
+            <li>6 parts <b>32&nbsp;€</b></li>
+            <li>8 parts <b>42&nbsp;€</b></li>
+            <li>12 parts <b>60&nbsp;€</b></li>
+          </ul>
+          <a class="lien-fleche" href="#commander" data-choix="Gâteau de fête">Commander un gâteau<svg width="18" height="18" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+        </li>
+        <li class="commande">
+          <div class="commande-image"><img src="img/galette.svg" width="240" height="180" alt=""></div>
+          <p class="commande-saison">Tout le mois de janvier</p>
+          <h3>Galettes des rois</h3>
+          <p>Frangipane, pomme-noisette, ou briochée à la fleur d’oranger. Les fèves en porcelaine sont dessinées chaque année par Odile, céramiste rue du Four-de-Nuit.</p>
+          <ul class="tarifs">
+            <li>4 parts <b>16&nbsp;€</b></li>
+            <li>6 parts <b>24&nbsp;€</b></li>
+            <li>8 parts <b>32&nbsp;€</b></li>
+          </ul>
+          <a class="lien-fleche" href="#commander" data-choix="Galette des rois">Réserver une galette<svg width="18" height="18" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+        </li>
+        <li class="commande">
+          <div class="commande-image"><img src="img/buche.svg" width="240" height="180" alt=""></div>
+          <p class="commande-saison">Décembre · commandes jusqu’au 20</p>
+          <h3>Bûches de Noël</h3>
+          <p>Trois parfums cette année&#8239;: marron-cassis, chocolat-praliné et vanille-poire. Retrait les 23, 24 et 31 décembre.</p>
+          <ul class="tarifs">
+            <li>6 parts <b>36&nbsp;€</b></li>
+            <li>8 parts <b>46&nbsp;€</b></li>
+          </ul>
+          <a class="lien-fleche" href="#commander" data-choix="Bûche de Noël">Réserver une bûche<svg width="18" height="18" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+        </li>
+      </ul>
+
+      <div class="commander" id="commander">
+        <div class="commander-aide">
+          <h3>Comment commander</h3>
+          <ol class="etapes">
+            <li><b>Appelez-nous</b> au <a href="tel:+33199004107" data-demo="Démo&nbsp;: sur le vrai site, ce lien lance l’appel vers la boutique depuis votre téléphone.">01&nbsp;99&nbsp;00&nbsp;41&nbsp;07</a>, passez au comptoir, ou remplissez ce formulaire.</li>
+            <li><b>On vous rappelle sous 24&nbsp;h</b> (sauf le lundi) pour confirmer le parfum, la taille et l’heure de retrait.</li>
+            <li><b>Vous passez le chercher</b> et vous réglez en boutique. Pas d’acompte en dessous de 60&nbsp;€.</li>
+          </ol>
+          <p class="commander-note">Une allergie, un régime particulier&#8239;? Dites-le-nous dans le message&#8239;: on vous répondra franchement sur ce qu’on peut faire, ou pas.</p>
+        </div>
+        <form class="formulaire" method="get" data-demo="Démo&nbsp;: sur le vrai site, votre demande part directement à la boutique, qui vous rappelle sous 24&nbsp;h pour la confirmer.">
+          <div class="champ">
+            <label for="cmd-produit">Ce que vous souhaitez</label>
+            <select id="cmd-produit" name="produit" required>
+              <option value="">Choisissez…</option>
+              <option>Gâteau de fête</option>
+              <option>Galette des rois</option>
+              <option>Bûche de Noël</option>
+              <option>Pains pour une réception</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+          <div class="champ champ-demi">
+            <label for="cmd-parts">Nombre de parts</label>
+            <select id="cmd-parts" name="parts">
+              <option>4 parts</option>
+              <option selected>6 parts</option>
+              <option>8 parts</option>
+              <option>12 parts</option>
+              <option>Plus de 12 parts</option>
+            </select>
+          </div>
+          <div class="champ champ-demi">
+            <label for="cmd-date">Date de retrait</label>
+            <input id="cmd-date" name="date" type="date" required data-delai="2">
+          </div>
+          <div class="champ champ-demi">
+            <label for="cmd-nom">Votre nom</label>
+            <input id="cmd-nom" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="champ champ-demi">
+            <label for="cmd-tel">Téléphone</label>
+            <input id="cmd-tel" name="tel" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="champ">
+            <label for="cmd-message">Un message, un prénom à écrire sur le gâteau <span class="facultatif">(facultatif)</span></label>
+            <textarea id="cmd-message" name="message" rows="3"></textarea>
+          </div>
+          <button class="btn btn-lune btn-grand" type="submit">Envoyer ma demande</button>
+          <p class="formulaire-note">Vos coordonnées servent uniquement à vous rappeler pour cette commande.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fournil" id="fournil" aria-labelledby="fournil-titre">
+    <div class="enveloppe fournil-grille">
+      <div class="fournil-texte">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#m-pleine"/></svg>L’histoire du fournil</p>
+        <h2 id="fournil-titre">On travaille la nuit, <em>comme la lune.</em></h2>
+        <p class="lettrine">Fournil Lune a ouvert en mars 2016, dans l’ancienne boulangerie du 12 rue Imaginaire, fermée depuis trois ans. Maëlle Ternier, boulangère, et Joachim Brévent, pâtissier, s’étaient rencontrés en apprentissage. Ils voulaient un fournil à l’ancienne, ouvert sur la rue, où l’on voit le pain se faire.</p>
+        <p>Notre levain s’appelle Pierrot. Il est né le jour de l’ouverture, d’un peu de farine de seigle et d’eau, et on le nourrit deux fois par jour depuis dix ans. Dans nos pains, pas de levure ajoutée&#8239;: juste lui, du temps, de l’eau et du sel de mer.</p>
+        <p>Les farines viennent du Moulin des Trois-Ormes, à Courtilly-en-Brie, à 64&nbsp;km d’ici. Antoine, le meunier, écrase sur meule de pierre des blés cultivés à moins de 20&nbsp;km du moulin. Chaque automne, on va goûter la nouvelle récolte avec lui.</p>
+        <p class="signature">Maëlle &amp; Joachim</p>
+      </div>
+      <div class="fournil-visuels">
+        <figure class="fig-levain">
+          <img src="img/levain.svg" width="240" height="260" alt="Le bocal du levain Pierrot, plein de bulles, avec un élastique rouge pour suivre sa pousse.">
+          <figcaption>Pierrot, 10 ans, nourri deux fois par jour.</figcaption>
+        </figure>
+        <figure class="fig-moulin">
+          <img src="img/moulin.svg" width="320" height="240" alt="Le moulin à eau des Trois-Ormes au bord de la rivière, entouré de champs de blé.">
+          <figcaption>Le Moulin des Trois-Ormes, à Courtilly-en-Brie.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="enveloppe">
+      <ul class="chiffres">
+        <li><b>10&nbsp;ans</b><span>que Pierrot fait lever nos pains</span></li>
+        <li><b>36&nbsp;h</b><span>de fermentation pour la campagne</span></li>
+        <li><b>64&nbsp;km</b><span>entre le moulin et le fournil</span></li>
+        <li><b>0</b><span>additif, améliorant ou pâte surgelée</span></li>
+      </ul>
+    </div>
+
+    <div class="nuit">
+      <div class="enveloppe">
+        <h3 class="nuit-titre">Une nuit au fournil</h3>
+        <ol class="nuit-etapes">
+          <li>
+            <svg width="28" height="28" aria-hidden="true"><use href="#m-nouvelle"/></svg>
+            <time datetime="21:00">21&nbsp;h</time>
+            <h4>On nourrit Pierrot</h4>
+            <p>Farine de seigle et eau tiède. Il double de volume en quatre heures.</p>
+          </li>
+          <li>
+            <svg width="28" height="28" aria-hidden="true"><use href="#m-croissant"/></svg>
+            <time datetime="23:00">23&nbsp;h</time>
+            <h4>Pétrissage lent</h4>
+            <p>Huit minutes au pétrin à bras, puis la pâte se repose en bacs.</p>
+          </li>
+          <li>
+            <svg width="28" height="28" aria-hidden="true"><use href="#m-quartier"/></svg>
+            <time datetime="02:00">2&nbsp;h</time>
+            <h4>Façonnage à la main</h4>
+            <p>Chaque pain est pesé, boulé, puis posé dans son panier en osier.</p>
+          </li>
+          <li>
+            <svg width="28" height="28" aria-hidden="true"><use href="#m-gibbeuse"/></svg>
+            <time datetime="04:30">4&nbsp;h&nbsp;30</time>
+            <h4>Au four à sole</h4>
+            <p>250&nbsp;°C sur la pierre, un nuage de vapeur, et les grignes s’ouvrent.</p>
+          </li>
+          <li>
+            <svg width="28" height="28" aria-hidden="true"><use href="#m-pleine"/></svg>
+            <time datetime="07:00">7&nbsp;h</time>
+            <h4>On lève le rideau</h4>
+            <p>Les premières baguettes sont encore trop chaudes pour être tranchées.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section questions" id="questions" aria-labelledby="questions-titre">
+    <div class="enveloppe questions-grille">
+      <div class="section-tete">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#i-etoile"/></svg>Bon à savoir</p>
+        <h2 id="questions-titre">Les questions <em>qu’on nous pose</em> au comptoir.</h2>
+      </div>
+      <div class="questions-liste">
+        <details open>
+          <summary>Pouvez-vous me garder du pain&#8239;?</summary>
+          <p>Oui. Appelez avant 16&nbsp;h et dites-nous ce que vous voulez&#8239;: on le met de côté avec votre nom jusqu’à la fermeture. Le dimanche, appelez avant 11&nbsp;h.</p>
+        </details>
+        <details>
+          <summary>Avez-vous du pain sans gluten&#8239;?</summary>
+          <p>Non, et on préfère vous le dire franchement&#8239;: le fournil est couvert de farine de blé du matin au soir. Le petit épeautre et le seigle contiennent moins de gluten, mais ils en contiennent.</p>
+        </details>
+        <details>
+          <summary>Peut-on payer par carte&#8239;?</summary>
+          <p>Oui, dès 1&nbsp;€, sans contact compris. Nous acceptons aussi les espèces et les titres-restaurant.</p>
+        </details>
+        <details>
+          <summary>Livrez-vous les restaurants et les entreprises&#8239;?</summary>
+          <p>Nous fournissons quelques tables du quartier, à vélo, avant 10&nbsp;h. Écrivez-nous avec vos besoins par semaine et on regarde ensemble ce qui est possible.</p>
+        </details>
+        <details>
+          <summary>Que devient le pain invendu&#8239;?</summary>
+          <p>Il part le soir même à l’association de quartier de la rue du Four-de-Nuit, ou devient pain perdu et chapelure. Rien ne finit à la poubelle.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section acces" id="acces" aria-labelledby="acces-titre">
+    <div class="enveloppe acces-grille">
+      <div class="acces-carte">
+        <svg class="plan" viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="plan-titre plan-desc">
+          <title id="plan-titre">Plan du quartier</title>
+          <desc id="plan-desc">Fournil Lune se trouve au 12 rue Imaginaire, à l’angle du passage des Meuniers, à trois minutes à pied du métro Sainte-Aubane par l’avenue Sainte-Aubane.</desc>
+          <rect width="640" height="480" class="plan-fond"/>
+          <g class="plan-ilots">
+            <rect x="194" y="250" width="130" height="64" rx="12" class="plan-square"/>
+            <g class="plan-arbres"><circle cx="212" cy="268" r="8"/><circle cx="236" cy="274" r="10"/><circle cx="262" cy="266" r="7"/><circle cx="286" cy="274" r="9"/><circle cx="308" cy="266" r="7"/></g>
+          </g>
+          <g class="plan-rues">
+            <path d="M-20 152L660 62" class="rue rue-large"/>
+            <path d="M150-20L190 500" class="rue"/>
+            <path d="M458-20L498 500" class="rue rue-moyenne"/>
+            <path d="M-20 330L660 350" class="rue rue-moyenne"/>
+            <path d="M178 232L470 232" class="rue rue-fine"/>
+            <path d="M338 344L338 500" class="rue rue-passage"/>
+          </g>
+          <g class="plan-alignement"><circle cx="40" cy="146" r="4"/><circle cx="100" cy="138" r="4"/><circle cx="160" cy="130" r="4"/><circle cx="240" cy="119" r="4"/><circle cx="300" cy="111" r="4"/><circle cx="360" cy="103" r="4"/><circle cx="420" cy="95" r="4"/><circle cx="540" cy="79" r="4"/><circle cx="600" cy="71" r="4"/></g>
+          <path d="M462 194L472 300L476 334L414 333" class="plan-trajet"/>
+          <g class="plan-textes">
+            <text transform="translate(212 118) rotate(-7.5)">Boulevard des Lanternes</text>
+            <text transform="translate(193 446) rotate(-85.6)">Rue du Four-de-Nuit</text>
+            <text transform="translate(490 472) rotate(-85.6)">Av. Sainte-Aubane</text>
+            <text x="22" y="320" transform="rotate(1.7 22 320)">Rue Imaginaire</text>
+            <text x="186" y="227" class="plan-texte-petit">Rue Basse-des-Moulins</text>
+            <text x="352" y="448" class="plan-texte-petit">Passage des Meuniers</text>
+            <text x="259" y="304" text-anchor="middle" class="plan-texte-petit plan-texte-square">Square des Tilleuls</text>
+          </g>
+          <g class="plan-metro" transform="translate(442 176)">
+            <circle r="15"/>
+            <text y="6" text-anchor="middle">M</text>
+            <text x="-22" y="-2" text-anchor="end" class="plan-metro-nom">Sainte-Aubane</text>
+            <text x="-22" y="16" text-anchor="end" class="plan-metro-ligne">ligne 9</text>
+          </g>
+          <g class="plan-bus" transform="translate(262 352)">
+            <rect x="-17" y="-11" width="34" height="22" rx="6"/>
+            <text y="5" text-anchor="middle">BUS</text>
+          </g>
+          <g class="plan-epingle" transform="translate(398 324)">
+            <ellipse cx="0" cy="2" rx="12" ry="4" class="plan-ombre"/>
+            <path d="M0 0C-6-12-22-22-22-40a22 22 0 0 1 44 0C22-22 6-12 0 0Z"/>
+            <use href="#m-logo" x="-15" y="-55" width="30" height="30"/>
+          </g>
+          <g class="plan-etiquette" transform="translate(392 252)">
+            <rect x="-68" y="-30" width="136" height="40" rx="10"/>
+            <text y="-12" text-anchor="middle" class="plan-etiquette-nom">Fournil Lune</text>
+            <text y="4" text-anchor="middle" class="plan-etiquette-adresse">12 rue Imaginaire</text>
+          </g>
+          <g class="plan-boussole" transform="translate(600 430)">
+            <circle r="18"/>
+            <path d="M0-12L5 2H-5Z"/>
+            <text y="14" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <p class="plan-legende"><span class="plan-legende-trajet" aria-hidden="true"></span>3 minutes à pied depuis le métro</p>
+      </div>
+
+      <div class="acces-infos">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#i-pin"/></svg>Accès</p>
+        <h2 id="acces-titre">À l’angle du passage des&nbsp;Meuniers.</h2>
+        <dl class="infos">
+          <div><dt>Adresse</dt><dd>12 rue Imaginaire, 75011&nbsp;Paris</dd></div>
+          <div><dt>Métro</dt><dd>Sainte-Aubane (ligne 9), sortie avenue Sainte-Aubane, puis 3&nbsp;minutes à pied</dd></div>
+          <div><dt>Bus</dt><dd>Arrêt Square des Tilleuls, juste en face</dd></div>
+          <div><dt>À vélo</dt><dd>Arceaux devant la boutique et stationnement au coin du boulevard</dd></div>
+          <div><dt>Accessibilité</dt><dd>Une petite marche à l’entrée&#8239;: sonnez, on vous sert sur le pas de la porte</dd></div>
+          <div><dt>Paiement</dt><dd>Carte dès 1&nbsp;€, espèces, titres-restaurant</dd></div>
+        </dl>
+        <div class="acces-boutons">
+          <a class="btn btn-nuit" href="#acces" data-demo="Démo&nbsp;: sur le vrai site, ce bouton ouvre l’itinéraire vers la boutique dans votre application de cartes."><svg width="20" height="20" aria-hidden="true"><use href="#i-pin"/></svg>Itinéraire</a>
+          <a class="btn btn-contour" href="tel:+33199004107" data-demo="Démo&nbsp;: sur le vrai site, ce bouton lance l’appel vers la boutique depuis votre téléphone."><svg width="20" height="20" aria-hidden="true"><use href="#i-tel"/></svg>Appeler</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-titre">
+    <div class="enveloppe contact-grille">
+      <div class="contact-infos">
+        <p class="surtitre"><svg width="18" height="18" aria-hidden="true"><use href="#i-mail"/></svg>Contact</p>
+        <h2 id="contact-titre">Un mot, une question&#8239;? <em>Écrivez-nous.</em></h2>
+        <p>Pour une commande urgente, appelez plutôt&#8239;: le comptoir répond plus vite que la boîte mail, surtout le samedi matin.</p>
+        <ul class="contact-liens">
+          <li><a href="tel:+33199004107" data-demo="Démo&nbsp;: sur le vrai site, ce lien lance l’appel vers la boutique depuis votre téléphone."><svg width="22" height="22" aria-hidden="true"><use href="#i-tel"/></svg>01&nbsp;99&nbsp;00&nbsp;41&nbsp;07</a></li>
+          <li><a href="#contact" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre votre messagerie avec l’adresse de la boutique déjà remplie."><svg width="22" height="22" aria-hidden="true"><use href="#i-mail"/></svg>bonjour@fournil-lune.example</a></li>
+          <li><a href="#contact" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre le compte Instagram de la boutique, avec le pain du jour en photo."><svg width="22" height="22" aria-hidden="true"><use href="#i-photo"/></svg>@fournil.lune sur Instagram</a></li>
+        </ul>
+        <form class="lettre" method="get" data-demo="Démo&nbsp;: sur le vrai site, votre adresse est ajoutée à la lettre mensuelle, et vous recevez un e-mail de confirmation.">
+          <p class="lettre-titre">La lettre de la lune</p>
+          <p class="lettre-texte">Une fois par mois&#8239;: le pain du mois et les dates des galettes et des bûches. Jamais de publicité.</p>
+          <div class="lettre-ligne">
+            <label class="sr-only" for="lettre-email">Votre adresse e-mail</label>
+            <input id="lettre-email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required>
+            <button class="btn btn-lune" type="submit">S’inscrire</button>
+          </div>
+        </form>
+      </div>
+      <form class="formulaire formulaire-contact" method="get" data-demo="Démo&nbsp;: sur le vrai site, votre message est envoyé à la boutique, qui vous répond sous 48&nbsp;h.">
+        <div class="champ champ-demi">
+          <label for="contact-nom">Votre nom</label>
+          <input id="contact-nom" name="nom" type="text" autocomplete="name" required>
+        </div>
+        <div class="champ champ-demi">
+          <label for="contact-email">Votre e-mail</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="champ">
+          <label for="contact-sujet">Sujet</label>
+          <select id="contact-sujet" name="sujet">
+            <option>Une question sur nos pains</option>
+            <option>Une commande pour un restaurant ou une entreprise</option>
+            <option>Une candidature</option>
+            <option>Autre chose</option>
+          </select>
+        </div>
+        <div class="champ">
+          <label for="contact-message">Votre message</label>
+          <textarea id="contact-message" name="message" rows="5" required></textarea>
+        </div>
+        <button class="btn btn-nuit btn-grand" type="submit">Envoyer le message</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe pied-grille">
+    <div class="pied-marque">
+      <a class="logo logo-clair" href="./">
+        <svg class="logo-lune" width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><use href="#m-logo"/></svg>
+        <span class="logo-texte"><span class="logo-nom">Fournil Lune</span><span class="logo-sous">Boulangerie au levain<span class="logo-lieu"> · Paris&nbsp;11<sup>e</sup></span></span></span>
+      </a>
+      <p>Du pain au levain naturel, trois fournées par jour, depuis 2016.</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Adresse</h2>
+      <p>12 rue Imaginaire<br>75011 Paris<br>Métro Sainte-Aubane</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Horaires</h2>
+      <p>Mardi au samedi&nbsp;: 7&nbsp;h – 20&nbsp;h<br>Dimanche&nbsp;: 7&nbsp;h – 13&nbsp;h&nbsp;30<br>Fermé le lundi</p>
+    </div>
+    <nav aria-label="Liens du pied de page">
+      <h2 class="pied-titre">Raccourcis</h2>
+      <ul>
+        <li><a href="#comptoir">Les pains du jour</a></li>
+        <li><a href="#commandes">Commander un gâteau</a></li>
+        <li><a href="#acces">Venir à la boutique</a></li>
+        <li><a href="#contact">Nous écrire</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="enveloppe pied-bas">
+    <p>© 2026 Fournil Lune · <a href="#haut" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre la page des mentions légales de la boutique.">Mentions légales</a></p>
+    <p class="credit">Site réalisé par <a href="/">smilt.</a></p>
+  </div>
+</footer>
+</body>
+</html>

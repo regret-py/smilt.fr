@@ -3,8 +3,8 @@
  * JavaScript simple, sans build ni dépendance. Chargé avec `defer`.
  *
  * 1. configuration & outils    4. offres → formulaire     7. pied de page
- * 2. en-tête & menu            5. formulaire de devis
- * 3. apparition au défilement  6. John (assistant)
+ * 2. en-tête & menu            5. formulaire de devis     8. quelle formule ? (questionnaire)
+ * 3. apparition au défilement  6. John (assistant)        9. avant / après
  */
 (function () {
   'use strict';
@@ -93,6 +93,14 @@
   })();
 
   /* ===================== 4. offres → formulaire ===================== */
+  // Lien depuis une autre page : /?formule=Vitrine#devis coche la formule (pages métiers, quiz).
+  (function () {
+    var m = /[?&]formule=([^&#]+)/.exec(location.search);
+    if (!m) return;
+    var v = decodeURIComponent(m[1].replace(/\+/g, ' '));
+    var r = document.querySelectorAll('input[name="formule"]');
+    for (var i = 0; i < r.length; i++) if (r[i].value === v) r[i].checked = true;
+  })();
   // « Choisir Vitrine » coche la bonne formule dans le formulaire de devis.
   all('[data-plan]').forEach(function (a) {
     a.addEventListener('click', function () {
@@ -350,7 +358,11 @@
       { w: 2, k: ['paiement', 'payer', 'acompte', 'solde', 'regler', 'reglement', 'facture', 'facturation', 'virement'],
         a: 'Un acompte au démarrage, le solde à la mise en ligne. Tout est écrit noir sur blanc dans le devis, avant de commencer.' },
       { k: ['exemple', 'exemples', 'realisation', 'realisations', 'portfolio', 'references', 'client', 'clients', 'travaux', 'demo', 'demos', 'maquette', 'maquettes', 'voir vos sites', 'vos sites'],
-        a: 'smilt. ouvre ses portes en 2026 : plutôt que d’aligner des logos, on vous montre <a href="#exemples">trois maquettes</a> de commerces imaginaires, telles qu’on les livrerait.' },
+        a: 'smilt. ouvre ses portes en 2026 : on a construit <a href="/exemples/">sept sites complets</a> pour des commerces imaginaires (boulangerie, coiffeur, caviste, restaurant, fleuriste, fromager, librairie). Visitez-les : tout fonctionne comme sur un vrai site.' },
+      { w: 2, k: ['conseil', 'conseils', 'guide', 'guides', 'article', 'articles', 'blog', 'astuce', 'astuces'],
+        a: 'Nos <a href="/conseils/">conseils</a> sont gratuits et sans jargon : fiche Google, Google Maps, Instagram ou site, mentions légales, nom de domaine, prix d’un site.' },
+      { w: 2, k: ['lexique', 'jargon', 'glossaire', 'definition', 'veut dire', 'signifie'],
+        a: 'Un mot technique vous échappe ? Notre <a href="/lexique/">lexique sans jargon</a> explique nom de domaine, hébergement, référencement, RGPD et bien d’autres, avec des mots simples.' },
       { k: ['refonte', 'refaire', 'existant', 'ancien', 'moderniser', 'renover', 'site actuel'],
         a: 'Vous avez déjà un site ? On peut le refaire : selon l’ampleur, ça rentre dans Essentiel, Vitrine ou Sur-mesure. On regarde ensemble lors du <a href="#devis">devis gratuit</a>.' },
       { k: ['satisfait', 'plait', 'plaira', 'rembourse', 'remboursement', 'garanti', 'garantie', 'retour', 'retours', 'corriger', 'correction'],
@@ -372,7 +384,7 @@
       { k: ['paris', 'zone', 'arrondissement', 'banlieue', 'province', 'france', 'ville', 'region', 'distance', 'deplacer', 'deplacez', 'idf'],
         a: 'On est à Paris et on aime passer en boutique, mais on travaille aussi à distance, partout en France.' },
       { k: ['boulangerie', 'boulanger', 'patisserie', 'coiffeur', 'coiffeuse', 'coiffure', 'caviste', 'cave', 'fleuriste', 'restaurant', 'resto', 'cafe', 'bar', 'fromager', 'fromagerie', 'librairie', 'barbier', 'institut', 'beaute', 'epicerie', 'artisan', 'commerce', 'commerces', 'commercant', 'commercante', 'magasin', 'traiteur', 'boucherie', 'boucher', 'pressing', 'opticien', 'salon', 'esthetique', 'onglerie', 'tatoueur'],
-        a: 'Oui, c’est exactement pour vous ! On fait des sites pour les commerces de quartier : boulangeries, coiffeurs, cavistes, fleuristes, restaurants, artisans… Envie d’un prix ? Le <a href="#devis">devis</a> est gratuit.' },
+        a: 'Oui, c’est exactement pour vous ! On fait des sites pour les commerces de quartier : boulangeries, coiffeurs, cavistes, fleuristes, restaurants, fromagers, librairies, artisans… Chaque métier a sa page, par exemple <a href="/sites-pour/boulangerie/">boulangerie</a> ou <a href="/sites-pour/restaurant/">restaurant</a>. Le <a href="#devis">devis</a> est gratuit.' },
       { k: ['merci', 'super', 'parfait', 'genial', 'cool', 'nickel', 'top'],
         a: 'Avec plaisir ! Belle journée à vous et à votre commerce.' },
       { g: 1, k: ['bonjour', 'salut', 'hello', 'hey', 'coucou', 'bonsoir', 'yo', 'hi', 'slt', 'bjr', 'cc'],
@@ -493,6 +505,9 @@
 
     fab.hidden = false;
     fab.addEventListener('click', function () { openPanel(fab); });
+    // Lien « Demander à John » depuis une autre page : /#john
+    if (location.hash === '#john') setTimeout(function () { openPanel(fab); }, 300);
+    window.addEventListener('hashchange', function () { if (location.hash === '#john' && panel.hidden) openPanel(fab); });
     all('[data-john]').forEach(function (b) {
       b.addEventListener('click', function () { openPanel(b, b.getAttribute('data-john') || ''); });
     });
@@ -522,6 +537,52 @@
       if (quote) new IntersectionObserver(function (es) { onForm = es[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(quote);
     }
     sync();
+  })();
+
+  /* ===================== 8. quelle formule ? (questionnaire) ===================== */
+  // Q1 oui → Sur-mesure ; sinon Q2 « une » → Essentiel, « plusieurs » → Vitrine. Q3 « nous » ajoute l'option Entretien.
+  (function () {
+    var quiz = $('quiz');
+    if (!quiz) return;
+    var plan = $('quizPlan'), why = $('quizWhy'), go = $('quizGo');
+    var PLANS = {
+      'Essentiel': { price: '490 €', why: 'Une page claire qui dit tout : services, horaires, accès, contact. Parfait sur mobile, avec votre fiche Google remise à neuf.' },
+      'Vitrine': { price: '890 €', why: 'Jusqu’à 5 pages pour présenter votre carte, vos tarifs, votre équipe et une galerie, avec un référencement local renforcé.' },
+      'Sur-mesure': { price: 'sur devis', why: 'Click & collect, commande, paiement ou réservation intégrés : on chiffre votre projet gratuitement, avec un prix fixe.' }
+    };
+    var choice = null;
+    function v(name) { var r = quiz.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+    function update() {
+      var q1 = v('q1'), q2 = v('q2'), q3 = v('q3');
+      choice = q1 === 'oui' ? 'Sur-mesure' : (q1 && q2) ? (q2 === 'une' ? 'Essentiel' : 'Vitrine') : null;
+      if (!choice) { plan.textContent = q1 ? 'Encore une question.' : 'Répondez aux deux premières questions.'; why.textContent = ''; go.hidden = true; return; }
+      var care = q3 === 'nous';
+      plan.textContent = '';
+      plan.appendChild(document.createTextNode('Formule '));
+      var b = document.createElement('b'); b.textContent = choice; plan.appendChild(b);
+      plan.appendChild(document.createTextNode(narrow(' · ' + PLANS[choice].price.replace(' ', '\u00a0') + (care ? ' + Entretien 19\u00a0€ / mois' : ''))));
+      why.textContent = narrow(PLANS[choice].why + (care ? ' Avec l’option Entretien, vous envoyez un message et on s’occupe des mises à jour.' : ''));
+      go.hidden = false;
+    }
+    quiz.addEventListener('change', update);
+    quiz.addEventListener('submit', function (e) { e.preventDefault(); });
+    // « Demander ce devis » coche la formule (et l'option) dans le formulaire de devis.
+    go.addEventListener('click', function () {
+      var r = document.querySelector('#quoteForm input[name="formule"][value="' + choice + '"]');
+      if (r) r.checked = true;
+      var care = $('f-care');
+      if (care) care.checked = v('q3') === 'nous';
+    });
+    update();
+  })();
+
+  /* ===================== 9. avant / après ===================== */
+  (function () {
+    var view = $('baView'), range = $('baRange');
+    if (!view || !range) return;
+    function set() { view.style.setProperty('--ba', range.value + '%'); }
+    range.addEventListener('input', set);
+    set();
   })();
 
   /* ===================== 7. pied de page ===================== */

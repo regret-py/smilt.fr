@@ -7,9 +7,17 @@ Avec **John**, le petit assistant automatique du site (le « i » du logo).
 ## Structure
 
 ```
-index.html              page d'accueil : hero, promesse, offres, méthode, exemples, questions, devis
+index.html              page d'accueil : hero, promesse, offres, quelle formule ?, engagements, méthode, exemples
+                        (captures + avant/après), conseils, questions, devis
+exemples/               galerie (index.html) et 7 sites de démonstration complets, un dossier chacun :
+                        fournil-lune, salon-frange, cave-tanin, bouillon-marelle, atelier-pistil, fromagerie-caille,
+                        librairie-rature (+ demo.css / demo.js : bandeau « site de démonstration » et bulles explicatives)
+conseils/               6 articles pour les commerçants + flux RSS (feed.xml)
+sites-pour/             une page par métier (boulangerie, coiffeur, caviste, restaurant, fleuriste, fromager, librairie)
+lexique/                le lexique sans jargon
 mentions-legales.html   mentions légales, données personnelles, cookies (à compléter, voir plus bas)
 404.html                page introuvable
+outils/gabarit-page.html  modèle à copier pour créer une nouvelle page (en-tête, pied de page, CSP déjà en place)
 assets/css/site.css     toute la mise en forme (variables de couleur en haut du fichier)
 assets/js/site.js       menu, animations, formulaire de devis, John (un seul fichier, commenté par section)
 assets/js/devis-pdf.js  devis PDF : coordonnées de l'entreprise, offres, conditions, calcul et fabrication du PDF
@@ -41,6 +49,20 @@ robots.txt, sitemap.xml, CNAME, .nojekyll, vercel.json, package.json
   Ce sont des commerces fictifs, et c'est écrit sur la page. Quand vous aurez de vrais clients, remplacez-les par des captures
   de leurs sites (avec leur accord).
 - Mettre à jour `<lastmod>` dans `sitemap.xml` après un changement important.
+
+## Exemples, conseils, pages métiers
+
+- **Sites de démonstration** (`exemples/<nom>/`) : des commerces **fictifs**, chacun avec sa propre identité (polices libres auto-hébergées,
+  illustrations SVG dessinées pour lui). Ils portent un bandeau « Site de démonstration réalisé par smilt. » et la balise `noindex`
+  (pour ne pas apparaître dans Google comme de vrais commerces). Les numéros de téléphone sont dans la plage réservée à la fiction
+  par l'Arcep (01 99 00…), les e-mails en `.example`. Les boutons qui sortiraient du site (appel, itinéraire, paiement, réservation)
+  portent `data-demo="…"` et affichent une bulle explicative.
+- **Captures** : `assets/img/exemples/<nom>-desktop.webp/.jpg` (1200×750) et `-mobile` (390×844), plus `fournil-lune-avant`
+  pour l'avant/après. À refaire après une modification d'un site de démonstration (script de capture Playwright décrit plus bas).
+- **Conseils et pages métiers** : partir de `outils/gabarit-page.html`. Ajouter la page à `sitemap.xml` et, pour un article,
+  à `conseils/index.html` et `conseils/feed.xml`.
+- **Quelle formule ?** : le questionnaire de l'accueil (section 8 de `assets/js/site.js`) recommande Essentiel, Vitrine ou
+  Sur-mesure et coche la formule dans le formulaire de devis. Un lien `/?formule=Vitrine#devis` fait de même depuis une autre page.
 
 ## John, l'assistant
 

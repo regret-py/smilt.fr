@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="240" height="180">
+  <ellipse cx="120" cy="156" rx="106" ry="9" fill="#2A1206" opacity=".14"/>
+  <rect x="14" y="140" width="212" height="12" rx="6" fill="#C9B48E"/>
+  <path d="M36 140V84C36 66 52 58 70 58H190V140Z" fill="#5A3420"/>
+  <path d="M44 96C80 90 130 92 186 86M42 116C90 110 140 114 186 108M60 70C100 66 140 68 186 64M50 132C90 128 150 130 186 126" fill="none" stroke="#3B1E10" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="190" cy="99" rx="22" ry="41" fill="#6B4129"/>
+  <ellipse cx="190" cy="99" rx="16" ry="34" fill="#F3DEB2"/>
+  <path d="M190 72C178 80 180 100 190 104S200 116 190 126" fill="none" stroke="#6B4129" stroke-width="5" stroke-linecap="round"/>
+  <!-- sucre glace -->
+  <g fill="#FBF4E6"><ellipse cx="96" cy="60" rx="34" ry="5"/><circle cx="62" cy="64" r="3"/><circle cx="140" cy="60" r="2.5"/><circle cx="160" cy="62" r="2"/></g>
+  <!-- champignon meringue -->
+  <g transform="translate(72 112)">
+    <rect x="-5" y="0" width="10" height="26" rx="4" fill="#FBF4E6"/>
+    <path d="M-18 4C-18-10 18-10 18 4Z" fill="#E8D6B4"/>
+    <circle cx="-6" cy="-2" r="2" fill="#B9692D"/><circle cx="6" cy="-4" r="1.6" fill="#B9692D"/>
+  </g>
+  <!-- branche de houx -->
+  <g transform="translate(128 50)">
+    <path d="M0 0C-12-8-26-6-30 2-22 0-16 6-10 4-6 10 0 6 0 0Z" fill="#3E5A3A"/>
+    <path d="M0 0C12-8 26-6 30 2 22 0 16 6 10 4 6 10 0 6 0 0Z" fill="#4F6E48"/>
+    <circle cx="-4" cy="-6" r="4.5" fill="#B83A2A"/><circle cx="5" cy="-7" r="4.5" fill="#C9483A"/>
+  </g>
+</svg>

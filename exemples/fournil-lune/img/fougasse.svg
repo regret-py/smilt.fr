@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="240" height="180">
+  <defs><mask id="trous"><rect width="240" height="180" fill="#fff"/><g fill="#000">
+    <path d="M114 44C104 54 98 66 96 78 108 70 114 58 114 44Z"/>
+    <path d="M126 44C136 54 142 66 144 78 132 70 126 58 126 44Z"/>
+    <path d="M112 90C96 96 82 106 74 118 92 116 106 106 112 90Z"/>
+    <path d="M128 90C144 96 158 106 166 118 148 116 134 106 128 90Z"/>
+    <path d="M114 128C102 132 92 140 88 148 102 148 112 140 114 128Z"/>
+    <path d="M126 128C138 132 148 140 152 148 138 148 128 140 126 128Z"/>
+</g></mask></defs>
+  <ellipse cx="120" cy="156" rx="96" ry="8" fill="#2A1206" opacity=".14"/>
+  <g mask="url(#trous)">
+  <path d="M120 18C170 40 204 86 196 128 190 152 160 158 120 158S50 152 44 128C36 86 70 40 120 18Z" fill="#D9934D"/>
+  <path d="M44 128C50 152 80 158 120 158S190 152 196 128C192 140 168 150 120 150S48 140 44 128Z" fill="#B9692D"/>
+  </g>
+  <g fill="#3B3524"><ellipse cx="120" cy="34" rx="5" ry="4"/><ellipse cx="88" cy="96" rx="5" ry="4"/><ellipse cx="160" cy="88" rx="5" ry="4"/><ellipse cx="120" cy="112" rx="5" ry="4"/><ellipse cx="72" cy="134" rx="5" ry="4"/><ellipse cx="170" cy="136" rx="5" ry="4"/></g>
+  <g fill="none" stroke="#56693A" stroke-width="2.5" stroke-linecap="round">
+    <path d="M104 64l-6-4M104 64l-2-7"/><path d="M146 108l7-3M146 108l3-7"/><path d="M98 120l-7 2M98 120l-3-6"/>
+  </g>
+</svg>

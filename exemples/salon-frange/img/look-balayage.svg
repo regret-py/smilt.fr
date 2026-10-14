@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="300" height="360">
+  <!-- Balayage lumière -->
+  <defs><linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#171915"/><stop offset=".45" stop-color="#171915"/><stop offset="1" stop-color="#DCE3D3"/></linearGradient></defs>
+  <path d="M50 50c-2 103 4 206 0 310 h16c-4 -104 2 -207 0 -310z" fill="url(#b)"/><path d="M70 50c-2 98 4 196 0 294 h16c-4 -98 2 -196 0 -294z" fill="#171915"/><path d="M90 50c-2 96 4 192 0 288 h16c-4 -96 2 -192 0 -288z" fill="url(#b)"/><path d="M110 50c-2 103 4 206 0 310 h16c-4 -104 2 -207 0 -310z" fill="#171915"/><path d="M130 50c-2 98 4 196 0 294 h16c-4 -98 2 -196 0 -294z" fill="url(#b)"/><path d="M150 50c-2 96 4 192 0 288 h16c-4 -96 2 -192 0 -288z" fill="#171915"/><path d="M170 50c-2 103 4 206 0 310 h16c-4 -104 2 -207 0 -310z" fill="url(#b)"/><path d="M190 50c-2 98 4 196 0 294 h16c-4 -98 2 -196 0 -294z" fill="#171915"/><path d="M210 50c-2 96 4 192 0 288 h16c-4 -96 2 -192 0 -288z" fill="url(#b)"/><path d="M230 50c-2 103 4 206 0 310 h16c-4 -104 2 -207 0 -310z" fill="#171915"/><path d="M250 50c-2 98 4 196 0 294 h16c-4 -98 2 -196 0 -294z" fill="url(#b)"/>
+  <path d="M40 50c40-24 180-24 220 0" fill="none" stroke="#171915" stroke-width="6" stroke-linecap="round"/>
+
+</svg>

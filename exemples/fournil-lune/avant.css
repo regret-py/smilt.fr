@@ -103,7 +103,7 @@ img { max-width: 100%; height: auto; }
 .centre img { display: inline-block; }
 .contenu h3 {
   margin: 18px 0 8px; padding: 2px 8px; color: #FFFFFF;
-  background: linear-gradient(to right, #006600, #2E8B00 60%, #7FC400);
+  background: linear-gradient(to right, #005500, #1F7A00 60%, #5FA800);
   border: 2px outset #66CC33;
   font: 700 17px "Comic Sans MS", "Comic Neue", cursive;
   text-shadow: 1px 1px 0 #003300;

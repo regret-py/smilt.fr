@@ -237,7 +237,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   content: "prochaine"; display: inline-block; margin-left: 8px; padding: 3px 8px 2px; border-radius: 999px;
   background: var(--nuit); color: var(--lune-pale); font: 700 .62rem/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; vertical-align: 4px;
 }
-.fournees-liste .passee { opacity: .55; }
+.fournees-liste .passee svg { opacity: .4; }
+.fournees-liste .passee b { color: var(--encre-douce); font-weight: 500; }
 
 .hero-visuel { position: relative; width: min(100%, 520px); justify-self: center; margin-top: 8px; }
 .hero-visuel::before {
@@ -272,7 +273,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .tampon { width: 132px; height: 132px; right: -26px; }
 }
 @media (min-width: 960px) {
-  .hero { padding: 40px 0 88px; }
+  .hero { display: flex; align-items: center; min-height: min(calc(100vh - 86px), 980px); padding: 40px 0 72px; }
   .hero-grille { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); grid-template-rows: auto auto; align-items: center; column-gap: clamp(40px, 5vw, 88px); row-gap: 0; }
   .hero-texte { grid-column: 1; grid-row: 1; align-self: end; }
   .fournees { grid-column: 1; grid-row: 2; align-self: start; margin-top: 40px; }
@@ -548,7 +549,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .plan-trajet { fill: none; stroke: var(--croute-vive); stroke-width: 4.5; stroke-dasharray: 1 10; stroke-linecap: round; stroke-linejoin: round; }
 .plan-textes text { font: 600 15px var(--sans); fill: #6E5A44; letter-spacing: .02em; }
 .plan-textes .plan-texte-petit { font-size: 12px; }
-.plan-textes .plan-texte-square { fill: #5D6232; }
+.plan-textes .plan-texte-square { fill: #474B22; }
 .plan-metro circle { fill: var(--nuit); }
 .plan-metro text { font: 800 17px var(--sans); fill: var(--farine-claire); }
 .plan-metro .plan-metro-nom { font: 700 15px var(--sans); fill: var(--nuit); }
@@ -587,6 +588,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .lettre-texte { font-size: .94rem; color: var(--encre-douce); }
 .lettre-ligne { display: flex; flex-wrap: wrap; gap: 10px; }
 .lettre input { flex: 1 1 200px; width: auto; }
+.lettre input::placeholder { color: var(--encre-douce); opacity: 1; }
 .lettre .btn { flex: none; }
 .formulaire-contact { padding: 26px 22px; border-radius: var(--rayon); background: var(--farine-claire); border: 1px solid var(--ligne); }
 .formulaire-contact .champ input, .formulaire-contact .champ select, .formulaire-contact .champ textarea { background: var(--farine); }

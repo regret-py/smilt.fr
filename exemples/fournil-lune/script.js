@@ -69,6 +69,14 @@
   function fournee(n) {
     if (!HORAIRES[n.jour]) { return { index: -1, texte: 'Pas de fournée le lundi\u00a0: le fournil se repose.' }; }
     var liste = n.jour === 0 ? FOURNEES_DIMANCHE : FOURNEES_SEMAINE;
+    if (n.minutes >= HORAIRES[n.jour][1]) {
+      for (var k = 1; k <= 7; k++) {
+        var j = (n.jour + k) % 7;
+        if (HORAIRES[j]) {
+          return { index: liste.length, texte: 'Première fournée ' + (k === 1 ? 'demain' : JOURS[j]) + ' à ' + heure(HORAIRES[j][0]) };
+        }
+      }
+    }
     for (var i = 0; i < liste.length; i++) {
       var f = liste[i].m;
       if (n.minutes < f) { return { index: i, texte: 'Prochaine fournée à ' + heure(f) }; }

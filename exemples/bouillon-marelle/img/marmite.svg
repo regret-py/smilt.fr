@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420">
+  <g fill="none" stroke="#F5EDDA" stroke-linecap="round" stroke-width="9" opacity=".9">
+    <path d="M150 150c-18-22 18-38 0-62s16-40 4-58"/>
+    <path d="M200 140c-20-26 20-42 0-70s18-44 4-62"/>
+    <path d="M250 150c-18-22 18-38 0-62s16-40 4-58"/>
+  </g>
+  <ellipse cx="200" cy="368" rx="150" ry="16" fill="#0F2A1F" opacity=".55"/>
+  <!-- poignées -->
+  <rect x="62" y="230" width="52" height="30" rx="15" fill="#8E2817"/>
+  <rect x="286" y="230" width="52" height="30" rx="15" fill="#8E2817"/>
+  <!-- corps -->
+  <path d="M90 210h220v96c0 34-24 56-58 56H148c-34 0-58-22-58-56z" fill="#D8462F"/>
+  <path d="M90 300c0 36 24 62 58 62h104c34 0 58-26 58-62z" fill="#B23722"/>
+  <path d="M90 210h220v20H90z" fill="#B23722"/>
+  <path d="M112 248c0 22 0 40 8 58" fill="none" stroke="#F5EDDA" stroke-width="8" stroke-linecap="round" opacity=".45"/>
+  <!-- étiquette carrelage -->
+  <g transform="translate(176 262)">
+    <rect width="48" height="48" rx="6" fill="#F5EDDA"/>
+    <path d="M10 38h10V28H10zM10 28h10V18H10zM20 28h10V18H20zM10 18c0-6 4-9 10-9s10 3 10 9z" fill="none" stroke="#1E4636" stroke-width="2.6" stroke-linejoin="round" transform="translate(4 0)"/>
+  </g>
+  <!-- couvercle -->
+  <path d="M82 206c8-38 58-62 118-62s110 24 118 62z" fill="#B23722"/>
+  <path d="M120 186c18-18 46-28 80-28" fill="none" stroke="#F5EDDA" stroke-width="7" stroke-linecap="round" opacity=".4"/>
+  <rect x="74" y="200" width="252" height="16" rx="8" fill="#8E2817"/>
+  <rect x="176" y="124" width="48" height="24" rx="12" fill="#E7AE33"/>
+  <rect x="190" y="140" width="20" height="10" fill="#C08A1E"/>
+  <!-- louche -->
+  <path d="M318 120l-58 96" stroke="#E7AE33" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="320" cy="116" r="9" fill="none" stroke="#E7AE33" stroke-width="6"/>
+</svg>

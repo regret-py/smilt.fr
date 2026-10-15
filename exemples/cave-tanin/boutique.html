@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Boutique click &amp; collect · Cave Tanin, Paris 20e</title>
+<meta name="description" content="Commandez vos vins nature en ligne et retirez-les à la cave Tanin, 41 rue de la Maquette, Paris 20e. Rouges, blancs, oranges, rosés et pét-nat de 9 à 39 €.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4EBDA">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="evitement" href="#main">Aller au contenu</a>
+
+<header class="tete">
+  <div class="enveloppe tete-in">
+    <a class="logo" href="./" aria-label="Cave Tanin, accueil">
+      <img class="logo-marque" src="img/favicon.svg" alt="" width="44" height="44">
+      <span class="logo-texte"><span class="logo-sur">Cave · vins nature</span><span class="logo-nom">Tanin</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="./">Accueil</a></li>
+        <li><a href="boutique.html" aria-current="page">Boutique</a></li>
+        <li><a href="degustations.html">Dégustations</a></li>
+        <li><a href="./#coffrets">Coffrets</a></li>
+        <li><a href="./#acces">Accès</a></li>
+      </ul>
+    </nav>
+    <div class="tete-actions">
+      <p class="statut" data-statut><span class="statut-point" aria-hidden="true"></span><span data-statut-texte>Mar.–dim.</span></p>
+      <a class="btn btn-lie btn-petit panier-lien" href="#panier">Panier <span class="panier-compte" data-compte-entete>0</span></a>
+    </div>
+    <button class="burger" type="button" aria-controls="nav" aria-expanded="false" hidden><span class="burger-barres" aria-hidden="true"></span><span class="burger-texte">Menu</span></button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="page-tete" aria-labelledby="titre-boutique">
+    <div class="enveloppe page-tete-in">
+      <div>
+        <p class="sur-titre"><span class="trait" aria-hidden="true"></span>Click &amp; collect · retrait à la cave</p>
+        <h1 id="titre-boutique">La boutique</h1>
+        <p class="chapo">Seize bouteilles de la cave, disponibles tout de suite. Réservez-les ici, payez en ligne, passez les prendre&nbsp;: votre sac vous attend au frais, à votre nom.</p>
+      </div>
+      <ul class="infos-retrait">
+        <li>Retrait dès 2&nbsp;h après la commande, aux heures d’ouverture.</li>
+        <li>Pas de minimum. À partir de 6 bouteilles, −5&nbsp;% sur le total.</li>
+        <li>Toute la cave (180 vins) reste disponible au comptoir.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="enveloppe boutique">
+    <div>
+      <form class="filtres" action="#" aria-label="Filtrer les vins">
+        <fieldset>
+          <legend>Couleur</legend>
+          <div class="puces">
+            <label class="puce"><input type="radio" name="couleur" value="tous" checked><span>Tous</span></label>
+            <label class="puce"><input type="radio" name="couleur" value="rouge"><span><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge</span></label>
+            <label class="puce"><input type="radio" name="couleur" value="blanc"><span><span class="pastille-couleur blanc" aria-hidden="true"></span>Blanc</span></label>
+            <label class="puce"><input type="radio" name="couleur" value="orange"><span><span class="pastille-couleur orange" aria-hidden="true"></span>Orange</span></label>
+            <label class="puce"><input type="radio" name="couleur" value="rose"><span><span class="pastille-couleur rose" aria-hidden="true"></span>Rosé</span></label>
+            <label class="puce"><input type="radio" name="couleur" value="petillant"><span><span class="pastille-couleur petillant" aria-hidden="true"></span>Pétillant</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Prix</legend>
+          <div class="puces">
+            <label class="puce"><input type="radio" name="prix" value="tous" checked><span>Tous les prix</span></label>
+            <label class="puce"><input type="radio" name="prix" value="bas"><span>Moins de 15&nbsp;€</span></label>
+            <label class="puce"><input type="radio" name="prix" value="moyen"><span>15 à 25&nbsp;€</span></label>
+            <label class="puce"><input type="radio" name="prix" value="haut"><span>Plus de 25&nbsp;€</span></label>
+          </div>
+        </fieldset>
+        <p class="resultat" id="resultat" role="status">16 vins</p>
+        <p class="sans-js">Les filtres et le panier ont besoin de JavaScript. Vous pouvez aussi commander par téléphone au 01&nbsp;99&nbsp;00&nbsp;41&nbsp;27.</p>
+      </form>
+
+      <ul class="catalogue" id="catalogue">
+        <li class="vin" id="vin-gamay-pierre" data-id="gamay-pierre" data-nom="Gamay de Pierre" data-prix="17" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-gamay-pierre.svg" alt="Bouteille de Gamay de Pierre, étiquette ornée d’un motif soleil lie-de-vin." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Beaujolais</p>
+          <h2>Gamay de Pierre</h2>
+          <p class="carte-vin-domaine">Domaine Lafrêche · gamay</p>
+          <p class="vin-note">Cerise croquante, granit. Se sert frais, autour de 14&nbsp;°C. Le rouge du mardi soir.</p>
+          <div class="vin-pied"><span class="prix">17&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Gamay de Pierre au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-petit-caillou" data-id="petit-caillou" data-nom="Petit Caillou" data-prix="12" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-petit-caillou.svg" alt="Bouteille de Petit Caillou, étiquette ornée d’un motif semis de points." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Languedoc</p>
+          <h2>Petit Caillou</h2>
+          <p class="carte-vin-domaine">Mas de l’Escarbille · cinsault, grenache</p>
+          <p class="vin-note">Fruits rouges et garrigue légère, aucune dureté. Pour les grillades et les copains.</p>
+          <div class="vin-pied"><span class="prix">12&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Petit Caillou au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-la-fougue" data-id="la-fougue" data-nom="La Fougue" data-prix="15" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-la-fougue.svg" alt="Bouteille de La Fougue, étiquette ornée d’un motif rayures obliques ocre." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Touraine</p>
+          <h2>La Fougue</h2>
+          <p class="carte-vin-domaine">Domaine Vaurelle · côt</p>
+          <p class="vin-note">Mûre, poivre, un joli grain. Il aime passer une heure en carafe.</p>
+          <div class="vin-pied"><span class="prix">15&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter La Fougue au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-ombre-haute" data-id="ombre-haute" data-nom="Ombre Haute" data-prix="22" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-ombre-haute.svg" alt="Bouteille de Ombre Haute, étiquette ornée d’un motif montagnes grises." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Auvergne</p>
+          <h2>Ombre Haute</h2>
+          <p class="carte-vin-domaine">Clos des Ravinettes · gamay d’Auvergne</p>
+          <p class="vin-note">Vignes à 500&nbsp;m sur basalte&nbsp;: tendu, fumé, très digeste.</p>
+          <div class="vin-pied"><span class="prix">22&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Ombre Haute au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-trousseau" data-id="trousseau" data-nom="Trousseau des Combes" data-prix="34" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-trousseau.svg" alt="Bouteille de Trousseau des Combes, étiquette ornée d’un motif lune." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Jura</p>
+          <h2>Trousseau des Combes</h2>
+          <p class="carte-vin-domaine">Domaine Brûlefer · trousseau</p>
+          <p class="vin-note">Robe pâle, épices douces, une profondeur rare. À partager avec qui saura l’apprécier.</p>
+          <div class="vin-pied"><span class="prix">34&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Trousseau des Combes au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-syrah-sauvage" data-id="syrah-sauvage" data-nom="Syrah sauvage" data-prix="19" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-syrah-sauvage.svg" alt="Bouteille de Syrah sauvage, étiquette ornée d’un motif étoile ocre sur fond noir." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Ardèche</p>
+          <h2>Syrah sauvage</h2>
+          <p class="carte-vin-domaine">Les Vignes Basses · syrah</p>
+          <p class="vin-note">Violette, olive noire, poivre. Superbe avec un plat mijoté.</p>
+          <div class="vin-pied"><span class="prix">19&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Syrah sauvage au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-vin-de-soif" data-id="vin-de-soif" data-nom="Vin de soif, le litre" data-prix="9" data-couleur="rouge">
+          <div class="carte-vin-visuel teinte-rouge"><img src="img/vin-vin-de-soif.svg" alt="Bouteille de Vin de soif, le litre, étiquette ornée d’un motif damier." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rouge" aria-hidden="true"></span>Rouge · Beaujolais</p>
+          <h2>Vin de soif, le litre</h2>
+          <p class="carte-vin-domaine">Domaine Lafrêche · gamay</p>
+          <p class="vin-note">Le litre des apéros qui s’éternisent. Fruité, léger, sans prise de tête.</p>
+          <div class="vin-pied"><span class="prix">9&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Vin de soif, le litre au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-chenin-lauzes" data-id="chenin-lauzes" data-nom="Chenin des Lauzes" data-prix="24" data-couleur="blanc">
+          <div class="carte-vin-visuel teinte-blanc"><img src="img/vin-chenin-lauzes.svg" alt="Bouteille de Chenin des Lauzes, étiquette ornée d’un motif losanges ocre." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur blanc" aria-hidden="true"></span>Blanc · Anjou</p>
+          <h2>Chenin des Lauzes</h2>
+          <p class="carte-vin-domaine">Domaine de la Bruyère Haute · chenin</p>
+          <p class="vin-note">Coing, miel et schiste. Un blanc droit qui tiendra dix ans en cave.</p>
+          <div class="vin-pied"><span class="prix">24&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Chenin des Lauzes au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-savagnin" data-id="savagnin" data-nom="Savagnin ouillé" data-prix="39" data-couleur="blanc">
+          <div class="carte-vin-visuel teinte-blanc"><img src="img/vin-savagnin.svg" alt="Bouteille de Savagnin ouillé, étiquette ornée d’un motif spirale dorée." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur blanc" aria-hidden="true"></span>Blanc · Jura</p>
+          <h2>Savagnin ouillé</h2>
+          <p class="carte-vin-domaine">Domaine Brûlefer · savagnin</p>
+          <p class="vin-note">Noix fraîche, citron confit, une longueur folle. Pour un comté de 24&nbsp;mois.</p>
+          <div class="vin-pied"><span class="prix">39&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Savagnin ouillé au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-sel-de-mer" data-id="sel-de-mer" data-nom="Sel de Mer" data-prix="11" data-couleur="blanc">
+          <div class="carte-vin-visuel teinte-blanc"><img src="img/vin-sel-de-mer.svg" alt="Bouteille de Sel de Mer, étiquette ornée d’un motif poisson bleu." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur blanc" aria-hidden="true"></span>Blanc · Languedoc</p>
+          <h2>Sel de Mer</h2>
+          <p class="carte-vin-domaine">Mas de l’Escarbille · piquepoul</p>
+          <p class="vin-note">Citron, iode, salinité. Huîtres, sardines grillées, terrasse.</p>
+          <div class="vin-pied"><span class="prix">11&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Sel de Mer au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-altesse" data-id="altesse" data-nom="Altesse en l’air" data-prix="21" data-couleur="blanc">
+          <div class="carte-vin-visuel teinte-blanc"><img src="img/vin-altesse.svg" alt="Bouteille de Altesse en l’air, étiquette ornée d’un motif arche crème." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur blanc" aria-hidden="true"></span>Blanc · Savoie</p>
+          <h2>Altesse en l’air</h2>
+          <p class="carte-vin-domaine">Domaine Clapassou · altesse</p>
+          <p class="vin-note">Fleurs blanches, amande, la fraîcheur des montagnes. Pour la fondue, évidemment.</p>
+          <div class="vin-pied"><span class="prix">21&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Altesse en l’air au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-pinot-macere" data-id="pinot-macere" data-nom="Pinot gris macéré" data-prix="26" data-couleur="orange">
+          <div class="carte-vin-visuel teinte-orange"><img src="img/vin-pinot-macere.svg" alt="Bouteille de Pinot gris macéré, étiquette ornée d’un motif vagues orange." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur orange" aria-hidden="true"></span>Orange · Alsace</p>
+          <h2>Pinot gris macéré</h2>
+          <p class="carte-vin-domaine">Domaine Kieffer-Lenz · pinot gris</p>
+          <p class="vin-note">Dix jours sur peaux&nbsp;: abricot sec, thé noir, légère amertume. Cuisine épicée.</p>
+          <div class="vin-pied"><span class="prix">26&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Pinot gris macéré au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-muscat-ombre" data-id="muscat-ombre" data-nom="Muscat à l’ombre" data-prix="18" data-couleur="orange">
+          <div class="carte-vin-visuel teinte-orange"><img src="img/vin-muscat-ombre.svg" alt="Bouteille de Muscat à l’ombre, étiquette ornée d’un motif feuille orange." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur orange" aria-hidden="true"></span>Orange · Roussillon</p>
+          <h2>Muscat à l’ombre</h2>
+          <p class="carte-vin-domaine">Mas Ferrol · muscat d’Alexandrie</p>
+          <p class="vin-note">Sec, si si&#8239;! Écorce d’orange, rose, tanin fin. Le plus surprenant de la cave.</p>
+          <div class="vin-pied"><span class="prix">18&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Muscat à l’ombre au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-rouge-gorge" data-id="rouge-gorge" data-nom="Rouge-Gorge" data-prix="13" data-couleur="rose">
+          <div class="carte-vin-visuel teinte-rose"><img src="img/vin-rouge-gorge.svg" alt="Bouteille de Rouge-Gorge, étiquette ornée d’un motif oiseau." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rose" aria-hidden="true"></span>Rosé · Ardèche</p>
+          <h2>Rouge-Gorge</h2>
+          <p class="carte-vin-domaine">Les Vignes Basses · grenache</p>
+          <p class="vin-note">Pêche de vigne, fraise des bois. Un rosé de repas, pas de piscine.</p>
+          <div class="vin-pied"><span class="prix">13&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Rouge-Gorge au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-grolleau-gris" data-id="grolleau-gris" data-nom="Grolleau gris" data-prix="14" data-couleur="rose">
+          <div class="carte-vin-visuel teinte-rose"><img src="img/vin-grolleau-gris.svg" alt="Bouteille de Grolleau gris, étiquette ornée d’un motif rayures roses." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur rose" aria-hidden="true"></span>Rosé · Anjou</p>
+          <h2>Grolleau gris</h2>
+          <p class="carte-vin-domaine">Clos Pétrel · grolleau gris</p>
+          <p class="vin-note">Pamplemousse rose, poivre blanc. Seulement 10,5&nbsp;% d’alcool.</p>
+          <div class="vin-pied"><span class="prix">14&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Grolleau gris au panier">Ajouter</button></div>
+        </li>
+        <li class="vin" id="vin-bulle-aout" data-id="bulle-aout" data-nom="Bulle d’Août" data-prix="16" data-couleur="petillant">
+          <div class="carte-vin-visuel teinte-bulles"><img src="img/vin-bulle-aout.svg" alt="Bouteille de Bulle d’Août, étiquette ornée d’un motif bulles." width="120" height="360" loading="lazy"></div>
+          <p class="carte-vin-meta"><span class="pastille-couleur petillant" aria-hidden="true"></span>Pétillant · Touraine</p>
+          <h2>Bulle d’Août</h2>
+          <p class="carte-vin-domaine">Domaine Vaurelle · chenin</p>
+          <p class="vin-note">Pét-nat trouble et joyeux, poire et brioche. Décapsulez-le bien frais.</p>
+          <div class="vin-pied"><span class="prix">16&nbsp;€</span><button class="btn btn-lie ajouter" type="button" aria-label="Ajouter Bulle d’Août au panier">Ajouter</button></div>
+        </li>
+      </ul>
+      <div class="vide-filtre" id="vide-filtre" hidden>
+        <p>Aucun vin ne correspond à ces deux filtres. Au comptoir, on en a sûrement un&#8239;!</p>
+        <button class="btn btn-ligne btn-petit" type="button" id="reinitialiser">Voir tous les vins</button>
+      </div>
+    </div>
+
+    <aside class="panier" id="panier" aria-labelledby="titre-panier">
+      <div class="panier-tete"><h2 id="titre-panier">Votre panier</h2><p id="panier-compte">vide</p></div>
+      <div class="panier-corps">
+        <p class="panier-vide" id="panier-vide">Ajoutez des bouteilles depuis la liste&nbsp;: elles apparaîtront ici.</p>
+        <ul class="lignes" id="lignes" aria-live="polite"></ul>
+        <p class="total">Total <strong id="total">0,00&nbsp;€</strong></p>
+        <p class="total-note">TVA comprise · retrait gratuit à la cave</p>
+        <form id="commande" action="#" method="post" data-demo="Démo : sur le vrai site, vous seriez redirigé vers le paiement sécurisé par carte, puis recevriez un e-mail de confirmation avec votre créneau de retrait.">
+          <div class="champ">
+            <label for="creneau">Créneau de retrait</label>
+            <select id="creneau" name="creneau" required>
+              <option>Mardi, 17&nbsp;h – 19&nbsp;h</option>
+              <option>Mercredi, 17&nbsp;h – 19&nbsp;h</option>
+              <option>Jeudi, 16&nbsp;h – 18&nbsp;h</option>
+              <option>Vendredi, 18&nbsp;h – 20&nbsp;h</option>
+              <option>Samedi, 11&nbsp;h – 13&nbsp;h</option>
+              <option>Dimanche, 10&nbsp;h 30 – 12&nbsp;h 30</option>
+            </select>
+          </div>
+          <div class="champ"><label for="cmd-nom">Prénom et nom</label><input id="cmd-nom" name="nom" type="text" autocomplete="name" required></div>
+          <div class="champ"><label for="cmd-email">E-mail</label><input id="cmd-email" name="email" type="email" autocomplete="email" required><span class="champ-aide">Pour la confirmation et le reçu.</span></div>
+          <div class="champ"><label for="cmd-tel">Téléphone</label><input id="cmd-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"><span class="champ-aide">Facultatif, en cas de souci avec la commande.</span></div>
+          <div class="champ"><label for="cmd-note">Un mot pour nous&nbsp;?</label><textarea id="cmd-note" name="note" rows="3" placeholder="Paquet cadeau, bouteille à mettre au frais…"></textarea></div>
+          <label class="case"><input type="checkbox" name="majeur" required> Je certifie avoir 18&nbsp;ans ou plus. La vente d’alcool aux mineurs est interdite.</label>
+          <button class="btn btn-lie" type="submit" id="payer">Payer et réserver</button>
+          <p class="message-panier" id="message-panier" role="status"></p>
+          <p class="paiement">Paiement par carte sécurisé · aucun frais</p>
+        </form>
+      </div>
+    </aside>
+  </div>
+  <p class="panier-flottant" id="panier-flottant"><a class="btn btn-lie" href="#panier"><span id="panier-flottant-texte">Voir le panier</span><span aria-hidden="true">↓</span></a></p>
+</main>
+
+<footer class="pied">
+  <div class="enveloppe pied-in">
+    <div class="pied-marque">
+      <p class="pied-nom">Cave Tanin</p>
+      <p>Caviste, vins nature et petits domaines.<br>41 rue de la Maquette, 75020 Paris</p>
+      <p><a href="tel:+33199004127" data-demo="Démo : sur le vrai site, ce lien appelle la cave au 01 99 00 41 27.">01 99 00 41 27</a><br><a href="mailto:bonjour@cave-tanin.example" data-demo="Démo : sur le vrai site, ce lien ouvre un e-mail à bonjour@cave-tanin.example.">bonjour@cave-tanin.example</a></p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Horaires</h2>
+      <p>Mardi au vendredi&nbsp;: 16&nbsp;h – 21&nbsp;h<br>Samedi&nbsp;: 11&nbsp;h – 21&nbsp;h<br>Dimanche&nbsp;: 10&nbsp;h 30 – 13&nbsp;h 30<br>Fermé le lundi</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">La cave</h2>
+      <ul class="pied-liens">
+        <li><a href="boutique.html">Boutique click &amp; collect</a></li>
+        <li><a href="degustations.html">Dégustations du jeudi</a></li>
+        <li><a href="./#coffrets">Coffrets cadeaux</a></li>
+        <li><a href="https://www.instagram.com/" data-demo="Démo : sur le vrai site, ce lien ouvre le compte Instagram de la cave, avec les arrivages de la semaine.">Instagram</a></li>
+      </ul>
+    </div>
+    <form class="lettre" action="#" method="post" data-demo="Démo : sur le vrai site, votre adresse serait inscrite à la lettre du vendredi (désinscription en un clic).">
+      <h2 class="pied-titre">La lettre du vendredi</h2>
+      <p>Les arrivages et la prochaine dégustation, une fois par semaine.</p>
+      <label for="lettre-email">Votre e-mail</label>
+      <div class="lettre-ligne"><input id="lettre-email" name="email" type="email" autocomplete="email" required placeholder="prenom@domaine.example"><button class="btn btn-ocre btn-petit" type="submit">S’inscrire</button></div>
+    </form>
+  </div>
+  <div class="enveloppe pied-bas">
+    <p>© 2026 Cave Tanin · <a href="#" data-demo="Démo : sur le vrai site, ce lien mène aux mentions légales et aux conditions de vente.">Mentions légales</a> · <a href="/">Site réalisé par smilt.</a></p>
+    <p class="loi">L’abus d’alcool est dangereux pour la santé, à consommer avec modération. Vente interdite aux mineurs.</p>
+  </div>
+</footer>
+</body>
+</html>

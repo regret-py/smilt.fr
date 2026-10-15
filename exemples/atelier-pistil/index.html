@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Atelier Pistil · Fleuriste de saison, Paris 9e</title>
+<meta name="description" content="Atelier Pistil, fleuriste au 27 rue des Esquisses, Paris 9e. Bouquets de saison dès 35 €, fleurs de producteurs français, livraison à vélo dans le quartier, abonnements pour bureaux et restaurants, mariages.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F8ECE6">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/cormorant-garamond-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-garamond-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="pistil" viewBox="0 0 64 64"><g stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M32 22.5V13M38.7 25.3l6.7-6.7M41.5 32H51M38.7 38.7l6.7 6.7M32 41.5V51M25.3 38.7l-6.7 6.7M22.5 32H13M25.3 25.3l-6.7-6.7"/></g><g fill="currentColor"><circle cx="32" cy="9.5" r="3.6"/><circle cx="48" cy="16" r="3.6"/><circle cx="54.5" cy="32" r="3.6"/><circle cx="48" cy="48" r="3.6"/><circle cx="32" cy="54.5" r="3.6"/><circle cx="16" cy="48" r="3.6"/><circle cx="9.5" cy="32" r="3.6"/><circle cx="16" cy="16" r="3.6"/></g><circle cx="32" cy="32" r="7.5" fill="#E8B64C" stroke="currentColor" stroke-width="3.2"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4.2-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.2 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.4-7-12a7 7 0 0 1 14 0c0 5.6-7 12-7 12Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-velo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="16" r="3.5"/><circle cx="18.5" cy="16" r="3.5"/><path d="M5.5 16l4-7h6l3 7M9.5 9l3 7h1M8 6h3M15.5 9l1-3h2"/></g></symbol>
+  <symbol id="i-feuille" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20L14 10"/></g></symbol>
+  <symbol id="i-horloge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+</svg>
+
+<header class="tete">
+  <div class="cadre tete-in">
+    <a class="logo" href="./" aria-label="Atelier Pistil, accueil">
+      <svg class="logo-pistil" width="34" height="34" aria-hidden="true"><use href="#pistil"/></svg>
+      <span class="logo-mot"><span class="logo-a">Atelier</span> <em>Pistil</em></span>
+    </a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="navigation"><span class="menu-barres" aria-hidden="true"></span><span class="menu-texte">Menu</span></button>
+    <nav class="nav" id="navigation" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#bouquets">Bouquets</a></li>
+        <li><a href="#abonnement">Abonnement</a></li>
+        <li><a href="#mariages">Mariages</a></li>
+        <li><a href="#saison">Nos fleurs</a></li>
+        <li><a href="#acces">Horaires &amp; accès</a></li>
+      </ul>
+    </nav>
+    <a class="bouton bouton-plein tete-cta" href="#commander">Commander</a>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="hero" aria-labelledby="hero-titre">
+    <div class="cadre hero-grille">
+      <div class="hero-texte">
+        <p class="statut" data-statut><span class="statut-point" aria-hidden="true"></span><span data-statut-texte>Mardi au samedi 9&nbsp;h&nbsp;30–19&nbsp;h&nbsp;30, dimanche matin</span></p>
+        <h1 id="hero-titre">Des fleurs de saison, <em>nouées à la main</em> au cœur du&nbsp;9<sup>e</sup>.</h1>
+        <p class="hero-chapo">Renoncules d’Anjou, pivoines du Var, branchages de Bretagne&nbsp;: chaque matin, Mathilde compose des bouquets avec ce que les producteurs ont cueilli la veille. À emporter, à faire livrer à vélo dans le quartier ou à recevoir chaque semaine au bureau.</p>
+        <div class="hero-actions">
+          <a class="bouton bouton-plein" href="#commander">Commander un bouquet <svg width="18" height="18" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+          <a class="bouton bouton-trait" href="#bouquets">Voir les bouquets du moment</a>
+        </div>
+        <ul class="hero-faits">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-velo"/></svg><span><strong>Livré le jour même</strong> dans le 9<sup>e</sup>, commandé avant 14&nbsp;h</span></li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-feuille"/></svg><span><strong>9 fleurs sur 10</strong> cultivées en France</span></li>
+        </ul>
+      </div>
+      <figure class="hero-visuel">
+        <div class="arche">
+          <img src="img/bouquet-atelier.svg" alt="Illustration d’un bouquet noué dans du papier kraft : une grosse pivoine rose, des renoncules, des cosmos blancs et de l’eucalyptus, avec un ruban vert pistache." width="520" height="640">
+        </div>
+        <figcaption class="etiquette">
+          <span class="etiquette-sur">Arrivage de mardi</span>
+          <span class="etiquette-titre">Renoncules <em>« Pêche de vigne »</em></span>
+          <span class="etiquette-sous">Ferme des Trois-Haies, Anjou</span>
+        </figcaption>
+        <p class="tampon" aria-hidden="true"><span>N°&nbsp;27</span><span>rue des Esquisses</span></p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section bouquets" id="bouquets" aria-labelledby="bouquets-titre">
+    <div class="cadre">
+      <div class="entete">
+        <p class="surtitre"><svg width="20" height="20" aria-hidden="true"><use href="#pistil"/></svg>Semaine du 13 octobre</p>
+        <h2 id="bouquets-titre">Les bouquets <em>du moment</em></h2>
+        <p class="entete-chapo">Quatre compositions qui changent avec les arrivages. Chaque bouquet existe en trois tailles&nbsp;; les fleurs peuvent varier selon la cueillette, l’esprit reste le même.</p>
+      </div>
+      <ul class="cartes">
+        <li class="carte">
+          <div class="carte-image teinte-rose"><img src="img/bouquet-matinal.svg" alt="" width="320" height="320" loading="lazy"></div>
+          <div class="carte-corps">
+            <h3>Le Matinal</h3>
+            <p>Renoncules corail, eucalyptus rond et un bouton de rose de jardin. Frais, lumineux, parfait pour dire merci.</p>
+            <p class="carte-prix"><span>dès</span> 35&nbsp;€</p>
+            <a class="carte-lien" href="#commander" data-bouquet="Le Matinal">Choisir ce bouquet <svg width="16" height="16" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+          </div>
+        </li>
+        <li class="carte">
+          <div class="carte-image teinte-pistache"><img src="img/bouquet-joue-rose.svg" alt="" width="320" height="320" loading="lazy"></div>
+          <div class="carte-corps">
+            <h3>La Joue rose</h3>
+            <p>Deux pivoines d’automne, leurs boutons et un grand feuillage. Généreux, un peu romantique, très parfumé.</p>
+            <p class="carte-prix"><span>dès</span> 48&nbsp;€</p>
+            <a class="carte-lien" href="#commander" data-bouquet="La Joue rose">Choisir ce bouquet <svg width="16" height="16" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+          </div>
+        </li>
+        <li class="carte">
+          <div class="carte-image teinte-prune"><img src="img/bouquet-sous-bois.svg" alt="" width="320" height="320" loading="lazy"></div>
+          <div class="carte-corps">
+            <h3>Le Sous-bois</h3>
+            <p>Cosmos blancs, renoncule prune et branchages d’olivier. Plus sauvage, qui tient bien une dizaine de jours.</p>
+            <p class="carte-prix"><span>dès</span> 55&nbsp;€</p>
+            <a class="carte-lien" href="#commander" data-bouquet="Le Sous-bois">Choisir ce bouquet <svg width="16" height="16" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+          </div>
+        </li>
+        <li class="carte">
+          <div class="carte-image teinte-sable"><img src="img/bouquet-petit-pistil.svg" alt="" width="320" height="320" loading="lazy"></div>
+          <div class="carte-corps">
+            <h3>Le Petit Pistil</h3>
+            <p>Le format de poche&nbsp;: trois tiges choisies, noué dans son kraft. Pour une table de chevet ou un bureau.</p>
+            <p class="carte-prix"><span>dès</span> 35&nbsp;€</p>
+            <a class="carte-lien" href="#commander" data-bouquet="Le Petit Pistil">Choisir ce bouquet <svg width="16" height="16" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+          </div>
+        </li>
+      </ul>
+      <p class="tailles">Trois tailles pour chaque bouquet&nbsp;: <strong>Bouquet</strong> au prix indiqué, <strong>Généreux</strong> +15&nbsp;€, <strong>Spectaculaire</strong> +35&nbsp;€.</p>
+    </div>
+  </section>
+
+  <section class="section commander" id="commander" aria-labelledby="commander-titre">
+    <div class="cadre commander-grille">
+      <div class="commander-intro">
+        <p class="surtitre"><svg width="20" height="20" aria-hidden="true"><use href="#pistil"/></svg>Commande en ligne</p>
+        <h2 id="commander-titre">Commander <em>un bouquet</em></h2>
+        <p>Dites-nous pour qui, pour quand et combien vous souhaitez y mettre&nbsp;: nous composons avec les fleurs les plus belles du jour, puis nous vous rappelons pour confirmer.</p>
+        <ol class="etapes">
+          <li><strong>Vous décrivez</strong> l’occasion et votre budget.</li>
+          <li><strong>Nous vous rappelons</strong> dans l’heure (aux horaires d’ouverture) pour valider et régler.</li>
+          <li><strong>Basile livre à vélo</strong> dans le 9<sup>e</sup> et ses abords, ou le bouquet vous attend à l’atelier.</li>
+        </ol>
+        <p class="commander-note">Livraison&nbsp;: 8&nbsp;€ dans le 9<sup>e</sup>, 12&nbsp;€ dans les 2<sup>e</sup>, 8<sup>e</sup>, 10<sup>e</sup>, 17<sup>e</sup> et 18<sup>e</sup>. Retrait à l’atelier gratuit.</p>
+      </div>
+      <form class="formulaire" action="#commander" method="post" data-demo="Démo : sur le vrai site, votre demande est envoyée à l’atelier, qui vous rappelle pour confirmer le bouquet et le paiement.">
+        <div class="champs-2">
+          <div class="champ">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion">
+              <option>Anniversaire</option>
+              <option>Pour dire merci</option>
+              <option>Naissance</option>
+              <option>Déclaration</option>
+              <option>Pour se faire pardonner</option>
+              <option>Deuil et condoléances</option>
+              <option>Sans raison, juste pour le plaisir</option>
+            </select>
+          </div>
+          <div class="champ">
+            <label for="bouquet">Bouquet</label>
+            <select id="bouquet" name="bouquet">
+              <option>Laisser carte blanche à la fleuriste</option>
+              <option>Le Matinal</option>
+              <option>La Joue rose</option>
+              <option>Le Sous-bois</option>
+              <option>Le Petit Pistil</option>
+            </select>
+          </div>
+        </div>
+        <fieldset class="champ">
+          <legend>Budget</legend>
+          <div class="pastilles">
+            <label class="pastille"><input type="radio" name="budget" value="35" checked><span>35&nbsp;€</span></label>
+            <label class="pastille"><input type="radio" name="budget" value="50"><span>50&nbsp;€</span></label>
+            <label class="pastille"><input type="radio" name="budget" value="70"><span>70&nbsp;€</span></label>
+            <label class="pastille"><input type="radio" name="budget" value="100"><span>100&nbsp;€</span></label>
+            <label class="pastille"><input type="radio" name="budget" value="libre"><span>Au-delà</span></label>
+          </div>
+        </fieldset>
+        <div class="champs-2">
+          <div class="champ">
+            <label for="date">Date souhaitée</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+          <fieldset class="champ">
+            <legend>Réception</legend>
+            <div class="pastilles">
+              <label class="pastille"><input type="radio" name="reception" value="livraison" checked><span>Livraison dans le quartier</span></label>
+              <label class="pastille"><input type="radio" name="reception" value="retrait"><span>Retrait à l’atelier</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="champ" data-adresse>
+          <label for="adresse">Adresse de livraison <span class="facultatif">(étage, code, nom sur l’interphone)</span></label>
+          <input id="adresse" name="adresse" type="text" autocomplete="street-address">
+        </div>
+        <div class="champ">
+          <label for="carte">Message pour la carte <span class="facultatif">(nous l’écrivons à la main)</span></label>
+          <textarea id="carte" name="carte" rows="3" maxlength="220" aria-describedby="carte-aide"></textarea>
+          <p class="aide" id="carte-aide" data-compteur>220 caractères au plus.</p>
+        </div>
+        <div class="champs-2">
+          <div class="champ">
+            <label for="nom">Votre nom</label>
+            <input id="nom" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="champ">
+            <label for="tel">Téléphone</label>
+            <input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required>
+          </div>
+        </div>
+        <button class="bouton bouton-plein bouton-large" type="submit">Envoyer ma demande</button>
+        <p class="aide">Aucun paiement en ligne&nbsp;: vous réglez par téléphone, ou à l’atelier au moment du retrait.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section abonnement" id="abonnement" aria-labelledby="abonnement-titre">
+    <div class="cadre">
+      <div class="abonnement-haut">
+        <div>
+          <p class="surtitre"><svg width="20" height="20" aria-hidden="true"><use href="#pistil"/></svg>Bureaux, restaurants, hôtels</p>
+          <h2 id="abonnement-titre">L’abonnement <em>fleurs</em></h2>
+          <p>Un accueil qui change avec les saisons, sans y penser. Nous passons chaque lundi matin, avant votre ouverture&nbsp;: nous reprenons les fleurs fanées, lavons les vases et installons la nouvelle composition.</p>
+        </div>
+        <img class="abonnement-image" src="img/abonnement.svg" alt="" width="560" height="380" loading="lazy">
+      </div>
+      <ul class="formules">
+        <li class="formule">
+          <h3>Comptoir</h3>
+          <p class="formule-prix">45&nbsp;€ <span>HT / semaine</span></p>
+          <p>Un bouquet généreux pour l’accueil ou le comptoir, vase prêté.</p>
+        </li>
+        <li class="formule formule-phare">
+          <h3>Salle</h3>
+          <p class="formule-prix">89&nbsp;€ <span>HT / semaine</span></p>
+          <p>Le bouquet d’accueil et huit soliflores pour les tables. Le préféré des restaurants du quartier.</p>
+        </li>
+        <li class="formule">
+          <h3>Grand format</h3>
+          <p class="formule-prix">Sur devis</p>
+          <p>Hall, vitrine, réception&nbsp;: une composition haute pensée pour votre lieu.</p>
+        </li>
+      </ul>
+      <div class="abonnement-bas">
+        <p>Sans engagement de durée, résiliable d’une semaine sur l’autre. Première semaine offerte.</p>
+        <a class="bouton bouton-clair" href="mailto:pro@atelier-pistil.example" data-demo="Démo : sur le vrai site, ce bouton ouvre un e-mail à l’atelier pour demander une proposition d’abonnement.">Recevoir une proposition</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mariages" id="mariages" aria-labelledby="mariages-titre">
+    <div class="cadre mariages-grille">
+      <div class="mariages-visuel">
+        <img src="img/mariage.svg" alt="Illustration d’un bouquet de mariée en cascade, pivoine blanche, renoncules et feuillages, noué d’un long ruban." width="420" height="460" loading="lazy">
+      </div>
+      <div class="mariages-texte">
+        <p class="surtitre"><svg width="20" height="20" aria-hidden="true"><use href="#pistil"/></svg>D’avril à octobre</p>
+        <h2 id="mariages-titre">Mariages <em>et événements</em></h2>
+        <p>Nous ne prenons qu’un mariage par week-end, pour avoir le temps de bien le faire. Tout commence par un rendez-vous à l’atelier, autour d’un café et de vos photos d’inspiration.</p>
+        <ul class="liste-pistil">
+          <li>Bouquet de la mariée, boutonnières et couronnes</li>
+          <li>Centres de table, arche de cérémonie, décor de la salle</li>
+          <li>Dîners, lancements, vitrines de boutiques&nbsp;: petits et grands événements</li>
+          <li>Reprise des fleurs le lendemain et compostage</li>
+        </ul>
+        <p class="mariages-prix">Bouquet de mariée dès 120&nbsp;€, décor complet sur devis. Premier rendez-vous (45&nbsp;minutes) offert.</p>
+        <blockquote class="citation">
+          <p>«&#8239;Les bouquets de table ont tenu jusqu’au brunch du dimanche, et tout le monde est reparti avec une tige.&#8239;»</p>
+          <footer>Clémence et Yanis, mariés en juin à Montmartre</footer>
+        </blockquote>
+        <a class="bouton bouton-plein" href="#contact" data-demo="Démo : sur le vrai site, ce bouton ouvre l’agenda de l’atelier pour réserver un premier rendez-vous.">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section saison" id="saison" aria-labelledby="saison-titre">
+    <div class="cadre">
+      <div class="entete">
+        <p class="surtitre"><svg width="20" height="20" aria-hidden="true"><use href="#pistil"/></svg>Nos engagements</p>
+        <h2 id="saison-titre">Des fleurs de saison, <em>d’ici</em></h2>
+        <p class="entete-chapo">Une pivoine en décembre a voyagé en avion. Nous préférons attendre mai, et vous faire découvrir entre-temps ce que chaque saison a de beau.</p>
+      </div>
+      <ol class="calendrier" aria-label="Calendrier des fleurs">
+        <li data-saison="printemps"><h3>Printemps</h3><p>Renoncules, anémones, tulipes, pivoines dès mai, branches de cerisier.</p></li>
+        <li data-saison="ete"><h3>Été</h3><p>Roses de jardin, cosmos, zinnias, pois de senteur, graminées.</p></li>
+        <li data-saison="automne" class="maintenant"><h3>Automne <span class="badge-saison">en ce moment</span></h3><p>Dahlias, chrysanthèmes, renoncules d’automne, feuillages roux, baies.</p></li>
+        <li data-saison="hiver"><h3>Hiver</h3><p>Hellébores, mimosa du Var, branchages, eucalyptus, fleurs séchées.</p></li>
+      </ol>
+      <div class="engagements">
+        <div class="atelier-visuel">
+          <img src="img/atelier.svg" alt="Illustration de la devanture de l’atelier : un store rayé vert pistache, une vitrine fleurie et des seaux de fleurs sur le trottoir." width="560" height="420" loading="lazy">
+        </div>
+        <div>
+          <h3 class="petit-titre">Nos producteurs</h3>
+          <ul class="producteurs">
+            <li><strong>Ferme des Trois-Haies</strong><span>Anjou · renoncules, anémones, dahlias</span></li>
+            <li><strong>Serres du Clos Mauve</strong><span>Var · pivoines, mimosa, oliviers</span></li>
+            <li><strong>Jardins de la Vrillette</strong><span>Bretagne · feuillages, eucalyptus, hortensias</span></li>
+            <li><strong>Roseraie Bergeronne</strong><span>Loiret · roses de jardin parfumées</span></li>
+          </ul>
+          <ul class="liste-pistil">
+            <li>Pas de fleurs venues par avion, jamais.</li>
+            <li>Papier kraft et raphia, aucun plastique autour des bouquets.</li>
+            <li>Tiges et invendus compostés au jardin partagé de la rue du Fusain.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section acces" id="acces" aria-labelledby="acces-titre">
+    <div class="cadre acces-grille">
+      <div class="acces-infos">
+        <p class="surtitre"><svg width="20" height="20" aria-hidden="true"><use href="#pistil"/></svg>Venir à l’atelier</p>
+        <h2 id="acces-titre">Horaires <em>&amp; accès</em></h2>
+        <p class="statut statut-grand" data-statut><span class="statut-point" aria-hidden="true"></span><span data-statut-texte>Ouvert du mardi au dimanche midi</span></p>
+        <table class="horaires">
+          <caption class="visuellement-cache">Horaires d’ouverture</caption>
+          <tbody>
+            <tr data-jour="1"><th scope="row">Lundi</th><td>Fermé</td></tr>
+            <tr data-jour="2"><th scope="row">Mardi</th><td>9&nbsp;h&nbsp;30 – 19&nbsp;h&nbsp;30</td></tr>
+            <tr data-jour="3"><th scope="row">Mercredi</th><td>9&nbsp;h&nbsp;30 – 19&nbsp;h&nbsp;30</td></tr>
+            <tr data-jour="4"><th scope="row">Jeudi</th><td>9&nbsp;h&nbsp;30 – 19&nbsp;h&nbsp;30</td></tr>
+            <tr data-jour="5"><th scope="row">Vendredi</th><td>9&nbsp;h&nbsp;30 – 19&nbsp;h&nbsp;30</td></tr>
+            <tr data-jour="6"><th scope="row">Samedi</th><td>9&nbsp;h&nbsp;30 – 19&nbsp;h&nbsp;30</td></tr>
+            <tr data-jour="0"><th scope="row">Dimanche</th><td>9&nbsp;h&nbsp;30 – 13&nbsp;h</td></tr>
+          </tbody>
+        </table>
+        <address class="adresse">
+          <svg width="20" height="20" aria-hidden="true"><use href="#i-pin"/></svg>
+          <span>27 rue des Esquisses<br>75009 Paris</span>
+        </address>
+        <p class="acces-detail">Métro à quatre minutes à pied, station Vélib’ devant le square des Pastels. Une marche à l’entrée&nbsp;: sonnez, nous venons vous aider.</p>
+        <a class="bouton bouton-trait" href="#acces" data-demo="Démo : sur le vrai site, ce bouton ouvre l’itinéraire jusqu’à l’atelier dans votre application de cartes.">Itinéraire <svg width="18" height="18" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+      </div>
+      <figure class="plan">
+        <svg viewBox="0 0 640 520" role="img" aria-labelledby="plan-titre" class="plan-svg">
+          <title id="plan-titre">Plan du quartier : l’atelier est au 27 rue des Esquisses, à l’angle de la rue du Fusain, face au square des Pastels.</title>
+          <rect width="640" height="520" class="p-fond"/>
+          <g class="p-ilots">
+            <path d="M24 24h176l-30 128H24Z"/><path d="M240 24h150v104H214Z"/><path d="M430 24h186v150H430Z"/>
+            <path d="M24 196h132l-26 112H24Z"/><path d="M196 196h194v112H170Z"/>
+            <path d="M24 352h96l-22 144H24Z"/><path d="M160 352h230v144H138Z"/><path d="M430 352h186v144H430Z"/>
+          </g>
+          <path class="p-square" d="M430 216h186v94H430Z"/>
+          <g class="p-arbres"><circle cx="460" cy="240" r="11"/><circle cx="498" cy="252" r="14"/><circle cx="548" cy="238" r="11"/><circle cx="590" cy="250" r="13"/></g>
+          <g class="p-rues">
+            <path d="M0 174H640"/><path d="M0 330H640"/><path d="M410 0V520"/><path d="M220 0L120 520"/>
+          </g>
+          <g class="p-noms">
+            <text x="600" y="180" text-anchor="end">rue des Esquisses</text>
+            <text x="236" y="336">rue de la Gouache</text>
+            <text x="404" y="30" transform="rotate(90 404 30)">rue du Fusain</text>
+            <text x="104" y="470" transform="rotate(-79 104 470)">boulevard des Aquarelles</text>
+            <text x="523" y="296" text-anchor="middle" class="p-nom-square">square des Pastels</text>
+          </g>
+          <g class="p-metro"><circle cx="190" cy="330" r="15"/><text x="190" y="336" text-anchor="middle">M</text></g>
+          <g class="p-pin">
+            <path d="M372 174c0-26-20-44-42-44s-42 18-42 44c0 30 42 64 42 64s42-34 42-64Z" transform="translate(0 -60)"/>
+            <circle cx="330" cy="112" r="15"/>
+          </g>
+          <g class="p-etiq"><rect x="104" y="80" width="176" height="44" rx="22"/><text x="192" y="109" text-anchor="middle" class="p-etiquette">Atelier Pistil</text></g>
+        </svg>
+        <figcaption>Au croisement de la rue des Esquisses et de la rue du Fusain, face au square.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-titre">
+    <div class="cadre contact-in">
+      <h2 id="contact-titre">Une question, <em>une envie de fleurs</em>&#8239;?</h2>
+      <p>Appelez-nous pendant les heures d’ouverture, ou écrivez&nbsp;: nous répondons dans la journée.</p>
+      <ul class="contact-liens">
+        <li><a href="tel:+33199002709" data-demo="Démo : sur le vrai site, ce lien appelle l’atelier depuis votre téléphone."><svg width="22" height="22" aria-hidden="true"><use href="#i-tel"/></svg><span>01&nbsp;99&nbsp;00&nbsp;27&nbsp;09</span></a></li>
+        <li><a href="mailto:bonjour@atelier-pistil.example" data-demo="Démo : sur le vrai site, ce lien ouvre un e-mail adressé à l’atelier."><svg width="22" height="22" aria-hidden="true"><use href="#i-mail"/></svg><span>bonjour@atelier-pistil.example</span></a></li>
+        <li><a href="#contact" data-demo="Démo : sur le vrai site, ce lien ouvre le compte Instagram de l’atelier, avec les bouquets du jour."><svg width="22" height="22" aria-hidden="true"><use href="#i-photo"/></svg><span>@atelier.pistil</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="cadre pied-grille">
+    <div class="pied-marque">
+      <p class="logo logo-pied"><svg class="logo-pistil" width="30" height="30" aria-hidden="true"><use href="#pistil"/></svg><span class="logo-mot"><span class="logo-a">Atelier</span> <em>Pistil</em></span></p>
+      <p>Fleuriste de saison depuis 2021.<br>Mathilde Aubrac et Basile Ternon.</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Adresse</h2>
+      <p>27 rue des Esquisses<br>75009 Paris<br><a href="tel:+33199002709" data-demo="Démo : sur le vrai site, ce lien appelle l’atelier depuis votre téléphone.">01&nbsp;99&nbsp;00&nbsp;27&nbsp;09</a></p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Horaires</h2>
+      <p>Mardi – samedi&nbsp;: 9&nbsp;h&nbsp;30 – 19&nbsp;h&nbsp;30<br>Dimanche&nbsp;: 9&nbsp;h&nbsp;30 – 13&nbsp;h<br>Fermé le lundi</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">L’atelier</h2>
+      <ul class="pied-liens">
+        <li><a href="#commander">Commander un bouquet</a></li>
+        <li><a href="#abonnement">Abonnement fleurs</a></li>
+        <li><a href="#contact" data-demo="Démo : sur le vrai site, ce lien ouvre l’inscription à la lettre des arrivages, une fois par mois.">La lettre des arrivages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="cadre pied-bas">
+    <p>© 2026 Atelier Pistil · <a href="#contenu" data-demo="Démo : sur le vrai site, ce lien mène aux mentions légales de l’atelier (SIRET, hébergeur, données personnelles).">Mentions légales</a></p>
+    <p class="credit">Site réalisé par <a href="/">smilt.</a></p>
+  </div>
+</footer>
+</body>
+</html>

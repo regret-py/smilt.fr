@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Nos fromages · Fromagerie Caillé, Paris 15e</title>
+<meta name="description" content="La sélection de la cave de la Fromagerie Caillé : pâtes pressées, pâtes molles, bleus, chèvres et brebis, avec région, lait et prix au kilo. Filtrez par lait.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7D774">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/caprasimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="evitement" href="#main">Aller au contenu</a>
+<header class="tete">
+  <div class="enveloppe tete-in">
+    <a class="logo" href="./" aria-label="Fromagerie Caillé, accueil">
+      <img src="img/favicon.svg" alt="" width="46" height="46">
+      <span class="logo-texte"><span class="logo-sur">Fromagerie · affineur</span><span class="logo-nom">Caillé</span></span>
+    </a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav"><span class="menu-icone" aria-hidden="true"></span>Menu</button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul><li><a href="./">Accueil</a></li><li><a href="fromages.html" aria-current="page">Nos fromages</a></li><li><a href="plateaux.html">Plateaux</a></li><li><a href="ateliers.html">Ateliers</a></li><li><a href="./#acces">Infos &amp; accès</a></li></ul>
+    </nav>
+    <a class="btn btn-plein btn-petit tete-cta" href="plateaux.html#commande">Commander un plateau</a>
+  </div>
+</header>
+<main id="main">
+<section class="page-tete festons" aria-labelledby="titre-page">
+  <div class="enveloppe page-tete-in">
+    <div>
+      <p class="fil"><a href="./">Accueil</a> · Nos fromages</p>
+      <h1 id="titre-page">Nos fromages</h1>
+      <p class="chapo">Seize fromages parmi les 140 de la cave, choisis cette semaine parce qu’ils sont à point. La sélection change avec les saisons et les arrivages : au comptoir, il y en a toujours un peu plus.</p>
+    </div>
+    <img class="page-tete-visuel" src="img/cave.svg" alt="" width="480" height="448">
+  </div>
+</section>
+
+<div class="filtres" data-filtres hidden>
+  <div class="enveloppe filtres-in">
+    <p class="filtres-label" id="filtre-titre">Filtrer par lait :</p>
+    <div class="filtres-boutons" role="group" aria-labelledby="filtre-titre">
+      <button class="filtre filtre-tous" type="button" data-lait="tous" aria-pressed="true">Tous</button>
+      <button class="filtre" type="button" data-lait="vache" aria-pressed="false"><img src="img/lait-vache.svg" alt="" width="30" height="30">Vache</button>
+      <button class="filtre" type="button" data-lait="chevre" aria-pressed="false"><img src="img/lait-chevre.svg" alt="" width="30" height="30">Chèvre</button>
+      <button class="filtre" type="button" data-lait="brebis" aria-pressed="false"><img src="img/lait-brebis.svg" alt="" width="30" height="30">Brebis</button>
+    </div>
+    <p class="filtres-compte" aria-live="polite" data-compte>16 fromages</p>
+  </div>
+</div>
+
+<div class="enveloppe fin">
+<section class="famille" id="pressees" aria-labelledby="t-pressees" data-famille>
+  <div class="famille-tete"><h2 id="t-pressees">Pâtes pressées</h2><p>Les tommes et les grandes meules : on les retourne et on les brosse chaque semaine, certaines depuis plus de deux ans.</p></div>
+  <ul class="fromages">
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><span class="fromage-coeur">Cette semaine</span><img src="img/f-meule.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Tomme du Brouillon</h3>
+        <p class="fromage-origine">Savoie · lait de vache cru</p>
+        <p class="fromage-note">Noisette grillée, pâte souple et dorée. Notre tomme maison, affinée sous la boutique.</p>
+        <p class="fromage-pied"><span class="fromage-prix">32,80 € <small>/ kg</small></span><span class="fromage-affinage">14 mois</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-meule.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Meule des Hauts-Plateaux</h3>
+        <p class="fromage-origine">Jura · lait de vache cru</p>
+        <p class="fromage-note">Fruitée, cristaux de sel qui croquent, finale de brioche. Une meule de 40 kg, coupée devant vous.</p>
+        <p class="fromage-pied"><span class="fromage-prix">41,50 € <small>/ kg</small></span><span class="fromage-affinage">30 mois</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="brebis">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-brebis.svg" alt="" width="24" height="24">Brebis</span><img src="img/f-meule.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Tomme de la Combe Grise</h3>
+        <p class="fromage-origine">Pyrénées · lait de brebis cru</p>
+        <p class="fromage-note">Douce et grasse, notes de lait chaud et de foin. Parfaite avec la confiture de cerises noires.</p>
+        <p class="fromage-pied"><span class="fromage-prix">36,90 € <small>/ kg</small></span><span class="fromage-affinage">10 mois</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-boule.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Boule d’Orange</h3>
+        <p class="fromage-origine">Flandres · lait de vache cru</p>
+        <p class="fromage-note">Pâte orangée et cassante, goût de caramel et de noisette. Les enfants l’adorent.</p>
+        <p class="fromage-pied"><span class="fromage-prix">29,60 € <small>/ kg</small></span><span class="fromage-affinage">24 mois</span></p>
+      </div>
+    </li>
+  </ul>
+</section>
+<section class="famille" id="molles" aria-labelledby="t-molles" data-famille>
+  <div class="famille-tete"><h2 id="t-molles">Pâtes molles</h2><p>Croûtes fleuries et croûtes lavées : on les surveille de près, elles passent du plâtreux au coulant en quelques jours.</p></div>
+  <ul class="fromages">
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-rond.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Rond de la Verte Prairie</h3>
+        <p class="fromage-origine">Normandie · lait de vache cru</p>
+        <p class="fromage-note">Croûte fleurie, cœur coulant, parfum de champignon de Paris. À sortir une heure avant.</p>
+        <p class="fromage-pied"><span class="fromage-prix">27,40 € <small>/ kg</small></span><span class="fromage-affinage">5 semaines</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-carre.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Carré de la Touques</h3>
+        <p class="fromage-origine">Normandie · lait de vache cru</p>
+        <p class="fromage-note">Croûte lavée au cidre, orangée et collante. Pâte fondante, bien plus douce que son odeur.</p>
+        <p class="fromage-pied"><span class="fromage-prix">31,20 € <small>/ kg</small></span><span class="fromage-affinage">7 semaines</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-rond.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Triple Crème des Bruyères</h3>
+        <p class="fromage-origine">Île-de-France · lait de vache cru</p>
+        <p class="fromage-note">Riche comme un beurre frais, légèrement acidulé. Avec des fraises, essayez.</p>
+        <p class="fromage-pied"><span class="fromage-prix">34,00 € <small>/ kg</small></span><span class="fromage-affinage">3 semaines</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="brebis">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-brebis.svg" alt="" width="24" height="24">Brebis</span><span class="fromage-coeur">Coup de cœur</span><img src="img/f-rond.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Petit Fleuri de Brebis</h3>
+        <p class="fromage-origine">Aveyron · lait de brebis cru</p>
+        <p class="fromage-note">Petite croûte fleurie, pâte crémeuse et lactée, une pointe de noisette.</p>
+        <p class="fromage-pied"><span class="fromage-prix">35,80 € <small>/ kg</small></span><span class="fromage-affinage">4 semaines</span></p>
+      </div>
+    </li>
+  </ul>
+</section>
+<section class="famille" id="bleus" aria-labelledby="t-bleus" data-famille>
+  <div class="famille-tete"><h2 id="t-bleus">Bleus</h2><p>Du plus doux au plus corsé. Les bleus arrivent jeunes et finissent de se persiller chez nous, emballés dans leur papier.</p></div>
+  <ul class="fromages">
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-bleu.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Bleu de la Margeride</h3>
+        <p class="fromage-origine">Lozère · lait de vache cru</p>
+        <p class="fromage-note">Persillage régulier, pâte beurrée, une amertume légère. Le bleu pour ceux qui n’aiment pas le bleu.</p>
+        <p class="fromage-pied"><span class="fromage-prix">26,50 € <small>/ kg</small></span><span class="fromage-affinage">3 mois</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="brebis">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-brebis.svg" alt="" width="24" height="24">Brebis</span><img src="img/f-bleu.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Persillé du Larzac</h3>
+        <p class="fromage-origine">Aveyron · lait de brebis cru</p>
+        <p class="fromage-note">Puissant et salé, veines bleu-vert, finale poivrée. Avec un vin doux, c’est la fête.</p>
+        <p class="fromage-pied"><span class="fromage-prix">38,70 € <small>/ kg</small></span><span class="fromage-affinage">4 mois</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="vache">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-vache.svg" alt="" width="24" height="24">Vache</span><img src="img/f-bleu.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Bleu Velours</h3>
+        <p class="fromage-origine">Auvergne · lait de vache cru</p>
+        <p class="fromage-note">Très crémeux, presque à tartiner, notes de crème fraîche et de sous-bois.</p>
+        <p class="fromage-pied"><span class="fromage-prix">24,90 € <small>/ kg</small></span><span class="fromage-affinage">2 mois</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="chevre">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-chevre.svg" alt="" width="24" height="24">Chèvre</span><span class="fromage-coeur">Rare</span><img src="img/f-bleu.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Persillé de Chèvre du Vercors</h3>
+        <p class="fromage-origine">Vercors · lait de chèvre cru</p>
+        <p class="fromage-note">Rare : un bleu de chèvre, frais et piquant, avec une belle acidité.</p>
+        <p class="fromage-pied"><span class="fromage-prix">44,00 € <small>/ kg</small></span><span class="fromage-affinage">10 semaines</span></p>
+      </div>
+    </li>
+  </ul>
+</section>
+<section class="famille" id="chevres" aria-labelledby="t-chevres" data-famille>
+  <div class="famille-tete"><h2 id="t-chevres">Chèvres & brebis</h2><p>Des fromages de saison : le lait de chèvre est meilleur du printemps à l’automne, les brebis d’estive arrivent en septembre.</p></div>
+  <ul class="fromages">
+    <li class="fromage" data-lait="chevre">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-chevre.svg" alt="" width="24" height="24">Chèvre</span><img src="img/f-buche.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Bûche Cendrée de la Gâtine</h3>
+        <p class="fromage-origine">Poitou · lait de chèvre cru</p>
+        <p class="fromage-note">Cendrée, pâte dense et fondante sous la croûte, citron et noisette fraîche.</p>
+        <p class="fromage-pied"><span class="fromage-prix">33,50 € <small>/ kg</small></span><span class="fromage-affinage">3 semaines</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="chevre">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-chevre.svg" alt="" width="24" height="24">Chèvre</span><img src="img/f-pyramide.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Pyramide des Varennes</h3>
+        <p class="fromage-origine">Berry · lait de chèvre cru</p>
+        <p class="fromage-note">Tronquée et cendrée, pâte fine et crayeuse au cœur, très parfumée.</p>
+        <p class="fromage-pied"><span class="fromage-prix">46,00 € <small>/ kg</small></span><span class="fromage-affinage">4 semaines</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="chevre">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-chevre.svg" alt="" width="24" height="24">Chèvre</span><img src="img/f-crottin.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Crottin du Moulin-Bas</h3>
+        <p class="fromage-origine">Sancerrois · lait de chèvre cru</p>
+        <p class="fromage-note">Sec et noisetté, à croquer ou à rôtir sur une tartine. Demandez-le « repassé ».</p>
+        <p class="fromage-pied"><span class="fromage-prix">52,00 € <small>/ kg</small></span><span class="fromage-affinage">5 semaines</span></p>
+      </div>
+    </li>
+    <li class="fromage" data-lait="brebis">
+      <div class="fromage-visuel"><span class="fromage-lait"><img src="img/lait-brebis.svg" alt="" width="24" height="24">Brebis</span><img src="img/f-meule.svg" alt="" width="120" height="90" loading="lazy"></div>
+      <div class="fromage-corps">
+        <h3>Tomme d’Estive</h3>
+        <p class="fromage-origine">Pays basque · lait de brebis cru</p>
+        <p class="fromage-note">Brebis des estives d’été, pâte ferme et grasse, goût de noix et de fleurs sèches.</p>
+        <p class="fromage-pied"><span class="fromage-prix">39,90 € <small>/ kg</small></span><span class="fromage-affinage">8 mois</span></p>
+      </div>
+    </li>
+  </ul>
+</section>
+<p class="aucun" data-aucun hidden>Aucun fromage pour ce lait cette semaine. Demandez au comptoir, il y a souvent une surprise en cave.</p>
+
+<aside class="encart" aria-labelledby="titre-encart">
+  <div>
+    <h2 id="titre-encart">Pour un plateau, comptez 80 à 150 g par personne.</h2>
+    <p>Prix au kilo, toutes taxes comprises, coupé à la demande. On peut aussi composer le plateau pour vous, 48 h à l’avance.</p>
+  </div>
+  <a class="btn btn-beurre fleche" href="plateaux.html">Commander un plateau</a>
+</aside>
+</div>
+</main>
+<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied-grille">
+      <div>
+        <a class="logo" href="./" aria-label="Fromagerie Caillé, accueil">
+          <img src="img/favicon.svg" alt="" width="46" height="46">
+          <span class="logo-texte"><span class="logo-sur">Fromagerie · affineur</span><span class="logo-nom">Caillé</span></span>
+        </a>
+        <p>Fromages fermiers affinés dans notre cave, sous la boutique. Hélène, Bastien et Lou vous attendent au comptoir.</p>
+        <p><a href="https://instagram.com/" data-demo="Démo : sur le vrai site, ce lien ouvre le compte Instagram de la fromagerie (arrivages et fromage de la semaine).">Instagram · @fromagerie.caille</a></p>
+      </div>
+      <div>
+        <h2>Nous trouver</h2>
+        <p>15 rue du Brouillon<br>75015 Paris</p>
+        <p><a href="tel:+33199004127" data-demo="Démo : sur le vrai site, ce lien lance l’appel vers la fromagerie depuis votre téléphone.">01 99 00 41 27</a><br><a href="mailto:bonjour@fromagerie-caille.example" data-demo="Démo : sur le vrai site, ce lien ouvre un e-mail adressé à la fromagerie.">bonjour@fromagerie-caille.example</a></p>
+      </div>
+      <div>
+        <h2>Horaires</h2>
+        <p>Mardi au samedi<br>9 h – 13 h et 15 h 30 – 19 h 30</p>
+        <p>Dimanche 9 h – 13 h<br>Fermé le lundi</p>
+      </div>
+      <div>
+        <h2>La lettre du jeudi</h2>
+        <p>Les arrivages, le fromage de la semaine et les dates d’ateliers. Une fois par semaine, pas plus.</p>
+        <form class="lettre" action="./" method="post" data-demo="Démo : sur le vrai site, votre adresse est inscrite à la lettre du jeudi (désinscription en un clic).">
+          <label for="lettre-email-fromages">Votre adresse e-mail</label>
+          <input id="lettre-email-fromages" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required>
+          <button class="btn btn-beurre btn-petit" type="submit">Je m’inscris</button>
+        </form>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <p>© 2026 Fromagerie Caillé · 15 rue du Brouillon, Paris 15e</p>
+      <ul>
+        <li><a href="./" data-demo="Démo : sur le vrai site, ce lien mène aux mentions légales de la fromagerie.">Mentions légales</a></li>
+        <li><a href="/">Site réalisé par smilt.</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

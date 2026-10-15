@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Réserver un livre en ligne · retrait en 48&nbsp;h · Librairie Rature</title>
+<meta name="description" content="Réservez vos livres en ligne et retirez-les à la Librairie Rature, Paris 5e, sous 48&nbsp;h. Même prix qu’ailleurs, paiement sur place, paquet cadeau offert.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F3EA">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/libre-baskerville-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="index.html" aria-label="Librairie Rature, accueil"><span class="logo-k">Librairie · Paris 5<sup>e</sup></span><span class="logo-w">Rature</span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul><li><a href="index.html">Accueil</a></li><li><a href="agenda.html">Agenda</a></li><li><a href="commander.html" aria-current="page">Commander</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+    </nav>
+    <p class="status" data-open-status>Lundi–samedi, 10&nbsp;h–20&nbsp;h</p>
+    <a class="btn btn-ink btn-sm hd-cta" href="commander.html">Réserver un livre</a>
+    <details class="menu">
+      <summary><span class="burger" aria-hidden="true"></span>Menu</summary>
+      <div class="menu-panel">
+        <nav aria-label="Menu du site">
+          <ul><li><a href="index.html">Accueil</a></li><li><a href="agenda.html">Agenda</a></li><li><a href="commander.html" aria-current="page">Commander</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+        </nav>
+        <p class="status" data-open-status>Lundi–samedi, 10&nbsp;h–20&nbsp;h</p>
+        <a class="btn btn-ink" href="commander.html">Réserver un livre</a>
+      </div>
+    </details>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+<section class="page-hero" aria-labelledby="cm-t">
+  <div class="wrap ph-grid">
+    <p class="kicker mono">Commander · retrait sous 48&nbsp;h</p>
+    <h1 id="cm-t" class="display display-s">Réservez en ligne, <mark>retirez en boutique.</mark></h1>
+    <p class="lede">Dites-nous quel livre vous voulez&nbsp;: s’il est en rayon, on le met de côté dans l’heure. Sinon, on le commande, et il vous attend à la caisse sous 48&nbsp;h. Vous payez sur place, au même prix que partout.</p>
+    <img class="ph-ill" src="img/retrait.svg" width="300" height="250" alt="">
+  </div>
+  <div class="shelf shelf-s"><img src="img/etagere.svg" width="1440" height="140" alt=""></div>
+</section>
+<section class="section section-tight" aria-label="Recherche et réservation">
+  <div class="wrap cmd-forms">
+    <div class="card card-search">
+      <h2 class="h3">Chercher dans le stock</h2>
+      <form class="form" action="#" method="get" role="search" data-demo="Démo&nbsp;: sur le vrai site, la recherche interroge le stock de la librairie en direct et indique si le livre est en rayon ou à commander (48&nbsp;h).">
+        <div class="field">
+          <label for="q">Titre, auteur ou ISBN</label>
+          <input id="q" name="q" type="search" placeholder="Par exemple&nbsp;: Le Cadastre des oiseaux" autocomplete="off">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="rayon">Rayon</label>
+            <select id="rayon" name="rayon">
+              <option>Tous les rayons</option><option>Littérature</option><option>Polar et science-fiction</option><option>Essais et sciences humaines</option><option>Bande dessinée</option><option>Jeunesse</option><option>Beaux livres</option>
+            </select>
+          </div>
+          <label class="check"><input type="checkbox" name="stock" value="1"> En rayon seulement</label>
+        </div>
+        <button class="btn btn-ink" type="submit">Chercher</button>
+      </form>
+      <h3 class="mini-h mono">Les plus réservés cette semaine</h3>
+      <ul class="stock">
+        <li><b>Les Ronces, tome 2</b><span>Camille Vasseur et Noé Bertin</span><em class="st st-ok">En rayon</em></li>
+        <li><b>L’Été des volets clos</b><span>Margaux Delorme</span><em class="st st-ok">En rayon</em></li>
+        <li><b>Six heures au dépôt</b><span>Bastien Morvan</span><em class="st st-ok">En rayon</em></li>
+        <li><b>La Maison aux sept horloges</b><span>Pia Lindqvist</span><em class="st st-wait">Sous 48&nbsp;h</em></li>
+        <li><b>Atlas des cuisines oubliées</b><span>Rosa Mendès</span><em class="st st-wait">Sous 48&nbsp;h</em></li>
+      </ul>
+    </div>
+    <div class="card card-order" id="commande">
+      <h2 class="h3">Réserver un ou plusieurs livres</h2>
+      <p class="card-sub">On vous confirme par e-mail sous 24&nbsp;h (ouvrées), puis on vous prévient dès que c’est prêt.</p>
+      <form class="form" action="#" method="post" data-demo="Démo&nbsp;: sur le vrai site, votre demande arrive à la librairie&nbsp;: on vous confirme par e-mail sous 24&nbsp;h, puis on vous écrit dès que les livres sont prêts, sous 48&nbsp;h.">
+        <div class="field-row">
+          <div class="field"><label for="o-nom">Nom et prénom</label><input id="o-nom" name="nom" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="o-tel">Téléphone <span class="opt">(facultatif)</span></label><input id="o-tel" name="tel" type="tel" autocomplete="tel" placeholder="06 12 34 56 78"></div>
+        </div>
+        <div class="field"><label for="o-mail">E-mail</label><input id="o-mail" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="o-livres">Les livres que vous voulez</label><textarea id="o-livres" name="livres" rows="5" required placeholder="Un livre par ligne&nbsp;: titre, auteur, et l’éditeur si vous le connaissez."></textarea>
+          <p class="hint">Vous ne connaissez pas le titre&#8239;? Décrivez-le&nbsp;: «&#8239;le roman avec une baleine bleue en couverture&#8239;» nous suffit souvent.</p></div>
+        <fieldset class="field">
+          <legend>Pour quand&#8239;?</legend>
+          <label class="radio"><input type="radio" name="quand" value="48h" checked> Dès que possible (48&nbsp;h)</label>
+          <label class="radio"><input type="radio" name="quand" value="date"> À une date précise, je le précise dans le message</label>
+        </fieldset>
+        <label class="check"><input type="checkbox" name="cadeau" value="1"> C’est pour offrir&nbsp;: je veux un paquet cadeau (offert)</label>
+        <button class="btn btn-ink" type="submit">Envoyer ma réservation</button>
+        <p class="hint">Rien à payer maintenant. Vos données servent uniquement à traiter la commande.</p>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="section section-alt" aria-labelledby="how-t">
+  <div class="wrap how-grid">
+    <img class="how-ill" src="img/retrait.svg" width="240" height="200" alt="">
+    <div>
+      <p class="kicker mono">Comment ça marche</p>
+      <h2 id="how-t" class="h2">Trois étapes, zéro carton</h2>
+      <ol class="steps">
+        <li><b>Vous réservez</b>Ici, par téléphone au 01&nbsp;99&nbsp;00&nbsp;41&nbsp;27 ou directement au comptoir.</li>
+        <li><b>On prépare</b>En rayon, c’est mis de côté dans l’heure. Sinon, c’est commandé le jour même.</li>
+        <li><b>Vous retirez</b>Sous 48&nbsp;h, aux horaires d’ouverture. On garde votre commande 10 jours.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="section" aria-labelledby="faq-t">
+  <div class="wrap faq">
+    <h2 id="faq-t" class="h2">Vos questions</h2>
+    <details><summary>Est-ce plus cher qu’en ligne&#8239;?</summary><p>Non. En France, le prix d’un livre neuf est fixé par l’éditeur&nbsp;: il est le même chez nous, en grande surface ou sur internet. La seule différence, c’est le conseil en plus.</p></details>
+    <details><summary>Comment je paie&#8239;?</summary><p>Sur place, au moment du retrait&nbsp;: carte bancaire, espèces, chèque ou carte cadeau de la librairie. Rien n’est débité en ligne.</p></details>
+    <details><summary>Et si le livre est épuisé&#8239;?</summary><p>On vous prévient tout de suite et on vous propose une autre édition, un livre d’occasion quand c’est possible, ou un titre proche qu’on a aimé.</p></details>
+    <details><summary>Vous pouvez l’envoyer chez moi&#8239;?</summary><p>Oui, en France métropolitaine, par la poste. Comptez 3 à 4 jours et les frais d’envoi au tarif postal. Indiquez-le simplement dans votre message.</p></details>
+  </div>
+</section>
+</main>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <p class="ft-logo">Rature</p>
+        <p>Librairie indépendante, générale et un peu bavarde.</p>
+        <address>19 rue du Marque-Page<br>75005 Paris<br><a href="tel:+33199004127" data-demo="Démo&nbsp;: sur le vrai site, ce lien lance l’appel vers la librairie depuis votre téléphone.">01&nbsp;99&nbsp;00&nbsp;41&nbsp;27</a><br><a href="mailto:bonjour@librairie-rature.example" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre votre messagerie avec l’adresse de la librairie déjà remplie.">bonjour@librairie-rature.example</a></address>
+      </div>
+      <div>
+        <h2 class="ft-h">Horaires</h2>
+        <p>Du lundi au samedi<br>de 10&nbsp;h à 20&nbsp;h</p>
+        <p>Fermé le dimanche, ouvert les trois dimanches avant Noël.</p>
+      </div>
+      <div>
+        <h2 class="ft-h">La librairie</h2>
+        <ul class="ft-links">
+          <li><a href="index.html#coups-de-coeur">Coups de cœur</a></li>
+          <li><a href="agenda.html">Rencontres et club de lecture</a></li>
+          <li><a href="commander.html">Réserver un livre</a></li>
+          <li><a href="contact.html">Venir à la librairie</a></li>
+          <li><a href="#" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre le compte Instagram de la librairie (nouveautés, vitrines, coulisses).">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="ft-h">La Lettre raturée</h2>
+        <p>Une fois par mois&nbsp;: nos dix lectures du moment et les dates des rencontres. Rien d’autre.</p>
+        <form class="ft-form" action="#" method="post" data-demo="Démo&nbsp;: sur le vrai site, votre adresse est ajoutée à la lettre de la librairie (un envoi par mois, désinscription en un clic).">
+          <label for="nl-mail-commander">Votre adresse e-mail</label>
+          <div class="ft-form-row"><input id="nl-mail-commander" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required><button class="btn btn-yellow btn-sm" type="submit">S’inscrire</button></div>
+        </form>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 Librairie Rature · 19 rue du Marque-Page, 75005 Paris · Lundi–samedi, 10&nbsp;h–20&nbsp;h</p>
+      <p><a href="#" data-demo="Démo&nbsp;: sur le vrai site, ce lien mène aux mentions légales (éditeur du site, hébergeur, données personnelles).">Mentions légales</a> · <a class="ft-credit" href="/">Site réalisé par smilt.</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

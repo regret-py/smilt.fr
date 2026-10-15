@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Agenda · Rencontres, lectures et club de lecture · Librairie Rature</title>
+<meta name="description" content="Rencontres d’auteurs, lectures, dédicaces, heure du conte et club de lecture à la Librairie Rature, 19 rue du Marque-Page, Paris 5e. Entrée libre, sur inscription.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F3EA">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/libre-baskerville-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="index.html" aria-label="Librairie Rature, accueil"><span class="logo-k">Librairie · Paris 5<sup>e</sup></span><span class="logo-w">Rature</span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul><li><a href="index.html">Accueil</a></li><li><a href="agenda.html" aria-current="page">Agenda</a></li><li><a href="commander.html">Commander</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+    </nav>
+    <p class="status" data-open-status>Lundi–samedi, 10&nbsp;h–20&nbsp;h</p>
+    <a class="btn btn-ink btn-sm hd-cta" href="commander.html">Réserver un livre</a>
+    <details class="menu">
+      <summary><span class="burger" aria-hidden="true"></span>Menu</summary>
+      <div class="menu-panel">
+        <nav aria-label="Menu du site">
+          <ul><li><a href="index.html">Accueil</a></li><li><a href="agenda.html" aria-current="page">Agenda</a></li><li><a href="commander.html">Commander</a></li><li><a href="contact.html">Contact &amp; accès</a></li></ul>
+        </nav>
+        <p class="status" data-open-status>Lundi–samedi, 10&nbsp;h–20&nbsp;h</p>
+        <a class="btn btn-ink" href="commander.html">Réserver un livre</a>
+      </div>
+    </details>
+  </div>
+</header>
+<main id="contenu" tabindex="-1">
+<section class="page-hero" aria-labelledby="ag-t">
+  <div class="wrap ph-grid">
+    <p class="kicker mono">Agenda · automne 2026</p>
+    <h1 id="ag-t" class="display display-s">Des soirées pour <s>acheter</s> <mark>parler des livres.</mark></h1>
+    <p class="lede">Rencontres, lectures, dédicaces, heure du conte et club de lecture&nbsp;: il se passe quelque chose à la librairie presque chaque semaine. C’est gratuit, mais les places sont comptées, alors inscrivez-vous.</p>
+    <img class="ph-ill" src="img/lecture.svg" width="320" height="240" alt="">
+  </div>
+  <div class="shelf shelf-s"><img src="img/etagere.svg" width="1440" height="140" alt=""></div>
+</section>
+<section class="section section-tight" aria-label="Prochains rendez-vous">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Filtrer les rendez-vous" hidden>
+      <button type="button" class="chip" aria-pressed="true" data-filter="tout">Tout</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="rencontre">Rencontres</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="lecture">Lectures</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="club">Club de lecture</button>
+      <button type="button" class="chip" aria-pressed="false" data-filter="jeunesse">Jeunesse</button>
+    </div>
+    <p class="filter-count mono" aria-live="polite"></p>
+    <ul class="events">
+<li class="ev" id="rencontre-delorme" data-cat="rencontre">
+  <p class="ev-date"><span class="ev-day">23</span><span class="mono">oct. 2026<br>jeudi · 19&nbsp;h</span></p>
+  <div class="ev-body">
+    <p class="tag mono">Rencontre</p>
+    <h2 class="ev-t">Margaux Delorme, «&#8239;L’Été des volets clos&#8239;»</h2>
+    <p class="ev-g">Animée par Odile</p>
+    <p>Une heure de discussion autour d’un roman sur les silences d’une famille, puis une séance de signatures. Cidre et jus de pomme offerts.</p>
+    <p class="ev-info mono">Entrée libre · 45 places</p>
+  </div>
+  <div class="ev-side">
+    <img src="img/rencontre.svg" width="160" height="120" alt="">
+    <a class="btn btn-ink btn-sm" href="#rencontre-delorme" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit à la rencontre&nbsp;: vous recevez un e-mail de confirmation et un rappel la veille.">M’inscrire</a>
+  </div>
+</li>
+<li class="ev" id="conte-octobre" data-cat="jeunesse">
+  <p class="ev-date"><span class="ev-day">31</span><span class="mono">oct. 2026<br>samedi · 11&nbsp;h</span></p>
+  <div class="ev-body">
+    <p class="tag mono">Jeunesse</p>
+    <h2 class="ev-t">L’heure du conte&nbsp;: histoires qui font (un peu) peur</h2>
+    <p class="ev-g">Avec Jeanne</p>
+    <p>Pour les 4–7 ans, déguisement bienvenu. Trois albums lus à voix haute dans le coin jeunesse, puis un goûter. Les parents peuvent rester… ou filer au rayon polar.</p>
+    <p class="ev-info mono">Gratuit · 15 enfants</p>
+  </div>
+  <div class="ev-side">
+    <img src="img/jeunesse.svg" width="160" height="120" alt="">
+    <a class="btn btn-ink btn-sm" href="#conte-octobre" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit à la rencontre&nbsp;: vous recevez un e-mail de confirmation et un rappel la veille.">M’inscrire</a>
+  </div>
+</li>
+<li class="ev" id="club-novembre" data-cat="club">
+  <p class="ev-date"><span class="ev-day">4</span><span class="mono">nov. 2026<br>mardi · 19&nbsp;h&nbsp;30</span></p>
+  <div class="ev-body">
+    <p class="tag mono">Club de lecture</p>
+    <h2 class="ev-t">Les Raturés&nbsp;: «&#8239;Traité du presque&#8239;», d’Anouk Ferrandi</h2>
+    <p class="ev-g">Avec Paul</p>
+    <p>Notre club du premier mardi du mois. On a lu le livre (ou presque, c’est de circonstance) et on en parle franchement, autour d’un thé.</p>
+    <p class="ev-info mono">Gratuit · 12 places</p>
+  </div>
+  <div class="ev-side">
+    <img src="img/club.svg" width="160" height="120" alt="">
+    <a class="btn btn-ink btn-sm" href="#club-novembre" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit à la rencontre&nbsp;: vous recevez un e-mail de confirmation et un rappel la veille.">M’inscrire</a>
+  </div>
+</li>
+<li class="ev" id="lecture-keravec" data-cat="lecture">
+  <p class="ev-date"><span class="ev-day">13</span><span class="mono">nov. 2026<br>jeudi · 19&nbsp;h</span></p>
+  <div class="ev-body">
+    <p class="tag mono">Lecture</p>
+    <h2 class="ev-t">Ilan Keravec lit «&#8239;Le Cadastre des oiseaux&#8239;»</h2>
+    <p class="ev-g">Au violoncelle&nbsp;: Clémence Arnaud</p>
+    <p>Une lecture à deux voix, l’auteur et un violoncelle, pour un récit qui se prête au silence. Quarante minutes, sans micro, lumières baissées.</p>
+    <p class="ev-info mono">Entrée libre · 40 places</p>
+  </div>
+  <div class="ev-side">
+    <img src="img/lecture.svg" width="160" height="120" alt="">
+    <a class="btn btn-ink btn-sm" href="#lecture-keravec" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit à la rencontre&nbsp;: vous recevez un e-mail de confirmation et un rappel la veille.">M’inscrire</a>
+  </div>
+</li>
+<li class="ev" id="dedicace-vasseur" data-cat="rencontre">
+  <p class="ev-date"><span class="ev-day">22</span><span class="mono">nov. 2026<br>samedi · 15&nbsp;h–18&nbsp;h</span></p>
+  <div class="ev-body">
+    <p class="tag mono">Dédicace BD</p>
+    <h2 class="ev-t">Camille Vasseur dessine «&#8239;Les Ronces, tome 2&#8239;»</h2>
+    <p class="ev-g">Avec Samir</p>
+    <p>Dédicaces dessinées, une par personne, dans l’ordre d’arrivée. Les tickets de passage sont distribués dès l’ouverture, à 10&nbsp;h.</p>
+    <p class="ev-info mono">Gratuit · ticket de passage</p>
+  </div>
+  <div class="ev-side">
+    <img src="img/dedicace.svg" width="160" height="120" alt="">
+    <a class="btn btn-ink btn-sm" href="#dedicace-vasseur" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit à la rencontre&nbsp;: vous recevez un e-mail de confirmation et un rappel la veille.">M’inscrire</a>
+  </div>
+</li>
+<li class="ev" id="soiree-cadeaux" data-cat="lecture">
+  <p class="ev-date"><span class="ev-day">10</span><span class="mono">déc. 2026<br>mercredi · 19&nbsp;h</span></p>
+  <div class="ev-body">
+    <p class="tag mono">Soirée</p>
+    <h2 class="ev-t">Livres à offrir&nbsp;: nos trente idées pour les fêtes</h2>
+    <p class="ev-g">Avec toute l’équipe</p>
+    <p>Les quatre libraires présentent, en une heure et sans notes, les livres qu’ils vont offrir cette année. Paquets cadeaux faits sur place, vin chaud.</p>
+    <p class="ev-info mono">Entrée libre</p>
+  </div>
+  <div class="ev-side">
+    <img src="img/lecture.svg" width="160" height="120" alt="">
+    <a class="btn btn-ink btn-sm" href="#soiree-cadeaux" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit à la rencontre&nbsp;: vous recevez un e-mail de confirmation et un rappel la veille.">M’inscrire</a>
+  </div>
+</li>
+    </ul>
+  </div>
+</section>
+<section class="section section-alt" id="club" aria-labelledby="club-t">
+  <div class="wrap club-grid">
+    <div>
+      <p class="kicker mono">Le club de lecture</p>
+      <h2 id="club-t" class="h2">Les Raturés, le premier mardi du mois</h2>
+      <p>Douze lecteurs, un livre, une heure et demie. On vient même si on n’a pas aimé, surtout si on n’a pas aimé. Le livre du mois est à −5&#8239;% pour les membres du club, et le thé est offert.</p>
+      <p>Pas d’inscription à l’année&nbsp;: on s’inscrit au mois, selon le livre et l’envie.</p>
+      <a class="btn btn-ink" href="#club" data-demo="Démo&nbsp;: sur le vrai site, ce bouton vous inscrit au prochain club&nbsp;: vous recevez la date, le livre et un rappel une semaine avant.">Rejoindre le prochain club</a>
+    </div>
+    <div class="reading">
+      <h3 class="h3">Les prochaines lectures</h3>
+      <ol class="reading-list">
+        <li><span class="mono">4 nov.</span><b>Traité du presque</b><span>Anouk Ferrandi · essai</span></li>
+        <li><span class="mono">2 déc.</span><b>La Maison aux sept horloges</b><span>Pia Lindqvist, traduit du suédois · roman</span></li>
+        <li><span class="mono">6 janv.</span><b>Ce que la marée laisse</b><span>Hugo Taillefer · nouvelles</span></li>
+      </ol>
+      <p class="hand">et en février, c’est vous qui choisissez&#8239;!</p>
+    </div>
+  </div>
+</section>
+<section class="section section-tight" aria-labelledby="prop-t">
+  <div class="wrap prop">
+    <h2 id="prop-t" class="h3">Vous êtes auteur, autrice, éditeur&#8239;?</h2>
+    <p>Nous organisons une quarantaine de rencontres par an. Écrivez-nous trois mois à l’avance à <a href="mailto:bonjour@librairie-rature.example" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre votre messagerie avec l’adresse de la librairie déjà remplie.">bonjour@librairie-rature.example</a>, avec le livre et les dates possibles.</p>
+  </div>
+</section>
+</main>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <p class="ft-logo">Rature</p>
+        <p>Librairie indépendante, générale et un peu bavarde.</p>
+        <address>19 rue du Marque-Page<br>75005 Paris<br><a href="tel:+33199004127" data-demo="Démo&nbsp;: sur le vrai site, ce lien lance l’appel vers la librairie depuis votre téléphone.">01&nbsp;99&nbsp;00&nbsp;41&nbsp;27</a><br><a href="mailto:bonjour@librairie-rature.example" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre votre messagerie avec l’adresse de la librairie déjà remplie.">bonjour@librairie-rature.example</a></address>
+      </div>
+      <div>
+        <h2 class="ft-h">Horaires</h2>
+        <p>Du lundi au samedi<br>de 10&nbsp;h à 20&nbsp;h</p>
+        <p>Fermé le dimanche, ouvert les trois dimanches avant Noël.</p>
+      </div>
+      <div>
+        <h2 class="ft-h">La librairie</h2>
+        <ul class="ft-links">
+          <li><a href="index.html#coups-de-coeur">Coups de cœur</a></li>
+          <li><a href="agenda.html">Rencontres et club de lecture</a></li>
+          <li><a href="commander.html">Réserver un livre</a></li>
+          <li><a href="contact.html">Venir à la librairie</a></li>
+          <li><a href="#" data-demo="Démo&nbsp;: sur le vrai site, ce lien ouvre le compte Instagram de la librairie (nouveautés, vitrines, coulisses).">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="ft-h">La Lettre raturée</h2>
+        <p>Une fois par mois&nbsp;: nos dix lectures du moment et les dates des rencontres. Rien d’autre.</p>
+        <form class="ft-form" action="#" method="post" data-demo="Démo&nbsp;: sur le vrai site, votre adresse est ajoutée à la lettre de la librairie (un envoi par mois, désinscription en un clic).">
+          <label for="nl-mail-agenda">Votre adresse e-mail</label>
+          <div class="ft-form-row"><input id="nl-mail-agenda" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required><button class="btn btn-yellow btn-sm" type="submit">S’inscrire</button></div>
+        </form>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 Librairie Rature · 19 rue du Marque-Page, 75005 Paris · Lundi–samedi, 10&nbsp;h–20&nbsp;h</p>
+      <p><a href="#" data-demo="Démo&nbsp;: sur le vrai site, ce lien mène aux mentions légales (éditeur du site, hébergeur, données personnelles).">Mentions légales</a> · <a class="ft-credit" href="/">Site réalisé par smilt.</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

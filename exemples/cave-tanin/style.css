@@ -127,6 +127,11 @@ main:focus { outline: none; }
   .js .nav.ouverte ul { flex-direction: column; padding: 6px 0 14px; }
   .js .nav.ouverte a { padding: 14px 2px; font-size: 15px; border-bottom: 1px dashed var(--ligne); }
 }
+@media (max-width: 379px) {
+  .tete-in { gap: 10px; }
+  .logo-sur { letter-spacing: .06em; }
+  .burger { padding: 8px 10px; }
+}
 @media (min-width: 900px) {
   .tete-in { min-height: 80px; gap: 24px; }
   .logo-marque { width: 44px; height: 44px; }
@@ -160,14 +165,14 @@ main:focus { outline: none; }
 .sur-titre { display: flex; align-items: center; gap: 12px; font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--lie-vive); margin-bottom: 20px; }
 .trait { width: 34px; border-top: 3px double currentColor; }
 .hero h1 { font-size: clamp(42px, 11.6vw, 104px); line-height: .98; margin-bottom: 22px; letter-spacing: -.015em; }
-.chapo { font-size: 18px; max-width: 34em; color: var(--encre-douce); }
+.chapo { font-size: 18px; max-width: 34em; color: var(--encre-douce); text-wrap: pretty; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 32px; }
 .hero-actions .btn { flex: 1 1 240px; }
 .fiche { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-top: 1px solid var(--encre); border-bottom: 1px solid var(--encre); }
 .fiche div { padding: 12px 0 12px 14px; border-left: 1px solid var(--ligne); }
 .fiche div:first-child { border-left: 0; padding-left: 0; }
 .fiche dt { font: 500 10.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--encre-douce); }
-.fiche dd { margin: 2px 0 0; font: 400 30px/1.1 var(--titre); }
+.fiche dd { margin: 2px 0 0; font: 400 clamp(24px, 7.4vw, 30px)/1.1 var(--titre); white-space: nowrap; }
 .hero-visuel {
   position: relative; display: grid; place-items: end center; min-height: 300px; padding: 40px 24px 0; overflow: hidden; order: -1;
   background:
@@ -206,12 +211,11 @@ main:focus { outline: none; }
 @media (min-width: 980px) {
   .hero { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); min-height: calc(100vh - 118px); min-height: calc(100svh - 118px); }
   .hero-texte { display: flex; flex-direction: column; justify-content: center; padding: 56px 56px 56px max(var(--gouttiere), calc((100vw - 1240px) / 2 + var(--gouttiere))); }
-  .hero-visuel { order: 0; border-left: 1px solid var(--encre); padding: 80px 32px 0; }
-  .hero-img { width: min(100%, 560px); }
+  .hero-visuel { order: 0; border-left: 1px solid var(--encre); padding: 112px 32px 36px; place-items: center; }
   .tampon { width: 132px; height: 132px; top: 28px; left: 28px; }
   .ticket { top: 34px; right: 28px; }
   .hero h1 { font-size: clamp(60px, 5.5vw, 92px); }
-  .hero-img { width: min(100%, 540px); }
+  .hero-img { width: auto; height: min(600px, calc(100svh - 118px - 150px)); max-width: 100%; }
 }
 
 /* bandeau défilant (statique si mouvement réduit) */
@@ -358,7 +362,7 @@ main:focus { outline: none; }
 .infos-retrait li { padding: 10px 12px 10px 14px; border-left: 3px solid var(--lie); background: var(--creme-claire); }
 @media (min-width: 900px) { .page-tete-in { grid-template-columns: 1.4fr 1fr; gap: 64px; } .page-tete { padding: 64px 0 48px; } }
 
-.boutique { display: grid; gap: 36px; padding: 36px 0 80px; }
+.boutique { display: grid; gap: 36px; padding-top: 36px; padding-bottom: 80px; }
 .filtres { display: grid; gap: 14px; margin-bottom: 26px; padding-bottom: 20px; border-bottom: 1px solid var(--encre); }
 .filtres fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .filtres legend { float: left; width: 100%; margin-bottom: 8px; font: 500 11.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--encre-douce); }
@@ -373,7 +377,9 @@ main:focus { outline: none; }
 .sans-js { padding: 12px 14px; border: 1px dashed var(--encre-douce); font: 400 13px var(--mono); color: var(--encre-douce); }
 .js .sans-js { display: none; }
 
-.catalogue { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
+.catalogue { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 560px) { .catalogue { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vin-conseil { grid-column: span 2; } }
+@media (min-width: 1200px) { .catalogue { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .vin { display: flex; flex-direction: column; padding: 0 0 16px; border: 1px solid var(--encre); background: var(--creme-claire); scroll-margin-top: 100px; }
 .vin[hidden] { display: none; }
 .vin:target { outline: 3px solid var(--ocre); outline-offset: 3px; }
@@ -388,6 +394,13 @@ main:focus { outline: none; }
 .vin-pied .prix { font-size: 26px; }
 .ajouter { min-height: 42px; padding: 9px 14px; font-size: 12px; }
 .ajouter.dans-panier { background: var(--vert); border-color: var(--vert); }
+.vin-conseil { display: grid; gap: 18px 26px; align-items: center; padding: 26px; background: var(--lie); color: var(--creme-claire); border: 1px solid var(--lie); }
+.vin-conseil img { width: 92px; padding: 12px; border-radius: 50%; background: var(--creme); }
+.vin-conseil h2 { font-size: clamp(26px, 3vw, 34px); color: var(--creme-claire); }
+.vin-conseil p:last-child { margin: 0; font-size: 16px; color: var(--creme-2); }
+.vin-conseil .numero { margin-bottom: 10px; }
+.vin-conseil .numero::before { display: none; }
+@media (min-width: 560px) { .vin-conseil { grid-template-columns: 110px 1fr; } .vin-conseil img { width: 110px; } }
 .vide-filtre { padding: 30px; border: 1px dashed var(--encre); text-align: center; font: 400 14px var(--mono); }
 
 .panier { align-self: start; border: 1.5px solid var(--encre); background: var(--creme); scroll-margin-top: 90px; }
@@ -440,7 +453,8 @@ main:focus { outline: none; }
 .page-tete-deg h1 { color: var(--creme-claire); }
 .page-tete-deg .chapo { color: #EADFCB; }
 .page-tete-deg .sur-titre { color: var(--ocre-pale); }
-.page-tete-deg img { width: min(100%, 360px); margin: 0 auto; }
+.page-tete-deg img { width: min(64%, 240px); margin: 0 auto; }
+@media (min-width: 900px) { .page-tete-deg img { width: min(100%, 360px); } }
 .format { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .format li { padding: 7px 12px; border: 1px solid rgba(233, 194, 122, .55); border-radius: 40px; font: 400 13px var(--mono); color: var(--creme-claire); }
 

@@ -1,33 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320">
-  <!-- miroirs et banquette -->
-  <g fill="#2A5A47"><path d="M40 150V60a50 50 0 0 1 100 0v90zM230 150V60a50 50 0 0 1 100 0v90zM420 150V60a50 50 0 0 1 100 0v90z"/></g>
-  <g fill="none" stroke="#E7AE33" stroke-width="3"><path d="M40 150V60a50 50 0 0 1 100 0v90zM230 150V60a50 50 0 0 1 100 0v90zM420 150V60a50 50 0 0 1 100 0v90z"/></g>
-  <g stroke="#F5EDDA" stroke-width="4" stroke-linecap="round" opacity=".35"><path d="M60 70l30-30M78 90l40-40M250 70l30-30M268 90l40-40M440 70l30-30M458 90l40-40"/></g>
-  <path d="M0 152h560" stroke="#E7AE33" stroke-width="4"/>
-  <rect x="0" y="156" width="560" height="40" fill="#8E2817"/>
-  <g stroke="#6E1E10" stroke-width="2"><path d="M70 156v40M140 156v40M210 156v40M280 156v40M350 156v40M420 156v40M490 156v40"/></g>
+  <rect width="560" height="320" fill="#1E4636"/>
+  <!-- miroirs en arc -->
+  <g fill="#2A5A47" stroke="#E7AE33" stroke-width="3">
+    <path d="M44 150V74a46 46 0 0 1 92 0v76z"/><path d="M234 150V74a46 46 0 0 1 92 0v76z"/><path d="M424 150V74a46 46 0 0 1 92 0v76z"/>
+  </g>
+  <g stroke="#F5EDDA" stroke-width="4" stroke-linecap="round" opacity=".3"><path d="M64 84l28-28M70 112l46-46M254 84l28-28M260 112l46-46M444 84l28-28M450 112l46-46"/></g>
+  <!-- globes -->
+  <g><path d="M185 0v34M375 0v34" stroke="#E7AE33" stroke-width="2"/><circle cx="185" cy="46" r="13" fill="#F3D58C"/><circle cx="375" cy="46" r="13" fill="#F3D58C"/></g>
+  <!-- banquette -->
+  <rect x="0" y="150" width="560" height="10" fill="#E7AE33"/>
+  <rect x="0" y="160" width="560" height="44" fill="#8E2817"/>
+  <g stroke="#6E1D10" stroke-width="2"><path d="M70 160v44M140 160v44M210 160v44M280 160v44M350 160v44M420 160v44M490 160v44"/></g>
   <!-- table -->
-  <rect x="30" y="196" width="500" height="20" fill="#FBF7EE"/>
-  <path d="M30 216h500v40H30z" fill="#F5EDDA"/>
-  <path d="M30 216h500" stroke="#E4D9C2" stroke-width="2"/>
-  <g stroke="#2B2A26" stroke-width="2.2" stroke-linecap="round" opacity=".55" fill="none"><path d="M410 232h14M410 240h22M410 248h10M440 232h8M440 240h8M440 248h8"/><path d="M406 254h48"/></g>
-  <!-- verres, bouteilles, assiettes -->
-  <g>
-    <rect x="96" y="150" width="16" height="46" rx="5" fill="#173628"/><rect x="100" y="138" width="8" height="16" fill="#173628"/>
-    <rect x="300" y="150" width="16" height="46" rx="5" fill="#173628"/><rect x="304" y="138" width="8" height="16" fill="#173628"/>
-    <path d="M196 158h34v34c0 4-4 6-8 6h-18c-4 0-8-2-8-6z" fill="#F5EDDA" opacity=".75"/>
+  <rect x="24" y="196" width="512" height="14" rx="3" fill="#FBF7EE"/>
+  <rect x="24" y="210" width="512" height="6" fill="#E4D9C2"/>
+  <g stroke="#2B2A26" stroke-width="5" stroke-linecap="round"><path d="M60 216v74M500 216v74M280 216v74"/></g>
+  <!-- couverts -->
+  <g fill="#FFFFFF" stroke="#C9B48A" stroke-width="1.5">
+    <ellipse cx="80" cy="196" rx="24" ry="5"/><ellipse cx="160" cy="196" rx="24" ry="5"/><ellipse cx="240" cy="196" rx="24" ry="5"/><ellipse cx="320" cy="196" rx="24" ry="5"/><ellipse cx="400" cy="196" rx="24" ry="5"/><ellipse cx="480" cy="196" rx="24" ry="5"/>
   </g>
-  <g fill="#8E2140"><path d="M60 176h18c0 10-4 14-9 14s-9-4-9-14z"/><path d="M148 176h18c0 10-4 14-9 14s-9-4-9-14z"/><path d="M256 176h18c0 10-4 14-9 14s-9-4-9-14z"/><path d="M352 176h18c0 10-4 14-9 14s-9-4-9-14z"/><path d="M462 176h18c0 10-4 14-9 14s-9-4-9-14z"/></g>
-  <g stroke="#F5EDDA" stroke-width="3"><path d="M69 190v6M157 190v6M265 190v6M361 190v6M471 190v6"/></g>
-  <g fill="#FBF7EE" stroke="#1E4636" stroke-width="2"><ellipse cx="128" cy="196" rx="26" ry="5"/><ellipse cx="226" cy="196" rx="26" ry="5" opacity="0"/><ellipse cx="330" cy="196" rx="26" ry="5"/><ellipse cx="420" cy="196" rx="26" ry="5"/></g>
-  <g fill="#D8462F"><circle cx="128" cy="190" r="6"/><circle cx="330" cy="190" r="6"/></g>
-  <circle cx="420" cy="190" r="6" fill="#E7AE33"/>
-  <!-- pieds et chaises bistrot -->
-  <g stroke="#2B2A26" stroke-width="5" stroke-linecap="round"><path d="M60 256v50M500 256v50"/></g>
-  <g fill="none" stroke="#3A2416" stroke-width="5" stroke-linecap="round">
-    <path d="M110 306v-46h44v46M120 260v-30a12 12 0 0 1 24 0v30"/>
-    <path d="M250 306v-46h44v46M260 260v-30a12 12 0 0 1 24 0v30"/>
-    <path d="M390 306v-46h44v46M400 260v-30a12 12 0 0 1 24 0v30"/>
+  <g fill="#6B2A1C"><ellipse cx="80" cy="193" rx="12" ry="3"/><ellipse cx="240" cy="193" rx="12" ry="3"/><ellipse cx="400" cy="193" rx="12" ry="3"/></g>
+  <g fill="#E7AE33"><ellipse cx="160" cy="193" rx="12" ry="3"/><ellipse cx="480" cy="193" rx="12" ry="3"/></g>
+  <ellipse cx="320" cy="193" rx="12" ry="3" fill="#9CBF6A"/>
+  <!-- verres, carafes -->
+  <g fill="none" stroke="#F5EDDA" stroke-width="2"><path d="M112 168h12l-1 14h-10zM118 182v14M112 196h12M352 168h12l-1 14h-10zM358 182v14M352 196h12M432 168h12l-1 14h-10zM438 182v14M432 196h12"/></g>
+  <g fill="#8E2140"><path d="M113 175h10l-.5 7h-9zM353 175h10l-.5 7h-9z"/></g>
+  <path d="M196 164h12v8c6 4 8 10 8 16v8h-28v-8c0-6 2-12 8-16z" fill="#F5EDDA" opacity=".8"/>
+  <path d="M190 182h24v14h-24z" fill="#8E2140"/>
+  <path d="M276 150h8v14c4 3 6 8 6 14v18h-20v-18c0-6 2-11 6-14z" fill="#0F2A1F"/>
+  <rect x="272" y="176" width="16" height="10" fill="#F5EDDA"/>
+  <!-- chaises bistrot -->
+  <g fill="none" stroke="#C98A4B" stroke-width="5" stroke-linecap="round">
+    <path d="M118 320v-62a22 22 0 0 1 44 0v62M118 278h44"/>
+    <path d="M258 320v-62a22 22 0 0 1 44 0v62M258 278h44"/>
+    <path d="M398 320v-62a22 22 0 0 1 44 0v62M398 278h44"/>
   </g>
-  <path d="M0 310h560" stroke="#C9B48A" stroke-width="10"/>
+  <rect x="0" y="310" width="560" height="10" fill="#0F2A1F" opacity=".5"/>
 </svg>

@@ -1,0 +1,471 @@
+/* Fromagerie Caillé · fromager-affineur, Paris 15e */
+
+@font-face {
+  font-family: "Caprasimo";
+  src: url("fonts/caprasimo-latin-400-normal.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+
+:root {
+  --creme: #FFF7E0;
+  --lait: #FFFDF6;
+  --beurre: #F7D774;
+  --beurre-pale: #FCEBB0;
+  --trou: #EFC85A;
+  --croute: #8A4B22;
+  --croute-claire: #D9A15A;
+  --brun: #3B2213;
+  --brun-doux: #65462C;
+  --bleu: #2F4F86;
+  --bleu-fonce: #233C68;
+  --bleu-pale: #DCE5F2;
+  --vert: #3B6B2F;
+  --rouge: #A3342A;
+  --trait: #E5CF96;
+  --display: "Caprasimo", "Cooper Black", Georgia, serif;
+  --texte: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --rayon: 22px;
+  --gouttiere: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--creme); color: var(--brun);
+  font-family: var(--texte); font-size: 1.0625rem; line-height: 1.6; font-weight: 400;
+  overflow-wrap: break-word;
+}
+img, svg { display: block; max-width: 100%; height: auto; }
+a { color: var(--bleu); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--bleu-fonce); }
+:focus-visible { outline: 3px solid var(--bleu); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; margin: 0 0 .5em; letter-spacing: -.005em; }
+h1 { font-size: clamp(2.5rem, 7.4vw, 5.1rem); line-height: 1.02; }
+h2 { font-size: clamp(2rem, 4.6vw, 3.1rem); }
+h3 { font-size: 1.45rem; }
+p { margin: 0 0 1em; }
+ul, ol { margin: 0; padding: 0; }
+.enveloppe { width: 100%; max-width: 1220px; margin: 0 auto; padding: 0 var(--gouttiere); }
+.visuellement-cache { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.evitement { position: absolute; left: 12px; top: -60px; z-index: 50; padding: 10px 16px; background: var(--brun); color: var(--beurre); border-radius: 999px; font-weight: 700; }
+.evitement:focus { top: 64px; }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 50px; padding: 12px 24px; border-radius: 999px; border: 2.5px solid var(--brun);
+  font: 700 1rem/1.2 var(--texte); text-decoration: none; cursor: pointer; text-align: center;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s;
+}
+.btn-plein { background: var(--brun); color: var(--beurre); box-shadow: 0 4px 0 var(--croute); }
+.btn-plein:hover { color: var(--beurre); background: #4d2d19; transform: translateY(-2px); box-shadow: 0 6px 0 var(--croute); }
+.btn-creux { background: var(--lait); color: var(--brun); box-shadow: 0 4px 0 var(--brun); }
+.btn-creux:hover { color: var(--brun); transform: translateY(-2px); box-shadow: 0 6px 0 var(--brun); }
+.btn-bleu { background: var(--bleu); border-color: var(--bleu); color: var(--lait); box-shadow: 0 4px 0 var(--bleu-fonce); }
+.btn-bleu:hover { color: var(--lait); background: var(--bleu-fonce); }
+.btn-beurre { background: var(--beurre); color: var(--brun); box-shadow: 0 4px 0 var(--brun); }
+.btn-beurre:hover { color: var(--brun); transform: translateY(-2px); }
+.btn-petit { min-height: 42px; padding: 8px 18px; font-size: .95rem; }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: .6; cursor: not-allowed; }
+.fleche::after { content: "→"; font-weight: 700; }
+
+/* ---------- En-tête ---------- */
+.tete { position: relative; z-index: 20; background: var(--creme); border-bottom: 2.5px solid var(--brun); }
+.tete-in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; min-height: 76px; padding-top: 10px; padding-bottom: 10px; }
+.logo { display: inline-flex; align-items: center; gap: 12px; color: var(--brun); text-decoration: none; margin-right: auto; }
+.logo:hover { color: var(--brun); }
+.logo img { width: 46px; height: 46px; }
+.logo-texte { display: flex; flex-direction: column; line-height: 1; }
+.logo-sur { font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--croute); margin-bottom: 4px; }
+.logo-nom { font-family: var(--display); font-size: 1.85rem; letter-spacing: .005em; }
+.menu-bouton { display: none; }
+.nav { width: 100%; }
+.nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.nav a {
+  display: inline-block; padding: 8px 12px; border-radius: 999px; color: var(--brun);
+  font-weight: 600; text-decoration: none; font-size: 1rem;
+}
+.nav a:hover { background: var(--beurre-pale); color: var(--brun); }
+.nav a[aria-current="page"] { background: url("img/veine.svg") left 12px bottom 1px / 40px 8px repeat-x; padding-bottom: 10px; }
+.tete-cta { display: none; }
+
+html.js .menu-bouton {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 14px;
+  border: 2.5px solid var(--brun); border-radius: 999px; background: var(--beurre); color: var(--brun);
+  font: 700 1rem/1 var(--texte); cursor: pointer;
+}
+.menu-icone { position: relative; width: 18px; height: 12px; border-top: 2.5px solid currentColor; border-bottom: 2.5px solid currentColor; }
+.menu-icone::after { content: ""; position: absolute; left: 0; right: 0; top: 2.25px; border-top: 2.5px solid currentColor; }
+html.js .nav { display: none; }
+html.js .nav.ouvert { display: block; padding: 6px 0 12px; }
+html.js .nav.ouvert ul { flex-direction: column; gap: 2px; }
+html.js .nav.ouvert a { display: block; font-size: 1.15rem; padding: 12px 14px; }
+html.js .nav.ouvert a[aria-current="page"] { background: var(--beurre-pale); }
+
+/* ---------- Statut ouvert / fermé ---------- */
+.statut { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-weight: 700; font-size: .95rem; }
+.statut-point { width: 11px; height: 11px; border-radius: 50%; background: var(--croute-claire); box-shadow: 0 0 0 3px rgba(217, 161, 90, .3); flex: none; }
+.statut.est-ouvert .statut-point { background: #3E8A35; box-shadow: 0 0 0 3px rgba(62, 138, 53, .25); }
+.statut.est-ferme .statut-point { background: var(--rouge); box-shadow: 0 0 0 3px rgba(163, 52, 42, .2); }
+
+/* ---------- Héros accueil ---------- */
+.heros {
+  position: relative; background-color: var(--beurre);
+  background-image:
+    radial-gradient(ellipse 26px 20px at 8% 18%, var(--trou) 96%, transparent 100%),
+    radial-gradient(ellipse 14px 11px at 22% 70%, var(--trou) 96%, transparent 100%),
+    radial-gradient(ellipse 34px 26px at 46% 92%, var(--trou) 96%, transparent 100%),
+    radial-gradient(ellipse 12px 9px at 62% 12%, var(--trou) 96%, transparent 100%),
+    radial-gradient(ellipse 20px 15px at 90% 54%, var(--trou) 96%, transparent 100%);
+  background-size: 560px 460px;
+}
+.festons { position: relative; }
+.festons::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -15px; height: 16px; z-index: 2;
+  background: radial-gradient(circle at 50% 0, var(--feston, var(--beurre)) 11px, transparent 11.5px) 0 0 / 30px 16px repeat-x;
+}
+.heros-in { display: grid; grid-template-areas: "sur" "titre" "visuel" "chapo" "actions" "infos"; padding-top: 28px; padding-bottom: 48px; }
+.heros-texte { display: contents; }
+.heros .surtitre { grid-area: sur; justify-self: start; }
+.heros h1 { grid-area: titre; }
+.heros .chapo { grid-area: chapo; }
+.heros .actions { grid-area: actions; }
+.heros-infos { grid-area: infos; }
+.heros-visuel { grid-area: visuel; }
+.surtitre {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 18px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--croute);
+}
+.heros .surtitre { color: var(--brun); background: var(--lait); border: 2px solid var(--brun); padding: 6px 14px; border-radius: 999px; }
+.heros h1 { max-width: 12.5ch; margin-bottom: .2em; }
+.heros h1 em { font-style: normal; color: var(--bleu); }
+.chapo { font-size: 1.12rem; line-height: 1.55; max-width: 34em; color: var(--brun); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px 14px; margin: 24px 0 26px; }
+.heros-infos { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; font-size: .95rem; font-weight: 500; }
+.heros-infos li { display: inline-flex; align-items: center; gap: 8px; }
+.heros-visuel { position: relative; margin: 52px 0 50px; }
+.heros-visuel::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 84%; aspect-ratio: 1; transform: translate(-50%, -52%);
+  border-radius: 50%; background: var(--lait); border: 2.5px solid var(--brun);
+}
+.heros-visuel img { position: relative; width: 100%; }
+.pastille {
+  position: absolute; right: 0; top: -6px; z-index: 3; width: 128px; height: 128px; border-radius: 50%;
+  display: grid; place-content: center; text-align: center; padding: 10px;
+  background: var(--bleu); color: var(--lait); border: 2.5px solid var(--brun);
+  box-shadow: inset 0 0 0 6px var(--bleu), inset 0 0 0 8px var(--beurre-pale);
+  transform: rotate(8deg); text-decoration: none; line-height: 1.1;
+}
+.pastille:hover { color: var(--lait); transform: rotate(4deg) scale(1.03); }
+.pastille-sur { font-size: .6rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--beurre); }
+.pastille-nom { font-family: var(--display); font-size: 1.05rem; margin: 4px 0; }
+.pastille-prix { font-size: .78rem; font-weight: 700; }
+
+/* ---------- Bandeau de chiffres ---------- */
+.bandeau { background: var(--brun); color: var(--beurre-pale); padding: 40px 0 26px; }
+.bandeau ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 16px; }
+.bandeau li { display: flex; flex-direction: column; }
+.bandeau b { font-family: var(--display); font-weight: 400; font-size: 2rem; color: var(--beurre); line-height: 1.1; }
+.bandeau span { font-size: .95rem; }
+
+/* ---------- Sections ---------- */
+.section { padding: 72px 0; }
+.section-tete { max-width: 46rem; margin-bottom: 36px; }
+.section-tete .surtitre { margin-bottom: 12px; }
+.veine { display: block; width: 92px; height: 12px; margin: 0 0 18px; background: url("img/veine.svg") left center / 30px 6px repeat-x; }
+.centre { text-align: center; margin-left: auto; margin-right: auto; }
+.centre .veine { margin-left: auto; margin-right: auto; }
+
+/* Cave */
+.cave-grille { display: grid; gap: 36px; align-items: center; }
+.cave-visuel { background: var(--beurre-pale); border: 2.5px solid var(--brun); border-radius: 220px 220px var(--rayon) var(--rayon); padding: 30px 26px 0; overflow: hidden; }
+.cave-visuel img { margin: 0 auto; max-width: 420px; width: 100%; }
+.gestes { list-style: none; display: grid; gap: 14px; margin: 26px 0; counter-reset: geste; }
+.gestes li { position: relative; padding: 4px 0 4px 58px; counter-increment: geste; }
+.gestes li::before {
+  content: counter(geste); position: absolute; left: 0; top: 2px; width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--beurre); border: 2.5px solid var(--brun);
+  font-family: var(--display); font-size: 1.25rem;
+}
+.gestes b { display: block; font-size: 1.08rem; }
+.mesures { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
+.mesures div { background: var(--lait); border: 2px solid var(--trait); border-radius: 16px; padding: 10px 16px; }
+.mesures dt { font-size: .8rem; font-weight: 600; color: var(--brun-doux); }
+.mesures dd { margin: 0; font-family: var(--display); font-size: 1.4rem; line-height: 1.2; }
+
+/* Fromage de la semaine */
+.semaine { background: var(--bleu); color: var(--lait); }
+.semaine a:not(.btn) { color: var(--beurre); }
+.semaine .surtitre { color: var(--beurre); }
+.semaine-grille { display: grid; gap: 36px; align-items: center; }
+.etiquette {
+  position: relative; width: min(100%, 420px); aspect-ratio: 1; margin: 0 auto; border-radius: 50%;
+  background: var(--creme); border: 3px solid var(--brun); display: grid; place-items: center; text-align: center;
+  box-shadow: 0 0 0 10px var(--bleu), 0 0 0 13px var(--beurre);
+  color: var(--brun);
+}
+.etiquette::before { content: ""; position: absolute; inset: 14px; border-radius: 50%; border: 2px dashed var(--croute-claire); }
+.etiquette-in { position: relative; width: 72%; }
+.etiquette img { width: 78%; margin: 0 auto 4px; }
+.etiquette-sur { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--croute); }
+.etiquette-nom { display: block; font-family: var(--display); font-size: clamp(1.4rem, 4.6vw, 2rem); line-height: 1.05; margin: 4px 0; }
+.etiquette-mois { display: inline-block; margin-top: 6px; padding: 3px 12px; border-radius: 999px; background: var(--beurre); border: 2px solid var(--brun); font-size: .82rem; font-weight: 700; }
+.fiche { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin: 22px 0; border-radius: 16px; overflow: hidden; background: rgba(255, 253, 246, .3); border: 1.5px solid rgba(255, 253, 246, .3); }
+.fiche li { background: var(--bleu); padding: 10px 14px; }
+.fiche span { display: block; font-size: .78rem; color: var(--bleu-pale); }
+.fiche b { font-weight: 700; }
+.citation { margin: 0 0 24px; padding: 0 0 0 20px; border-left: 4px solid var(--beurre); font-size: 1.12rem; }
+.citation p { margin-bottom: .4em; }
+.citation footer { font-size: .9rem; color: var(--bleu-pale); }
+.notes { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+.notes li { padding: 5px 14px; border-radius: 999px; border: 2px solid var(--beurre); color: var(--beurre-pale); font-weight: 600; font-size: .92rem; }
+.prix-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+.prix-gros { font-family: var(--display); font-size: 2.4rem; line-height: 1; color: var(--beurre); }
+.prix-gros small { font-family: var(--texte); font-size: 1rem; font-weight: 600; color: var(--lait); }
+
+/* Cartes plateaux */
+.cartes { display: grid; gap: 22px; }
+.carte {
+  position: relative; display: flex; flex-direction: column; background: var(--lait); border: 2.5px solid var(--brun);
+  border-radius: var(--rayon); padding: 26px 24px 24px; box-shadow: 6px 6px 0 var(--beurre);
+}
+.carte h3 { margin-bottom: .25em; }
+.carte-etiquette { position: absolute; top: -14px; right: 20px; padding: 4px 12px; border-radius: 999px; background: var(--bleu); color: var(--lait); font-size: .8rem; font-weight: 700; }
+.carte-prix { font-family: var(--display); font-size: 2.3rem; line-height: 1.1; color: var(--croute); margin: 10px 0 2px; }
+.carte-prix small { font-family: var(--texte); font-size: .95rem; font-weight: 600; color: var(--brun-doux); }
+.carte ul { list-style: none; margin: 14px 0 20px; display: grid; gap: 6px; }
+.carte li { padding-left: 24px; position: relative; }
+.carte li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 12px; height: 9px; border-radius: 50%; background: var(--trou); border: 1.5px solid var(--croute); }
+.carte .btn { margin-top: auto; align-self: flex-start; }
+.mini-fromages { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 6px; }
+.mini-fromages img { width: 44px; height: 33px; }
+
+/* Ateliers (accueil) */
+.atelier-bloc {
+  display: grid; gap: 26px; align-items: center; background: var(--beurre); border: 2.5px solid var(--brun);
+  border-radius: var(--rayon); padding: 30px 24px; overflow: hidden;
+}
+.atelier-bloc img { max-width: 360px; width: 100%; margin: 0 auto; }
+.date-pill { display: inline-flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; padding: 6px 14px; border-radius: 12px; background: var(--lait); border: 2px solid var(--brun); font-weight: 700; margin-bottom: 14px; }
+
+/* Avis */
+.avis { list-style: none; display: grid; gap: 18px; }
+.avis li { margin: 0; }
+.avis blockquote { margin: 0; height: 100%; background: var(--lait); border: 2px solid var(--trait); border-radius: var(--rayon); padding: 22px 22px 18px; }
+.avis blockquote p { font-size: 1.05rem; }
+.avis blockquote p::before { content: "« "; font-family: var(--display); color: var(--croute); }
+.avis blockquote p::after { content: " »"; font-family: var(--display); color: var(--croute); }
+.avis footer { font-size: .9rem; font-weight: 600; color: var(--brun-doux); }
+
+/* Accès */
+.acces { background: var(--lait); border-top: 2.5px solid var(--brun); }
+.acces-grille { display: grid; gap: 34px; }
+.horaires { width: 100%; border-collapse: collapse; margin: 6px 0 22px; font-size: 1rem; }
+.horaires th, .horaires td { text-align: left; padding: 9px 0; border-bottom: 1.5px dashed var(--trait); vertical-align: top; }
+.horaires th { font-weight: 700; padding-right: 14px; white-space: nowrap; }
+.horaires td { color: var(--brun); }
+.horaires tr.ferme td { color: var(--brun-doux); font-style: italic; }
+.coord { list-style: none; display: grid; gap: 8px; margin: 0 0 22px; }
+.coord li { display: flex; gap: 10px; }
+.coord b { min-width: 6.5em; }
+.plan { margin: 0; border: 2.5px solid var(--brun); border-radius: var(--rayon); overflow: hidden; background: #F3E3B8; box-shadow: 6px 6px 0 var(--beurre); }
+.plan figcaption { padding: 12px 16px; font-size: .92rem; background: var(--lait); border-top: 2px solid var(--brun); }
+
+/* ---------- En-tête de page intérieure ---------- */
+.page-tete { background: var(--beurre); }
+.page-tete-in { display: grid; gap: 18px; align-items: center; padding-top: 34px; padding-bottom: 44px; }
+.page-tete h1 { font-size: clamp(2.4rem, 6.4vw, 4.4rem); margin-bottom: .3em; }
+.page-tete .chapo { margin-bottom: 0; }
+.page-tete-visuel { max-width: 520px; width: 100%; margin: 0 auto; }
+.fil { font-size: .9rem; margin: 0 0 14px; }
+.fil a { color: var(--brun); font-weight: 600; }
+
+/* ---------- Fromages ---------- */
+.filtres { position: sticky; top: 0; z-index: 10; background: var(--creme); border-bottom: 2px solid var(--trait); padding: 14px 0; }
+.filtres-in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.filtres-label { font-weight: 700; margin: 0; }
+.filtres-boutons { display: flex; flex-wrap: wrap; gap: 8px; }
+.filtre {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 16px 6px 8px;
+  border: 2px solid var(--brun); border-radius: 999px; background: var(--lait); color: var(--brun);
+  font: 700 .98rem/1 var(--texte); cursor: pointer;
+}
+.filtre img { width: 30px; height: 30px; }
+.filtre-tous { padding-left: 16px; }
+.filtre:hover { background: var(--beurre-pale); }
+.filtre[aria-pressed="true"] { background: var(--brun); color: var(--beurre); }
+.filtres-compte { margin: 0 0 0 auto; font-size: .95rem; color: var(--brun-doux); font-weight: 600; }
+.famille { padding: 56px 0 8px; }
+.famille[hidden] { display: none; }
+.famille-tete { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 6px 24px; margin-bottom: 24px; }
+.famille-tete h2 { margin: 0; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+.famille-tete p { margin: 0; max-width: 34rem; color: var(--brun-doux); }
+.fromages { list-style: none; display: grid; gap: 18px; }
+.fromage { display: flex; flex-direction: column; background: var(--lait); border: 2px solid var(--brun); border-radius: var(--rayon); overflow: hidden; }
+.fromage[hidden] { display: none; }
+.fromage-visuel { position: relative; display: grid; place-items: center; height: 148px; background: var(--beurre-pale); border-bottom: 2px solid var(--brun); }
+.fromage-visuel > img { width: 150px; }
+.fromage-lait { position: absolute; left: 12px; top: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; border-radius: 999px; background: var(--lait); border: 2px solid var(--brun); font-size: .82rem; font-weight: 700; }
+.fromage-lait img { width: 24px; height: 24px; }
+.fromage-coeur { position: absolute; right: 12px; top: 12px; padding: 3px 10px; border-radius: 999px; background: var(--bleu); color: var(--lait); font-size: .78rem; font-weight: 700; }
+.fromage-corps { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 18px; }
+.fromage h3 { font-size: 1.32rem; margin-bottom: .2em; }
+.fromage-origine { font-size: .92rem; font-weight: 600; color: var(--croute); margin-bottom: .6em; }
+.fromage-note { font-size: .98rem; color: var(--brun); }
+.fromage-pied { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1.5px dashed var(--trait); }
+.fromage-prix { font-family: var(--display); font-size: 1.45rem; color: var(--brun); }
+.fromage-prix small { font-family: var(--texte); font-size: .85rem; font-weight: 600; color: var(--brun-doux); }
+.fromage-affinage { font-size: .88rem; color: var(--brun-doux); font-weight: 600; }
+.aucun { padding: 40px 0; font-weight: 600; }
+.encart { margin-top: 56px; display: grid; gap: 18px; align-items: center; background: var(--bleu); color: var(--lait); border-radius: var(--rayon); padding: 28px 24px; }
+.encart h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); margin-bottom: .3em; }
+.encart p { margin: 0; }
+
+/* ---------- Plateaux ---------- */
+.etapes { list-style: none; display: grid; gap: 18px; counter-reset: etape; }
+.etapes li { counter-increment: etape; background: var(--lait); border: 2px solid var(--trait); border-radius: var(--rayon); padding: 22px; }
+.etapes li::before { content: counter(etape); display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 12px; border-radius: 50%; background: var(--bleu); color: var(--lait); font-family: var(--display); font-size: 1.3rem; }
+.etapes h3 { font-size: 1.25rem; margin-bottom: .3em; }
+.etapes p { margin: 0; }
+.commande { background: var(--beurre); border-top: 2.5px solid var(--brun); border-bottom: 2.5px solid var(--brun); }
+.commande-grille { display: grid; gap: 32px; }
+.formulaire { background: var(--lait); border: 2.5px solid var(--brun); border-radius: var(--rayon); padding: 26px 20px; box-shadow: 8px 8px 0 var(--brun); }
+.champs { display: grid; gap: 18px; }
+.champ { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.champ label, .champ legend { font-weight: 700; font-size: .98rem; }
+.aide { font-size: .86rem; color: var(--brun-doux); font-weight: 500; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], select, textarea {
+  width: 100%; min-height: 50px; padding: 10px 14px; border: 2px solid var(--brun); border-radius: 14px;
+  background: var(--creme); color: var(--brun); font: 500 1rem/1.4 var(--texte);
+}
+textarea { min-height: 110px; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--bleu); outline-offset: 1px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.options { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 4px; }
+.option { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 2px solid var(--trait); border-radius: 999px; background: var(--creme); font-weight: 600; font-size: .95rem; cursor: pointer; }
+.option input { width: 18px; height: 18px; margin: 0; accent-color: var(--bleu); }
+.estimation { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; padding: 14px 16px; border-radius: 16px; background: var(--beurre-pale); border: 2px dashed var(--croute-claire); }
+.estimation output { font-family: var(--display); font-size: 1.6rem; }
+.formulaire .btn { width: 100%; }
+.mentions-form { font-size: .85rem; color: var(--brun-doux); margin: 12px 0 0; }
+.questions { display: grid; gap: 12px; }
+.questions details { background: var(--lait); border: 2px solid var(--brun); border-radius: 18px; padding: 0 20px; }
+.questions summary { cursor: pointer; padding: 16px 0; font-weight: 700; font-size: 1.05rem; list-style-position: outside; }
+.questions details[open] summary { border-bottom: 1.5px dashed var(--trait); margin-bottom: 12px; }
+.questions details p { margin: 0 0 16px; }
+
+/* ---------- Ateliers ---------- */
+.format { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0 0; }
+.format li { background: var(--lait); border: 2px solid var(--brun); border-radius: 16px; padding: 12px 14px; }
+.format b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.5rem; line-height: 1.1; }
+.format span { font-size: .9rem; color: var(--brun-doux); font-weight: 600; }
+.dates { list-style: none; display: grid; gap: 16px; }
+.date {
+  display: grid; grid-template-columns: 76px 1fr; gap: 14px 18px; align-items: start;
+  background: var(--lait); border: 2px solid var(--brun); border-radius: var(--rayon); padding: 18px;
+}
+.date-jour { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 76px; height: 84px; border-radius: 16px; background: var(--beurre); border: 2px solid var(--brun); line-height: 1; text-align: center; }
+.date-jour span { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.date-jour b { font-family: var(--display); font-weight: 400; font-size: 2rem; margin: 2px 0; }
+.date h3 { font-size: 1.35rem; margin-bottom: .25em; }
+.date-infos { font-size: .92rem; color: var(--brun-doux); font-weight: 600; margin-bottom: .5em; }
+.date p { margin-bottom: .6em; }
+.date-action { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding-top: 12px; border-top: 1.5px dashed var(--trait); }
+.places { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: .95rem; }
+.jauge { width: 96px; height: 10px; border-radius: 999px; background: var(--beurre-pale); border: 1.5px solid var(--brun); overflow: hidden; }
+.jauge i { display: block; height: 100%; background: var(--bleu); }
+.jauge .j3 { width: 75%; } .jauge .j7 { width: 42%; } .jauge .j12 { width: 100%; } .jauge .j9 { width: 25%; } .jauge .j5 { width: 50%; }
+.date.complet .date-jour { background: var(--bleu-pale); }
+.vins { list-style: none; display: grid; gap: 10px; margin: 0; }
+.vins li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1.5px dashed var(--trait); }
+.vins span { color: var(--brun-doux); font-size: .92rem; text-align: right; }
+.prive { display: grid; gap: 30px; }
+
+/* ---------- Pied de page ---------- */
+.pied { background: var(--brun); color: var(--beurre-pale); padding: 64px 0 28px; margin-top: 0; }
+.pied a { color: var(--beurre); }
+.pied a:hover { color: var(--lait); }
+.pied-grille { display: grid; gap: 34px; }
+.pied .logo { color: var(--beurre); margin-bottom: 16px; }
+.pied .logo-sur { color: var(--croute-claire); }
+.pied h2 { font-size: 1.35rem; color: var(--beurre); margin-bottom: .6em; }
+.pied p { margin-bottom: .6em; }
+.pied ul { list-style: none; display: grid; gap: 6px; }
+.lettre { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.lettre label { width: 100%; font-weight: 600; font-size: .95rem; }
+.lettre input { flex: 1 1 180px; min-width: 0; background: var(--lait); }
+.lettre .btn { flex: none; }
+.pied-bas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: 44px; padding-top: 20px; border-top: 1.5px solid rgba(252, 235, 176, .25); font-size: .9rem; }
+.pied-bas ul { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+
+/* ---------- Tablette ---------- */
+@media (min-width: 640px) {
+  :root { --gouttiere: 32px; }
+  .logo-sur { font-size: .7rem; letter-spacing: .16em; }
+  .bandeau ul { grid-template-columns: repeat(4, 1fr); }
+  .cartes { grid-template-columns: repeat(2, 1fr); }
+  .avis { grid-template-columns: repeat(3, 1fr); }
+  .fromages { grid-template-columns: repeat(2, 1fr); }
+  .champs-2 { grid-template-columns: 1fr 1fr; }
+  .etapes { grid-template-columns: repeat(3, 1fr); }
+  .formulaire { padding: 32px 30px; }
+  .pied-grille { grid-template-columns: 1fr 1fr; }
+  .format { grid-template-columns: repeat(4, 1fr); }
+  .date { grid-template-columns: 92px 1fr; padding: 22px 24px; }
+  .date-jour { width: 92px; height: 96px; }
+  .pastille { width: 150px; height: 150px; }
+  .pastille-nom { font-size: 1.2rem; }
+}
+
+/* ---------- Bureau ---------- */
+@media (min-width: 980px) {
+  :root { --gouttiere: 40px; }
+  .tete-in { flex-wrap: nowrap; min-height: 84px; }
+  .logo { margin-right: 0; }
+  html.js .menu-bouton { display: none; }
+  .nav, html.js .nav { display: block; width: auto; margin: 0 auto; }
+  .nav ul { flex-wrap: nowrap; }
+  .tete-cta { display: inline-flex; }
+  .heros-in { grid-template-columns: 1.02fr 1fr; grid-template-areas: "sur visuel" "titre visuel" "chapo visuel" "actions visuel" "infos visuel"; column-gap: 48px; align-content: center; min-height: 640px; padding-top: 40px; padding-bottom: 70px; }
+  .heros-visuel { margin: 0; align-self: center; }
+  .heros-visuel::before { width: 92%; }
+  .heros h1 { font-size: clamp(3.4rem, 4.6vw, 4.15rem); max-width: none; margin-bottom: .35em; }
+  .heros h1 em { white-space: nowrap; }
+  .pastille { width: 168px; height: 168px; top: -10px; right: -4px; }
+  .pastille-nom { font-size: 1.35rem; }
+  .pastille-sur { font-size: .68rem; }
+  .pastille-prix { font-size: .88rem; }
+  .section { padding: 104px 0; }
+  .cave-grille { grid-template-columns: .9fr 1.1fr; gap: 72px; }
+  .semaine-grille { grid-template-columns: 1fr 1.1fr; gap: 80px; }
+  .cartes { grid-template-columns: repeat(3, 1fr); }
+  .atelier-bloc { grid-template-columns: 1.2fr .8fr; padding: 48px 56px; }
+  .acces-grille { grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+  .page-tete-in { grid-template-columns: 1.1fr .9fr; gap: 48px; padding-top: 56px; padding-bottom: 72px; }
+  .fromages { grid-template-columns: repeat(4, 1fr); }
+  .encart { grid-template-columns: 1fr auto; padding: 36px 44px; }
+  .commande-grille { grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
+  .prive { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .pied-grille { grid-template-columns: 1.3fr 1fr 1fr 1.3fr; }
+}
+@media (min-width: 1200px) {
+  .nav a { padding: 8px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+.fin { padding-bottom: 88px; }
+.semaine { --feston: var(--bleu); }
+.page-tete { position: relative; z-index: 11; }
+@media (min-width: 980px) {
+  .date { grid-template-columns: 96px 1fr 230px; gap: 0 28px; align-items: center; }
+  .date-action { grid-column: auto; flex-direction: column; align-items: flex-end; border-top: 0; padding-top: 0; }
+}

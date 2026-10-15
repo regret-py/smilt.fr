@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Plateaux sur commande · Fromagerie Caillé, Paris 15e</title>
+<meta name="description" content="Plateaux de fromages composés à la demande par la Fromagerie Caillé : trois formats, prix par personne, commande 48 heures à l’avance, retrait rue du Brouillon ou livraison à vélo dans le 15e.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7D774">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/caprasimo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="evitement" href="#main">Aller au contenu</a>
+<header class="tete">
+  <div class="enveloppe tete-in">
+    <a class="logo" href="./" aria-label="Fromagerie Caillé, accueil">
+      <img src="img/favicon.svg" alt="" width="46" height="46">
+      <span class="logo-texte"><span class="logo-sur">Fromagerie · affineur</span><span class="logo-nom">Caillé</span></span>
+    </a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav"><span class="menu-icone" aria-hidden="true"></span>Menu</button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul><li><a href="./">Accueil</a></li><li><a href="fromages.html">Nos fromages</a></li><li><a href="plateaux.html" aria-current="page">Plateaux</a></li><li><a href="ateliers.html">Ateliers</a></li><li><a href="./#acces">Infos &amp; accès</a></li></ul>
+    </nav>
+    <a class="btn btn-plein btn-petit tete-cta" href="plateaux.html#commande">Commander un plateau</a>
+  </div>
+</header>
+<main id="main">
+<section class="page-tete festons" aria-labelledby="titre-page">
+  <div class="enveloppe page-tete-in">
+    <div>
+      <p class="fil"><a href="./">Accueil</a> · Plateaux</p>
+      <h1 id="titre-page">Plateaux sur commande</h1>
+      <p class="chapo">Un anniversaire, un dîner entre amis, un pot de départ ? Dites-nous combien vous serez, on compose le plateau le matin même avec les fromages à point de la cave. Commande 48 h à l’avance, à partir de 4 personnes.</p>
+      <div class="actions">
+        <a class="btn btn-plein fleche" href="#commande">Commander</a>
+        <a class="btn btn-creux" href="#formats">Voir les formats</a>
+      </div>
+    </div>
+    <img class="page-tete-visuel" src="img/planche.svg" alt="Une longue planche en bois avec des tranches de tomme, un fromage à croûte fleurie entamé, un bleu, une pyramide cendrée, du raisin, des noix, un couteau et un pot de confiture." width="640" height="290">
+  </div>
+</section>
+
+<section class="section" id="formats" aria-labelledby="titre-formats">
+  <div class="enveloppe">
+    <div class="section-tete">
+      <p class="surtitre">Trois formats</p>
+      <span class="veine" aria-hidden="true"></span>
+      <h2 id="titre-formats">Choisissez la taille, on s’occupe du reste.</h2>
+      <p>Les prix s’entendent par personne, fromages, garnitures et emballage compris. Chaque plateau part avec une petite carte qui présente les fromages, du plus doux au plus fort.</p>
+    </div>
+    <div class="cartes">
+      <article class="carte">
+        <h3>L’Apéro</h3>
+        <div class="mini-fromages" aria-hidden="true"><img src="img/f-meule.svg" alt="" width="44" height="33"><img src="img/f-crottin.svg" alt="" width="44" height="33"><img src="img/f-bleu.svg" alt="" width="44" height="33"><img src="img/f-rond.svg" alt="" width="44" height="33"></div>
+        <p class="carte-prix">7,90 € <small>par personne</small></p>
+        <ul>
+          <li>4 fromages, 80 g par personne</li>
+          <li>Coupés en bouchées, avec piques en bois</li>
+          <li>Raisins frais et noix du Périgord</li>
+          <li>À partir de 4 personnes</li>
+        </ul>
+        <a class="btn btn-creux btn-petit fleche" href="#commande" data-choix="apero">Choisir l’Apéro</a>
+      </article>
+      <article class="carte">
+        <span class="carte-etiquette">Le plus commandé</span>
+        <h3>Le Dîner</h3>
+        <div class="mini-fromages" aria-hidden="true"><img src="img/f-meule.svg" alt="" width="44" height="33"><img src="img/f-carre.svg" alt="" width="44" height="33"><img src="img/f-bleu.svg" alt="" width="44" height="33"><img src="img/f-buche.svg" alt="" width="44" height="33"><img src="img/f-rond.svg" alt="" width="44" height="33"></div>
+        <p class="carte-prix">11,50 € <small>par personne</small></p>
+        <ul>
+          <li>5 fromages, 120 g par personne</li>
+          <li>Une pâte pressée, une molle, un bleu, un chèvre et une surprise</li>
+          <li>Confiture de cerises noires et fruits secs</li>
+          <li>À partir de 4 personnes</li>
+        </ul>
+        <a class="btn btn-plein btn-petit fleche" href="#commande" data-choix="diner">Choisir le Dîner</a>
+      </article>
+      <article class="carte">
+        <h3>La Grande Tablée</h3>
+        <div class="mini-fromages" aria-hidden="true"><img src="img/f-meule.svg" alt="" width="44" height="33"><img src="img/f-carre.svg" alt="" width="44" height="33"><img src="img/f-bleu.svg" alt="" width="44" height="33"><img src="img/f-buche.svg" alt="" width="44" height="33"><img src="img/f-pyramide.svg" alt="" width="44" height="33"><img src="img/f-boule.svg" alt="" width="44" height="33"><img src="img/f-crottin.svg" alt="" width="44" height="33"></div>
+        <p class="carte-prix">15,90 € <small>par personne</small></p>
+        <ul>
+          <li>7 fromages, 150 g par personne</li>
+          <li>Pain au levain et beurre de baratte demi-sel</li>
+          <li>Garnitures de saison, chutney de coing</li>
+          <li>Planche en bois consignée 15 €, à partir de 8 personnes</li>
+        </ul>
+        <a class="btn btn-creux btn-petit fleche" href="#commande" data-choix="tablee">Choisir la Grande Tablée</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-etapes">
+  <div class="enveloppe">
+    <div class="section-tete">
+      <span class="veine" aria-hidden="true"></span>
+      <h2 id="titre-etapes">Comment ça se passe</h2>
+    </div>
+    <ol class="etapes">
+      <li><h3>Vous commandez 48 h avant</h3><p>Par le formulaire ci-dessous, par téléphone ou au comptoir. Pour un samedi, commandez au plus tard le jeudi midi.</p></li>
+      <li><h3>On compose le matin même</h3><p>Hélène choisit les fromages à point en cave, les coupe et les dresse. Vous recevez un message quand le plateau est prêt.</p></li>
+      <li><h3>Vous récupérez, ou on livre</h3><p>Retrait rue du Brouillon aux heures d’ouverture, ou livraison à vélo dans le 15e pour 9 €, emballage isotherme compris.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section commande" id="commande" aria-labelledby="titre-commande">
+  <div class="enveloppe commande-grille">
+    <div>
+      <p class="surtitre">Commande</p>
+      <span class="veine" aria-hidden="true"></span>
+      <h2 id="titre-commande">Votre plateau, en deux minutes.</h2>
+      <p>Rien n’est payé en ligne : on vous rappelle pour confirmer la composition, et vous réglez au retrait ou à la livraison.</p>
+      <p>Une allergie, une grossesse, des invités végétariens ? Dites-le nous dans le formulaire, on adapte la sélection (lait pasteurisé, présure végétale, sans fruits à coque).</p>
+      <p><b>Une question avant de commander ?</b><br><a href="tel:+33199004127" data-demo="Démo : sur le vrai site, ce lien lance l’appel vers la fromagerie depuis votre téléphone.">01 99 00 41 27</a>, du mardi au dimanche matin.</p>
+    </div>
+    <form class="formulaire" action="plateaux.html" method="post" data-demo="Démo : sur le vrai site, votre commande est envoyée à la fromagerie, qui vous rappelle pour confirmer avant de préparer le plateau." data-commande>
+      <div class="champs">
+        <div class="champs champs-2">
+          <div class="champ">
+            <label for="c-plateau">Plateau</label>
+            <select id="c-plateau" name="plateau" data-plateau>
+              <option value="apero" data-prix="7.9">L’Apéro · 7,90 € par personne</option>
+              <option value="diner" data-prix="11.5" selected>Le Dîner · 11,50 € par personne</option>
+              <option value="tablee" data-prix="15.9">La Grande Tablée · 15,90 € par personne</option>
+            </select>
+          </div>
+          <div class="champ">
+            <label for="c-personnes">Nombre de personnes</label>
+            <input id="c-personnes" name="personnes" type="number" min="4" max="60" value="8" inputmode="numeric" required data-personnes>
+          </div>
+        </div>
+        <p class="estimation"><span>Estimation, garnitures comprises</span><output for="c-plateau c-personnes" data-total>92,00 €</output></p>
+        <div class="champs champs-2">
+          <div class="champ">
+            <label for="c-date">Date de retrait <span class="aide">(48 h minimum)</span></label>
+            <input id="c-date" name="date" type="date" required data-date>
+          </div>
+          <div class="champ">
+            <label for="c-creneau">Créneau</label>
+            <select id="c-creneau" name="creneau">
+              <option>Matin, 9 h – 13 h</option>
+              <option>Après-midi, 15 h 30 – 19 h 30 (sauf dimanche)</option>
+            </select>
+          </div>
+        </div>
+        <fieldset class="champ">
+          <legend>Retrait ou livraison</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="mode" value="retrait" checked> En boutique</label>
+            <label class="option"><input type="radio" name="mode" value="livraison"> Livraison à vélo, 15e (9 €)</label>
+          </div>
+        </fieldset>
+        <fieldset class="champ">
+          <legend>Vos envies <span class="aide">(facultatif)</span></legend>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="envies" value="doux"> Plutôt doux</label>
+            <label class="option"><input type="checkbox" name="envies" value="sans-bleu"> Sans bleu</label>
+            <label class="option"><input type="checkbox" name="envies" value="pasteurise"> Lait pasteurisé</label>
+            <label class="option"><input type="checkbox" name="envies" value="presure"> Présure végétale</label>
+            <label class="option"><input type="checkbox" name="envies" value="sans-noix"> Sans fruits à coque</label>
+          </div>
+        </fieldset>
+        <div class="champs champs-2">
+          <div class="champ">
+            <label for="c-nom">Nom</label>
+            <input id="c-nom" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="champ">
+            <label for="c-tel">Téléphone</label>
+            <input id="c-tel" name="tel" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="champ">
+          <label for="c-email">E-mail</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="champ">
+          <label for="c-message">Un mot pour nous <span class="aide">(occasion, allergies, adresse de livraison…)</span></label>
+          <textarea id="c-message" name="message" rows="4"></textarea>
+        </div>
+        <button class="btn btn-plein" type="submit">Envoyer ma commande</button>
+      </div>
+      <p class="mentions-form">Vos coordonnées servent uniquement à préparer votre commande. Elles ne sont ni revendues ni utilisées pour de la publicité.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="titre-questions">
+  <div class="enveloppe">
+    <div class="section-tete">
+      <span class="veine" aria-hidden="true"></span>
+      <h2 id="titre-questions">Les questions qu’on nous pose</h2>
+    </div>
+    <div class="questions">
+      <details><summary>Combien de temps à l’avance faut-il commander ?</summary><p>48 h minimum, pour que les fromages soient choisis et coupés au bon moment. Pour les fêtes de fin d’année, on prend les commandes dès le 1er décembre, et le planning se remplit vite.</p></details>
+      <details><summary>Comment conserver le plateau avant de servir ?</summary><p>Au frais dans son emballage, puis sortez-le une heure avant de passer à table. Un fromage trop froid n’a presque pas de goût.</p></details>
+      <details><summary>La planche en bois, je la rends ?</summary><p>Oui, pour la Grande Tablée la planche est consignée 15 €. Rapportez-la sous quinze jours, on vous rend la consigne. Les autres plateaux partent sur un carton compostable.</p></details>
+      <details><summary>Pouvez-vous faire un plateau pour 40 personnes ?</summary><p>Avec plaisir. Au-delà de 25 personnes, appelez-nous : on prévoit plusieurs plateaux et, si vous le voulez, une meule entière à découper devant vos invités.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied-grille">
+      <div>
+        <a class="logo" href="./" aria-label="Fromagerie Caillé, accueil">
+          <img src="img/favicon.svg" alt="" width="46" height="46">
+          <span class="logo-texte"><span class="logo-sur">Fromagerie · affineur</span><span class="logo-nom">Caillé</span></span>
+        </a>
+        <p>Fromages fermiers affinés dans notre cave, sous la boutique. Hélène, Bastien et Lou vous attendent au comptoir.</p>
+        <p><a href="https://instagram.com/" data-demo="Démo : sur le vrai site, ce lien ouvre le compte Instagram de la fromagerie (arrivages et fromage de la semaine).">Instagram · @fromagerie.caille</a></p>
+      </div>
+      <div>
+        <h2>Nous trouver</h2>
+        <p>15 rue du Brouillon<br>75015 Paris</p>
+        <p><a href="tel:+33199004127" data-demo="Démo : sur le vrai site, ce lien lance l’appel vers la fromagerie depuis votre téléphone.">01 99 00 41 27</a><br><a href="mailto:bonjour@fromagerie-caille.example" data-demo="Démo : sur le vrai site, ce lien ouvre un e-mail adressé à la fromagerie.">bonjour@fromagerie-caille.example</a></p>
+      </div>
+      <div>
+        <h2>Horaires</h2>
+        <p>Mardi au samedi<br>9 h – 13 h et 15 h 30 – 19 h 30</p>
+        <p>Dimanche 9 h – 13 h<br>Fermé le lundi</p>
+      </div>
+      <div>
+        <h2>La lettre du jeudi</h2>
+        <p>Les arrivages, le fromage de la semaine et les dates d’ateliers. Une fois par semaine, pas plus.</p>
+        <form class="lettre" action="./" method="post" data-demo="Démo : sur le vrai site, votre adresse est inscrite à la lettre du jeudi (désinscription en un clic).">
+          <label for="lettre-email-plateaux">Votre adresse e-mail</label>
+          <input id="lettre-email-plateaux" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required>
+          <button class="btn btn-beurre btn-petit" type="submit">Je m’inscris</button>
+        </form>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <p>© 2026 Fromagerie Caillé · 15 rue du Brouillon, Paris 15e</p>
+      <ul>
+        <li><a href="./" data-demo="Démo : sur le vrai site, ce lien mène aux mentions légales de la fromagerie.">Mentions légales</a></li>
+        <li><a href="/">Site réalisé par smilt.</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

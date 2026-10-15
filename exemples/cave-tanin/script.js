@@ -215,7 +215,7 @@
       var nb = 0; Object.keys(panier).forEach(function (id) { nb += panier[id]; });
       if (!nb) {
         e.preventDefault(); e.stopPropagation();
-        message.textContent = 'Votre panier est vide : ajoutez au moins une bouteille.';
+        message.textContent = 'Votre panier est vide' + NBSP + ': ajoutez au moins une bouteille.';
       } else {
         message.textContent = '';
       }

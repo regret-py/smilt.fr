@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>La carte · Bouillon Marelle, Paris 10e</title>
+<meta name="description" content="Entrées de 3 à 8 €, plats de 9 à 15 €, desserts de 4 à 7 € et vins au verre : la carte du Bouillon Marelle, avec allergènes et plats végétariens signalés.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1E4636">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/abril-fatface-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/exemples/demo.css">
+<link rel="stylesheet" href="style.css">
+<script src="/exemples/demo.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="smilt-demo" role="note"><span>Site de démonstration réalisé par <a href="/">smilt.</a> pour un commerce fictif.</span><a href="/exemples/">Voir les autres exemples</a></div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<div class="infobar">
+  <div class="env infobar-in">
+    <p class="statut" data-statut><span class="pastille" aria-hidden="true"></span><span class="statut-txt">Ouvert tous les jours, de midi à minuit</span></p>
+    <p class="infobar-msg">Service continu · Sans réservation, sauf pour les groupes</p>
+    <a class="infobar-tel" href="tel:+33199004106" data-demo="Démo : sur le vrai site, ce lien lance l’appel vers le bouillon depuis votre téléphone.">01 99 00 41 06</a>
+  </div>
+</div>
+
+<header class="tete">
+  <div class="env tete-in">
+    <a class="logo" href="./">
+      <svg class="logo-marque" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#1E4636"/><g fill="none" stroke="#E7AE33" stroke-width="4" stroke-linejoin="round"><path d="M25 54h14V43H25zM25 43h14V32H25zM18 32h14V21H18zM32 32h14V21H32zM18 21c0-8 6-12 14-12s14 4 14 12z"/></g><circle cx="32" cy="48.5" r="3" fill="#D8462F"/></svg>
+      <span class="logo-txt"><span class="logo-sur">Bouillon</span><span class="logo-nom">Marelle</span></span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-principale"><span class="menu-barres" aria-hidden="true"></span>Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <ul>
+        <li><a href="./">Accueil</a></li>
+        <li><a href="carte.html" aria-current="page">La carte</a></li>
+        <li><a href="groupes.html">Groupes</a></li>
+        <li><a href="infos.html">Infos pratiques</a></li>
+      </ul>
+      <a class="btn btn-moutarde nav-cta" href="groupes.html#demande">Réserver pour un groupe</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="page-tete" aria-labelledby="carte-titre">
+    <div class="env page-tete-in page-tete-duo">
+      <div>
+      <p class="surtitre"><span class="surtitre-trait" aria-hidden="true"></span>Servie en continu, de midi à 23 h 30</p>
+      <h1 id="carte-titre" class="page-titre">La carte</h1>
+      <p class="intro">Une carte courte qui change peu, des prix ronds et tout fait maison. Le pain et la carafe d’eau sont offerts, le service est compris.</p>
+      </div>
+      <div class="page-tete-assiettes" aria-hidden="true"><img src="img/bourguignon.svg" width="240" height="240" alt=""><img src="img/oeuf-mayo.svg" width="240" height="240" alt=""><img src="img/profiteroles.svg" width="240" height="240" alt=""></div>
+    </div>
+    <div class="bande-mosaique" aria-hidden="true"></div>
+  </section>
+
+  <div class="env carte-outils">
+    <div class="filtres" data-filtres hidden>
+      <p class="filtres-lib" id="filtres-lib">Afficher</p>
+      <div class="filtres-btns" role="group" aria-labelledby="filtres-lib">
+        <button type="button" class="filtre" aria-pressed="true" data-filtre="tout">Toute la carte</button>
+        <button type="button" class="filtre" aria-pressed="false" data-filtre="vg">Végétarien</button>
+        <button type="button" class="filtre" aria-pressed="false" data-filtre="sg">Sans gluten</button>
+      </div>
+      <p class="filtres-etat" data-filtres-etat aria-live="polite"></p>
+    </div>
+    <nav class="carte-sommaire" aria-label="Rubriques de la carte">
+      <a href="#entrees">Entrées</a><a href="#plats">Plats</a><a href="#desserts">Desserts</a><a href="#vins">Vins &amp; boissons</a>
+    </nav>
+  </div>
+
+  <div class="env carte-papier">
+    <section class="rubrique" id="entrees" aria-labelledby="t-entrees">
+      <h2 id="t-entrees" class="rubrique-titre"><span>Entrées</span><span class="rubrique-prix">3 à 8 €</span></h2>
+      <ul class="mets">
+        <li data-vg data-sg><div class="mets-ligne"><h3>Œuf mayonnaise <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">3 €</span></div><p>Deux œufs bio, mayonnaise à la moutarde, ciboulette.</p><p class="allerg">Allergènes : œufs, moutarde</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Céleri rémoulade <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">3,50 €</span></div><p>Céleri-rave râpé minute, sauce rémoulade, persil plat.</p><p class="allerg">Allergènes : céleri, œufs, moutarde</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Poireaux vinaigrette <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">4,50 €</span></div><p>Poireaux fondants, vinaigrette moutardée, noisettes torréfiées.</p><p class="allerg">Allergènes : moutarde, fruits à coque</p></li>
+        <li><div class="mets-ligne"><h3>Terrine de campagne</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">5 €</span></div><p>Faite maison au poivre vert, cornichons, pain grillé.</p><p class="allerg">Allergènes : gluten, sulfites</p></li>
+        <li data-sg><div class="mets-ligne"><h3>Hareng pommes à l’huile</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">5,50 €</span></div><p>Filets marinés aux aromates, pommes de terre tièdes, oignons rouges.</p><p class="allerg">Allergènes : poisson</p></li>
+        <li><div class="mets-ligne"><h3>Os à moelle</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">6 €</span></div><p>Rôti au four, fleur de sel, tartines de pain de campagne.</p><p class="allerg">Allergènes : gluten</p></li>
+        <li data-vg><div class="mets-ligne"><h3>Soupe à l’oignon gratinée <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">6,50 €</span></div><p>Bouillon de légumes, oignons confits, croûton et fromage fondu.</p><p class="allerg">Allergènes : gluten, lait</p></li>
+        <li data-sg><div class="mets-ligne"><h3>Six escargots</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">8 €</span></div><p>Beurre persillé à l’ail, servis brûlants dans leur coquille.</p><p class="allerg">Allergènes : lait, mollusques</p></li>
+      </ul>
+    </section>
+
+    <section class="rubrique" id="plats" aria-labelledby="t-plats">
+      <h2 id="t-plats" class="rubrique-titre"><span>Plats</span><span class="rubrique-prix">9 à 15 €</span></h2>
+      <ul class="mets">
+        <li data-sg><div class="mets-ligne"><h3>Saucisse purée</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">9 €</span></div><p>Saucisse de Toulouse grillée, purée au beurre, jus aux oignons.</p><p class="allerg">Allergènes : lait, sulfites</p></li>
+        <li data-vg><div class="mets-ligne"><h3>Gratin de coquillettes <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">9,50 €</span></div><p>Coquillettes, béchamel au fromage de montagne, salade verte.</p><p class="allerg">Allergènes : gluten, lait, œufs</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Lentilles, légumes rôtis <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">10 €</span></div><p>Lentilles vertes, carottes et betteraves rôties, œuf parfait.</p><p class="allerg">Allergènes : œufs, céleri</p></li>
+        <li><div class="mets-ligne"><h3>Steak haché frites</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">11,50 €</span></div><p>Bœuf haché minute, frites fraîches, sauce au poivre.</p><p class="allerg">Allergènes : lait, gluten (sauce)</p></li>
+        <li data-sg><div class="mets-ligne"><h3>Tête de veau, sauce gribiche</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">12 €</span></div><p>Langue et joue, pommes vapeur, gribiche aux câpres.</p><p class="allerg">Allergènes : œufs, moutarde</p></li>
+        <li><div class="mets-ligne"><h3>Bœuf bourguignon</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">13 €</span></div><p>Joue de bœuf mijotée sept heures, carottes, lardons, coquillettes.</p><p class="allerg">Allergènes : gluten, céleri, sulfites</p></li>
+        <li data-sg><div class="mets-ligne"><h3>Filet de lieu, beurre blanc</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">13,50 €</span></div><p>Poisson de ligne, épinards au beurre, pommes vapeur.</p><p class="allerg">Allergènes : poisson, lait, sulfites</p></li>
+        <li data-sg><div class="mets-ligne"><h3>Confit de canard</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">14,50 €</span></div><p>Cuisse confite maison, pommes sarladaises à l’ail, salade.</p><p class="allerg">Allergènes : aucun des 14 majeurs</p></li>
+        <li data-sg><div class="mets-ligne"><h3>Choucroute garnie</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">15 €</span></div><p>Chou fermenté au riesling, saucisses, poitrine fumée, pommes de terre.</p><p class="allerg">Allergènes : moutarde, sulfites</p></li>
+      </ul>
+      <p class="encart-jour"><strong>Et chaque jour, un plat mijoté à l’ardoise</strong>, de 11,50 à 14 €, servi jusqu’à épuisement. <a href="./#plat-du-jour">Le programme de la semaine</a></p>
+    </section>
+
+    <section class="rubrique" id="desserts" aria-labelledby="t-desserts">
+      <h2 id="t-desserts" class="rubrique-titre"><span>Desserts</span><span class="rubrique-prix">4 à 7 €</span></h2>
+      <ul class="mets">
+        <li data-vg data-sg><div class="mets-ligne"><h3>Crème caramel <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">4 €</span></div><p>La recette de la maison, caramel bien brun.</p><p class="allerg">Allergènes : œufs, lait</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Riz au lait <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">4,50 €</span></div><p>Cuit à la vanille, caramel au beurre salé.</p><p class="allerg">Allergènes : lait</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Mousse au chocolat <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">4,50 €</span></div><p>Chocolat noir à 70 %, servie à la louche.</p><p class="allerg">Allergènes : œufs, lait</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Île flottante <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">5 €</span></div><p>Crème anglaise, caramel, pralines roses concassées.</p><p class="allerg">Allergènes : œufs, lait, fruits à coque</p></li>
+        <li data-vg><div class="mets-ligne"><h3>Baba au rhum <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">6 €</span></div><p>Généreusement imbibé, crème fouettée. La bouteille reste sur la table.</p><p class="allerg">Allergènes : gluten, œufs, lait</p></li>
+        <li data-vg data-sg><div class="mets-ligne"><h3>Assiette de fromages <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">6 €</span></div><p>Trois fromages affinés, confiture de cerises noires.</p><p class="allerg">Allergènes : lait</p></li>
+        <li data-vg><div class="mets-ligne"><h3>Profiteroles <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">6,50 €</span></div><p>Trois choux, glace vanille, chocolat chaud versé à table.</p><p class="allerg">Allergènes : gluten, œufs, lait, fruits à coque</p></li>
+        <li data-vg><div class="mets-ligne"><h3>Tarte Tatin <span class="vg"><span aria-hidden="true">V</span><span class="sr"> (végétarien)</span></span></h3><span class="points" aria-hidden="true"></span><span class="mets-prix">7 €</span></div><p>Pommes caramélisées, pâte brisée maison, crème crue.</p><p class="allerg">Allergènes : gluten, lait, œufs</p></li>
+      </ul>
+    </section>
+
+    <section class="rubrique rubrique-vins" id="vins" aria-labelledby="t-vins">
+      <h2 id="t-vins" class="rubrique-titre"><span>Vins &amp; boissons</span><span class="rubrique-prix">dès 1,50 €</span></h2>
+      <div class="vins-grille">
+        <div>
+          <table class="tab-vins">
+            <caption>Vins au verre et en pichet</caption>
+            <thead><tr><th scope="col">Cuvée</th><th scope="col">Verre 12 cl</th><th scope="col">Pichet 50 cl</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><span class="vin-nom">Le Préau</span> <span class="vin-desc">blanc sec de Loire, domaine des Quatre Cases</span></th><td>3,50 €</td><td>12 €</td></tr>
+              <tr><th scope="row"><span class="vin-nom">Craie Blanche</span> <span class="vin-desc">chardonnay de Bourgogne, maison Aubertin</span></th><td>5 €</td><td>18 €</td></tr>
+              <tr><th scope="row"><span class="vin-nom">Les Galets Ronds</span> <span class="vin-desc">rosé de Provence, domaine Sainte-Ondine</span></th><td>4 €</td><td>14 €</td></tr>
+              <tr><th scope="row"><span class="vin-nom">Petit Saut</span> <span class="vin-desc">gamay du Beaujolais, servi frais</span></th><td>3,50 €</td><td>12 €</td></tr>
+              <tr><th scope="row"><span class="vin-nom">Côte de la Marelle</span> <span class="vin-desc">syrah-grenache du Languedoc, clos Peyrolle</span></th><td>4 €</td><td>14 €</td></tr>
+              <tr><th scope="row"><span class="vin-nom">Le Grand Ciel</span> <span class="vin-desc">bordeaux rouge, château Larmande-Haut</span></th><td>5,50 €</td><td>20 €</td></tr>
+            </tbody>
+          </table>
+          <p class="allerg">Tous nos vins contiennent des sulfites. L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</p>
+        </div>
+        <div class="boissons">
+          <img src="img/verre.svg" width="240" height="240" alt="">
+          <ul class="mets mets-simples">
+            <li><div class="mets-ligne"><h3>Café, déca</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">1,50 €</span></div></li>
+            <li><div class="mets-ligne"><h3>Thé, infusion</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">2,50 €</span></div></li>
+            <li><div class="mets-ligne"><h3>Limonade artisanale</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">3 €</span></div></li>
+            <li><div class="mets-ligne"><h3>Demi pression, blonde du faubourg</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">3,50 €</span></div></li>
+            <li><div class="mets-ligne"><h3>Jus de pomme fermier</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">3,50 €</span></div></li>
+            <li><div class="mets-ligne"><h3>Carafe d’eau, pain</h3><span class="points" aria-hidden="true"></span><span class="mets-prix">offerts</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <aside class="legende" aria-labelledby="legende-titre">
+      <h2 id="legende-titre" class="legende-titre">Allergies et régimes</h2>
+      <p><span class="vg" aria-hidden="true">V</span> Plat végétarien : ni viande ni poisson, ni bouillon ou gélatine d’origine animale.</p>
+      <p>Les allergènes indiqués sont ceux de la liste réglementaire des 14 allergènes majeurs. Notre cuisine manipule tous ces produits : des traces restent possibles. Signalez toute allergie au serveur, Mireille adapte volontiers un plat quand c’est possible.</p>
+      <p>Viandes bovines nées, élevées et abattues en France. Menu enfant (jusqu’à 10 ans) à 8 € : steak haché ou gratin de coquillettes, crème caramel, sirop à l’eau.</p>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="pied">
+  <div class="pied-frise" aria-hidden="true"></div>
+  <div class="env pied-grille">
+    <div class="pied-marque">
+      <a class="logo logo-clair" href="./">
+        <svg class="logo-marque" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#1E4636"/><g fill="none" stroke="#E7AE33" stroke-width="4" stroke-linejoin="round"><path d="M25 54h14V43H25zM25 43h14V32H25zM18 32h14V21H18zM32 32h14V21H32zM18 21c0-8 6-12 14-12s14 4 14 12z"/></g><circle cx="32" cy="48.5" r="3" fill="#D8462F"/></svg>
+        <span class="logo-txt"><span class="logo-sur">Bouillon</span><span class="logo-nom">Marelle</span></span>
+      </a>
+      <p>Bouillon parisien depuis 1906. Cuisine française populaire, service continu, petits prix et nappes en papier.</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Adresse</h2>
+      <p>3 boulevard du Prototype<br>75010 Paris</p>
+      <p>Métro Maquette, lignes 4 et 7</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Horaires</h2>
+      <p>Tous les jours, de 12 h à minuit</p>
+      <p>Dernière commande en cuisine à 23 h 30</p>
+    </div>
+    <div>
+      <h2 class="pied-titre">Contact</h2>
+      <p><a class="" href="tel:+33199004106" data-demo="Démo : sur le vrai site, ce lien lance l’appel vers le bouillon depuis votre téléphone.">01 99 00 41 06</a></p>
+      <p><a href="mailto:bonjour@bouillon-marelle.example" data-demo="Démo : sur le vrai site, ce lien ouvre votre messagerie pour écrire au bouillon.">bonjour@bouillon-marelle.example</a></p>
+      <p><a href="#" data-demo="Démo : sur le vrai site, ce lien ouvre le compte Instagram du bouillon (photos du plat du jour, chaque midi).">Instagram : @bouillonmarelle</a></p>
+    </div>
+  </div>
+  <div class="env pied-bas">
+    <p>© 2026 Bouillon Marelle · <a href="#" data-demo="Démo : sur le vrai site, ce lien ouvre les mentions légales (éditeur, hébergeur, SIRET).">Mentions légales</a> · <a href="#" data-demo="Démo : sur le vrai site, ce lien ouvre la politique de confidentialité.">Confidentialité</a></p>
+    <p class="credit">Site réalisé par <a href="/">smilt.</a></p>
+  </div>
+</footer>
+</body>
+</html>

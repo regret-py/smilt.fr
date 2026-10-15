@@ -11,7 +11,7 @@
 
   /* ===================== 1. configuration & outils ===================== */
   var CONFIG = {
-    email: 'smilt.fr@proton.me',
+    email: 'contact@smilt.fr',
     john: true,             // false retire John du site
     chatApi: '/api/chat',   // proxy Groq (Vercel, voir api/chat.js). Sans serveur, John utilise ses réponses écrites.
     quoteApi: '/api/devis', // envoi du devis par e-mail (Vercel + Resend, voir api/devis.js). Sinon : l'e-mail s'ouvre pré-rempli.

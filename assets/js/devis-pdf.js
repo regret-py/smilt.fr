@@ -21,7 +21,7 @@ export const COMPANY = {
   vatNumber: '',        // numéro de TVA intracommunautaire, si l'entreprise y est assujettie
   vatRate: 0,           // 0 : franchise en base (« TVA non applicable, art. 293 B du CGI »). Sinon : 20
   iban: '',             // facultatif : affiché dans les conditions de paiement
-  email: 'smilt.fr@proton.me',
+  email: 'contact@smilt.fr',
   website: 'smilt.fr',
   tagline: 'Sites qui font sourire.'
 };

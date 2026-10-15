@@ -6,7 +6,7 @@
 // jamais du navigateur.
 //
 // Variables obligatoires :  RESEND_API_KEY  (https://resend.com, le domaine smilt.fr doit y être vérifié)
-//                           DEVIS_TO        (adresse qui reçoit les demandes, ex. smilt.fr@proton.me)
+//                           DEVIS_TO        (adresse qui reçoit les demandes, ex. contact@smilt.fr)
 // Variables facultatives :  DEVIS_FROM      (expéditeur, défaut : "smilt. <devis@smilt.fr>")
 //                           ALLOWED_ORIGIN  (comme pour api/chat.js)
 //
